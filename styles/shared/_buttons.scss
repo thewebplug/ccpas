@@ -1,0 +1,53 @@
+.primary-button, %primary-button {
+  width: 360px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid #009b07;
+  background: #009b07;
+  color: var(--White, #fff);
+  font-size: 16px;
+  font-weight: 600;
+  margin: auto;
+}
+
+
+.create-button, %create-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+width: 209px;
+height: 50px;
+border-radius: 70px;
+background: #009B07;
+border: none;
+outline: none;
+font-size: 14px;
+font-weight: 500;
+color: #FFF;
+}
+
+
+.trans-button {
+}
+
+%trans-button {
+}
+
+.button-green,
+%button-green {
+  min-width: 150px;
+  height: 40px;
+  border-radius: 24px;
+  background: #008d48;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.bottom-button {
+}

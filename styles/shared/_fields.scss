@@ -1,0 +1,34 @@
+label {
+  display: block;
+  color: #344054;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+
+
+%normal-input {
+    width: 100%;
+  max-width: 360px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--Gray-300, #D0D5DD);
+  padding-left: 14px;
+  font-size: 16px;
+  color: #667085;
+
+  &::placeholder {
+    color: #667085;
+  }
+}
+
+%otp-input {
+  
+
+}
+
+
+%otp-input-italics::placeholder {
+
+}

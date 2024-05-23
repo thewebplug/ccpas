@@ -1,0 +1,127 @@
+.auth {
+  max-width: 1440px;
+  width: 100%;
+  margin: auto;
+  padding: 33px 0;
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 19px;
+    margin-bottom: 116.91px;
+
+    &__inner {
+      height: fit-content;
+      &__title {
+        @extend %title-16;
+        margin-bottom: 4.81px;
+      }
+
+      &__subtitle {
+        @extend %title-10;
+      }
+    }
+  }
+
+  &__title {
+    @extend %title-32;
+    text-align: center;
+    color: #006d05;
+    font-weight: 600;
+    max-width: 40ch;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 125px;
+  }
+
+  &__form {
+    max-width: 360px;
+    width: 100%;
+    margin: auto;
+
+    &__title {
+      @extend %title-30;
+      color: #101828;
+    }
+
+    &__subtitle {
+      @extend %title-24;
+      font-style: normal;
+      margin-top: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    &__error {
+        color: #E0003E;
+font-size: 14px;
+font-weight: 600;
+margin: 32px 0 4px 0;
+    }
+
+    &__label {
+      margin-bottom: 6px;
+      margin-top: 20px;
+    }
+
+    &__input {
+      @extend %normal-input;
+    }
+
+    &__caution {
+      color: #667085;
+      font-size: 14px;
+      font-weight: 400;
+      margin-top: 6px;
+      margin-bottom: 24px;
+    }
+
+    &__button {
+        @extend %primary-button;
+    }
+
+    &__request {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #009B07;
+        margin-top: 24px;
+    }
+  }
+
+  &__unauth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & > svg {
+      margin-bottom: 56px;
+    }
+
+    &__title {
+      @extend %title-36;
+      margin-bottom: 10px;
+    }
+
+    &__subtitle {
+      @extend %title-24;
+      font-weight: 600;
+      color: #949494;
+    }
+  }
+  &__auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & > svg {
+      margin-bottom: 32px;
+    }
+
+    &__title {
+      @extend %title-36;
+    }
+  }
+}

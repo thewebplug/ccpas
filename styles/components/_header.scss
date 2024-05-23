@@ -1,0 +1,80 @@
+.header {
+  display: flex;
+  align-self: center;
+  padding: 0 80px;
+  width: 100%;
+  max-width: 1440px;
+  height: 88px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo {
+    width: 115px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    font-size: 1.8rem;
+    font-weight: 500;
+
+    & > div {
+      width: 8.7rem;
+      min-height: 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.7s;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 79px;
+        background: rgba(255, 215, 0, 1);
+        border-radius: 8px 8px 0px 0px;
+        margin: 0 auto;
+        margin-top: 4px;
+        opacity: 0;
+        height: 4px;
+        transform: translateX(14px);
+        transition: all 0.7s ease; /* Add transition for ::after */
+      }
+
+      &:hover {
+        transition: 0.7s;
+
+        & > div {
+          color: rgba(36, 35, 35, 1);
+          transform: translateY(-4px);
+          transition: 0.7s;
+        }
+
+        &::after {
+          transform: translateX(0);
+          opacity: 1;
+          transition: 0.7s;
+        }
+      }
+
+      & > div {
+        transition: 0.7s;
+      }
+    }
+  }
+
+  &__profile {
+    & > :first-child {
+      margin-right: 40px;
+    }
+    & > :last-child {
+      margin-left: 25px;
+    }
+  }
+}
