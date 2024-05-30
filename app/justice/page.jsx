@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 
 export default function Home(params) {
@@ -15,7 +16,9 @@ export default function Home(params) {
       <h3 className="justice-home__subsubtitle">Login as</h3>
 
       <div className="justice-home__cards">
-        <div className="justice-home__cards__card">
+        <div className="justice-home__cards__card"
+        onClick={() =>  window.location.href = "/justice/login"}
+        >
           <svg
             width="33"
             height="33"
@@ -34,7 +37,9 @@ export default function Home(params) {
           </svg>
           <h4>Justice Public Prosecutor</h4>
         </div>
-        <div className="justice-home__cards__card">
+        <div className="justice-home__cards__card"
+        onClick={() =>  window.location.href = "/justice/login"}
+        >
           <svg
             width="33"
             height="33"
@@ -53,7 +58,9 @@ export default function Home(params) {
           </svg>
           <h4>Law Enforcement Agent</h4>
         </div>
-        <div className="justice-home__cards__card">
+        <div className="justice-home__cards__card"
+        onClick={() =>  window.location.href = "/justice/login"}
+        >
           <svg
             width="33"
             height="33"

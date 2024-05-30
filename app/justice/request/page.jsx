@@ -6,7 +6,7 @@ export default function Auth() {
 
   const handleSubmitRequest = (e) => {
     e.preventDefault();
-    window.location.href = "/justice/login";
+    window.location.href = "/justice/authorized";
   }
   return (
     <main className="auth">

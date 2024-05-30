@@ -1,0 +1,46 @@
+.dashboard-sidebar {
+    border-left: 1px solid #eaeef4;
+    border-right: 1px solid #eaeef4;
+    background: #f7fbfe;
+    height: 100%;
+
+    width: 90px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 20px;
+    gap: 16px;
+
+    &__item {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid var(--Grey-Grey-30, #eaeef4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:hover {
+        background: #514EF3;
+         
+        & > svg {
+          & > path {
+            fill: #FFF;
+          }
+        }
+      }
+    }
+
+    &__item-active {
+        background: #514EF3;
+         
+        & > svg {
+          & > path {
+            fill: #FFF;
+          }
+        }
+    }
+  }

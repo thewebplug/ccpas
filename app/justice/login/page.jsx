@@ -50,7 +50,7 @@ Department of Public Prosecution Portal
         
         <button className="auth__form__button" type="submit">Login</button>
 
-        <h5 className="auth__form__request"
+        <h5 className="auth__form__request pointer"
         onClick={() => window.location.href = "/justice/request"}
         >
         Request Access

@@ -13,9 +13,14 @@
 @import 'components/sidebar';
 @import 'components/header';
 @import 'components/footer';
+@import 'components/dashboardHeader';
+@import 'components/dashboardSideBar';
 
 @import 'pages/home';
 @import 'pages/justice/home';
 @import 'pages/justice/auth';
-@import 'pages/justice/dashboard';
+@import 'pages/justice/dashboard/layout';
+@import 'pages/justice/dashboard/home';
+@import 'pages/justice/dashboard/create-case';
+@import 'pages/justice/dashboard/cases';
 

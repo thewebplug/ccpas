@@ -1,6 +1,15 @@
+"use client"
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function Auth() {
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.location.href = "/justice/login"
+    }, 1000);
+  }, [])
+
   return (
     <main className="auth">
       <div className="auth__header">
