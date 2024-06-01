@@ -17,7 +17,7 @@ export default function Home(params) {
 
       <div className="justice-home__cards">
         <div className="justice-home__cards__card"
-        onClick={() =>  window.location.href = "/justice/login"}
+        onClick={() =>  window.location.href = "/justice/request"}
         >
           <svg
             width="33"
@@ -38,7 +38,7 @@ export default function Home(params) {
           <h4>Justice Public Prosecutor</h4>
         </div>
         <div className="justice-home__cards__card"
-        onClick={() =>  window.location.href = "/justice/login"}
+        onClick={() =>  window.location.href = "/justice/request"}
         >
           <svg
             width="33"
@@ -59,7 +59,7 @@ export default function Home(params) {
           <h4>Law Enforcement Agent</h4>
         </div>
         <div className="justice-home__cards__card"
-        onClick={() =>  window.location.href = "/justice/login"}
+        onClick={() =>  window.location.href = "/justice/request"}
         >
           <svg
             width="33"
