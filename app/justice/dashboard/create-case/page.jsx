@@ -1105,7 +1105,7 @@ Video.Mp4
         <div className="case-from__mugshot__subtitle">Add Mugshot and add pictures highlighting any tattoos, piercing or body scar</div>
       </div>
 <div className="case-from__mugshots">
-{images?.map((item) => 
+{images?.map((item, index) => 
   <Image
                 className="case-from__accused__bio__img"
                 alt=""
@@ -1113,7 +1113,7 @@ Video.Mp4
                 width={349}
                 height={273}
                 style={{ objectFit: "cover", borderRadius: "12px", minWidth: "349px" }}
-
+                key={index}
               />
 )}
                
