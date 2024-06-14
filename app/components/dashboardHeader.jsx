@@ -1,8 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Menu from "./menu";
+import { useState } from "react";
 
 export default function DashboardHeader() {
+  const [menuActive, setMenuActive] = useState(false)
+
     return (
         <div className="dashboard-header">
         <div className="dashboard-header__logo">
@@ -45,26 +49,16 @@ export default function DashboardHeader() {
 
         <div className="dashboard-header__account">
           <button className="dashboard-header__account__button"
-          onClick={() => window.location.href = "/justice/dashboard/create-case"}
+          onClick={() => setMenuActive(!menuActive)}
           >
-            Create New Case file
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M11 6.625H1C0.658333 6.625 0.375 6.34167 0.375 6C0.375 5.65833 0.658333 5.375 1 5.375H11C11.3417 5.375 11.625 5.65833 11.625 6C11.625 6.34167 11.3417 6.625 11 6.625Z"
-                fill="#ECECFE"
-              />
-              <path
-                d="M6 11.625C5.65833 11.625 5.375 11.3417 5.375 11V1C5.375 0.658333 5.65833 0.375 6 0.375C6.34167 0.375 6.625 0.658333 6.625 1V11C6.625 11.3417 6.34167 11.625 6 11.625Z"
-                fill="#ECECFE"
-              />
-            </svg>
+            Case File
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.9336 6.81641H9.74195H5.06695C4.26695 6.81641 3.86695 7.78307 4.43361 8.34974L8.75028 12.6664C9.44195 13.3581 10.5669 13.3581 11.2586 12.6664L12.9003 11.0247L15.5753 8.34974C16.1336 7.78307 15.7336 6.81641 14.9336 6.81641Z" fill="#ECECFE"/>
+</svg>
+
           </button>
+
+          {menuActive &&<Menu items={[{name: "Edit Case file"}, {name: "Create New Case file", function: () => window.location.href = "/justice/dashboard/create-case"}, {name: "Upload existing case file", function: () => window.location.href = "/justice/dashboard/create-case"}]} />}
           <div className="dashboard-header__account__search">
             <svg
               width="18"
