@@ -1,7 +1,10 @@
+"use client";
 export default function DashboardSideBar() {
     return (
         <div className="dashboard-sidebar">
-          <div className="dashboard-sidebar__item dashboard-sidebar__item-active">
+          <div className="dashboard-sidebar__item dashboard-sidebar__item-active"
+          onClick={() => window.location.href = "/justice/dashboard"}
+          >
             <svg
               width="18"
               height="18"

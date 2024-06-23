@@ -15,6 +15,7 @@
 @import 'components/footer';
 @import 'components/dashboardHeader';
 @import 'components/dashboardSideBar';
+@import 'components/menu';
 
 @import 'pages/home';
 @import 'pages/justice/home';
@@ -22,5 +23,6 @@
 @import 'pages/justice/dashboard/layout';
 @import 'pages/justice/dashboard/home';
 @import 'pages/justice/dashboard/create-case';
+@import 'pages/justice/dashboard/case-details';
 @import 'pages/justice/dashboard/cases';
 

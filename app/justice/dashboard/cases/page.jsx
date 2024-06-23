@@ -6,6 +6,12 @@ export default function Cases() {
     const [modalOpen, setModalOpen] = useState(0);
     const [assignee, setAssignee] = useState(null);
 
+    const handleModalClose = (e) => {
+        if (e.target.classList.contains("cases__modal")) {
+          setModalOpen(false);
+        }
+      };
+
    return (
     <div className="cases">
     <div className="cases__header">
@@ -26,6 +32,15 @@ export default function Cases() {
 <path d="M24 23C25.1046 23 26 22.1046 26 21C26 19.8954 25.1046 19 24 19C22.8954 19 22 19.8954 22 21C22 22.1046 22.8954 23 24 23Z" stroke="black" stroke-linecap="round"/>
 <path d="M31 29C32.1046 29 33 28.1046 33 27C33 25.8954 32.1046 25 31 25C29.8954 25 29 25.8954 29 27C29 28.1046 29.8954 29 31 29Z" stroke="black" stroke-linecap="round"/>
 </svg>
+
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="24" cy="24" r="23.5" fill="white" stroke="#A8A8A8"/>
+<path d="M29.5401 20.8106C31.1748 20.8106 32.5001 19.4854 32.5001 17.8506C32.5001 16.2159 31.1748 14.8906 29.5401 14.8906C27.9053 14.8906 26.5801 16.2159 26.5801 17.8506C26.5801 19.4854 27.9053 20.8106 29.5401 20.8106Z" fill="#292D32"/>
+<path d="M18.46 20.8106C20.0948 20.8106 21.42 19.4854 21.42 17.8506C21.42 16.2159 20.0948 14.8906 18.46 14.8906C16.8252 14.8906 15.5 16.2159 15.5 17.8506C15.5 19.4854 16.8252 20.8106 18.46 20.8106Z" fill="#292D32"/>
+<path d="M29.5401 33.1114C31.1748 33.1114 32.5001 31.7862 32.5001 30.1514C32.5001 28.5166 31.1748 27.1914 29.5401 27.1914C27.9053 27.1914 26.5801 28.5166 26.5801 30.1514C26.5801 31.7862 27.9053 33.1114 29.5401 33.1114Z" fill="#292D32"/>
+<path d="M18.46 33.1114C20.0948 33.1114 21.42 31.7862 21.42 30.1514C21.42 28.5166 20.0948 27.1914 18.46 27.1914C16.8252 27.1914 15.5 28.5166 15.5 30.1514C15.5 31.7862 16.8252 33.1114 18.46 33.1114Z" fill="#292D32"/>
+</svg>
+
         </div>
 
     </div>
@@ -98,20 +113,24 @@ Assignee
             </div>
         </div>
 
-        <div className="cases__table__body" >
+        <div className="cases__table__body" onClick={() => {
+            if(assignee) {
+                 window.location.href = "/justice/dashboard/case-details"
+            }
+        }}>
             <div>11-03-2024</div>
             <div>EF18964</div>
             <div>EFCC</div>
-            <button className="cases__table__body__case-status cases__table__body__unassigned">Unassigned</button>
+            {assignee ?  <button className="cases__table__body__case-status cases__table__body__review">Under review</button> :<button className="cases__table__body__case-status cases__table__body__unassigned">Unassigned</button>}
             <button className="cases__table__body__accused-status cases__table__body__remanded">Remanded In Jail</button>
             <div>Cyber Crime</div>
             <div>Criminal Case</div>
-            <div className="cases__table__body__assign"
+            {assignee ? "Okoli Chiamaka" : <div className="cases__table__body__assign"
             onClick={() => setModalOpen(1)}
             >Assign now <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M17.92 8.67969H11.69H6.07999C5.11999 8.67969 4.63999 9.83969 5.31999 10.5197L10.5 15.6997C11.33 16.5297 12.68 16.5297 13.51 15.6997L15.48 13.7297L18.69 10.5197C19.36 9.83969 18.88 8.67969 17.92 8.67969Z" fill="#009B07"/>
 </svg>
-</div>
+</div>}
             <div className="cases__table__body__options">
             <svg  width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 7.5C13.104 7.5 14 6.604 14 5.5C14 4.396 13.104 3.5 12 3.5C10.896 3.5 10 4.396 10 5.5C10 6.604 10.896 7.5 12 7.5ZM12 10.5C10.896 10.5 10 11.396 10 12.5C10 13.604 10.896 14.5 12 14.5C13.104 14.5 14 13.604 14 12.5C14 11.396 13.104 10.5 12 10.5ZM10 19.5C10 18.396 10.896 17.5 12 17.5C13.104 17.5 14 18.396 14 19.5C14 20.604 13.104 21.5 12 21.5C10.896 21.5 10 20.604 10 19.5Z" fill="black"/>
@@ -232,7 +251,7 @@ Assignee
 
 
     {modalOpen && 
-    <div className="cases__modal">
+    <div className="cases__modal" onClick={handleModalClose}>
     {modalOpen === 1 && <div className="cases__modal__inner">
         <div className="cases__modal__inner__title">
         Assign case to

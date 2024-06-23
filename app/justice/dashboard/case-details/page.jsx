@@ -1,38 +1,146 @@
+"use client"
+import Menu from "@/app/components/menu";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function CreateCase() {
+  const [menuActive, setMenuActive] = useState(null)
   return (
-    <form className="case-from">
-      <div className="case-from__grid">
-        <div className="case-from__grid__input">
+    <div className="case-details">
+      <div className="case-details__menu">
+        <div className="case-details__menu__flex">
+        <svg width="101" height="100" viewBox="0 0 101 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="50.7269" cy="50.4105" r="49.5706" fill="#FFE7EE"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M94.4587 65.5838H90.7676C84.5768 81.7774 68.893 93.2776 50.5233 93.2776C32.1535 93.2776 16.4698 81.7774 10.279 65.5838H6.58789C12.9378 83.729 30.2107 96.7432 50.5233 96.7432C70.8358 96.7432 88.1088 83.729 94.4587 65.5838ZM94.4583 34.8301H90.7671C84.576 18.6371 68.8926 7.13745 50.5233 7.13745C32.154 7.13745 16.4706 18.6371 10.2794 34.8301H6.5883C12.9386 16.6856 30.2112 3.67188 50.5233 3.67188C70.8354 3.67188 88.108 16.6856 94.4583 34.8301Z" fill="#B1241D"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M78.115 65.5883H23.209C28.5555 75.2415 38.8455 81.7767 50.662 81.7767C62.4784 81.7767 72.7685 75.2415 78.115 65.5883ZM77.8845 34.8343H23.4395C28.8477 25.4058 39.0131 19.0547 50.662 19.0547C62.3108 19.0547 72.4763 25.4058 77.8845 34.8343Z" fill="#B1241D"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M88.5473 65.5834H87.2456C81.2388 79.8546 67.1237 89.8743 50.6682 89.8743C34.2128 89.8743 20.0976 79.8546 14.0908 65.5834H12.7892C18.8647 80.5348 33.5354 91.0769 50.6682 91.0769C67.8011 91.0769 82.4718 80.5348 88.5473 65.5834ZM88.5474 34.8296H87.2457C81.239 20.5583 67.1237 10.5385 50.6682 10.5385C34.2127 10.5385 20.0975 20.5583 14.0907 34.8296H12.7891C18.8646 19.8781 33.5353 9.33594 50.6682 9.33594C67.8012 9.33594 82.4719 19.8781 88.5474 34.8296Z" fill="#B1241D"/>
+<path d="M50.6281 74.8307L52.295 76.0437C52.5593 76.2402 52.9184 75.9759 52.8168 75.6642L52.1798 73.7059L53.8265 72.5336C54.0975 72.3438 53.962 71.9169 53.63 71.9169H51.6106L50.9533 69.8705C50.8517 69.5588 50.4112 69.5588 50.3096 69.8705L49.6455 71.9169H47.6262C47.2942 71.9169 47.1586 72.3438 47.4297 72.5336L49.0763 73.7059L48.4393 75.6642C48.3377 75.9759 48.6968 76.2334 48.9611 76.0437L50.6281 74.8307Z" fill="white"/>
+<path d="M50.632 29.9088L52.2989 31.1218C52.5632 31.3183 52.9224 31.054 52.8207 30.7423L52.1837 28.784L53.8304 27.6117C54.1014 27.422 53.9659 26.9951 53.6339 26.9951H51.6145L50.9572 24.9486C50.8556 24.6369 50.4151 24.6369 50.3135 24.9486L49.6494 26.9951H47.6301C47.2981 26.9951 47.1625 27.422 47.4336 27.6117L49.0802 28.784L48.4433 30.7423C48.3416 31.054 48.7007 31.3115 48.965 31.1218L50.632 29.9088Z" fill="white"/>
+<path d="M93.6652 60.042V43.1812H90.4336V40.3711H99.988V43.1812H96.7564V60.042H93.6652Z" fill="#B1241D"/>
+<path d="M81.041 60.042V40.3711H89.4714V43.1812H84.1322V48.38H88.3754V51.1901H84.1322V57.2318H89.4714V60.042H81.041Z" fill="#B1241D"/>
+<path d="M69.7051 60.0459V40.375H74.2856C77.4891 40.375 78.8661 41.8644 78.8661 44.8993V46.1077C78.8661 48.1309 78.2198 49.4236 76.8428 49.9856V50.0418C78.3884 50.5196 78.8942 51.9808 78.8942 54.2008V57.6573C78.8942 58.6127 78.9223 59.3152 79.2314 60.0459H76.0841C75.9155 59.5401 75.803 59.2309 75.803 57.6292V54.0322C75.803 52.2056 75.2691 51.6155 73.8641 51.6155H72.7962V60.0459H69.7051ZM72.7962 48.8054H73.9203C75.0724 48.8054 75.7749 48.2996 75.7749 46.7259V45.2084C75.7749 43.8034 75.2972 43.1851 74.2013 43.1851H72.7962V48.8054Z" fill="#B1241D"/>
+<path d="M63.3044 60.3227C60.3256 60.3227 58.752 58.5243 58.752 55.4893V44.9233C58.752 41.8883 60.3256 40.0898 63.3044 40.0898C66.2831 40.0898 67.8568 41.8883 67.8568 44.9233V47.0028H64.9342V44.7266C64.9342 43.4339 64.316 42.9 63.3887 42.9C62.4613 42.9 61.8431 43.4339 61.8431 44.7266V55.7141C61.8431 57.0068 62.4613 57.5126 63.3887 57.5126C64.316 57.5126 64.9342 57.0068 64.9342 55.7141V52.7073H67.8568V55.4893C67.8568 58.5243 66.2831 60.3227 63.3044 60.3227Z" fill="#B1241D"/>
+<path d="M48.7402 60.042V40.3711H57.1706V43.1812H51.8314V48.38H56.0747V51.1901H51.8314V57.2318H57.1706V60.042H48.7402Z" fill="#B1241D"/>
+<path d="M42.3024 60.3227C39.2675 60.3227 37.75 58.5243 37.75 55.3769V54.2529H40.6725V55.6017C40.6725 57.0068 41.2908 57.5126 42.2743 57.5126C43.2578 57.5126 43.8761 57.0068 43.8761 55.5455C43.8761 53.9157 43.2578 52.8759 41.2346 51.1055C38.6492 48.8293 37.8062 47.2276 37.8062 44.9795C37.8062 41.8883 39.408 40.0898 42.4148 40.0898C45.4216 40.0898 46.911 41.8883 46.911 45.0357V45.8506H43.9885V44.839C43.9885 43.4339 43.4265 42.9 42.4429 42.9C41.4594 42.9 40.8973 43.4339 40.8973 44.7828C40.8973 46.2159 41.5437 47.2557 43.567 49.026C46.1523 51.3022 46.9672 52.8759 46.9672 55.3207C46.9672 58.5243 45.3373 60.3227 42.3024 60.3227Z" fill="#B1241D"/>
+<path d="M22.9434 60.042L22.9434 40.3711H27.4958C30.5869 40.3711 32.1044 42.0853 32.1044 45.2326V47.1716C32.1044 50.3189 30.5869 52.0331 27.4958 52.0331H26.0345L26.0345 60.042H22.9434ZM26.0345 49.223H27.4958C28.4793 49.223 29.0132 48.7734 29.0132 47.3683V45.0359C29.0132 43.6308 28.4793 43.1812 27.4958 43.1812H26.0345V49.223Z" fill="#B1241D"/>
+<path d="M16.1617 60.3227C13.1267 60.3227 11.4688 58.5243 11.4688 55.3769L11.4688 45.0357C11.4688 41.8883 13.1267 40.0898 16.1617 40.0898C19.1966 40.0898 20.8546 41.8883 20.8546 45.0357V55.3769C20.8546 58.5243 19.1966 60.3227 16.1617 60.3227ZM16.1617 57.5126C17.1452 57.5126 17.7634 56.9787 17.7634 55.5736V44.839C17.7634 43.4339 17.1452 42.9 16.1617 42.9C15.1781 42.9 14.5599 43.4339 14.5599 44.839L14.5599 55.5736C14.5599 56.9787 15.1781 57.5126 16.1617 57.5126Z" fill="#B1241D"/>
+<path d="M3.98164 60.0459L3.98164 43.1851H0.75L0.75 40.375H10.3044V43.1851H7.07278L7.07278 60.0459H3.98164Z" fill="#B1241D"/>
+<path d="M30.4716 25.0061C29.6842 25.8005 28.4233 25.7826 27.5934 24.9602C26.7675 24.1416 26.7423 22.8848 27.5297 22.0903C28.2665 21.347 29.3389 21.2561 30.16 21.875L29.5325 22.5082C29.0611 22.1736 28.47 22.2114 28.0724 22.6126C27.593 23.0964 27.6509 23.8009 28.2015 24.3466C28.7561 24.8962 29.465 24.9518 29.9445 24.4681C30.3421 24.0669 30.3669 23.4755 30.0319 23.0033L30.6595 22.3701C31.2936 23.1934 31.2083 24.2627 30.4716 25.0061Z" fill="black"/>
+<path d="M34.2583 21.8061C33.3198 22.4641 32.0857 22.2473 31.4023 21.2725C30.7188 20.2977 30.9419 19.0727 31.8805 18.4147C32.8235 17.7534 34.0558 17.958 34.7392 18.9328C35.4227 19.9076 35.2014 21.1448 34.2583 21.8061ZM33.826 21.1894C34.4245 20.7698 34.447 20.0304 34.0274 19.4319C33.6078 18.8334 32.9113 18.6117 32.3128 19.0313C31.7188 19.4477 31.6899 20.1781 32.1096 20.7766C32.5292 21.3751 33.2321 21.6059 33.826 21.1894Z" fill="black"/>
+<path d="M39.3205 18.8654L36.4985 17.1186L37.6687 19.6339L36.9709 19.9586L35.2937 16.3538L36.1171 15.9707L38.8004 17.6294L37.6886 15.2396L38.3915 14.9126L40.0686 18.5174L39.3205 18.8654Z" fill="black"/>
+<path d="M42.2147 17.8232L41.4064 18.0579L40.2978 14.2398L42.7652 13.5233L42.969 14.2253L41.3099 14.707L41.5894 15.6695L42.9879 15.2634L43.1902 15.9601L41.7916 16.3662L42.2147 17.8232Z" fill="black"/>
+<path d="M45.9084 16.9668L45.0794 17.1123L44.3921 13.1963L45.2212 13.0508L45.9084 16.9668Z" fill="black"/>
+<path d="M48.7696 16.6543L47.3592 16.723L47.1659 12.7518L48.5763 12.6832C49.8373 12.6218 50.6399 13.3921 50.6961 14.5481C50.7524 15.704 50.003 16.5943 48.7696 16.6543ZM48.0419 13.4354L48.1646 15.9575L48.6901 15.9319C49.481 15.8934 49.8734 15.4142 49.8333 14.5901C49.7948 13.7992 49.3582 13.3714 48.5673 13.4099L48.0419 13.4354Z" fill="black"/>
+<path d="M54.7869 16.1825L54.7109 16.9094L52.0509 16.6312L52.4645 12.6769L55.086 12.9511L55.01 13.6781L53.2256 13.4914L53.1386 14.323L54.7577 14.4924L54.6823 15.2139L53.0631 15.0445L52.964 15.9918L54.7869 16.1825Z" fill="black"/>
+<path d="M58.4222 17.7723L57.3731 14.6235L56.6614 17.3049L55.9175 17.1075L56.9374 13.2647L57.8151 13.4976L58.8142 16.4898L59.4903 13.9422L60.2396 14.1411L59.2197 17.9839L58.4222 17.7723Z" fill="black"/>
+<path d="M62.1667 19.195L61.3979 18.8523L62.7076 15.9137L61.5645 15.4043L61.8733 14.7114L64.9333 16.0751L64.6245 16.7681L63.4764 16.2564L62.1667 19.195Z" fill="black"/>
+<path d="M65.0328 20.7331L64.3087 20.3039L66.336 16.8838L67.0601 17.313L65.0328 20.7331Z" fill="black"/>
+<path d="M68.3923 23.1206L68.679 22.2637L67.4586 21.3163L66.6951 21.8031L66.0259 21.2836L69.645 19.0599L70.3711 19.6236L69.1052 23.6741L68.3923 23.1206ZM69.4269 20.0542L68.0576 20.933L68.9062 21.5918L69.4269 20.0542Z" fill="black"/>
+<path d="M71.6844 26.34L69.9142 24.4778L72.7957 21.7385L73.3757 22.3485L71.0439 24.5651L72.2342 25.8173L71.6844 26.34Z" fill="black"/>
+<path d="M70.3663 75.2713C71.1537 74.4768 72.4146 74.4947 73.2445 75.3172C74.0704 76.1358 74.0956 77.3926 73.3082 78.187C72.5714 78.9303 71.499 79.0213 70.6778 78.4023L71.3054 77.7691C71.7768 78.1038 72.3679 78.0659 72.7655 77.6647C73.2449 77.181 73.187 76.4764 72.6364 75.9307C72.0818 75.3811 71.3729 75.3255 70.8934 75.8093C70.4958 76.2104 70.471 76.8018 70.8059 77.2741L70.1784 77.9073C69.5443 77.0839 69.6296 76.0146 70.3663 75.2713Z" fill="black"/>
+<path d="M66.5795 78.4713C67.5181 77.8132 68.7521 78.03 69.4356 79.0048C70.1191 79.9796 69.896 81.2046 68.9574 81.8627C68.0144 82.5239 66.7821 82.3194 66.0986 81.3446C65.4152 80.3698 65.6365 79.1325 66.5795 78.4713ZM67.0119 79.0879C66.4134 79.5075 66.3908 80.247 66.8105 80.8455C67.2301 81.4439 67.9266 81.6657 68.5251 81.2461C69.119 80.8296 69.148 80.0992 68.7283 79.5007C68.3087 78.9023 67.6058 78.6715 67.0119 79.0879Z" fill="black"/>
+<path d="M61.5174 81.4119L64.3394 83.1588L63.1692 80.6434L63.867 80.3187L65.5442 83.9235L64.7208 84.3066L62.0375 82.6479L63.1493 85.0377L62.4464 85.3648L60.7693 81.76L61.5174 81.4119Z" fill="black"/>
+<path d="M58.6232 82.4541L59.4315 82.2194L60.5401 86.0376L58.0727 86.754L57.8689 86.0521L59.528 85.5703L59.2485 84.6078L57.85 85.0139L57.6477 84.3173L59.0463 83.9112L58.6232 82.4541Z" fill="black"/>
+<path d="M54.9295 83.3105L55.7585 83.165L56.4457 87.081L55.6167 87.2265L54.9295 83.3105Z" fill="black"/>
+<path d="M52.0683 83.623L53.4787 83.5544L53.672 87.5255L52.2616 87.5942C51.0006 87.6556 50.198 86.8852 50.1418 85.7293C50.0855 84.5733 50.8349 83.6831 52.0683 83.623ZM52.796 86.8419L52.6733 84.3198L52.1478 84.3454C51.3569 84.3839 50.9644 84.8632 51.0046 85.6873C51.0431 86.4782 51.4797 86.906 52.2706 86.8675L52.796 86.8419Z" fill="black"/>
+<path d="M46.0509 84.0949L46.127 83.3679L48.787 83.6462L48.3734 87.6004L45.7519 87.3262L45.8279 86.5992L47.6123 86.7859L47.6993 85.9543L46.0801 85.7849L46.1556 85.0635L47.7748 85.2328L47.8739 84.2856L46.0509 84.0949Z" fill="black"/>
+<path d="M42.4157 82.5051L43.4648 85.6538L44.1765 82.9724L44.9204 83.1699L43.9005 87.0127L43.0228 86.7797L42.0237 83.7875L41.3476 86.3351L40.5983 86.1362L41.6182 82.2934L42.4157 82.5051Z" fill="black"/>
+<path d="M38.6712 81.0824L39.44 81.425L38.1303 84.3636L39.2734 84.873L38.9646 85.566L35.9046 84.2022L36.2134 83.5093L37.3615 84.021L38.6712 81.0824Z" fill="black"/>
+<path d="M35.8051 79.5442L36.5291 79.9734L34.5019 83.3936L33.7778 82.9644L35.8051 79.5442Z" fill="black"/>
+<path d="M32.4456 77.1567L32.1589 78.0137L33.3792 78.9611L34.1428 78.4742L34.812 78.9938L31.1929 81.2175L30.4668 80.6538L31.7327 76.6032L32.4456 77.1567ZM31.411 80.2231L32.7803 79.3443L31.9317 78.6855L31.411 80.2231Z" fill="black"/>
+<path d="M29.1535 73.9374L30.9237 75.7995L28.0421 78.5389L27.4622 77.9288L29.794 75.7122L28.6036 74.46L29.1535 73.9374Z" fill="black"/>
+</svg>
+
+<div className="case-details__menu__flex__menu-group">
+  <div className="case-details__menu__flex__menu-group__item"
+   onClick={() => window.location.href = "/justice/dashboard/edit-case"}
+  >
+    <div>Edit/Append Case File</div>
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="24" cy="24" r="23.5" fill="white" stroke="#A8A8A8"/>
+<path d="M33 34H15C14.59 34 14.25 33.66 14.25 33.25C14.25 32.84 14.59 32.5 15 32.5H33C33.41 32.5 33.75 32.84 33.75 33.25C33.75 33.66 33.41 34 33 34Z" fill="#292D32"/>
+<path d="M31.0196 15.4816C29.0796 13.5416 27.1796 13.4916 25.1896 15.4816L23.9796 16.6916C23.8796 16.7916 23.8396 16.9516 23.8796 17.0916C24.6396 19.7416 26.7596 21.8616 29.4096 22.6216C29.4496 22.6316 29.4896 22.6416 29.5296 22.6416C29.6396 22.6416 29.7396 22.6016 29.8196 22.5216L31.0196 21.3116C32.0096 20.3316 32.4896 19.3816 32.4896 18.4216C32.4996 17.4316 32.0196 16.4716 31.0196 15.4816Z" fill="#292D32"/>
+<path d="M27.6103 23.5308C27.3203 23.3908 27.0403 23.2508 26.7703 23.0908C26.5503 22.9608 26.3403 22.8208 26.1303 22.6708C25.9603 22.5608 25.7603 22.4008 25.5703 22.2408C25.5503 22.2308 25.4803 22.1708 25.4003 22.0908C25.0703 21.8108 24.7003 21.4508 24.3703 21.0508C24.3403 21.0308 24.2903 20.9608 24.2203 20.8708C24.1203 20.7508 23.9503 20.5508 23.8003 20.3208C23.6803 20.1708 23.5403 19.9508 23.4103 19.7308C23.2503 19.4608 23.1103 19.1908 22.9703 18.9108C22.9491 18.8654 22.9286 18.8202 22.9088 18.7753C22.7612 18.442 22.3265 18.3446 22.0688 18.6023L16.3403 24.3308C16.2103 24.4608 16.0903 24.7108 16.0603 24.8808L15.5203 28.7108C15.4203 29.3908 15.6103 30.0308 16.0303 30.4608C16.3903 30.8108 16.8903 31.0008 17.4303 31.0008C17.5503 31.0008 17.6703 30.9908 17.7903 30.9708L21.6303 30.4308C21.8103 30.4008 22.0603 30.2808 22.1803 30.1508L27.9016 24.4295C28.1612 24.1699 28.0633 23.7245 27.7257 23.5804C27.6877 23.5642 27.6492 23.5476 27.6103 23.5308Z" fill="#292D32"/>
+</svg>
+
+
+
+  </div>
+  <div className="case-details__menu__flex__menu-group__item">
+    <div>Expunge Case File</div>
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="24" cy="24" r="23.5" fill="white" stroke="#A8A8A8"/>
+<path d="M33.0697 17.23C31.4597 17.07 29.8497 16.95 28.2297 16.86V16.85L28.0097 15.55C27.8597 14.63 27.6397 13.25 25.2997 13.25H22.6797C20.3497 13.25 20.1297 14.57 19.9697 15.54L19.7597 16.82C18.8297 16.88 17.8997 16.94 16.9697 17.03L14.9297 17.23C14.5097 17.27 14.2097 17.64 14.2497 18.05C14.2897 18.46 14.6497 18.76 15.0697 18.72L17.1097 18.52C22.3497 18 27.6297 18.2 32.9297 18.73C32.9597 18.73 32.9797 18.73 33.0097 18.73C33.3897 18.73 33.7197 18.44 33.7597 18.05C33.7897 17.64 33.4897 17.27 33.0697 17.23Z" fill="#292D32"/>
+<path d="M31.2297 20.14C30.9897 19.89 30.6597 19.75 30.3197 19.75H17.6797C17.3397 19.75 16.9997 19.89 16.7697 20.14C16.5397 20.39 16.4097 20.73 16.4297 21.08L17.0497 31.34C17.1597 32.86 17.2997 34.76 20.7897 34.76H27.2097C30.6997 34.76 30.8398 32.87 30.9497 31.34L31.5697 21.09C31.5897 20.73 31.4597 20.39 31.2297 20.14ZM25.6597 29.75H22.3297C21.9197 29.75 21.5797 29.41 21.5797 29C21.5797 28.59 21.9197 28.25 22.3297 28.25H25.6597C26.0697 28.25 26.4097 28.59 26.4097 29C26.4097 29.41 26.0697 29.75 25.6597 29.75ZM26.4997 25.75H21.4997C21.0897 25.75 20.7497 25.41 20.7497 25C20.7497 24.59 21.0897 24.25 21.4997 24.25H26.4997C26.9097 24.25 27.2497 24.59 27.2497 25C27.2497 25.41 26.9097 25.75 26.4997 25.75Z" fill="#292D32"/>
+</svg>
+
+
+  </div>
+  <div className="case-details__menu__flex__menu-group__item"
+  onClick={() => menuActive === "transfer" ? setMenuActive(null): setMenuActive("transfer")}
+  >
+    <div>Transfer Case Files</div>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.9197 8.17969H11.6897H6.07975C5.11975 8.17969 4.63975 9.33969 5.31975 10.0197L10.4997 15.1997C11.3297 16.0297 12.6797 16.0297 13.5097 15.1997L15.4797 13.2297L18.6897 10.0197C19.3597 9.33969 18.8797 8.17969 17.9197 8.17969Z" fill="#292D32"/>
+</svg>
+
+{menuActive === "transfer" &&
+<Menu items={[{name: "Out-side Agency"}, {name: "Within Agency"}]} />
+}
+
+
+
+  </div>
+  <div className="case-details__menu__flex__menu-group__item"
+  onClick={() => menuActive === "classify" ? setMenuActive(null): setMenuActive("classify")}
+  >
+    <div>Classify Case File</div>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.9197 8.17969H11.6897H6.07975C5.11975 8.17969 4.63975 9.33969 5.31975 10.0197L10.4997 15.1997C11.3297 16.0297 12.6797 16.0297 13.5097 15.1997L15.4797 13.2297L18.6897 10.0197C19.3597 9.33969 18.8797 8.17969 17.9197 8.17969Z" fill="#292D32"/>
+</svg>
+
+{menuActive === "classify" &&
+<Menu items={[{name: "Top secret"}, {name: "Secret"}, {name: "Official"}, {name: "Public"}, {name: "General"}]} />
+}
+  </div>
+</div>
+        </div>
+
+        <div className="case-details__menu__name">
+        Case File Created by: Ahmed Olaniyi
+        </div>
+      </div>
+      <form className="case-details__inner">
+      <div className="case-details__inner__grid">
+        <div className="case-details__inner__grid__input">
           <label htmlFor="">Case Number</label>
           {/* <input type="text" className="" placeholder="Type case number" /> */}
-          <div className="case-from__grid__input__filled">
+          <div className="case-details__inner__grid__input__filled">
           PF00458
           </div>
         </div>
-        <div className="case-from__grid__input">
+        <div className="case-details__inner__grid__input">
           <label htmlFor="">Offense Category:</label>
           {/* <select name="" id="">
             <option value="">Hello</option>
           </select> */}
-          <div className="case-from__grid__input__filled">
+          <div className="case-details__inner__grid__input__filled">
           Criminal Case
           </div>
         </div>
-        <div className="case-from__grid__input">
+        <div className="case-details__inner__grid__input">
           <label htmlFor="">FMoJ Dept:</label>
           {/* <select name="" id="">
             <option value="">Hello</option>
           </select> */}
-          <div className="case-from__grid__input__filled">
+          <div className="case-details__inner__grid__input__filled">
           Public Prosecution
           </div>
         </div>
 
-        <div className="case-from__grid__input">
+        <div className="case-details__inner__grid__input">
           <label htmlFor="">Assigned Justice Officer:</label>
-          {/* <div className="case-from__grid__input__flex">
+          {/* <div className="case-details__inner__grid__input__flex">
             <input type="text" placeholder="Select assigned officer" />
             <svg
               width="21"
@@ -61,7 +169,7 @@ export default function CreateCase() {
             </svg>
           </div> */}
 
-<div className="case-from__grid__input__contact">
+<div className="case-details__inner__grid__input__contact">
 Ahmed Aisha
 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14.542 18.9577C13.6003 18.9577 12.6087 18.7327 11.5837 18.2993C10.5837 17.8743 9.57533 17.291 8.59199 16.5827C7.61699 15.866 6.67533 15.066 5.78366 14.191C4.90033 13.2993 4.10033 12.3577 3.39199 11.391C2.67533 10.391 2.10033 9.39102 1.69199 8.42435C1.25866 7.39102 1.04199 6.39102 1.04199 5.44935C1.04199 4.79935 1.15866 4.18268 1.38366 3.60768C1.61699 3.01602 1.99199 2.46602 2.50033 1.99102C3.14199 1.35768 3.87533 1.04102 4.65866 1.04102C4.98366 1.04102 5.31699 1.11602 5.60033 1.24935C5.92533 1.39935 6.20033 1.62435 6.40033 1.92435L8.33366 4.64935C8.50866 4.89102 8.64199 5.12435 8.73366 5.35768C8.84199 5.60768 8.90033 5.85768 8.90033 6.09935C8.90033 6.41602 8.80866 6.72435 8.63366 7.01602C8.50866 7.24102 8.31699 7.48268 8.07533 7.72435L7.50866 8.31602C7.51699 8.34102 7.52533 8.35768 7.53366 8.37435C7.63366 8.54935 7.83366 8.84935 8.21699 9.29935C8.62533 9.76602 9.00866 10.191 9.39199 10.5827C9.88366 11.066 10.292 11.4493 10.6753 11.766C11.1503 12.166 11.4587 12.366 11.642 12.4577L11.6253 12.4993L12.2337 11.8993C12.492 11.641 12.742 11.4493 12.9837 11.3243C13.442 11.041 14.0253 10.991 14.6087 11.2327C14.8253 11.3243 15.0587 11.4493 15.3087 11.6243L18.0753 13.591C18.3837 13.7993 18.6087 14.066 18.742 14.3827C18.867 14.6993 18.9253 14.991 18.9253 15.2827C18.9253 15.6827 18.8337 16.0827 18.6587 16.4577C18.4837 16.8327 18.267 17.1577 17.992 17.4577C17.517 17.9827 17.0003 18.3577 16.4003 18.5993C15.8253 18.8327 15.2003 18.9577 14.542 18.9577ZM4.65866 2.29102C4.20033 2.29102 3.77533 2.49102 3.36699 2.89102C2.98366 3.24935 2.71699 3.64102 2.55033 4.06602C2.37533 4.49935 2.29199 4.95768 2.29199 5.44935C2.29199 6.22435 2.47533 7.06602 2.84199 7.93268C3.21699 8.81602 3.74199 9.73268 4.40866 10.6493C5.07533 11.566 5.83366 12.4577 6.66699 13.2993C7.50033 14.1243 8.40033 14.891 9.32533 15.566C10.2253 16.2243 11.1503 16.7577 12.067 17.141C13.492 17.7493 14.8253 17.891 15.9253 17.4327C16.3503 17.2577 16.7253 16.991 17.067 16.6077C17.2587 16.3994 17.4087 16.1743 17.5337 15.9077C17.6337 15.6993 17.6837 15.4827 17.6837 15.266C17.6837 15.1327 17.6587 14.9993 17.592 14.8493C17.567 14.7993 17.517 14.7077 17.3587 14.5993L14.592 12.6327C14.4253 12.516 14.2753 12.4327 14.1337 12.3743C13.9503 12.2993 13.8753 12.2243 13.592 12.3993C13.4253 12.4827 13.2753 12.6077 13.1087 12.7743L12.4753 13.3993C12.1503 13.716 11.6503 13.791 11.267 13.6493L11.042 13.5493C10.7003 13.366 10.3003 13.0827 9.85866 12.7077C9.45866 12.366 9.02533 11.966 8.50033 11.4493C8.09199 11.0327 7.68366 10.591 7.25866 10.0993C6.86699 9.64102 6.58366 9.24935 6.40866 8.92435L6.30866 8.67435C6.25866 8.48268 6.24199 8.37435 6.24199 8.25768C6.24199 7.95768 6.35033 7.69102 6.55866 7.48268L7.18366 6.83268C7.35033 6.66602 7.47533 6.50768 7.55866 6.36602C7.62533 6.25768 7.65033 6.16602 7.65033 6.08268C7.65033 6.01602 7.62533 5.91602 7.58366 5.81602C7.52533 5.68268 7.43366 5.53268 7.31699 5.37435L5.38366 2.64102C5.30033 2.52435 5.20033 2.44102 5.07533 2.38268C4.94199 2.32435 4.80033 2.29102 4.65866 2.29102ZM11.6253 12.5077L11.492 13.0743L11.717 12.491C11.6753 12.4827 11.642 12.491 11.6253 12.5077Z" fill="#292D32"/>
@@ -78,72 +186,72 @@ Ahmed Aisha
           </div>
         </div>
       </div>
-      <div className="case-from__grid">
-        <div className="case-from__grid__input">
+      <div className="case-details__inner__grid">
+        <div className="case-details__inner__grid__input">
           <label htmlFor="">Court Number</label>
           {/* <input type="text" className="" placeholder="Type court number" /> */}
-          <div className="case-from__grid__input__contact">
+          <div className="case-details__inner__grid__input__contact">
 Ahmed Aisha
 </div>
         </div>
-        <div className="case-from__grid__input">
+        <div className="case-details__inner__grid__input">
           <label htmlFor="">Court Location:</label>
           {/* <select name="" id="">
             <option value="">Select court location</option>
           </select> */}
-          <div className="case-from__grid__input__filled">
+          <div className="case-details__inner__grid__input__filled">
           Federal High Court, Abuja
           </div>
         </div>
-        <div className="case-from__grid__input">
+        <div className="case-details__inner__grid__input">
           <label htmlFor="">Court Clerk:</label>
           {/* <input type="text" className="" placeholder="Type Court Clerk" /> */}
-          <div className="case-from__grid__input__filled">
+          <div className="case-details__inner__grid__input__filled">
           Hauwa Jada
           </div>
         </div>
 
-        <div className="case-from__grid__input">
+        <div className="case-details__inner__grid__input">
           <label htmlFor="">Court Location:</label>
           {/* <select name="" id="">
             <option value="">Select assigned Judge</option>
           </select> */}
-          <div className="case-from__grid__input__contact">
+          <div className="case-details__inner__grid__input__contact">
           Olatunde Cardoso
 </div>
         </div>
       </div>
-      <div className="case-from__grid">
-        <div className="case-from__grid__input">
+      <div className="case-details__inner__grid">
+        <div className="case-details__inner__grid__input">
           <label htmlFor="">Charge Sheet No</label>
           {/* <input type="text" className="" placeholder="Type Sheet No" /> */}
-          <div className="case-from__grid__input__contact">
+          <div className="case-details__inner__grid__input__contact">
           NPF898458
 </div>
         </div>
-        <div className="case-from__grid__input">
+        <div className="case-details__inner__grid__input">
           <label htmlFor="">Offence Type:</label>
           {/* <select name="" id="">
             <option value="">Select Offence Type</option>
           </select> */}
-          <div className="case-from__grid__input__filled">
+          <div className="case-details__inner__grid__input__filled">
           Armed Robbery
           </div>
         </div>
-        <div className="case-from__grid__input">
+        <div className="case-details__inner__grid__input">
           <label htmlFor="">Agency:</label>
           {/* <select name="" id="">
             <option value="">Select Agency</option>
           </select> */}
 
-<div className="case-from__grid__input__filled">
+<div className="case-details__inner__grid__input__filled">
 Police
 </div>
         </div>
 
-        <div className="case-from__grid__input">
+        <div className="case-details__inner__grid__input">
           <label htmlFor="">Law Enforcement Officer:</label>
-          {/* <div className="case-from__grid__input__flex">
+          {/* <div className="case-details__inner__grid__input__flex">
             <input type="text" placeholder="Select assigned officer" />
             <svg
               width="21"
@@ -172,7 +280,7 @@ Police
             </svg>
           </div> */}
 
-<div className="case-from__grid__input__contact">
+<div className="case-details__inner__grid__input__contact">
 Ahmed Aisha
 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14.542 18.9577C13.6003 18.9577 12.6087 18.7327 11.5837 18.2993C10.5837 17.8743 9.57533 17.291 8.59199 16.5827C7.61699 15.866 6.67533 15.066 5.78366 14.191C4.90033 13.2993 4.10033 12.3577 3.39199 11.391C2.67533 10.391 2.10033 9.39102 1.69199 8.42435C1.25866 7.39102 1.04199 6.39102 1.04199 5.44935C1.04199 4.79935 1.15866 4.18268 1.38366 3.60768C1.61699 3.01602 1.99199 2.46602 2.50033 1.99102C3.14199 1.35768 3.87533 1.04102 4.65866 1.04102C4.98366 1.04102 5.31699 1.11602 5.60033 1.24935C5.92533 1.39935 6.20033 1.62435 6.40033 1.92435L8.33366 4.64935C8.50866 4.89102 8.64199 5.12435 8.73366 5.35768C8.84199 5.60768 8.90033 5.85768 8.90033 6.09935C8.90033 6.41602 8.80866 6.72435 8.63366 7.01602C8.50866 7.24102 8.31699 7.48268 8.07533 7.72435L7.50866 8.31602C7.51699 8.34102 7.52533 8.35768 7.53366 8.37435C7.63366 8.54935 7.83366 8.84935 8.21699 9.29935C8.62533 9.76602 9.00866 10.191 9.39199 10.5827C9.88366 11.066 10.292 11.4493 10.6753 11.766C11.1503 12.166 11.4587 12.366 11.642 12.4577L11.6253 12.4993L12.2337 11.8993C12.492 11.641 12.742 11.4493 12.9837 11.3243C13.442 11.041 14.0253 10.991 14.6087 11.2327C14.8253 11.3243 15.0587 11.4493 15.3087 11.6243L18.0753 13.591C18.3837 13.7993 18.6087 14.066 18.742 14.3827C18.867 14.6993 18.9253 14.991 18.9253 15.2827C18.9253 15.6827 18.8337 16.0827 18.6587 16.4577C18.4837 16.8327 18.267 17.1577 17.992 17.4577C17.517 17.9827 17.0003 18.3577 16.4003 18.5993C15.8253 18.8327 15.2003 18.9577 14.542 18.9577ZM4.65866 2.29102C4.20033 2.29102 3.77533 2.49102 3.36699 2.89102C2.98366 3.24935 2.71699 3.64102 2.55033 4.06602C2.37533 4.49935 2.29199 4.95768 2.29199 5.44935C2.29199 6.22435 2.47533 7.06602 2.84199 7.93268C3.21699 8.81602 3.74199 9.73268 4.40866 10.6493C5.07533 11.566 5.83366 12.4577 6.66699 13.2993C7.50033 14.1243 8.40033 14.891 9.32533 15.566C10.2253 16.2243 11.1503 16.7577 12.067 17.141C13.492 17.7493 14.8253 17.891 15.9253 17.4327C16.3503 17.2577 16.7253 16.991 17.067 16.6077C17.2587 16.3994 17.4087 16.1743 17.5337 15.9077C17.6337 15.6993 17.6837 15.4827 17.6837 15.266C17.6837 15.1327 17.6587 14.9993 17.592 14.8493C17.567 14.7993 17.517 14.7077 17.3587 14.5993L14.592 12.6327C14.4253 12.516 14.2753 12.4327 14.1337 12.3743C13.9503 12.2993 13.8753 12.2243 13.592 12.3993C13.4253 12.4827 13.2753 12.6077 13.1087 12.7743L12.4753 13.3993C12.1503 13.716 11.6503 13.791 11.267 13.6493L11.042 13.5493C10.7003 13.366 10.3003 13.0827 9.85866 12.7077C9.45866 12.366 9.02533 11.966 8.50033 11.4493C8.09199 11.0327 7.68366 10.591 7.25866 10.0993C6.86699 9.64102 6.58366 9.24935 6.40866 8.92435L6.30866 8.67435C6.25866 8.48268 6.24199 8.37435 6.24199 8.25768C6.24199 7.95768 6.35033 7.69102 6.55866 7.48268L7.18366 6.83268C7.35033 6.66602 7.47533 6.50768 7.55866 6.36602C7.62533 6.25768 7.65033 6.16602 7.65033 6.08268C7.65033 6.01602 7.62533 5.91602 7.58366 5.81602C7.52533 5.68268 7.43366 5.53268 7.31699 5.37435L5.38366 2.64102C5.30033 2.52435 5.20033 2.44102 5.07533 2.38268C4.94199 2.32435 4.80033 2.29102 4.65866 2.29102ZM11.6253 12.5077L11.492 13.0743L11.717 12.491C11.6753 12.4827 11.642 12.491 11.6253 12.5077Z" fill="#292D32"/>
@@ -190,17 +298,17 @@ Ahmed Aisha
         </div>
       </div>
 
-      <div className="case-from__accused">
-        <div className="case-from__accused__bio">
-          <div className="case-from__accused__bio__title">Accused Bio</div>
+      <div className="case-details__inner__accused">
+        <div className="case-details__inner__accused__bio">
+          <div className="case-details__inner__accused__bio__title">Accused Bio</div>
           <Image
-            className="case-from__accused__bio__img"
+            className="case-details__inner__accused__bio__img"
             alt=""
             src="/assets/Image (2).png"
             width={215}
             height={171}
           />
-          <label className="case-from__accused__bio__img-label">
+          <label className="case-details__inner__accused__bio__img-label">
             <svg
               width="17"
               height="17"
@@ -216,7 +324,7 @@ Ahmed Aisha
             Please upload Image
           </label>
 
-          <div className="case-from__accused__bio__input">
+          <div className="case-details__inner__accused__bio__input">
             <label htmlFor="">Full Name</label>
             {/* <input
               type="text"
@@ -224,7 +332,7 @@ Ahmed Aisha
               id=""
               placeholder="Type Accused Full Name"
             /> */}
-            <div className="case-from__accused__bio__input__filled">
+            <div className="case-details__inner__accused__bio__input__filled">
             Frank  Ammadou
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M9 13V12C9 10.346 10.346 9 12 9H13V5.667C13 5.299 12.701 5 12.333 5H5.667C5.299 5 5 5.299 5 5.667V12.333C5 12.701 5.299 13 5.667 13H9ZM9 15H5.667C4.196 15 3 13.804 3 12.333V5.667C3 4.196 4.196 3 5.667 3H12.333C13.804 3 15 4.196 15 5.667V9H18C19.654 9 21 10.346 21 12V18C21 19.654 19.654 21 18 21H12C10.346 21 9 19.654 9 18V15ZM11 12C11 11.449 11.449 11 12 11H18C18.552 11 19 11.449 19 12V18C19 18.551 18.552 19 18 19H12C11.449 19 11 18.551 11 18V12Z" fill="black"/>
@@ -235,11 +343,11 @@ Ahmed Aisha
             
             
           </div>
-          <div className="case-from__accused__bio__input">
+          <div className="case-details__inner__accused__bio__input">
             <label htmlFor="">Alias:</label>
             {/* <input type="text" name="" id="" placeholder="Type Accused Alias" /> */}
 
-            <div className="case-from__accused__bio__input__filled">
+            <div className="case-details__inner__accused__bio__input__filled">
             Ororomo
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M9 13V12C9 10.346 10.346 9 12 9H13V5.667C13 5.299 12.701 5 12.333 5H5.667C5.299 5 5 5.299 5 5.667V12.333C5 12.701 5.299 13 5.667 13H9ZM9 15H5.667C4.196 15 3 13.804 3 12.333V5.667C3 4.196 4.196 3 5.667 3H12.333C13.804 3 15 4.196 15 5.667V9H18C19.654 9 21 10.346 21 12V18C21 19.654 19.654 21 18 21H12C10.346 21 9 19.654 9 18V15ZM11 12C11 11.449 11.449 11 12 11H18C18.552 11 19 11.449 19 12V18C19 18.551 18.552 19 18 19H12C11.449 19 11 18.551 11 18V12Z" fill="black"/>
@@ -247,27 +355,27 @@ Ahmed Aisha
 
               </div>
           </div>
-          <div className="case-from__accused__bio__input">
+          <div className="case-details__inner__accused__bio__input">
             <label htmlFor="">Case Status:</label>
          
 {/* 
             <select name="" id="">
               <option value="">Select Status</option>
             </select> */}
-            <button className="case-from__accused__bio__input__case-status" disabled>
+            <button className="case-details__inner__accused__bio__input__case-status" disabled>
           Filed in Court
             </button>
           </div>
-          <div className="case-from__accused__bio__input">
+          <div className="case-details__inner__accused__bio__input">
             <label htmlFor="">Accused Status:</label>
             {/* <select name="" id="">
               <option value="">Select</option>
             </select> */}
-             <button className="case-from__accused__bio__input__case-remanded" disabled>
+             <button className="case-details__inner__accused__bio__input__case-remanded" disabled>
           Remamnded in Jail
             </button>
           </div>
-          <div className="case-from__accused__bio__input">
+          <div className="case-details__inner__accused__bio__input">
             <label htmlFor="">Date Initiated:</label>
             {/* <input
               type="date"
@@ -276,30 +384,30 @@ Ahmed Aisha
               placeholder="Type Accused Full Name"
             /> */}
             
-             <button className="case-from__accused__bio__input__case-date" disabled>
+             <button className="case-details__inner__accused__bio__input__case-date" disabled>
              31-12-2023
             </button>
           </div>
-          <div className="case-from__accused__bio__input case-from__accused__bio__assoc">
+          <div className="case-details__inner__accused__bio__input case-details__inner__accused__bio__assoc">
             <label htmlFor="">Known Associates:</label>
             {/* <select name="" id="">
               <option value="">Type Associates</option>
             </select> */}
 
-            {/* <div className="case-from__accused__bio__assoc__list">
+            {/* <div className="case-details__inner__accused__bio__assoc__list">
               <div>Shekau Ahmed</div>
               <div></div>
             </div> */}
 
-            <div className="case-from__accused__bio__input__case-assoc">
+            <div className="case-details__inner__accused__bio__input__case-assoc">
               <div>Okoro Madu</div>
               <div>Shekau Ahmed</div>
               <div>Tope Adeniyi</div>
             </div>
           </div>
         </div>
-        <div className="case-from__accused__details">
-          <div className="case-from__accused__details__input">
+        <div className="case-details__inner__accused__details">
+          <div className="case-details__inner__accused__details__input">
             <label htmlFor="">Legal Basis</label>
             <textarea
               name=""
@@ -308,11 +416,11 @@ Ahmed Aisha
               disabled
               value="The accused, on April 15, 2024, at approximately 11:30 AM, at the XYZ Bank branch located on Victoria Island, Lagos, Nigeria, did unlawfully and intentionally commit armed robbery. The accused, armed with pistols and wearing masks, entered the bank premises and threatened customers and staff with violence. The accused forcibly stole a significant amount of cash and valuables from the bank, thereby committing the offense of armed robbery."
             ></textarea>
-            <div className="case-from__accused__details__input__read">
+            <div className="case-details__inner__accused__details__input__read">
               Read More
             </div>
           </div>
-          <div className="case-from__accused__details__input">
+          <div className="case-details__inner__accused__details__input">
             <label htmlFor="">Particulars of Offence</label>
             <textarea
               name=""
@@ -321,11 +429,11 @@ Ahmed Aisha
               disabled
               value="The accused, on April 15, 2024, at approximately 11:30 AM, at the XYZ Bank branch located on Victoria Island, Lagos, Nigeria, did unlawfully and intentionally commit armed robbery. The accused, armed with pistols and wearing masks, entered the bank premises and threatened customers and staff with violence. The accused forcibly stole a significant amount of cash and valuables from the bank, thereby committing the offense of armed robbery."
             ></textarea>
-            <div className="case-from__accused__details__input__read">
+            <div className="case-details__inner__accused__details__input__read">
               Read More
             </div>
           </div>
-          <div className="case-from__accused__details__input">
+          <div className="case-details__inner__accused__details__input">
             <label htmlFor="">Charge Details</label>
             <textarea
               name=""
@@ -334,11 +442,11 @@ Ahmed Aisha
               value="The accused, on April 15, 2024, at approximately 11:30 AM, at the XYZ Bank branch located on Victoria Island, Lagos, Nigeria, did unlawfully and intentionally commit armed robbery. The accused, armed with pistols and wearing masks, entered the bank premises and threatened customers and staff with violence. The accused forcibly stole a significant amount of cash and valuables from the bank, thereby committing the offense of armed robbery."
               disabled
             ></textarea>
-            <div className="case-from__accused__details__input__read">
+            <div className="case-details__inner__accused__details__input__read">
               Read More
             </div>
           </div>
-          <div className="case-from__accused__details__input">
+          <div className="case-details__inner__accused__details__input">
             <label htmlFor="">Legal Brief and Memoranda</label>
             <textarea
               name=""
@@ -347,16 +455,16 @@ Ahmed Aisha
               disabled
               value="The accused, on April 15, 2024, at approximately 11:30 AM, at the XYZ Bank branch located on Victoria Island, Lagos, Nigeria, did unlawfully and intentionally commit armed robbery. The accused, armed with pistols and wearing masks, entered the bank premises and threatened customers and staff with violence. The accused forcibly stole a significant amount of cash and valuables from the bank, thereby committing the offense of armed robbery."
             ></textarea>
-            <div className="case-from__accused__details__input__read">
+            <div className="case-details__inner__accused__details__input__read">
               Read More
             </div>
           </div>
         </div>
-        <div className="case-from__accused__attachment">
-          <div className="case-from__accused__attachment__title">
+        <div className="case-details__inner__accused__attachment">
+          <div className="case-details__inner__accused__attachment__title">
             ATTACHMENT
           </div>
-          <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-first">
+          <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-first">
             Attach New Document{" "}
             <svg
               width="24"
@@ -375,7 +483,7 @@ Ahmed Aisha
               />
             </svg>
           </div>
-          <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-filled">
+          <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled">
           {/* Attach Charge sheet */}
             <div>
             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -412,7 +520,7 @@ Ahmed Aisha
 </svg>
 
           </div>
-          <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-filled">
+          <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled">
             {/* Attach Evidence and Witness{" "} */}
 
             <div>
@@ -449,7 +557,7 @@ Evidence and Witness.PDF
 <path d="M12 21.08C11.59 21.08 11.25 20.74 11.25 20.33V3.5C11.25 3.09 11.59 2.75 12 2.75C12.41 2.75 12.75 3.09 12.75 3.5V20.33C12.75 20.74 12.41 21.08 12 21.08Z" fill="#292D32"/>
 </svg>
           </div>
-          <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-filled">
+          <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled">
             {/* Attach Expert Report{" "} */}
 
             <div>
@@ -486,7 +594,7 @@ Expert Report.PDF
 <path d="M12 21.08C11.59 21.08 11.25 20.74 11.25 20.33V3.5C11.25 3.09 11.59 2.75 12 2.75C12.41 2.75 12.75 3.09 12.75 3.5V20.33C12.75 20.74 12.41 21.08 12 21.08Z" fill="#292D32"/>
 </svg>
           </div>
-          <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-filled">
+          <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled">
             {/* Attach Court Document{" "} */}
 
             <div>
@@ -523,7 +631,7 @@ Court Document.PDF
 <path d="M12 21.08C11.59 21.08 11.25 20.74 11.25 20.33V3.5C11.25 3.09 11.59 2.75 12 2.75C12.41 2.75 12.75 3.09 12.75 3.5V20.33C12.75 20.74 12.41 21.08 12 21.08Z" fill="#292D32"/>
 </svg>
           </div>
-          <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-filled">
+          <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled">
             {/* Attach Transcripts{" "} */}
 
             <div>
@@ -560,7 +668,7 @@ Transcripts.PDF
 <path d="M12 21.08C11.59 21.08 11.25 20.74 11.25 20.33V3.5C11.25 3.09 11.59 2.75 12 2.75C12.41 2.75 12.75 3.09 12.75 3.5V20.33C12.75 20.74 12.41 21.08 12 21.08Z" fill="#292D32"/>
 </svg>
           </div>
-          <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-filled">
+          <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled">
             {/* Attach Discovery Materials{" "} */}
 
             <div>
@@ -597,7 +705,7 @@ Discovery Materials.PDF
 <path d="M12 21.08C11.59 21.08 11.25 20.74 11.25 20.33V3.5C11.25 3.09 11.59 2.75 12 2.75C12.41 2.75 12.75 3.09 12.75 3.5V20.33C12.75 20.74 12.41 21.08 12 21.08Z" fill="#292D32"/>
 </svg>
           </div>
-          <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-filled">
+          <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled">
             {/* Attach Miscellaneous{" "} */}
 
             <div>
@@ -634,7 +742,7 @@ Miscellaneous.PDF
 <path d="M12 21.08C11.59 21.08 11.25 20.74 11.25 20.33V3.5C11.25 3.09 11.59 2.75 12 2.75C12.41 2.75 12.75 3.09 12.75 3.5V20.33C12.75 20.74 12.41 21.08 12 21.08Z" fill="#292D32"/>
 </svg>
           </div>
-          <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-filled">
+          <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled">
             {/* Attach Correspondence{" "} */}
 
             <div>
@@ -673,7 +781,7 @@ Correspondence.PDF
 <path d="M12 21.08C11.59 21.08 11.25 20.74 11.25 20.33V3.5C11.25 3.09 11.59 2.75 12 2.75C12.41 2.75 12.75 3.09 12.75 3.5V20.33C12.75 20.74 12.41 21.08 12 21.08Z" fill="#292D32"/>
 </svg>
           </div>
-          <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-filled">
+          <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled">
             {/* Attach Audio{" "} */}
 
             <div>
@@ -714,7 +822,7 @@ Audio.Mp3
 <path d="M12 21.08C11.59 21.08 11.25 20.74 11.25 20.33V3.5C11.25 3.09 11.59 2.75 12 2.75C12.41 2.75 12.75 3.09 12.75 3.5V20.33C12.75 20.74 12.41 21.08 12 21.08Z" fill="#292D32"/>
 </svg>
           </div>
-          <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-filled">
+          <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled">
             {/* Attach Video{" "} */}
 
             <div>
@@ -756,10 +864,60 @@ Video.Mp4
         </div>
       </div>
 
-      {/* <div className="case-from__button-group">
+      <div className="case-from__mugshot">
+        <div className="case-from__mugshot__title">Mugshot</div>
+        <div className="case-from__mugshot__subtitle"></div>
+      </div>
+<div className="case-from__mugshots">
+
+  <Image
+                className="case-from__accused__bio__img"
+                alt=""
+                src="/assets/Image (2).png"
+                width={349}
+                height={273}
+                style={{ objectFit: "cover", borderRadius: "12px", minWidth: "349px" }}
+
+              />
+  <Image
+                className="case-from__accused__bio__img"
+                alt=""
+                src="/assets/Image (2).png"
+                width={349}
+                height={273}
+                style={{ objectFit: "cover", borderRadius: "12px", minWidth: "349px" }}
+
+              />
+  <Image
+                className="case-from__accused__bio__img"
+                alt=""
+                src="/assets/Image (2).png"
+                width={349}
+                height={273}
+                style={{ objectFit: "cover", borderRadius: "12px", minWidth: "349px" }}
+
+              />
+  <Image
+                className="case-from__accused__bio__img"
+                alt=""
+                src="/assets/Image (2).png"
+                width={349}
+                height={273}
+                style={{ objectFit: "cover", borderRadius: "12px", minWidth: "349px" }}
+
+              />
+
+
+
+   
+
+</div>
+
+      {/* <div className="case-details__inner__button-group">
         <button>Cancel</button>
         <button>Save File</button>
       </div> */}
     </form>
+    </div>
   );
 }

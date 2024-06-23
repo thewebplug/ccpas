@@ -14,6 +14,7 @@ export default function CreateCase() {
   const [correspondence, setCorrespondence] = useState(null);
   const [audio, setAudio] = useState(null);
   const [video, setVideo] = useState(null);
+  const [images, setImages] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const mediaRef = useRef(null);
 
@@ -21,6 +22,12 @@ export default function CreateCase() {
     e.preventDefault();
     setModalOpen(true)
     // window.location.href = "/justice/dashboard";
+  }
+
+  const handleMugShotUpload = (image) => {
+    if(image) {
+      setImages([image, ...images])
+    }
   }
 
   return (
@@ -281,7 +288,7 @@ Ahmed Aisha
             <Image
               className="case-from__accused__bio__img"
               alt=""
-              src={URL.createObjectURL(image)}
+              src={image && URL?.createObjectURL(image)}
               width={215}
               height={171}
               style={{ objectFit: "cover" }}
@@ -1093,6 +1100,56 @@ Video.Mp4
         </div>
       </div>
 
+      <div className="case-from__mugshot">
+        <div className="case-from__mugshot__title">Mugshot</div>
+        <div className="case-from__mugshot__subtitle">Add Mugshot and add pictures highlighting any tattoos, piercing or body scar</div>
+      </div>
+<div className="case-from__mugshots">
+{images?.map((item, index) => 
+  <Image
+                className="case-from__accused__bio__img"
+                alt=""
+                src={item && URL?.createObjectURL(item)}
+                width={349}
+                height={273}
+                style={{ objectFit: "cover", borderRadius: "12px", minWidth: "349px" }}
+                key={index}
+              />
+)}
+               
+<div className="case-from__mugshots__upload">
+        <label>
+        <div className="case-from__mugshots__upload__inner">
+        <svg width="65" height="64" viewBox="0 0 65 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M32.4985 6.37891C41.3905 6.37891 46.4347 12.449 47.167 19.7816H47.388C53.1171 19.7816 57.7509 24.5543 57.7509 30.4413C57.7509 30.7422 57.7394 31.04 57.7162 31.3346C55.4502 28.5041 52.3884 26.4172 48.9254 25.3428C45.4624 24.2684 41.757 24.2559 38.2868 25.3068C34.8166 26.3576 31.7407 28.4238 29.4555 31.2388C27.1704 34.0539 25.7807 37.4889 25.4657 41.101H17.6059C11.8831 41.101 7.24609 36.3283 7.24609 30.4413C7.24609 24.5543 11.8862 19.7816 17.6059 19.7816H17.83C18.5687 12.4016 23.6065 6.37891 32.4985 6.37891ZM43.5465 56.8838C47.3137 56.8838 50.9267 55.3872 53.5905 52.7234C56.2544 50.0595 57.7509 46.4465 57.7509 42.6793C57.7509 38.912 56.2544 35.299 53.5905 32.6352C50.9267 29.9713 47.3137 28.4748 43.5465 28.4748C39.7792 28.4748 36.1662 29.9713 33.5024 32.6352C30.8385 35.299 29.342 38.912 29.342 42.6793C29.342 46.4465 30.8385 50.0595 33.5024 52.7234C36.1662 55.3872 39.7792 56.8838 43.5465 56.8838ZM43.5465 34.7879C43.965 34.7879 44.3665 34.9542 44.6625 35.2502C44.9585 35.5461 45.1247 35.9476 45.1247 36.3662V41.101H49.8596C50.2781 41.101 50.6796 41.2673 50.9756 41.5633C51.2716 41.8592 51.4378 42.2607 51.4378 42.6793C51.4378 43.0979 51.2716 43.4993 50.9756 43.7953C50.6796 44.0913 50.2781 44.2575 49.8596 44.2575H45.1247V48.9924C45.1247 49.411 44.9585 49.8124 44.6625 50.1084C44.3665 50.4044 43.965 50.5707 43.5465 50.5707C43.1279 50.5707 42.7264 50.4044 42.4304 50.1084C42.1345 49.8124 41.9682 49.411 41.9682 48.9924V44.2575H37.2334C36.8148 44.2575 36.4133 44.0913 36.1173 43.7953C35.8214 43.4993 35.6551 43.0979 35.6551 42.6793C35.6551 42.2607 35.8214 41.8592 36.1173 41.5633C36.4133 41.2673 36.8148 41.101 37.2334 41.101H41.9682V36.3662C41.9682 35.9476 42.1345 35.5461 42.4304 35.2502C42.7264 34.9542 43.1279 34.7879 43.5465 34.7879Z" fill="#37773A" fill-opacity="0.57"/>
+</svg>
+<div className="case-from__mugshots__upload__inner__title">
+
+Drag & drop files or Browse
+</div>
+<div className="case-from__mugshots__upload__inner__subtitle">
+Supported formats: PDF, Word, and PNG
+</div>
+
+
+        </div>
+
+        <input
+                type="file"
+                name=""
+                id=""
+                hidden
+                ref={mediaRef}
+                accept="image/*"
+                onChange={(e) => handleMugShotUpload(e.target.files[0])}
+              />
+        </label>
+      </div>
+
+   
+
+</div>
+      
       <div className="case-from__button-group">
         <button>Cancel</button>
         <button>Next</button>
