@@ -1,7 +1,9 @@
-"use-client" //....
+"use-client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
+import styles from '../../../../styles/pages/justice/dashboard/_case-file.scss'; 
+import CaseOtpModal from './otp'
 
 const customStyles = {
   content: {
@@ -10,16 +12,22 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
+    borderRadius: '12px',
+    border: '1px solid #ccddcc',
+    padding: '81px 65px 40px 65px',
+    gap: '32px',
     transform: 'translate(-50%, -50%)',
+    width: '630px',
+    height: '630px',
   },
 };
-
-Modal.setAppElement('#__next'); // This is important for accessibility
 
 const CaseFileModal = ({ isOpen, onRequestClose }) => {
   const [destinationAgency, setDestinationAgency] = useState('');
   const [email, setEmail] = useState('');
   const [note, setNote] = useState('');
+  const [isFormFilled, setIsFormFilled] = useState(false);
+  const [isOtpModalOpen, setIsOtpModalOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,100 +37,76 @@ const CaseFileModal = ({ isOpen, onRequestClose }) => {
       email,
       note,
     });
-    onRequestClose(); // Close the modal after submission
+    setIsOtpModalOpen(true); // Close the modal after submission
   };
 
+  const buttonStyle = {
+    padding: '14px 20px',
+    border: 'none',
+    borderRadius: '40px',
+    backgroundColor: isFormFilled ? '#009B07' : '#ccc',
+    color: '#fff',
+    cursor: isFormFilled ? 'pointer' : 'not-allowed',
+    transition: 'background-color 0.5s',
+  };
+
+  useEffect(() => {
+    if (destinationAgency && email && note) {
+      setIsFormFilled(true);
+    } else {
+      setIsFormFilled(false);
+    }
+  }, [destinationAgency, email, note]);
+
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      style={customStyles}
-      contentLabel="Case File Modal"
-    >
-      <div>
-        <h2>You are about sending this case file</h2>
-        <div style={{ background: '#21D16B', color: '#fff', padding: '10px', borderRadius: '5px', textAlign: 'center' }}>
-          PF309583
+    <>
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={onRequestClose}
+        style={customStyles}
+        contentLabel="Case File Modal"
+      >
+        <div className="case-file">
+          <h2>You are about sending this case file</h2>
+          <div className="case-id">PF309583</div>
+          {/* <div className={styles['case-id']}>PF309583</div> */}
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Department</label>
+              <select value={destinationAgency} onChange={(e) => setDestinationAgency(e.target.value)} required>
+                <option value="" disabled>Select an agency</option>
+                <option value="agency1">Homicide</option>
+                <option value="agency2">Homicide</option>
+                {/* Add more options... */}
+              </select>
+            </div>
+            <div className="form-group">
+              <label>Email of Recipient</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label></label>
+                <textarea
+                  value={note}
+                  onChange={(e) => setNote(e.target.value)}
+                  rows="8"
+                  placeholder="Note"
+                />
+            </div>
+            <button style={buttonStyle} type="submit">
+              Secure Transfer
+            </button>
+          </form>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Destination Agency</label>
-            <select value={destinationAgency} onChange={(e) => setDestinationAgency(e.target.value)} required>
-              <option value="" disabled>Select an agency</option>
-              <option value="agency1">Agency 1</option>
-              <option value="agency2">Agency 2</option>
-              {/* Add more options... */}
-            </select>
-          </div>
-          <div>
-            <label>Email of Recipient</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label>Note</label>
-            <textarea
-              value={note}
-              onChange={(e) => setNote(e.target.value)}
-              rows="4"
-            />
-          </div>
-          <button type="submit">Secure Transfer</button>
-        </form>
-      </div>
-    </Modal>
+      </Modal>
+      <CaseOtpModal isOpen={isOtpModalOpen} onRequestClose={() => setIsOtpModalOpen(false)} />
+    </>
   );
 };
 
 export default CaseFileModal;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// pages/index.jsx
-
-// import React, { useState } from 'react';
-// import CaseFileModal from '../components/CaseFileModal';
-
-// const Home = () => {
-//   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-//   const openModal = () => {
-//     setModalIsOpen(true);
-//   };
-
-//   const closeModal = () => {
-//     setModalIsOpen(false);
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={openModal}>Open Modal</button>
-//       <CaseFileModal isOpen={modalIsOpen} onRequestClose={closeModal} />
-//     </div>
-//   );
-// };
-
-// export default Home;

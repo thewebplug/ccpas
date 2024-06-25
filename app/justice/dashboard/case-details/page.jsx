@@ -2,9 +2,30 @@
 import Menu from "@/app/components/menu";
 import Image from "next/image";
 import { useState } from "react";
+import CaseFileModal from "../case-file/page";
 
 export default function CreateCase() {
   const [menuActive, setMenuActive] = useState(null)
+
+  // ...
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const openModal = (item) => {
+    setSelectedItem(item);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedItem(null);
+  };
+
+
+  //...
+
+
   return (
     <div className="case-details">
       <div className="case-details__menu">
@@ -78,16 +99,19 @@ export default function CreateCase() {
   </div>
   <div className="case-details__menu__flex__menu-group__item"
   onClick={() => menuActive === "transfer" ? setMenuActive(null): setMenuActive("transfer")}
-  >
+  > 
     <div>Transfer Case Files</div>
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M17.9197 8.17969H11.6897H6.07975C5.11975 8.17969 4.63975 9.33969 5.31975 10.0197L10.4997 15.1997C11.3297 16.0297 12.6797 16.0297 13.5097 15.1997L15.4797 13.2297L18.6897 10.0197C19.3597 9.33969 18.8797 8.17969 17.9197 8.17969Z" fill="#292D32"/>
 </svg>
 
-{menuActive === "transfer" &&
-<Menu items={[{name: "Out-side Agency"}, {name: "Within Agency"}]} />
-}
+ <div>
+    {menuActive === "transfer" &&
+    <Menu items={[{name: "Out-side Agency"}, {name: "Within Agency"}]} onItemClick={openModal} />
+    }
+</div>
 
+<CaseFileModal isOpen={modalIsOpen} onRequestClose={closeModal} item={selectedItem} />
 
 
   </div>
