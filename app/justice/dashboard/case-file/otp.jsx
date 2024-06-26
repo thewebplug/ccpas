@@ -28,7 +28,9 @@ const CaseOtpModal = ({ isOpen, onRequestClose }) => {
 
     if(isNaN(e.target.value)) return false
 
-    setOtp([...otp.map((data, indx) => (indx === index ? e.target.value :data))])
+    setOtp([
+      ...otp.map((data, indx) => (indx === index ? e.target.value : data))
+    ])
 
     if(e.target.value && e.target.nextSibling) {
       e.target.nextSibling.focus()

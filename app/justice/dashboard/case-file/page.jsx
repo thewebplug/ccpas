@@ -22,7 +22,7 @@ const customStyles = {
   },
 };
 
-const CaseFileModal = ({ isOpen, onRequestClose }) => {
+const CaseFileModal = ({ isOpen, onRequestClose  }) => {
   const [destinationAgency, setDestinationAgency] = useState('');
   const [email, setEmail] = useState('');
   const [note, setNote] = useState('');
@@ -31,6 +31,9 @@ const CaseFileModal = ({ isOpen, onRequestClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsOtpModalOpen(true); // Open OTP modal
+    onRequestClose(); // Close Case File modal
+
     // Handle the form submission logic here
     console.log({
       destinationAgency,
@@ -42,10 +45,10 @@ const CaseFileModal = ({ isOpen, onRequestClose }) => {
 
   const buttonStyle = {
     padding: '14px 20px',
-    border: 'none',
+    border:  isFormFilled ? 'none' : '1px solid #e6e6e6',
     borderRadius: '40px',
-    backgroundColor: isFormFilled ? '#009B07' : '#ccc',
-    color: '#fff',
+    backgroundColor: isFormFilled ? '#009B07' : '#fff',
+    color:  isFormFilled ? '#fff' : '#000',
     cursor: isFormFilled ? 'pointer' : 'not-allowed',
     transition: 'background-color 0.5s',
   };
@@ -98,7 +101,10 @@ const CaseFileModal = ({ isOpen, onRequestClose }) => {
                   placeholder="Note"
                 />
             </div>
-            <button style={buttonStyle} type="submit">
+            <button 
+              style={buttonStyle} 
+              type="submit"
+            >
               Secure Transfer
             </button>
           </form>
