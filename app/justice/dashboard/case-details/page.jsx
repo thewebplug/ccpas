@@ -111,7 +111,6 @@ export default function CreateCase() {
     }
 </div>
 
-<CaseFileModal isOpen={modalIsOpen} onRequestClose={closeModal} item={selectedItem} />
 
 
   </div>
@@ -942,6 +941,9 @@ Video.Mp4
         <button>Save File</button>
       </div> */}
     </form>
+
+    <CaseFileModal isOpen={modalIsOpen} onRequestClose={closeModal} item={selectedItem} />
+
     </div>
   );
 }
