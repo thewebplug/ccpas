@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-import styles from '../../../../styles/pages/justice/dashboard/_case-file.scss'; 
-import CaseOtpModal from './otp'
+import '../../../../styles/pages/justice/dashboard/_case-file.scss'; 
+import ReviewModal from './review'
 
 const customStyles = {
   content: {
@@ -27,12 +27,14 @@ const CaseFileModal = ({ isOpen, onRequestClose  }) => {
   const [email, setEmail] = useState('');
   const [note, setNote] = useState('');
   const [isFormFilled, setIsFormFilled] = useState(false);
-  const [isOtpModalOpen, setIsOtpModalOpen] = useState(false);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsOtpModalOpen(true); // Open OTP modal
+    setIsReviewModalOpen(true);; // Open OTP modal
     onRequestClose(); // Close Case File modal
+
 
     // Handle the form submission logic here
     console.log({
@@ -40,7 +42,7 @@ const CaseFileModal = ({ isOpen, onRequestClose  }) => {
       email,
       note,
     });
-    setIsOtpModalOpen(true); // Close the modal after submission
+    // setIsOtpModalOpen(true); // Close the modal after submission
   };
 
   const buttonStyle = {
@@ -78,8 +80,9 @@ const CaseFileModal = ({ isOpen, onRequestClose  }) => {
               <label>Department</label>
               <select value={destinationAgency} onChange={(e) => setDestinationAgency(e.target.value)} required>
                 <option value="" disabled>Select an agency</option>
-                <option value="agency1">Homicide</option>
-                <option value="agency2">Homicide</option>
+                <option value="Homicide">Homicide</option>
+                <option value="Legal">Legal</option>
+                <option value="EFCC">EFCC</option>
                 {/* Add more options... */}
               </select>
             </div>
@@ -110,7 +113,16 @@ const CaseFileModal = ({ isOpen, onRequestClose  }) => {
           </form>
         </div>
       </Modal>
-      <CaseOtpModal isOpen={isOtpModalOpen} onRequestClose={() => setIsOtpModalOpen(false)} />
+
+      <ReviewModal
+        isOpen={isReviewModalOpen}
+        onRequestClose={() => setIsReviewModalOpen(false)}
+        recipient="Alaba Adenuga(FM56898324)"
+        title="Director of Operations"
+        date="06-06-2024"
+        department={destinationAgency}
+        caseId="PF309583"
+      />
     </>
   );
 };

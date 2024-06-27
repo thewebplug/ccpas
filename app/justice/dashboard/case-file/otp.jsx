@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Modal from 'react-modal';
-import styles from '../../../../styles/pages/justice/dashboard/_otp.scss'
+import '../../../../styles/pages/justice/dashboard/_otp.scss'
 
 const otpStyles = {
   content: {
@@ -53,12 +53,13 @@ const CaseOtpModal = ({ isOpen, onRequestClose }) => {
 
   const buttonStyle = {
     padding: '16px 183px',
-    border: 'none',
+    border: isComplete ? 'none' : '1px solid #e6e6e6',
     borderRadius: '40px',
-    backgroundColor: isComplete ? '#009B07' : '#ccc',
-    color: '#fff',
+    backgroundColor: isComplete ? '#009B07' : '#fff',
+    color:  isComplete ? '#fff' : '#000',
     cursor: isComplete ? 'pointer' : 'not-allowed',
     transition: 'background-color 0.5s',
+    fontWeight: '500',
   };
 
   return (
