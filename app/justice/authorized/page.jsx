@@ -7,7 +7,7 @@ export default function Auth() {
   useEffect(() => {
     setTimeout(() => {
       window.location.href = "/justice/login"
-    }, 1000);
+    }, 2000);
   }, [])
 
   return (
