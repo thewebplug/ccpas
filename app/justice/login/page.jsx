@@ -1,13 +1,122 @@
 "use client";
 
+import { login, requestOtp, verifyOtp } from "@/app/apis/auth";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function Auth() {
+  const [officialEmail, setOfficialEmail] = useState("");
+  const [govId, setGovId] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [otp1, setOtp1] = useState("");
+  const [otp2, setOtp2] = useState("");
+  const [otp3, setOtp3] = useState("");
+  const [otp4, setOtp4] = useState("");
+  const [otp5, setOtp5] = useState("");
+  const [otp6, setOtp6] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    window.location.href = "/justice/dashboard";
+    setLoading(true);
+
+    const response = await login(officialEmail, govId, password);
+
+    console.log('response', response);
+    // window.location.href = "/justice/dashboard";
+
+    if(response?.status === 201) {
+      setModalOpen(true);
+    }
+    else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
+      window.location.href = "/justice/unauthorized"
+    }
+    else {
+      alert(response?.data?.message)
+    }
+    setLoading(false);
+
+    console.log('respoooo', response);
+
   }
+  const handleVerifyOtp = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const otp = `${otp1}${otp2}${otp3}${otp4}${otp5}${otp6}`
+
+    const response = await verifyOtp(officialEmail, otp);
+
+    console.log('response', response);
+    // window.location.href = "/justice/dashboard";
+
+    if(response?.status === 201) {
+      window.location.href = "/justice/dashboard"
+    }
+    else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
+      window.location.href = "/justice/unauthorized"
+    }
+    else {
+      alert(response?.data?.message)
+    }
+    setLoading(false);
+
+    console.log('respoooo', response);
+
+  }
+
+  const handleResendOtp = async () => {
+    setLoading(true);
+
+
+    const response = await requestOtp(officialEmail);
+
+    console.log('response', response);
+    // window.location.href = "/justice/dashboard";
+
+    if(response?.status === 201) {
+      alert("A new OTP has been sent to your email")
+    }
+    else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
+      window.location.href = "/justice/unauthorized"
+    }
+    else {
+      alert("Unable to resend OTP")
+    }
+    setLoading(false);
+
+    console.log('respoooo', response);
+
+  }
+
+  
+  const handleModalClose = (e) => {
+    if (e.target.classList.contains("auth__modal")) {
+      setModalOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    const otpInputs = document.querySelectorAll(".auth__modal__inner__otp-group__input");
+
+    otpInputs.forEach((input, index) => {
+      input.addEventListener("input", (event) => {
+        const inputValue = event.target.value;
+
+        if (inputValue && index < otpInputs.length - 1) {
+          otpInputs[index + 1].focus();
+        }
+      });
+
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Backspace" && index > 0 && !input.value) {
+          otpInputs[index - 1].focus();
+          event.preventDefault();
+        }
+      });
+    });
+  }, [modalOpen]);
 
   return (
     <main className="auth">
@@ -39,16 +148,29 @@ Department of Public Prosecution Portal
         <h3 className="auth__form__subtitle">Public Prosecutor</h3>
         {/* <h4 className="auth__form__error">Incorrect information you have 1 more try left</h4> */}
         <label htmlFor="" className="auth__form__label">FMoJ ID*</label>
-        <input type="text" className="auth__form__input" placeholder="Enter your ID" required />
+        <input type="text" className="auth__form__input" placeholder="Enter your ID" required
+        value={govId}
+        onChange={(e) => setGovId(e.target.value)}
+        />
+        <label htmlFor="" className="auth__form__label">Email*</label>
+        <input type="text" className="auth__form__input" placeholder="Enter your ID" required
+        value={officialEmail}
+        onChange={(e) => setOfficialEmail(e.target.value)}
+        />
         <label htmlFor="" className="auth__form__label">Password*</label>
-        <input type="password" className="auth__form__input" placeholder="Enter password" required />
+        <input type="password" className="auth__form__input" placeholder="Enter password" required
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        />
 
         <h4 className="auth__form__caution">
         Must be at least 8 characters.
         </h4>
 
         
-        <button className="auth__form__button" type="submit">Login</button>
+        <button className="auth__form__button" type="submit"
+        disabled={loading}
+        >{loading ? "Loading..." : "Login"}</button>
 
         <h5 className="auth__form__request pointer"
         onClick={() => window.location.href = "/justice/request"}
@@ -63,6 +185,68 @@ Department of Public Prosecution Portal
         </h5>
 
       </form>
+
+      {modalOpen && <div className="auth__modal"
+      onClick={handleModalClose}
+      >
+       <form className="auth__modal__inner" onSubmit={handleVerifyOtp}>
+       <div className="auth__modal__inner__title">
+       OTP
+        </div>
+       <div className="auth__modal__inner__subtitle">
+       Enter the OTP sent to H.aisha@fmoj.gov.ng
+        </div>
+
+        <div className="auth__modal__inner__otp-group">
+          <input type="text"
+          className="auth__modal__inner__otp-group__input"
+          value={otp1}
+          onChange={(e) => setOtp1(e.target.value)}
+          maxLength={1}
+          />
+          <input type="text"
+          className="auth__modal__inner__otp-group__input"
+          value={otp2}
+          onChange={(e) => setOtp2(e.target.value)}
+          maxLength={1}
+          />
+          <input type="text"
+          className="auth__modal__inner__otp-group__input"
+          value={otp3}
+          onChange={(e) => setOtp3(e.target.value)}
+          maxLength={1}
+          />
+          <input type="text"
+          className="auth__modal__inner__otp-group__input"
+          value={otp4}
+          onChange={(e) => setOtp4(e.target.value)}
+          maxLength={1}
+          />
+          <input type="text"
+          className="auth__modal__inner__otp-group__input"
+          value={otp5}
+          onChange={(e) => setOtp5(e.target.value)}
+          maxLength={1}
+          />
+          <input type="text"
+          className="auth__modal__inner__otp-group__input"
+          value={otp6}
+          onChange={(e) => setOtp6(e.target.value)}
+          maxLength={1}
+          />
+        </div>
+        <div className="auth__modal__inner__request pointer"
+        
+        onClick={handleResendOtp}>
+        Request a new code
+          </div>
+
+          <button
+          disabled={loading}
+          >{loading ? "Loading..." : "Verify OTP"}</button>
+   
+</form>
+    </div>}
     </main>
   );
 }

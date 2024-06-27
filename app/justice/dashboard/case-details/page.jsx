@@ -136,7 +136,7 @@ export default function CreateCase() {
             <option value="">Hello</option>
           </select> */}
           <div className="case-details__inner__grid__input__filled">
-          Public Prosecution
+          EFCC ABUJA
           </div>
         </div>
 
@@ -247,12 +247,12 @@ Ahmed Aisha
           </select> */}
 
 <div className="case-details__inner__grid__input__filled">
-Police
+EFCC ABUJA
 </div>
         </div>
 
         <div className="case-details__inner__grid__input">
-          <label htmlFor="">Law Enforcement Officer:</label>
+          <label htmlFor="">Investigatiing Officer:</label>
           {/* <div className="case-details__inner__grid__input__flex">
             <input type="text" placeholder="Select assigned officer" />
             <svg
