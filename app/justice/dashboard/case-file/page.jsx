@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-import '../../../../styles/pages/justice/dashboard/_case-file.scss'; 
 import ReviewModal from './review'
 
 const customStyles = {
