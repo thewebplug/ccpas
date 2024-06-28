@@ -1,15 +1,30 @@
 "use client";
 import Menu from "@/app/components/menu";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import CaseFileModal from "../case-file/page";
 
 export default function CreateCase() {
-  const [menuActive, setMenuActive] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalStage, setModaleStage] = useState(1);
-  const [doc, setDoc] = useState("");
-  const [loading, setLoading] = useState(false);
-  const mediaRef = useRef(null);
+  const [menuActive, setMenuActive] = useState(null)
+
+  // ...
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const openModal = (item) => {
+    setSelectedItem(item);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedItem(null);
+  };
+
+
+  //...
+
 
   const handleModalClose = (e) => {
     if (e.target.classList.contains("case-details__modal")) {
@@ -334,19 +349,49 @@ export default function CreateCase() {
                 />
               </svg>
 
-              {menuActive === "classify" && (
-                <Menu
-                  items={[
-                    { name: "Top secret" },
-                    { name: "Secret" },
-                    { name: "Official" },
-                    { name: "Public" },
-                    { name: "General" },
-                  ]}
-                />
-              )}
-            </div>
-          </div>
+
+  </div>
+  <div className="case-details__menu__flex__menu-group__item">
+    <div>Expunge Case File</div>
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="24" cy="24" r="23.5" fill="white" stroke="#A8A8A8"/>
+<path d="M33.0697 17.23C31.4597 17.07 29.8497 16.95 28.2297 16.86V16.85L28.0097 15.55C27.8597 14.63 27.6397 13.25 25.2997 13.25H22.6797C20.3497 13.25 20.1297 14.57 19.9697 15.54L19.7597 16.82C18.8297 16.88 17.8997 16.94 16.9697 17.03L14.9297 17.23C14.5097 17.27 14.2097 17.64 14.2497 18.05C14.2897 18.46 14.6497 18.76 15.0697 18.72L17.1097 18.52C22.3497 18 27.6297 18.2 32.9297 18.73C32.9597 18.73 32.9797 18.73 33.0097 18.73C33.3897 18.73 33.7197 18.44 33.7597 18.05C33.7897 17.64 33.4897 17.27 33.0697 17.23Z" fill="#292D32"/>
+<path d="M31.2297 20.14C30.9897 19.89 30.6597 19.75 30.3197 19.75H17.6797C17.3397 19.75 16.9997 19.89 16.7697 20.14C16.5397 20.39 16.4097 20.73 16.4297 21.08L17.0497 31.34C17.1597 32.86 17.2997 34.76 20.7897 34.76H27.2097C30.6997 34.76 30.8398 32.87 30.9497 31.34L31.5697 21.09C31.5897 20.73 31.4597 20.39 31.2297 20.14ZM25.6597 29.75H22.3297C21.9197 29.75 21.5797 29.41 21.5797 29C21.5797 28.59 21.9197 28.25 22.3297 28.25H25.6597C26.0697 28.25 26.4097 28.59 26.4097 29C26.4097 29.41 26.0697 29.75 25.6597 29.75ZM26.4997 25.75H21.4997C21.0897 25.75 20.7497 25.41 20.7497 25C20.7497 24.59 21.0897 24.25 21.4997 24.25H26.4997C26.9097 24.25 27.2497 24.59 27.2497 25C27.2497 25.41 26.9097 25.75 26.4997 25.75Z" fill="#292D32"/>
+</svg>
+
+
+  </div>
+  <div className="case-details__menu__flex__menu-group__item"
+  onClick={() => menuActive === "transfer" ? setMenuActive(null): setMenuActive("transfer")}
+  > 
+    <div>Transfer Case Files</div>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.9197 8.17969H11.6897H6.07975C5.11975 8.17969 4.63975 9.33969 5.31975 10.0197L10.4997 15.1997C11.3297 16.0297 12.6797 16.0297 13.5097 15.1997L15.4797 13.2297L18.6897 10.0197C19.3597 9.33969 18.8797 8.17969 17.9197 8.17969Z" fill="#292D32"/>
+</svg>
+
+ <div>
+    {menuActive === "transfer" &&
+    <Menu items={[{name: "Out-side Agency"}, {name: "Within Agency"}]} onItemClick={openModal} />
+    }
+</div>
+
+<CaseFileModal isOpen={modalIsOpen} onRequestClose={closeModal} item={selectedItem} />
+
+
+  </div>
+  <div className="case-details__menu__flex__menu-group__item"
+  onClick={() => menuActive === "classify" ? setMenuActive(null): setMenuActive("classify")}
+  >
+    <div>Classify Case File</div>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.9197 8.17969H11.6897H6.07975C5.11975 8.17969 4.63975 9.33969 5.31975 10.0197L10.4997 15.1997C11.3297 16.0297 12.6797 16.0297 13.5097 15.1997L15.4797 13.2297L18.6897 10.0197C19.3597 9.33969 18.8797 8.17969 17.9197 8.17969Z" fill="#292D32"/>
+</svg>
+
+{menuActive === "classify" &&
+<Menu items={[{name: "Top secret"}, {name: "Secret"}, {name: "Official"}, {name: "Public"}, {name: "General"}]} />
+}
+  </div>
+</div>
         </div>
 
         <div className="case-details__menu__name">
