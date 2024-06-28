@@ -50,4 +50,30 @@
       font-weight: 600;
     }
   }
+
+  &__agency-grid {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 1fr 1fr 1fr;
+margin-bottom: 90px;
+
+&__img {
+  border: 10px solid #00AC08;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+  }
+
+  &__button {
+    @extend %primary-button;
+    background: #ADADAD;
+    border: 1px solid #ADADAD;
+
+    &:hover {
+      background: #009b07;
+      border: 1px solid #009b07;
+    }
+  }
 }

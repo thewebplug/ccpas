@@ -1,12 +1,13 @@
 "use client";
 
-import { login, requestOtp, verifyOtp } from "@/app/apis/auth";
+import { adminLogin, requestOtp, verifyOtp } from "@/app/apis/auth";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 export default function Auth() {
   const dispatch = useDispatch();
+
   const [officialEmail, setOfficialEmail] = useState("");
   const [govId, setGovId] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +24,7 @@ export default function Auth() {
     e.preventDefault();
     setLoading(true);
 
-    const response = await login(officialEmail, govId, password);
+    const response = await adminLogin(officialEmail, govId, password);
 
     console.log('response', response);
     // window.location.href = "/justice/dashboard";
@@ -50,8 +51,7 @@ export default function Auth() {
 
     const response = await verifyOtp(officialEmail, otp);
 
-    console.log('response', response);
-    // window.location.href = "/justice/dashboard";
+    console.log('response', response?.data?.token);
 
     if(response?.status === 201) {
       localStorage.setItem("token", response?.data?.token);
@@ -154,7 +154,7 @@ Department of Public Prosecution Portal
       </h1>
 
       <form className="auth__form" onSubmit={handleLogin}>
-        <h2 className="auth__form__title">Login as</h2>
+        <h2 className="auth__form__title">Login as Admin</h2>
         <h3 className="auth__form__subtitle">Public Prosecutor</h3>
         {/* <h4 className="auth__form__error">Incorrect information you have 1 more try left</h4> */}
         <label htmlFor="" className="auth__form__label">FMoJ ID*</label>

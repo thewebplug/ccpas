@@ -8,7 +8,7 @@ export const requestAccess = async (
   nin,
   bvn,
   govId,
-  password
+  // password
 ) => {
   try {
     console.log({
@@ -19,7 +19,7 @@ export const requestAccess = async (
       nin,
       bvn,
       govId,
-      password,
+      // password,
     });
     const res = await axios.post(`http://54.149.227.204:3000/auth/register`, {
       officialEmail,
@@ -29,7 +29,7 @@ export const requestAccess = async (
       nin,
       bvn,
       govId,
-      password,
+      // password,
       departmentId: "FMOJ",
       subDepartmentId: "JPP|LEA",
     });
@@ -44,6 +44,20 @@ export const requestAccess = async (
 export const login = async (officialEmail, govId, password) => {
   try {
     const res = await axios.post(`http://54.149.227.204:3000/auth/login`, {
+      officialEmail,
+      govId,
+      password,
+    });
+
+    return res;
+  } catch (error) {
+    console.log("ERROR", error);
+    return error?.response;
+  }
+};
+export const adminLogin = async (officialEmail, govId, password) => {
+  try {
+    const res = await axios.post(`http://54.149.227.204:3000/auth/login-admin`, {
       officialEmail,
       govId,
       password,

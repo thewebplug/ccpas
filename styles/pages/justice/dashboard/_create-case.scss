@@ -260,6 +260,14 @@ justify-content: center;
           display: flex;
           align-items: center;
           gap: 5px;
+
+          & > svg {
+            min-width: 20px;
+          }
+        }
+
+        & > svg {
+          min-width: 20px;
         }
 
        

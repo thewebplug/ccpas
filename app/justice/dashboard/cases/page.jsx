@@ -48,66 +48,67 @@ export default function Cases() {
     <div className="cases__table">
         <div className="cases__table__header">
             <div>
-            <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5 8.5L9.5 8.5L6 3L2.5 8.5Z" fill="#7E92A2"/>
-<path d="M9.5 16.5L2.5 16.5L6 22L9.5 16.5Z" fill="#7E92A2"/>
-</svg>
+            
 
             Date Initiated
             </div>
             <div>
-            <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5 8.5L9.5 8.5L6 3L2.5 8.5Z" fill="#7E92A2"/>
-<path d="M9.5 16.5L2.5 16.5L6 22L9.5 16.5Z" fill="#7E92A2"/>
-</svg>
+            
 
 Case No
             </div>
             <div>
-            <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5 8.5L9.5 8.5L6 3L2.5 8.5Z" fill="#7E92A2"/>
-<path d="M9.5 16.5L2.5 16.5L6 22L9.5 16.5Z" fill="#7E92A2"/>
-</svg>
+            
 
 Agency
             </div>
             <div>
-            <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5 8.5L9.5 8.5L6 3L2.5 8.5Z" fill="#7E92A2"/>
-<path d="M9.5 16.5L2.5 16.5L6 22L9.5 16.5Z" fill="#7E92A2"/>
-</svg>
+            
 
 Case Status
-            </div>
-            <div>
-            <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5 8.5L9.5 8.5L6 3L2.5 8.5Z" fill="#7E92A2"/>
-<path d="M9.5 16.5L2.5 16.5L6 22L9.5 16.5Z" fill="#7E92A2"/>
+
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_9229_30424)">
+<path d="M6.06065 5.9987C6.21739 5.55314 6.52675 5.17744 6.93395 4.93812C7.34116 4.6988 7.81991 4.61132 8.28544 4.69117C8.75096 4.77102 9.1732 5.01305 9.47737 5.37438C9.78154 5.73572 9.94802 6.19305 9.94732 6.66536C9.94732 7.9987 7.94732 8.66536 7.94732 8.66536M8.00065 11.332H8.00732M14.6673 7.9987C14.6673 11.6806 11.6826 14.6654 8.00065 14.6654C4.31875 14.6654 1.33398 11.6806 1.33398 7.9987C1.33398 4.3168 4.31875 1.33203 8.00065 1.33203C11.6826 1.33203 14.6673 4.3168 14.6673 7.9987Z" stroke="#98A2B3" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_9229_30424">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
 </svg>
 
-Accused Status
             </div>
             <div>
-            <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5 8.5L9.5 8.5L6 3L2.5 8.5Z" fill="#7E92A2"/>
-<path d="M9.5 16.5L2.5 16.5L6 22L9.5 16.5Z" fill="#7E92A2"/>
+            
+
+            Status of Suspect
+
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_9229_30424)">
+<path d="M6.06065 5.9987C6.21739 5.55314 6.52675 5.17744 6.93395 4.93812C7.34116 4.6988 7.81991 4.61132 8.28544 4.69117C8.75096 4.77102 9.1732 5.01305 9.47737 5.37438C9.78154 5.73572 9.94802 6.19305 9.94732 6.66536C9.94732 7.9987 7.94732 8.66536 7.94732 8.66536M8.00065 11.332H8.00732M14.6673 7.9987C14.6673 11.6806 11.6826 14.6654 8.00065 14.6654C4.31875 14.6654 1.33398 11.6806 1.33398 7.9987C1.33398 4.3168 4.31875 1.33203 8.00065 1.33203C11.6826 1.33203 14.6673 4.3168 14.6673 7.9987Z" stroke="#98A2B3" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_9229_30424">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
 </svg>
+
+
+            </div>
+            <div>
+            
 
 Offence
             </div>
             <div>
-            <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5 8.5L9.5 8.5L6 3L2.5 8.5Z" fill="#7E92A2"/>
-<path d="M9.5 16.5L2.5 16.5L6 22L9.5 16.5Z" fill="#7E92A2"/>
-</svg>
+            
 
 Type
             </div>
             <div>
-            <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5 8.5L9.5 8.5L6 3L2.5 8.5Z" fill="#7E92A2"/>
-<path d="M9.5 16.5L2.5 16.5L6 22L9.5 16.5Z" fill="#7E92A2"/>
-</svg>
+            
 
 Assignee
             </div>
@@ -225,27 +226,25 @@ Assignee
 
         </div>
 
-        <div className="cases__table__pagination">
-        <div className="cases__table__pagination__rows">
-        Rows per page: <select name="" id="">
-            <option value="">8</option>
-            <option value="">10</option>
-        </select>
-            </div>
-
-            <div className="cases__table__pagination__pages">
-                <div>1-8 of 1240</div>
-                <div>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M15 18L9.07071 12.0707C9.03166 12.0317 9.03166 11.9683 9.07071 11.9293L15 6" stroke="#9FA2B4" stroke-width="2" stroke-linecap="round"/>
-</svg>
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M9 18L14.9293 12.0707C14.9683 12.0317 14.9683 11.9683 14.9293 11.9293L9 6" stroke="#9FA2B4" stroke-width="2" stroke-linecap="round"/>
+        <div className="cases__table__footer">
+          <div className="cases__table__footer__nav">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797" stroke="#344054" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 
-                </div>
-            </div>
+<div>Previous</div>
+          </div>
 
+          {/* pagination */}
+
+          <div className="cases__table__footer__nav">
+
+<div>Next</div>
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346" stroke="#344054" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+          </div>
         </div>
     </div>
 

@@ -4,9 +4,13 @@ import DashboardHeader from "@/app/components/dashboardHeader";
 import DashboardSideBar from "@/app/components/dashboardSideBar";
 import Image from "next/image";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function Dashboard() {
-  const [activeChat, setActiveChat] = useState(null)
+  const auth = useSelector((state) => state.auth);
+  const [activeChat, setActiveChat] = useState(null);
+
+  console.log('auth', auth);
   return (
     <div className="dashboard-home">
           

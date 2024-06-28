@@ -26,7 +26,7 @@ export default function Auth() {
       nin,
       bvn,
       govId,
-      password
+      // password
     );
 
     if(response?.data?.statusCode === 201) {
@@ -135,7 +135,7 @@ export default function Auth() {
           value={bvn}
           onChange={(e) => setBvn(e.target.value)}
         />
-        <label htmlFor="" className="auth__form__label">
+        {/* <label htmlFor="" className="auth__form__label">
           Password*
         </label>
         <input
@@ -145,7 +145,7 @@ export default function Auth() {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-        />
+        /> */}
 
         <h4 className="auth__form__caution"></h4>
 
