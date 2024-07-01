@@ -114,12 +114,20 @@ export default function Auth() {
 
 
   const handleChangePassword = async (e) => {
+    setLoading(true)
     e.preventDefault();
     const response = await changPassword(password, confirmNewPassword, id, token);
-    console.log('response', response);
+    console.log('response900', response);
+
+    if(response?.data?.statusCode === 200) {
+      window.location.href = "/justice/dashboard"
+    }else {
+          alert('Password update failed')
+
+    }
     // alert('Password updated')
     // window.location.href = "/justice/dashboard"
-
+setLoading(false)
 
   }
   

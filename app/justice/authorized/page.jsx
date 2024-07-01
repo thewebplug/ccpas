@@ -4,11 +4,11 @@ import { useEffect } from "react";
 
 export default function Auth() {
 
-  useEffect(() => {
-    setTimeout(() => {
-      window.location.href = "/justice/login"
-    }, 2000);
-  }, [])
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     window.location.href = "/justice/login"
+  //   }, 2000);
+  // }, [])
 
   return (
     <main className="auth">
@@ -34,6 +34,7 @@ export default function Auth() {
 
 
 <h1 className="auth__unauth__title">Request has been filed</h1>
+<h1 className="auth__unauth__subtitle">Request ID: <span>876545678</span></h1>
       </div>
     </main>
   );

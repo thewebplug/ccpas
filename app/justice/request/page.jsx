@@ -18,6 +18,31 @@ export default function Auth() {
   const handleSubmitRequest = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+
+    const birthDate = new Date(dob);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    
+    if (age < 18) {
+      alert('You must be at least 18 years old.');
+      setLoading(false);
+      return;
+    }
+
+    const engagementDateObj = new Date(doe);
+    if (engagementDateObj > today) {
+      alert('Date of Engagement cannot be in the future.');
+      setLoading(false)
+      return;
+    }
+
+
     const response = await requestAccess(
       officialEmail,
       supervisorEmail,
