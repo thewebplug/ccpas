@@ -64,6 +64,8 @@
   }
 
   &__table {
+    height: 500px;
+    position: relative;
     &__header {
         @extend %title-12;
         height: 59px;
@@ -146,23 +148,33 @@
         color: #000;
         font-weight: 500;
         width: 100%;
-        max-width: 114px;
+        max-width: 140px;
         height: 31px;
-        border-radius: 40px;
-        background: transparent;
+        border-radius: 8px;
         border: none;
         outline: none;
-        background: #fff;
+        background: #EEF4FF;
       }
 
-      &__remanded {
-        border: 1px solid #054ada;
+      &__bail{
+        background: #EEF4FF;
+        color: #3538CD;
       }
-      &__acquitted {
-        border: 1px solid #24a148;
+      &__custody{
+background: rgba(255, 138, 0, 0.14);
+        color: #FF8A00;
       }
-      &__wanted {
-        border: 1px solid #ed1651;
+      &__convicted {
+background: rgba(184, 0, 0, 0.12);
+color: #B80000;
+      }
+      &__discharged {
+background: rgba(0, 155, 7, 0.12);
+color: #009B07;
+      }
+      &__deceased {
+        background: #E2E2E2;
+        color: #040407;
       }
 
       &__options {
@@ -170,6 +182,10 @@
         top: 50%;
         right: 0;
         transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        
       }
 
       &__assign {
@@ -183,6 +199,9 @@
     }
 
     &__footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
         @extend %title-16;
         font-weight: 500;
         width: 100%;
@@ -278,7 +297,7 @@ box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
         width: 100%;
         max-width: 410px;
 
-        & > select {
+        & > select, & > input {
           margin-top: 6px;
           width: 100%;
           height: 44px;
@@ -307,6 +326,11 @@ box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
             display: flex;
             gap: 10px;
           }
+        }
+        & > button {
+          @extend %create-button;
+          max-width: 410px;
+          margin-top: 20px;
         }
       }
 

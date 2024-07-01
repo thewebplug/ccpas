@@ -94,3 +94,24 @@ export const requestOtp = async (officialEmail) => {
     return error?.response;
   }
 };
+
+export const changPassword = async (currentPassword, newPassword, id, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const res = await axios.patch(`http://54.149.227.204:3000/auth/update-password`, {
+      currentPassword,
+      newPassword,
+    },
+    config
+  );
+
+    return res;
+  } catch (error) {
+    console.log("ERROR", error);
+    return error?.response;
+  }
+};

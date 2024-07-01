@@ -1,31 +1,326 @@
 "use client";
+import { createCase } from "@/app/apis/case";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function CreateCase() {
+
+
+  const offences = {
+    "ADVANCE FEE FRAUD": [
+      "OBT",
+      "Conspiracy",
+      "Attempt to commit AFF Crimes",
+      "Forgery&Uttering",
+      "possession of fraudlent Documents",
+      "Stealing by Conversion",
+      "Cheating",
+      "Impersonation",
+      "Use of Premises",
+      "Currency Counterfeiting",
+      "Other AFF",
+    ],
+    "BANK / SECURITY FRAUD": [
+      "Issuance of Dud Cheque",
+      "Breach of Trust",
+      "Currency Counterfeiting",
+      "Stealing by Conversion",
+      "Cheque Kitting",
+      "Cheque Cloning",
+      "Conspiracy",
+    ],
+    "ECONOMIC GOVERNANCE FRAUD": [
+      "Abuse of Office",
+      "Diversion",
+      "Missapropriation of Public Fund",
+      "Conversion",
+      "Breach of Trust",
+      "Bribery, Extortion, Embezzlement",
+      "Forgery&Uttering",
+      "Conspiracy",
+    ],
+    "MONEY LAUNDERING": [
+      "Attempt",
+      "Conspiracy",
+      "Aiding to Conspire",
+      "Convertion / Transfer",
+      "Aiding Convertion / Transfer",
+      "Conceal / Disguise the origin of POC",
+      "Aiding to Conceal / Disguise the origin of POC",
+      "Possession of POC",
+      "Aiding to Possess POC",
+      "Non Disclosure, Non-declaration/ False declaration",
+      "Aiding; Non Disclosure, Non-declaration/ False declaration",
+      "Acquire/ Use / retain POC",
+      "Aiding to Acquire with/ Use of / retain from POC",
+      "Removal of POC from Jurisdiction",
+      "Aiding to remove POC from Jurisdiction",
+      "Taking posession or control of POC",
+      "Aiding to take possession and control of POC",
+      "incite",
+      "induce",
+      "procure",
+      "Unjustified lifestyle",
+      "Unjustified properties/ assets acquisition",
+      "Financial Transactions, outside Financial Institution, exceeding approved thresholds",
+      "Failure to do know-your-Customer (KYC) requirement",
+    ],
+    "TERRORISM FINANCING": [
+      "Financing Terrorist Act (Directly/ Indirectly)",
+      "Soliciting Funds for Terrorist Act",
+      "Acquisition of Funds for Terrorist Act",
+      "Possession of funds intended for Terrorist Act",
+      "Makes assets, resources, services etc available for Terrorist Act",
+      "Distribution of funds for Terrorist Act",
+      "Attempt to commit/ facilitate/ participate in Terrorist Financing",
+      "Conspiracy",
+      "Aiding and abetting",
+    ],
+    "PROCUREMENT FRAUD": [
+      "Contract inflation",
+      "Breach of Trust",
+      "Contract/ Tender Splitting",
+      "Bid Rigging",
+      "Forgery&Uttering",
+      "Coilusion",
+      "Conspiracy",
+      "Manupulation",
+    ],
+    "CYBER CRIME": [
+      "Email Hacking",
+      "Attempt",
+      "Conspiracy",
+      "Aiding & Abetting",
+      "Fraudlent issuance of e-instructions",
+      "Credit Card Fraud",
+      "email Phishing",
+      "ATM & POS Transaction Fraud",
+      "Identity Theft",
+      "Electronic Signature Fraud",
+      "Cyber Terrorisim",
+      "Cyber Squatting",
+      "Theft of Electronic Device",
+      "Imputing and Supressing of Data",
+    ],
+    "EXTRACTIVE INDUSTRIES FRAUD": [
+      "Illegal Oil Bunkering & Pipeline Vandalism",
+      "Illegal Dealing in Petroleum Product",
+      "Illegal Quarrying",
+      "Illegal Mining",
+      "Forgery",
+      "Breach of Trust",
+      "Cheating/Stealing & Conversion",
+      "Attempt",
+      "Conspiracy",
+      "OBT",
+      "Diversion of Petroleum Product",
+      "Possession of Fraudulent Documents",
+      "Bid Rigging",
+      "Under/Non payments of Levys",
+      "Issuance of Dud Check",
+    ],
+    "LANDS & PROPERTY FRAUD": [
+      "Conversion",
+      "Cheating",
+      "OBT",
+      "Conspiracy",
+      "Forgery",
+      "Stealing",
+      "Breach of Trust",
+      "Using as Geniune",
+      "Tampering",
+    ],
+    "TAX FRAUD": [
+      "Underdeclaration of revenue",
+      "False information/ False Statement",
+      "Non Registration",
+      "Non Remittance of Tax Deducted",
+      "Forgery",
+      "Conspiracy",
+      "Failure to Deduct Taxes",
+      "Operating without License",
+    ],
+  };
+
+
+  const cases = [
+    "ASMS/ABJ/001",
+    "ASMS/ABJ/002",
+    "ASMS/ABJ/003",
+    "ASMS/ABJ/004",
+    "ASMS/ABJ/005",
+    "ASMS/ABJ/006",
+    "ASMS/ABJ/007",
+    "ASMS/ABJ/008",
+    "ASMS/ABJ/009",
+  ];
+  const courts = [
+    "ASMS/ABJ/001",
+    "ASMS/ABJ/002",
+    "ASMS/ABJ/003",
+    "ASMS/ABJ/004",
+    "ASMS/ABJ/005",
+    "ASMS/ABJ/006",
+    "ASMS/ABJ/007",
+    "ASMS/ABJ/008",
+    "ASMS/ABJ/009",
+  ];
+  const chargeSheets = [
+    "ASMS/ABJ/001",
+    "ASMS/ABJ/002",
+    "ASMS/ABJ/003",
+    "ASMS/ABJ/004",
+    "ASMS/ABJ/005",
+    "ASMS/ABJ/006",
+    "ASMS/ABJ/007",
+    "ASMS/ABJ/008",
+    "ASMS/ABJ/009",
+  ];
+
+
+
+  const judges = [
+    "Saleem Jibril",
+    "Osho James",
+    "James Teddy",
+    "John doe",
+  ];
+
+  const clerks = [
+    "Saleem Jibril",
+    "Osho James",
+    "James Teddy",
+    "John doe",
+  ];
+
+  const justiceOfficers = [
+    "Jibril",
+    "Osho James",
+    "James Teddy",
+    "John doe",
+  ];
+  const lawOfficers = [
+    "Fincl",
+    "Osho James",
+    "James Teddy",
+    "John doe",
+  ];
+
+  
+  const auth = useSelector((state) => state.auth);
+  const [filteredoffences, setFilteredOffences] = useState(
+    Object.keys(offences)
+  );
+  const [offense, setOffense] = useState("");
   const [accusedImage, setAccusedImage] = useState("");
-  const [chargeSheet, setChargeSheet] = useState(null);
-  const [evidenceAndWitness, setEvidenceAndWitness] = useState(null);
-  const [expertReport, setExpertReport] = useState(null);
-  const [courtDocument, setCourtDocument] = useState(null);
-  const [transcripts, setTranscripts] = useState(null);
-  const [discoveryMaterials, setDiscoveryMaterials] = useState(null);
-  const [miscellaneous, setMiscellaneous] = useState(null);
-  const [correspondence, setCorrespondence] = useState(null);
-  const [audio, setAudio] = useState(null);
-  const [video, setVideo] = useState(null);
+  const [chargeSheet, setChargeSheet] = useState("");
+  const [evidenceAndWitness, setEvidenceAndWitness] = useState("");
+  const [expertReport, setExpertReport] = useState("");
+  const [courtDocument, setCourtDocument] = useState("");
+  const [transcripts, setTranscripts] = useState("");
+  const [discoveryMaterials, setDiscoveryMaterials] = useState("");
+  const [miscellaneous, setMiscellaneous] = useState("");
+  const [correspondence, setCorrespondence] = useState("");
+  const [caseNumber, setCaseNumber] = useState("");
+  const [audio, setAudio] = useState("");
+  const [video, setVideo] = useState("");
   const [images, setImages] = useState([]);
   const [docs, setDocs] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [docLoading, setDocLoading] = useState(false);
-  const mediaRef = useRef(null);
+  const mediaRef = useRef("");
+  const [activeSearchInput, setActiveSearchInput] = useState("");
+  const [filteredOffenceType, setFilteredOffenceType] = useState(
+    offences[offense]
+  );
+  const [offenseType, setOffenseType] = useState([]);
+  const [filteredCases, setFilteredCases] = useState(cases);
+  const [filteredCourt, setFilteredCourt] = useState(courts);
+  const [court, setCourt] = useState("");
+  const [filteredJudges, setFilteredJudges] = useState(judges);
+  const [filteredClerks, setFilteredClerks] = useState(clerks);
+  const [clerk, setClerk] = useState("");
+  const [judge, setJudge] = useState("");
+  const [justiceOfficer, setJusticeOfficer] = useState("");
+  const [courtLocation, setCourtLocation] = useState("");
+  const [filteredJusticeOfficers, setFilteredJusticeOfficers] = useState("");
+  const [filteredChargeSheet, setFilteredChargeSheet] = useState(chargeSheets);
+  const [agency, setAgency] = useState("FMOJ");
+  const [filteredlawOfficers, setFilteredLawOfficers] = useState([lawOfficers]);
+  const [lawOfficer, setLawOfficer] = useState("");
+  const [accusedFirstName, setAccusedFirstName] = useState("");
+  const [accusedMiddleName, setAccusedMiddleName] = useState("");
+  const [accusedLastName, setAccusedLastName] = useState("");
+  const [accusedAlias, setAccusedAlias] = useState("");
+  const [accusedNin, setAccusedNin] = useState("");
+  const [accusedBvn, setAccusedBvn] = useState("");
+  const [caseStatus, setCaseStatus] = useState("unassigned");
+  const [accusedStatus, setAccusedStatus] = useState("unassigned");
+  const [dateInitiated, setDateInitiated] = useState("");
+  const [associate, setAssociate] = useState([]);
+  const [assoc, setAssoc] = useState("");
+  const [legalBasis, setLegalBasis] = useState("");
+  const [particularsOfOffense, setParticularsOfOffense] = useState("");
+  const [chargeDetails, setChargeDetails] = useState("");
+  const [legalBriefAndMemoranda, setLegalBriefAndMemoranda] = useState("");
 
-  const handleCreateCase = (e) => {
+  const handleCreateCase = async (e) => {
     e.preventDefault();
-    setModalOpen(true);
-    // window.location.href = "/justice/dashboard";
+    const response = await createCase(
+      caseNumber,
+      offense,
+  "fmojDept",
+  court,
+  courtLocation,
+  clerk,
+  judge,
+  chargeSheet,
+  offenseType,
+  agency,
+  lawOfficer,
+  legalBasis,
+  particularsOfOffense,
+  chargeDetails,
+  legalBriefAndMemoranda,
+  accusedImage,
+  accusedFirstName,
+  accusedLastName,
+  accusedMiddleName,
+  accusedBvn,
+  accusedNin,
+  accusedAlias,
+  caseStatus,
+  accusedStatus,
+  dateInitiated,
+  associate,
+  docs,
+  images,
+  auth?.token
+    );
+
+    console.log('case created', response);
+
+    if(response?.data?.statusCode === 201) {
+      alert("Case created successfully");
+      window.location.href = "/justice/dashboard/cases"
+    } else {
+      alert("Something went wrong")
+    }
+
   };
+
+
+  const handleAssAssoc = (e) => {
+   if(assoc !== "") {
+    const temp = associate;
+    temp.push({name: assoc});
+    setAssociate([...temp]);
+    setAssoc("")
+   }
+    
+  }
 
   const handleMugShotUpload = (e, docType) => {
     // setUploadLoading(true);
@@ -67,7 +362,7 @@ export default function CreateCase() {
                 console.log("response file uploaded", response);
                 if (response?.status === 200) {
                   const temp = images;
-                  temp.push(response?.data?.body?.data);
+                  temp.push({url: response?.data?.body?.data});
                   setImages([...temp]);
                 }
               })
@@ -203,6 +498,86 @@ export default function CreateCase() {
     temp.splice(index, 1)
     setDocs([...temp]);
   };
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = Object.keys(offences)?.filter((item) =>
+      item.toLowerCase().includes(offense.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredOffences(temp);
+    setFilteredOffenceType(offences[offense]);
+  }, [offense]);
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = offences[offense]?.filter((item) =>
+      item.toLowerCase().includes(offenseType.toLocaleLowerCase())
+    );
+    setFilteredOffenceType(temp);
+  }, [offenseType]);
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = cases.filter((item) =>
+      item.toLowerCase().includes(caseNumber.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredCases(temp);
+  }, [caseNumber]);
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = judges.filter((item) =>
+      item.toLowerCase().includes(judge.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredJudges(temp);
+  }, [judge]);
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = courts.filter((item) =>
+      item.toLowerCase().includes(court.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredCourt(temp);
+  }, [court]);
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = clerks.filter((item) =>
+      item.toLowerCase().includes(clerk.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredClerks(temp);
+  }, [clerk]);
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = justiceOfficers.filter((item) =>
+      item.toLowerCase().includes(justiceOfficer.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredJusticeOfficers(temp);
+  }, [justiceOfficer]);
+  useEffect(() => {
+    console.log("yooo");
+    const temp = chargeSheets.filter((item) =>
+      item.toLowerCase().includes(chargeSheet.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredChargeSheet(temp);
+  }, [chargeSheet]);
+  useEffect(() => {
+    console.log("yooo");
+    const temp = lawOfficers.filter((item) =>
+      item.toLowerCase().includes(lawOfficer.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredLawOfficers(temp);
+  }, [lawOfficer]);
+
   return (
     <form className="case-from" onSubmit={handleCreateCase}>
       <div className="case-from__grid">
@@ -211,38 +586,113 @@ export default function CreateCase() {
           <input
             type="text"
             className=""
-            placeholder="Type case number"
+            placeholder="Enter Case Number"
             required
+            value={caseNumber}
+            onChange={(e) => setCaseNumber(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "caseNumber"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("caseNumber")
+            }
           />
-          {/* <div className="case-from__grid__input__filled">
-          PF00458
-          </div> */}
+
+          {activeSearchInput === "caseNumber" && (
+            <div className="case-from__grid__input__search-dropdown">
+              {filteredCases.map((caseNum, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setCaseNumber(caseNum);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {caseNum}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <div className="case-from__grid__input">
-          <label htmlFor="">Offense Category:</label>
-          <select name="" id="" required>
-            <option value="">Offense Category</option>
-            <option value="Offense Category">Offense Category</option>
-          </select>
-          {/* <div className="case-from__grid__input__filled">
-          Criminal Case
-          </div> */}
+          <label htmlFor="">Offence Category:</label>
+          <input
+            type="text"
+            className=""
+            placeholder="Enter Offence"
+            required
+            value={offense}
+            onChange={(e) => setOffense(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "offence"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("offence")
+            }
+          />
+
+          {activeSearchInput === "offence" && (
+            <div className="case-from__grid__input__search-dropdown">
+              {filteredoffences.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setOffense(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <div className="case-from__grid__input">
-          <label htmlFor="">FMoJ Dept:</label>
-          <select name="" id="" required>
-            <option value="">Select FMoJ Dept</option>
-            <option value="FMoJ Dept">FMoJ Dept</option>
-          </select>
-          {/* <div className="case-from__grid__input__filled">
-          Public Prosecution
-          </div> */}
+          <label htmlFor="">Offence Type:</label>
+          <input
+            type="text"
+            className=""
+            placeholder="Enter Offence"
+            required
+            value={offenseType}
+            onChange={(e) => setOffenseType(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "offenceType"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("offenceType")
+            }
+          />
+
+          {activeSearchInput === "offenceType" && (
+            <div className="case-from__grid__input__search-dropdown">
+              {filteredOffenceType?.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setOffenseType(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
+
+      
 
         <div className="case-from__grid__input">
           <label htmlFor="">Assigned Justice Officer:</label>
           <div className="case-from__grid__input__flex">
-            <input type="text" placeholder="Select assigned officer" required />
+            <input type="text" placeholder="Select assigned officer" required
+            
+            value={justiceOfficer}
+            onChange={(e) => setJusticeOfficer(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "justiceOfficer"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("justiceOfficer")
+            }
+            />
             <svg
               width="21"
               height="20"
@@ -268,6 +718,22 @@ export default function CreateCase() {
                 </clipPath>
               </defs>
             </svg>
+
+            {activeSearchInput === "justiceOfficer" && (
+            <div className="case-from__grid__input__flex__search-dropdown">
+              {filteredJusticeOfficers.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setJusticeOfficer(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
           </div>
 
           {/* <div className="case-from__grid__input__contact">
@@ -295,17 +761,40 @@ Ahmed Aisha
             className=""
             placeholder="Type court number"
             required
+            value={court}
+            onChange={(e) => setCourt(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "court"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("court")
+            }
           />
+
+{activeSearchInput === "court" && (
+            <div className="case-from__grid__input__search-dropdown">
+              {filteredCourt.map((court, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setCourt(court);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {court}
+                </div>
+              ))}
+            </div>
+          )}
           {/* <div className="case-from__grid__input__contact">
 Ahmed Aisha
 </div> */}
         </div>
         <div className="case-from__grid__input">
           <label htmlFor="">Court Location:</label>
-          <select name="" id="" required>
-            <option value="">Select court location</option>
-            <option value="Court location">Court location</option>
-          </select>
+        <input type="text"
+        placeholder="Select Court Location"
+        value={courtLocation}
+          onChange={(e) => setCourtLocation(e.target.value)}/>
           {/* <div className="case-from__grid__input__filled">
           Federal High Court, Abuja
           </div> */}
@@ -317,62 +806,46 @@ Ahmed Aisha
             className=""
             placeholder="Type Court Clerk"
             required
+            value={clerk}
+          onChange={(e) => setClerk(e.target.value)}
+          onClick={() =>
+              activeSearchInput === "clerk"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("clerk")
+            }
           />
-          {/* <div className="case-from__grid__input__filled">
-          Hauwa Jada
-          </div> */}
+
+          {activeSearchInput === "clerk" && (
+            <div className="case-from__grid__input__search-dropdown">
+              {filteredClerks.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setClerk(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="case-from__grid__input">
-          <label htmlFor="">Court Location:</label>
-          <select name="" id="" required>
-            <option value="">Select assigned Judge</option>
-            <option value="Assigned Judge">Assigned Judge</option>
-          </select>
-          {/* <div className="case-from__grid__input__contact">
-          Olatunde Cardoso
-</div> */}
-        </div>
-      </div>
-      <div className="case-from__grid">
-        <div className="case-from__grid__input">
-          <label htmlFor="">Charge Sheet No</label>
-          <input
-            type="text"
-            className=""
-            placeholder="Type Sheet No"
-            required
-          />
-          {/* <div className="case-from__grid__input__contact">
-          NPF898458
-</div> */}
-        </div>
-        <div className="case-from__grid__input">
-          <label htmlFor="">Offence Type:</label>
-          <select name="" id="" required>
-            <option value="">Select Offence Type</option>
-            <option value="Offence Type">Offence Type</option>
-          </select>
-          {/* <div className="case-from__grid__input__filled">
-          Armed Robbery
-          </div> */}
-        </div>
-        <div className="case-from__grid__input">
-          <label htmlFor="">Agency:</label>
-          <select name="" id="" required>
-            <option value="">Select Agency</option>
-            <option value="Agency">Agency</option>
-          </select>
-
-          {/* <div className="case-from__grid__input__filled">
-Police
-</div> */}
-        </div>
-
-        <div className="case-from__grid__input">
-          <label htmlFor="">Law Enforcement Officer:</label>
+          <label htmlFor="">Assigned Judge:</label>
           <div className="case-from__grid__input__flex">
-            <input type="text" placeholder="Select assigned officer" required />
+            <input type="text" placeholder="Select assigned officer"
+            //  required
+            
+            value={judge}
+            onChange={(e) => setJudge(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "judge"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("judge")
+            }
+            />
             <svg
               width="21"
               height="20"
@@ -398,6 +871,144 @@ Police
                 </clipPath>
               </defs>
             </svg>
+
+            {activeSearchInput === "judge" && (
+            <div className="case-from__grid__input__flex__search-dropdown">
+              {filteredJudges.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setJudge(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
+          </div>
+          {/* <div className="case-from__grid__input__contact">
+          Olatunde Cardoso
+</div> */}
+        </div>
+      </div>
+      <div className="case-from__grid">
+        <div className="case-from__grid__input">
+          <label htmlFor="">Charge Sheet No</label>
+          <input
+            type="text"
+            className=""
+            placeholder="Type Sheet No"
+            required
+
+            value={chargeSheet}
+            onChange={(e) => setChargeSheet(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "chargeSheet"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("chargeSheet")
+            }
+          />
+          {/* <div className="case-from__grid__input__contact">
+          NPF898458
+</div> */}
+
+{activeSearchInput === "chargeSheet" && (
+            <div className="case-from__grid__input__flex__search-dropdown">
+              {filteredChargeSheet.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setChargeSheet(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="case-from__grid__input">
+          <label htmlFor="">FMoJ Dept:</label>
+          <select name="" id="" required>
+            <option value="">Select FMoJ Dept</option>
+            <option value="FMoJ Dept">FMoJ Dept</option>
+          </select>
+          {/* <div className="case-from__grid__input__filled">
+          Public Prosecution
+          </div> */}
+        </div>
+        <div className="case-from__grid__input">
+          <label htmlFor="">Agency:</label>
+          <input type="text"
+           value={agency}
+           onChange={(e) => setAgency(e.target.value)}
+          disabled
+          />
+
+          {/* <div className="case-from__grid__input__filled">
+Police
+</div> */}
+        </div>
+
+        <div className="case-from__grid__input">
+          <label htmlFor="">Law Enforcement Officer:</label>
+          <div className="case-from__grid__input__flex">
+            <input type="text" placeholder="Select assigned officer" required
+            
+            value={lawOfficer}
+            onChange={(e) => setLawOfficer(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "lawOfficer"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("lawOfficer")
+            }
+            />
+
+            
+            <svg
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_4643_76588)">
+                <path
+                  d="M15.4497 14.9489C12.7161 17.6825 8.28392 17.6825 5.55025 14.9489C2.81658 12.2152 2.81658 7.78303 5.55025 5.04936C8.28392 2.31569 12.7161 2.31569 15.4497 5.04936C18.1834 7.78303 18.1834 12.2152 15.4497 14.9489ZM15.4497 14.9489L21 20.4991"
+                  stroke="#7E92A2"
+                  stroke-width="1.5"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_4643_76588">
+                  <rect
+                    width="20"
+                    height="20"
+                    fill="white"
+                    transform="translate(0.5)"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+
+            {activeSearchInput === "lawOfficer" && (
+            <div className="case-from__grid__input__flex__search-dropdown">
+              {filteredlawOfficers.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setLawOfficer(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
           </div>
 
           {/* <div className="case-from__grid__input__contact">
@@ -476,6 +1087,8 @@ Ahmed Aisha
               id=""
               placeholder="Type Accused First Name"
               required
+              value={accusedFirstName}
+              onChange={(e) => setAccusedFirstName(e.target.value)}
             />
             {/* <div className="case-from__accused__bio__input__filled">
             Frank  Ammadou
@@ -493,6 +1106,8 @@ Ahmed Aisha
               id=""
               placeholder="Type Accused Middle Name"
               required
+              value={accusedMiddleName}
+              onChange={(e) => setAccusedMiddleName(e.target.value)}
             />
            
             {/* <div className="case-from__accused__bio__input__filled">
@@ -511,6 +1126,8 @@ Ahmed Aisha
               id=""
               placeholder="Type Accused Last Name"
               required
+              value={accusedLastName}
+              onChange={(e) => setAccusedLastName(e.target.value)}
             />
            
             {/* <div className="case-from__accused__bio__input__filled">
@@ -529,6 +1146,8 @@ Ahmed Aisha
               id=""
               placeholder="Type Accused Alias"
               required
+              value={accusedAlias}
+              onChange={(e) => setAccusedAlias(e.target.value)}
             />
 
             {/* <div className="case-from__accused__bio__input__filled">
@@ -547,6 +1166,8 @@ Ahmed Aisha
               id=""
               placeholder="Type NIN"
               required
+              value={accusedNin}
+              onChange={(e) => setAccusedNin(e.target.value)}
             />
 
             {/* <div className="case-from__accused__bio__input__filled">
@@ -565,6 +1186,8 @@ Ahmed Aisha
               id=""
               placeholder="Type BVN"
               required
+              value={accusedBvn}
+              onChange={(e) => setAccusedBvn(e.target.value)}
             />
 
             {/* <div className="case-from__accused__bio__input__filled">
@@ -575,22 +1198,30 @@ Ahmed Aisha
 
               </div> */}
           </div>
-          <div className="case-from__accused__bio__input">
+          {/* <div className="case-from__accused__bio__input">
             <label htmlFor="">Case Status:</label>
 
             <select name="" id="" required>
               <option value="">Select Status</option>
               <option value="Status">Status</option>
             </select>
-            {/* <button className="case-from__accused__bio__input__case-status" disabled>
+            <button className="case-from__accused__bio__input__case-status" disabled>
           Filed in Court
-            </button> */}
-          </div>
+            </button>
+          </div> */}
           <div className="case-from__accused__bio__input">
             <label htmlFor="">Accused Status:</label>
-            <select name="" id="" required>
+            <select name="" id="" required
+            
+            value={accusedStatus}
+            onChange={(e) => setAccusedStatus(e.target.value)}
+            >
               <option value="">Select Accused Status</option>
-              <option value="Accused Status">Accused Status</option>
+              <option value="On Bail">On Bail</option>
+              <option value="In Custody">In Custody</option>
+              <option value="Convicted">Convicted</option>
+              <option value="Discharged">Discharged</option>
+              <option value="Deceased">Deceased</option>
             </select>
             {/* <button className="case-from__accused__bio__input__case-remanded" disabled>
           Remamnded in Jail
@@ -604,6 +1235,8 @@ Ahmed Aisha
               id=""
               placeholder="Type Accused Full Name"
               required
+              value={dateInitiated}
+            onChange={(e) => setDateInitiated(e.target.value)}
             />
 
             {/* <button className="case-from__accused__bio__input__case-date" disabled>
@@ -612,15 +1245,22 @@ Ahmed Aisha
           </div>
           <div className="case-from__accused__bio__input case-from__accused__bio__assoc">
             <label htmlFor="">Known Associates:</label>
-            <select name="" id="" required>
-              <option value="">Type Associates</option>
-              <option value="Associates">Associates</option>
-            </select>
+         {/* <form onSubmit={handleAssAssoc}> */}
+       <div>
+       <input type="text" placeholder="Enter Known Associates"
+          value={assoc}
+          onChange={(e) => setAssoc(e.target.value)}
+          />
+          <button
+          onClick={handleAssAssoc}
+          type="button"
+          >Add</button>
+       </div>
+         {/* </form> */}
 
-            <div className="case-from__accused__bio__assoc__list">
-              <div>Shekau Ahmed</div>
-              <div></div>
-            </div>
+            {associate?.length > 0 && <div className="case-from__accused__bio__assoc__list">
+              {associate?.map((item) => <div>{item?.name}</div>)}
+            </div>}
 
             {/* <div className="case-from__accused__bio__input__case-assoc">
               <div>Okoro Madu</div>
@@ -637,6 +1277,9 @@ Ahmed Aisha
               id=""
               placeholder="Insert the legal basis"
               required
+
+              value={legalBasis}
+              onChange={(e) => setLegalBasis(e.target.value)}
             ></textarea>
           </div>
           <div className="case-from__accused__details__input">
@@ -646,6 +1289,8 @@ Ahmed Aisha
               id=""
               placeholder="Insert the particulars of offence"
               required
+              value={particularsOfOffense}
+              onChange={(e) => setParticularsOfOffense(e.target.value)}
             ></textarea>
           </div>
           <div className="case-from__accused__details__input">
@@ -655,6 +1300,8 @@ Ahmed Aisha
               id=""
               placeholder="Insert the charge details"
               required
+              value={chargeDetails}
+              onChange={(e) => setChargeDetails(e.target.value)}
             ></textarea>
           </div>
           <div className="case-from__accused__details__input">
@@ -664,6 +1311,8 @@ Ahmed Aisha
               id=""
               placeholder="Insert the legal brief and memoranda"
               required
+              value={legalBriefAndMemoranda}
+              onChange={(e) => setLegalBriefAndMemoranda(e.target.value)}
             ></textarea>
           </div>
         </div>
@@ -762,7 +1411,7 @@ Ahmed Aisha
           <Image
             className="case-from__accused__bio__img"
             alt=""
-            src={`https://${item}`}
+            src={`https://${item?.url}`}
             width={349}
             height={273}
             style={{

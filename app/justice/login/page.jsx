@@ -1,6 +1,6 @@
 "use client";
 
-import { login, requestOtp, verifyOtp } from "@/app/apis/auth";
+import { changPassword, login, requestOtp, verifyOtp } from "@/app/apis/auth";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -12,12 +12,17 @@ export default function Auth() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const [token, setToken] = useState("");
+  const [id, setId] = useState("");
   const [otp1, setOtp1] = useState("");
   const [otp2, setOtp2] = useState("");
   const [otp3, setOtp3] = useState("");
   const [otp4, setOtp4] = useState("");
   const [otp5, setOtp5] = useState("");
   const [otp6, setOtp6] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [modalOpenTwo, setmodalOpenTwo] = useState(false);
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -62,7 +67,14 @@ export default function Auth() {
           token: response?.data?.token,
         },
       });
-      window.location.href = "/justice/dashboard"
+
+      if(!response?.data?.user?.passwordChange) {
+        setToken(response?.data?.token)
+        setId(response?.data?.user?.id)
+        setmodalOpenTwo(true);
+      }else{
+        window.location.href = "/justice/dashboard"
+      }
     }
     else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
       window.location.href = "/justice/unauthorized"
@@ -100,6 +112,16 @@ export default function Auth() {
 
   }
 
+
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+    const response = await changPassword(password, confirmNewPassword, id, token);
+    console.log('response', response);
+    // alert('Password updated')
+    // window.location.href = "/justice/dashboard"
+
+
+  }
   
   const handleModalClose = (e) => {
     if (e.target.classList.contains("auth__modal")) {
@@ -254,6 +276,34 @@ Department of Public Prosecution Portal
           <button
           disabled={loading}
           >{loading ? "Loading..." : "Verify OTP"}</button>
+   
+</form>
+    </div>}
+      {modalOpenTwo && <div className="auth__modal"
+      onClick={handleModalClose}
+      >
+       <form className="auth__modal__inner" onSubmit={handleChangePassword}>
+       <div className="auth__modal__inner__title">
+       Change password
+        </div>
+       <div className="auth__modal__inner__subtitle">
+       You are currently using a default password that was sent to {officialEmail}. Please create a new password
+        </div>
+<label>Password</label>
+        <input type="password" className="auth__modal__inner__input" value={newPassword}
+        onChange={(e) => setNewPassword(e.target.value)}
+        required
+        />
+<label>Confirm Password</label>
+        <input type="password" className="auth__modal__inner__input" value={confirmNewPassword}
+        onChange={(e) => setConfirmNewPassword(e.target.value)}
+        required
+        />
+
+
+          <button
+          disabled={loading}
+          >{loading ? "Loading..." : "Change password"}</button>
    
 </form>
     </div>}

@@ -11,6 +11,7 @@
     padding: 24px;
 
     &__input {
+      position: relative;
       width: 100%;
       border-radius: 8px;
       & > label {
@@ -37,6 +38,34 @@
           outline: none;
           background: transparent;
         }
+
+        &__search-dropdown {
+          position: absolute;
+          width: 100%;
+          height: 150px;
+          overflow-y: auto;
+          background: #f6fafd;
+          // color: #000;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          top: 78px;
+          left: 0;
+  
+          & > div {
+            min-height: 50px;
+            width: 100%;
+            padding: 0 14px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+  
+            &:hover {
+              background: #e5eff7;
+              color: #000;
+            }
+          }
+        }
       }
 
       &__filled {
@@ -52,6 +81,32 @@ display: flex;
 align-items: center;
 gap: 10px;
 text-decoration: underline;
+      }
+
+      &__search-dropdown {
+        position: absolute;
+        width: 100%;
+        height: 150px;
+        overflow-y: auto;
+        background: #f6fafd;
+        // color: #000;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+
+        & > div {
+          min-height: 50px;
+          width: 100%;
+          padding: 0 14px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          &:hover {
+            background: #e5eff7;
+            color: #000;
+          }
+        }
       }
     }
   }
@@ -161,6 +216,23 @@ color: #000;
       }
 
       &__assoc {
+        
+      & > div {
+        display: flex;
+        gap: 10px;
+
+        & > input {
+          @extend %case-input;
+
+        }
+
+        & > button {
+          @extend %create-button;
+          width: 80px;
+          min-height: 100%;
+          border-radius: 8px;
+        }
+      }
 
         &__list {
           width: 100%;

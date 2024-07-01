@@ -193,6 +193,12 @@ font-weight: 600;
             outline: none;
           }
         }
+
+        &__input {
+          @extend %case-input;
+          margin-top: 10px;
+          margin-bottom: 30px;
+        }
   
         &__request {
           text-align: center;
