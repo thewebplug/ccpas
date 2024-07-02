@@ -1067,7 +1067,7 @@ Ahmed Aisha
          {/* </form> */}
 
             {keywords?.length > 0 && <div className="case-from__grid__assoc__list">
-              {keywords?.map((item) => <div>{item}</div>)}
+              {keywords?.map((item, index) => <div key={index}>{item}</div>)}
             </div>}
 
             {/* <div className="case-from__accused__bio__input__case-assoc">
@@ -1093,7 +1093,7 @@ Ahmed Aisha
          {/* </form> */}
 
             {metadatas?.length > 0 && <div className="case-from__grid__assoc__list">
-              {metadatas?.map((item) => <div>{item}</div>)}
+              {metadatas?.map((item, index) => <div key={index}>{item}</div>)}
             </div>}
 
             {/* <div className="case-from__accused__bio__input__case-assoc">
@@ -1334,7 +1334,7 @@ Ahmed Aisha
          {/* </form> */}
 
             {associate?.length > 0 && <div className="case-from__accused__bio__assoc__list">
-              {associate?.map((item) => <div>{item?.name}</div>)}
+              {associate?.map((item, index) => <div key={index}>{item?.name}</div>)}
             </div>}
 
             {/* <div className="case-from__accused__bio__input__case-assoc">
