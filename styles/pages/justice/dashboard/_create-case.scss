@@ -109,6 +109,52 @@ text-decoration: underline;
         }
       }
     }
+
+    &__assoc {
+        
+      & > div {
+        display: flex;
+        gap: 10px;
+
+        & > input {
+          @extend %case-input;
+
+        }
+
+        & > button {
+          @extend %create-button;
+          width: 80px;
+          min-height: 100%;
+          border-radius: 8px;
+        }
+      }
+
+        &__list {
+          width: 100%;
+          max-width: 200px;
+          display: flex;
+          gap: 5px;
+          flex-wrap: wrap;
+          margin-top: 8px;
+
+          & > div {
+            width: fit-content;
+            height: 29px;
+            padding: 0 16px;
+            border: 1px solid rgba(46, 46, 46, 1);
+            font-family: Inter;
+font-size: 14px;
+font-weight: 400;
+color: rgba(9, 44, 76, 1);
+border-radius: 40px;
+display: flex;
+align-items: center;
+justify-content: start;
+white-space: nowrap;
+overflow: hidden;
+          }
+        }
+      }
   }
 
   &__accused {

@@ -265,6 +265,10 @@ export default function CreateCase() {
   const [particularsOfOffense, setParticularsOfOffense] = useState("");
   const [chargeDetails, setChargeDetails] = useState("");
   const [legalBriefAndMemoranda, setLegalBriefAndMemoranda] = useState("");
+  const [metadata, setMetadata] = useState("");
+  const [metadatas, setMetadatas] = useState([]);
+  const [keyword, setKeyword] = useState("");
+  const [keywords, setKeywords] = useState([]);
 
   const handleCreateCase = async (e) => {
     e.preventDefault();
@@ -578,6 +582,24 @@ export default function CreateCase() {
     setFilteredLawOfficers(temp);
   }, [lawOfficer]);
 
+
+  
+  const handleAddMetadata = () => {
+    if(metadata !== "") {
+      const temp = metadatas;
+      temp.push(metadata);
+      setMetadatas([...temp]);
+      setMetadata("")
+     }
+  }
+  const handleAddKeyword = () => {
+    if(keyword !== "") {
+      const temp = keywords;
+      temp.push(keyword);
+      setKeywords([...temp]);
+      setKeyword("")
+     }
+  }
   return (
     <form className="case-from" onSubmit={handleCreateCase}>
       <div className="case-from__grid">
@@ -1027,6 +1049,59 @@ Ahmed Aisha
 
           </div> */}
         </div>
+      </div>
+      <div className="case-from__grid case-from__grid-mini">
+      <div className="case-from__grid__input case-from__grid__assoc">
+            <label htmlFor="">Keywords:</label>
+         {/* <form onSubmit={handleAssAssoc}> */}
+       <div>
+       <input type="text" placeholder="Enter keyword related to record"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          />
+          <button
+          onClick={handleAddKeyword}
+          type="button"
+          >Add</button>
+       </div>
+         {/* </form> */}
+
+            {keywords?.length > 0 && <div className="case-from__grid__assoc__list">
+              {keywords?.map((item) => <div>{item}</div>)}
+            </div>}
+
+            {/* <div className="case-from__accused__bio__input__case-assoc">
+              <div>Okoro Madu</div>
+              <div>Shekau Ahmed</div>
+              <div>Tope Adeniyi</div>
+            </div> */}
+          </div>
+
+          <div className="case-from__grid__input case-from__grid__assoc">
+            <label htmlFor="">Tags:</label>
+         {/* <form onSubmit={handleAssAssoc}> */}
+       <div>
+       <input type="text" placeholder="Enter tag related to record"
+          value={metadata}
+          onChange={(e) => setMetadata(e.target.value)}
+          />
+          <button
+          onClick={handleAddMetadata}
+          type="button"
+          >Add</button>
+       </div>
+         {/* </form> */}
+
+            {metadatas?.length > 0 && <div className="case-from__grid__assoc__list">
+              {metadatas?.map((item) => <div>{item}</div>)}
+            </div>}
+
+            {/* <div className="case-from__accused__bio__input__case-assoc">
+              <div>Okoro Madu</div>
+              <div>Shekau Ahmed</div>
+              <div>Tope Adeniyi</div>
+            </div> */}
+          </div>
       </div>
 
       <div className="case-from__accused">
