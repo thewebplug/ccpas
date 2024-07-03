@@ -21,7 +21,7 @@ export const requestAccess = async (
       govId,
       // password,
     });
-    const res = await axios.post(`http://54.149.227.204:3000/auth/register`, {
+    const res = await axios.post(`https://sso.centraconnect.ai/auth/register`, {
       officialEmail,
       supervisorEmail,
       dob,
@@ -42,8 +42,9 @@ export const requestAccess = async (
 };
 
 export const login = async (officialEmail, govId, password) => {
+  console.log({officialEmail, govId, password});
   try {
-    const res = await axios.post(`http://54.149.227.204:3000/auth/login`, {
+    const res = await axios.post(`https://sso.centraconnect.ai/auth/login`, {
       officialEmail,
       govId,
       password,
@@ -57,7 +58,7 @@ export const login = async (officialEmail, govId, password) => {
 };
 export const adminLogin = async (officialEmail, govId, password) => {
   try {
-    const res = await axios.post(`http://54.149.227.204:3000/auth/login-admin`, {
+    const res = await axios.post(`https://sso.centraconnect.ai/auth/login-admin`, {
       officialEmail,
       govId,
       password,
@@ -71,7 +72,7 @@ export const adminLogin = async (officialEmail, govId, password) => {
 };
 export const verifyOtp = async (officialEmail, otp) => {
   try {
-    const res = await axios.post(`http://54.149.227.204:3000/auth/verify-otp`, {
+    const res = await axios.post(`https://sso.centraconnect.ai/auth/verify-otp`, {
       officialEmail,
       otp,
     });
@@ -84,7 +85,7 @@ export const verifyOtp = async (officialEmail, otp) => {
 };
 export const requestOtp = async (officialEmail) => {
   try {
-    const res = await axios.post(`http://54.149.227.204:3000/auth/resend-otp`, {
+    const res = await axios.post(`https://sso.centraconnect.ai/auth/resend-otp`, {
       officialEmail,
     });
 
@@ -102,7 +103,7 @@ export const changPassword = async (currentPassword, newPassword, id, token) => 
     },
   };
   try {
-    const res = await axios.patch(`http://54.149.227.204:3000/auth/update-password`, {
+    const res = await axios.patch(`https://sso.centraconnect.ai/auth/update-password`, {
       currentPassword,
       newPassword,
     },

@@ -69,7 +69,7 @@ export const createCase = async (
       mugshot
     },);
     const res = await axios.post(
-      `http://54.202.142.106:3000/fmoj/case`,
+      `https://ccppas.centraconnect.ai/fmoj/case`,
       {
         caseNumber,
         offenseCategory,
@@ -118,7 +118,7 @@ export const getCases = async (token) => {
     },
   };
   try {
-    const res = await axios.get(`http://54.202.142.106:3000/fmoj/cases`,
+    const res = await axios.get(`https://ccppas.centraconnect.ai/fmoj/cases`,
       config
     );
 
@@ -136,7 +136,7 @@ export const getCase = async (id, token) => {
     },
   };
   try {
-    const res = await axios.get(`http://54.202.142.106:3000/fmoj/case/${id}`,
+    const res = await axios.get(`https://ccppas.centraconnect.ai/fmoj/case/${id}`,
       config
     );
 
@@ -158,7 +158,7 @@ export const assignCase = async (id, name, token) => {
     },
   };
   try {
-    const res = await axios.put(`http://54.202.142.106:3000/crud/assigned-judge/${id}`, {
+    const res = await axios.put(`https://ccppas.centraconnect.ai/crud/assigned-judge/${id}`, {
       name
     },
     config
