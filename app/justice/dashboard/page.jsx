@@ -19,7 +19,7 @@ export default function Dashboard() {
               <h2 className="dashboard-home__card1__title-group__title">
                 Hi, Aisha
               </h2>
-              <button className="dashboard-home__card1__title-group__button"
+              {/* <button className="dashboard-home__card1__title-group__button"
               onClick={() => window.location.href = "/justice/dashboard/create-case"}
               >
                 Create New Case file
@@ -39,7 +39,7 @@ export default function Dashboard() {
                     fill="#ECECFE"
                   />
                 </svg>
-              </button>
+              </button> */}
             </div>
             <h2 className="dashboard-home__card1__subtitle">
               Dashboard: <span>Cases</span>

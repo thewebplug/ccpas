@@ -543,7 +543,7 @@ export default function CreateCase() {
             </div>
           </div>
           <div className="case-details__inner__grid__input">
-            <label htmlFor="">Offence Type:</label>
+            <label htmlFor="">Offense Type:</label>
             {/* <select name="" id="">
             <option value="">Select Offence Type</option>
           </select> */}
@@ -948,24 +948,45 @@ export default function CreateCase() {
         </div>
 
         <div className="case-details__assets">
-          <div className="case-details__assets__title">Siezed Assets</div>
+          <div className="case-details__assets__title">Seized Assets</div>
           <div className="case-details__assets__inner">
-            {singleCase?.externalAssets?.map((item) => (
-              <div
-              onClick={() => window.open(`http://localhost:3001/dashboard/records/${item?.id}`, '_blank', 'noopener,noreferrer')}
-              >
-                <div>
-                  <Image
+         
+{singleCase?.externalAssets?.map((item) => (
+            <div className="case-details__assets__inner__item"
+            onClick={() => window.open(`http://localhost:3001/dashboard/records/${item?.id}`, '_blank', 'noopener,noreferrer')}
+            >
+            <div>
+            <Image
                     alt=""
                     src="/assets/Image (2).png"
-                    layout="fill"
+                    width={40}
+                    height={40}
                     objectFit="cover"
-                    style={{ borderRadius: "12px" }}
+                    style={{ borderRadius: "50%" }}
                   />
-                </div>
-                <div>{item?.assetType}</div>
-              </div>
-            ))}
+
+<div>{item?.assetType}</div>
+<div>{item?.assetType}</div>
+            </div>
+<div className="case-details__assets__inner__item__status">{item?.storageStatus}</div>
+            </div>))}
+{singleCase?.externalAssets?.map((item) => (
+            <div className="case-details__assets__inner__item">
+            <div>
+            <Image
+                    alt=""
+                    src="/assets/Image (2).png"
+                    width={40}
+                    height={40}
+                    objectFit="cover"
+                    style={{ borderRadius: "50%" }}
+                  />
+
+<div>{item?.assetType}</div>
+<div>{item?.assetType}</div>
+            </div>
+<div className="case-details__assets__inner__item__status">{item?.storageStatus}</div>
+            </div>))}
           </div>
         </div>
 
