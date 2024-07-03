@@ -186,9 +186,10 @@ export default function Cases() {
           <div>Assignee</div>
         </div>
 
-        {cases?.map((item) => (
+        {cases?.map((item, index) => (
           <div
             className="cases__table__body"
+            key={index}
             onClick={() => {
               // if (assignee) {
                 window.location.href = `/justice/dashboard/case-details/${item?.id}`
