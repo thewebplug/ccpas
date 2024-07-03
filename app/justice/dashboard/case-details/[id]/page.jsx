@@ -951,9 +951,10 @@ export default function CreateCase() {
           <div className="case-details__assets__title">Seized Assets</div>
           <div className="case-details__assets__inner">
          
-{singleCase?.externalAssets?.map((item) => (
+{singleCase?.externalAssets?.map((item, index) => (
             <div className="case-details__assets__inner__item"
             onClick={() => window.open(`http://localhost:3001/dashboard/records/${item?.id}`, '_blank', 'noopener,noreferrer')}
+            key={index}
             >
             <div>
             <Image
