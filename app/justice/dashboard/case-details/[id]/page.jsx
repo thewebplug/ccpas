@@ -778,8 +778,8 @@ export default function CreateCase() {
             </div> */}
 
               <div className="case-details__inner__accused__bio__input__case-assoc">
-                {singleCase?.associate?.map((item) => (
-                  <div>{item?.name}</div>
+                {singleCase?.associate?.map((item, index) => (
+                  <div key={index}>{item?.name}</div>
                 ))}
               </div>
             </div>
@@ -861,8 +861,8 @@ export default function CreateCase() {
                 />
               </svg>
             </div> */}
-            {singleCase?.attachment?.map((item) => (
-              <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled">
+            {singleCase?.attachment?.map((item, index) => (
+              <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled" key={index}>
                 {/* Attach Charge sheet */}
                 <div>
                   <svg
@@ -930,7 +930,7 @@ export default function CreateCase() {
           <div className="case-details__mugshot__subtitle"></div>
         </div>
         <div className="case-details__mugshots">
-          {singleCase?.mugshot && singleCase?.mugshot?.map((item) =>
+          {singleCase?.mugshot && singleCase?.mugshot?.map((item, index) =>
         
         {<Image
             className="case-details__accused__bio__img"
@@ -943,6 +943,7 @@ export default function CreateCase() {
               borderRadius: "12px",
               minWidth: "349px",
             }}
+            key={index}
           />}
         ) }
         </div>
@@ -971,8 +972,11 @@ export default function CreateCase() {
             </div>
 <div className="case-details__assets__inner__item__status">{item?.storageStatus}</div>
             </div>))}
-{singleCase?.externalAssets?.map((item) => (
-            <div className="case-details__assets__inner__item">
+{singleCase?.externalAssets?.map((item, index) => (
+            <div className="case-details__assets__inner__item"
+            onClick={() => window.open(`http://localhost:3001/dashboard/records/${item?.id}`, '_blank', 'noopener,noreferrer')}
+            key={index}
+            >
             <div>
             <Image
                     alt=""
@@ -988,6 +992,7 @@ export default function CreateCase() {
             </div>
 <div className="case-details__assets__inner__item__status">{item?.storageStatus}</div>
             </div>))}
+
           </div>
         </div>
 
