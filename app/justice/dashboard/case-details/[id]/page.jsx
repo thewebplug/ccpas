@@ -954,7 +954,7 @@ export default function CreateCase() {
 
 {singleCase?.externalAssets && singleCase?.externalAssets?.map((item, index) => (
             <div className="case-details__assets__inner__item"
-            onClick={() => window.open(`http://localhost:3001/dashboard/records/${item?.id}`, '_blank', 'noopener,noreferrer')}
+            onClick={() => window.open(`https://asmss.netlify.app/dashboard/records/${item?.id}`, '_blank', 'noopener,noreferrer')}
             key={index}
             >
             <div>
