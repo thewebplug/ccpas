@@ -1,4 +1,3 @@
-"use client"
 import DashboardHeader from "@/app/components/dashboardHeader";
 import DashboardSideBar from "@/app/components/dashboardSideBar";
 import Image from "next/image";
