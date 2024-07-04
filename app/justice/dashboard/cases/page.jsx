@@ -185,10 +185,10 @@ export default function Cases() {
           <div>Type</div>
           <div>Assignee</div>
         </div>
-
+<div className="cases__table__inner">
         {cases?.map((item, index) => (
           <div
-            className="cases__table__body"
+            className="cases__table__inner__body"
             key={index}
             onClick={() => {
               // if (assignee) {
@@ -200,39 +200,39 @@ export default function Cases() {
             <div>{item?.caseNumber}</div>
             <div>{item?.agency}</div>
             {item?.caseStatus == "Unassigned" &&
-            <button className="cases__table__body__case-status cases__table__body__unassigned">
+            <button className="cases__table__inner__body__case-status cases__table__inner__body__unassigned">
             Unassigned
           </button>
               }
-              {item?.caseStatus == "Under review" && <button className="cases__table__body__case-status cases__table__body__review">
+              {item?.caseStatus == "Under review" && <button className="cases__table__inner__body__case-status cases__table__inner__body__review">
                 Under review
               </button>}
               
            { item?.accusedStatus == "On Bail" &&
-<button className="cases__table__body__accused-status cases__table__body__bail">
+<button className="cases__table__inner__body__accused-status cases__table__inner__body__bail">
 On Bail
             </button>}
            { item?.accusedStatus == "In Custody" &&
-<button className="cases__table__body__accused-status cases__table__body__custody">
+<button className="cases__table__inner__body__accused-status cases__table__inner__body__custody">
 In Custody
             </button>}
            { item?.accusedStatus == "Convicted" &&
-<button className="cases__table__body__accused-status cases__table__body__convicted">
+<button className="cases__table__inner__body__accused-status cases__table__inner__body__convicted">
 Convicted
             </button>}
            { item?.accusedStatus == "Discharged" &&
-<button className="cases__table__body__accused-status cases__table__body__discharged">
+<button className="cases__table__inner__body__accused-status cases__table__inner__body__discharged">
 Discharged
             </button>}
            { item?.accusedStatus == "Deceased" &&
-<button className="cases__table__body__accused-status cases__table__body__deceased">
+<button className="cases__table__inner__body__accused-status cases__table__inner__body__deceased">
 Deceased
             </button>}
             <div>{item?.offenseCategory}</div>
             <div>{item?.offenseType}</div>
             {item?.assignedJudge === "" ? (
               <div
-              className="cases__table__body__assign"
+              className="cases__table__inner__body__assign"
               onClick={(e) => {
                 e.stopPropagation();
                 setModalOpen(1)
@@ -256,7 +256,7 @@ Deceased
             ) : (
               item?.assignedJudge
             )}
-            <div className="cases__table__body__options"
+            <div className="cases__table__inner__body__options"
             onClick={handleClick}
             >
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -265,7 +265,7 @@ Deceased
 <path d="M2.5 5.0013H4.16667M4.16667 5.0013H17.5M4.16667 5.0013V16.668C4.16667 17.11 4.34226 17.5339 4.65482 17.8465C4.96738 18.159 5.39131 18.3346 5.83333 18.3346H14.1667C14.6087 18.3346 15.0326 18.159 15.3452 17.8465C15.6577 17.5339 15.8333 17.11 15.8333 16.668V5.0013H4.16667ZM6.66667 5.0013V3.33464C6.66667 2.89261 6.84226 2.46868 7.15482 2.15612C7.46738 1.84356 7.89131 1.66797 8.33333 1.66797H11.6667C12.1087 1.66797 12.5326 1.84356 12.8452 2.15612C13.1577 2.46868 13.3333 2.89261 13.3333 3.33464V5.0013M8.33333 9.16797V14.168M11.6667 9.16797V14.168" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 
-<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+{/* <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
  onClick={(e) => {
   e.stopPropagation();
   window.location.href = "/justice/dashboard/edit-case"
@@ -279,7 +279,7 @@ Deceased
 <rect width="20" height="20" fill="white"/>
 </clipPath>
 </defs>
-</svg>
+</svg> */}
 
             </div>
 
@@ -287,8 +287,9 @@ Deceased
 
           </div>
         ))}
+</div>
         {/* <div
-          className="cases__table__body"
+          className="cases__table__inner__body"
           onClick={() =>
             (window.location.href = "/justice/dashboard/case-details")
           }
@@ -296,16 +297,16 @@ Deceased
           <div>11-03-2024</div>
           <div>EF18964</div>
           <div>EFCC</div>
-          <button className="cases__table__body__case-status cases__table__body__review">
+          <button className="cases__table__inner__body__case-status cases__table__inner__body__review">
             Under review
           </button>
-          <button className="cases__table__body__accused-status cases__table__body__remanded">
+          <button className="cases__table__inner__body__accused-status cases__table__inner__body__remanded">
             Remanded In Jail
           </button>
           <div>Cyber Crime</div>
           <div>Criminal Case</div>
           <div>Ifesinachi Eze</div>
-          <div className="cases__table__body__options">
+          <div className="cases__table__inner__body__options">
             <svg
               width="24"
               height="25"
@@ -323,7 +324,7 @@ Deceased
           </div>
         </div>
         <div
-          className="cases__table__body"
+          className="cases__table__inner__body"
           onClick={() =>
             (window.location.href = "/justice/dashboard/case-details")
           }
@@ -331,16 +332,16 @@ Deceased
           <div>11-03-2024</div>
           <div>EF18964</div>
           <div>EFCC</div>
-          <button className="cases__table__body__case-status cases__table__body__filed">
+          <button className="cases__table__inner__body__case-status cases__table__inner__body__filed">
             Filed in Court
           </button>
-          <button className="cases__table__body__accused-status cases__table__body__wanted">
+          <button className="cases__table__inner__body__accused-status cases__table__inner__body__wanted">
             Wanted
           </button>
           <div>Cyber Crime</div>
           <div>Criminal Case</div>
           <div>Ifesinachi Eze</div>
-          <div className="cases__table__body__options">
+          <div className="cases__table__inner__body__options">
             <svg
               width="24"
               height="25"
@@ -358,7 +359,7 @@ Deceased
           </div>
         </div>
         <div
-          className="cases__table__body"
+          className="cases__table__inner__body"
           onClick={() =>
             (window.location.href = "/justice/dashboard/case-details")
           }
@@ -366,16 +367,16 @@ Deceased
           <div>11-03-2024</div>
           <div>EF18964</div>
           <div>EFCC</div>
-          <button className="cases__table__body__case-status cases__table__body__closed">
+          <button className="cases__table__inner__body__case-status cases__table__inner__body__closed">
             Closed
           </button>
-          <button className="cases__table__body__accused-status cases__table__body__acquitted">
+          <button className="cases__table__inner__body__accused-status cases__table__inner__body__acquitted">
             Acquitted
           </button>
           <div>Cyber Crime</div>
           <div>Criminal Case</div>
           <div>Ifesinachi Eze</div>
-          <div className="cases__table__body__options">
+          <div className="cases__table__inner__body__options">
             <svg
               width="24"
               height="25"
@@ -393,7 +394,7 @@ Deceased
           </div>
         </div>
         <div
-          className="cases__table__body"
+          className="cases__table__inner__body"
           onClick={() =>
             (window.location.href = "/justice/dashboard/case-details")
           }
@@ -401,16 +402,16 @@ Deceased
           <div>11-03-2024</div>
           <div>EF18964</div>
           <div>EFCC</div>
-          <button className="cases__table__body__case-status cases__table__body__re-opened">
+          <button className="cases__table__inner__body__case-status cases__table__inner__body__re-opened">
             Re-Opened
           </button>
-          <button className="cases__table__body__accused-status cases__table__body__remanded">
+          <button className="cases__table__inner__body__accused-status cases__table__inner__body__remanded">
             Remanded In Jail
           </button>
           <div>Cyber Crime</div>
           <div>Criminal Case</div>
           <div>Ifesinachi Eze</div>
-          <div className="cases__table__body__options">
+          <div className="cases__table__inner__body__options">
             <svg
               width="24"
               height="25"
@@ -428,7 +429,7 @@ Deceased
           </div>
         </div>
         <div
-          className="cases__table__body"
+          className="cases__table__inner__body"
           onClick={() =>
             (window.location.href = "/justice/dashboard/case-details")
           }
@@ -436,16 +437,16 @@ Deceased
           <div>11-03-2024</div>
           <div>EF18964</div>
           <div>EFCC</div>
-          <button className="cases__table__body__case-status cases__table__body__review">
+          <button className="cases__table__inner__body__case-status cases__table__inner__body__review">
             Under review
           </button>
-          <button className="cases__table__body__accused-status cases__table__body__remanded">
+          <button className="cases__table__inner__body__accused-status cases__table__inner__body__remanded">
             Remanded In Jail
           </button>
           <div>Cyber Crime</div>
           <div>Criminal Case</div>
           <div>Ifesinachi Eze</div>
-          <div className="cases__table__body__options">
+          <div className="cases__table__inner__body__options">
             <svg
               width="24"
               height="25"

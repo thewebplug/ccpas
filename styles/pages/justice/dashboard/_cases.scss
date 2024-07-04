@@ -89,6 +89,13 @@
         }
       }
 
+  &__inner {
+    height: 500px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
     &__body {
       position: relative;
       @extend %title-14;
@@ -197,11 +204,12 @@ color: #009B07;
         cursor: pointer;
       }
     }
+  }
 
     &__footer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
+      // position: absolute;
+      // bottom: 0;
+      // left: 0;
         @extend %title-16;
         font-weight: 500;
         width: 100%;
