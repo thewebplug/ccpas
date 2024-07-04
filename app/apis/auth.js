@@ -105,6 +105,7 @@ export const changPassword = async (currentPassword, newPassword, id, token) => 
   };
   try {
     const res = await axios.patch(`https://sso.centraconnect.ai/auth/update-password`, {
+      id,
       currentPassword,
       newPassword,
     },
