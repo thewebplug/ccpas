@@ -17,6 +17,8 @@ export default function CreateCase() {
   const [loading, setLoading] = useState(false);
   const mediaRef = useRef(null);
   const [singleCase, setSingleCase] = useState(null);
+  const [singleCaseMughsots, setSingleCaseMughsots] = useState([]);
+  const [singleCaseAttachment, setSingleCaseAttachment] = useState([]);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -34,6 +36,10 @@ export default function CreateCase() {
 
   //...
 
+  console.log("singleCase?.__mugshot__", singleCase?.__mugshot__);
+  console.log("singleCaseAttachment", singleCaseAttachment);
+  console.log("singleCaseMughsots", singleCaseMughsots);
+
   const handleModalClose = (e) => {
     if (e.target.classList.contains("case-details__modal")) {
       setModalOpen(false);
@@ -44,6 +50,18 @@ export default function CreateCase() {
 
     console.log("handleGetCase", response);
     setSingleCase(response?.data);
+    setSingleCaseMughsots(
+      response?.data?.__mugshot__?.slice(
+        0,
+        response?.data?.__mugshot__?.length / 2
+      )
+    );
+    setSingleCaseAttachment(
+      response?.data?.__attachment__?.slice(
+        0,
+        response?.data?.__attachment__?.length / 2
+      )
+    );
   };
 
   useEffect(() => {
@@ -861,8 +879,11 @@ export default function CreateCase() {
                 />
               </svg>
             </div> */}
-            {singleCase?.attachment?.map((item, index) => (
-              <div className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled" key={index}>
+            {singleCaseAttachment?.map((item, index) => (
+              <div
+                className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled"
+                key={index}
+              >
                 {/* Attach Charge sheet */}
                 <div>
                   <svg
@@ -930,49 +951,57 @@ export default function CreateCase() {
           <div className="case-details__mugshot__subtitle"></div>
         </div>
         <div className="case-details__mugshots">
-          {singleCase?.mugshot && singleCase?.mugshot?.map((item, index) =>
-        
-        {<Image
-            className="case-details__accused__bio__img"
-            alt=""
-            src={`https://${item?.url}`}
-            width={349}
-            height={273}
-            style={{
-              objectFit: "cover",
-              borderRadius: "12px",
-              minWidth: "349px",
-            }}
-            key={index}
-          />}
-        ) }
+          {singleCaseMughsots?.map((item, index) => (
+            <Image
+              className="case-details__accused__bio__img"
+              alt=""
+              src={`https://${item?.url}`}
+              width={349}
+              height={273}
+              style={{
+                objectFit: "cover",
+                borderRadius: "12px",
+                minWidth: "349px",
+              }}
+              key={index}
+            />
+          ))}
         </div>
 
         <div className="case-details__assets">
           <div className="case-details__assets__title">Seized Assets</div>
           <div className="case-details__assets__inner">
+            {singleCase?.externalAssets &&
+              singleCase?.externalAssets?.map((item, index) => (
+                <div
+                  className="case-details__assets__inner__item"
+                  onClick={() =>
+                    window.open(
+                      `https://asmss.netlify.app/dashboard/records/${item?.id}`,
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }
+                  key={index}
+                >
+                  <div>
+                    <Image
+                      alt=""
+                      src="/assets/Image (2).png"
+                      width={40}
+                      height={40}
+                      objectFit="cover"
+                      style={{ borderRadius: "50%" }}
+                    />
 
-{singleCase?.externalAssets && singleCase?.externalAssets?.map((item, index) => (
-            <div className="case-details__assets__inner__item"
-            onClick={() => window.open(`https://asmss.netlify.app/dashboard/records/${item?.id}`, '_blank', 'noopener,noreferrer')}
-            key={index}
-            >
-            <div>
-            <Image
-                    alt=""
-                    src="/assets/Image (2).png"
-                    width={40}
-                    height={40}
-                    objectFit="cover"
-                    style={{ borderRadius: "50%" }}
-                  />
-
-<div>REF:{item?.assetSeizureReference}</div>
-<div>{item?.assetType}</div>
-            </div>
-<div className="case-details__assets__inner__item__status">{item?.storageStatus}</div>
-            </div>))}
-
+                    <div>REF:{item?.assetSeizureReference}</div>
+                    <div>{item?.assetType}</div>
+                  </div>
+                  <div className="case-details__assets__inner__item__status">
+                    {item?.storageStatus}
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
 
