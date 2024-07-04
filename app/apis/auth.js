@@ -97,6 +97,7 @@ export const requestOtp = async (officialEmail) => {
 };
 
 export const changPassword = async (currentPassword, newPassword, id, token) => {
+  console.log({currentPassword, newPassword});
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,

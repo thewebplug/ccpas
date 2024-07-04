@@ -297,14 +297,16 @@ Department of Public Prosecution Portal
        <div className="auth__modal__inner__subtitle">
        You are currently using a default password that was sent to {officialEmail}. Please create a new password
         </div>
-<label>Password</label>
-        <input type="password" className="auth__modal__inner__input" value={newPassword}
-        onChange={(e) => setNewPassword(e.target.value)}
+<label>Current Password</label>
+        <input type="password" className="auth__modal__inner__input" value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter the default password gotten via email"
         required
         />
-<label>Confirm Password</label>
+<label>New Password</label>
         <input type="password" className="auth__modal__inner__input" value={confirmNewPassword}
         onChange={(e) => setConfirmNewPassword(e.target.value)}
+        placeholder="Enter your new password"
         required
         />
 
