@@ -444,18 +444,20 @@
             border-radius: 50%;
           }
 
-          & >:nth-child(even) {
+          & >:last-child(even) {
             color: #526477;
             @extend %title-12;
             font-weight: 500;
             text-transform: uppercase;
           }
-          & >:last-child {
-            @extend %title-14;
-            color: unset;
-            font-weight: 700;
-            margin-left: 15px;
-          }
+         
+        }
+
+        & >:nth-child(even) {
+          @extend %title-14;
+          color: unset;
+          font-weight: 700;
+          margin-left: 15px;
         }
         &__status {
           @extend %title-12;

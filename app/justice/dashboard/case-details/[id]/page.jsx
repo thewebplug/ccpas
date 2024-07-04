@@ -994,9 +994,9 @@ export default function CreateCase() {
                       style={{ borderRadius: "50%" }}
                     />
 
-                    <div>REF:{item?.assetSeizureReference}</div>
-                    <div>{item?.assetType}</div>
+                    <div>REFF:{item?.assetSeizureReference}</div>
                   </div>
+                    <div>{item?.assetType}</div>
                   <div className="case-details__assets__inner__item__status">
                     {item?.storageStatus}
                   </div>
