@@ -13,6 +13,14 @@
 @import 'components/sidebar';
 @import 'components/header';
 @import 'components/footer';
+
+@import 'components/adminHeader';
+@import 'components/adminSidebar';
+@import 'pages/admin/layout';
+@import 'pages/admin/home';
+@import 'pages/admin/add-user';
+@import 'pages/admin/added-user';
+
 @import 'components/dashboardHeader';
 @import 'components/dashboardSideBar';
 @import 'components/menu';
@@ -29,5 +37,7 @@
 @import 'pages/justice/dashboard/expungedoc';
 
 @import 'pages/justice/dashboard/case-file';
+@import 'pages/justice/dashboard/otp.scss';
+@import 'pages/justice/dashboard/review.scss';
 
 

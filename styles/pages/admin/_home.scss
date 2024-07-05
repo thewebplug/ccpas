@@ -1,0 +1,263 @@
+.admin {
+
+  &__header {
+
+    &__info {
+      padding: 20px;
+
+      &__breadcrumbs {
+        color: #6c757d;
+        display: flex;
+      }
+
+      .home-svg {
+        margin: 0 10px;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        margin: 0 10px;
+      }
+
+      .user-management {
+        width: 50px;
+        height: 50px;
+        padding: 7px;
+        background-color: lightgreen;
+        color: #000;
+        font-weight: 500;
+        border: none;
+        border-radius: 5px;
+        margin-left: 10px;
+      }
+    }
+
+    &__heading {
+      padding: 20px 20px 0 20px;
+
+      h2 {
+        font-size: 35px;
+        font-weight: 500;
+        color: #000;
+      }
+    }
+  }
+
+  &__body {
+    padding: 20px;
+
+    &__tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #e9ecef;
+
+      div {
+        color: #414141;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        position: relative;
+
+        span {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          padding: 7px;
+          font-size: 10px;
+          font-weight: bold;
+          color: #414141;
+          background-color: #d7d7d7;
+          margin-left: 6px;
+        }
+
+      }
+
+      .menu-item {
+        color: #414141;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        position: relative;
+      }
+      
+      .menu-item.active {
+        color: #009B07; /* Green text color */
+      }
+
+      .active::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #009B07; 
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    }
+
+    &__content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 4px;
+
+      .admin__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        color: #000;
+        font-weight: 500;
+        font-size: 18px;
+
+        h3 {
+          margin: 0;
+
+          span {
+            width: 15px;
+            height: auto;
+            border-radius: 10px;
+            margin-left: 5px;
+            padding: 5px;
+            font-size: 10px;
+            color: purple;
+            background-color: #f0f0f0;
+          }
+        }
+
+        .add-button {
+          background-color: #009B07;
+          color: #fff;
+          border: none;
+          padding: 12px 20px;
+          border-radius: 4px;
+          cursor: pointer;
+
+          svg {
+            margin-left: 8px;
+          }
+        }
+      }
+
+      .admin__table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+
+        th, td {
+          border-left: none;
+          border-right: none;
+          border-top: 1px solid #dee2e6;
+          border-bottom: 1px solid #dee2e6;
+          padding: 20px 10px;
+          text-align: left;
+        }
+
+        th {
+          background-color: #f8f9fa;
+        }
+
+        .user-name {
+          font-size: 15px;
+          font-weight: 700;
+          color: #000;
+          // margin-bottom: 20px;
+    
+          input {
+            margin-right: 10px;
+          }
+
+          span {
+            font-size: 14px;
+            font-weight: normal;
+            color: rgb(163, 163, 163);
+            margin-left: 27px;
+          }
+        }
+
+        svg {
+          margin-left: 5px;
+        }
+
+        .access {
+          &.admin {
+            width: 30px;
+            padding: 8px 24px;
+            background-color: rgb(57, 57, 253);
+            color: #fff;
+            border-radius: 20px;
+
+          }
+
+          &.user {
+            width: 30px;
+            padding: 8px 32px;
+            background-color: #f0f0f0;
+            color: #000;
+            border-radius: 20px;
+            font-weight: 500;
+          }
+
+          &.super-admin {
+            width: 30px;
+            padding: 10px;
+            background-color: #009B07;
+            color: #fff;
+            font-size: 13px;
+            border-radius: 20px;
+          }
+        }
+      }
+
+      .admin__pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__prev,
+        &__next {
+          background: transparent;
+          color: #000;
+          border: 1px solid #ccc;
+          padding: 9px 17px;
+          border-radius: 4px;
+          cursor: pointer;
+          display: flex;
+
+          .previous-svg {
+            margin-right: 7px;
+            margin-top: 2px;
+            font-weight: 400;
+          }
+
+          .next-svg {
+            margin-left: 7px;
+            margin-top: 2px;
+            font-weight: 400;
+          }
+        }
+
+        &__pages {
+          display: flex;
+
+          button {
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+            margin-right: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+
+
+            &.active,
+            &:hover {
+              background-color: #f0f0f0;
+              color: #000;
+            }
+          }
+        }
+      }
+    }
+  }
+}
