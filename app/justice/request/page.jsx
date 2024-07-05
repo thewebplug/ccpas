@@ -18,7 +18,16 @@ export default function Auth() {
   const handleSubmitRequest = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+    
+    if(bvn?.length < 11) {
+      alert('BVN must be 11 digits')
+      setLoading(false);
+      return;
+    }else if(nin?.length < 11) {
+      alert('NIN must be 11 digits')
+      setLoading(false);
+      return
+    }
 
     const birthDate = new Date(dob);
     const today = new Date();
@@ -100,7 +109,7 @@ export default function Auth() {
           Gov Issued Email*
         </label>
         <input
-          type="text"
+          type="email"
           className="auth__form__input"
           placeholder="Enter your Email"
           required
@@ -111,7 +120,7 @@ export default function Auth() {
           Supervisor Email*
         </label>
         <input
-          type="text"
+          type="email"
           className="auth__form__input"
           placeholder="Enter Supervisor’s Email"
           required
@@ -148,6 +157,7 @@ export default function Auth() {
           required
           value={nin}
           onChange={(e) => setNin(e.target.value)}
+          maxLength={11}
         />
         <label htmlFor="" className="auth__form__label">
           BVN*
@@ -159,6 +169,7 @@ export default function Auth() {
           required
           value={bvn}
           onChange={(e) => setBvn(e.target.value)}
+          maxLength={11}
         />
         {/* <label htmlFor="" className="auth__form__label">
           Password*
