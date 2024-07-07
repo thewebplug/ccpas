@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import Modal from "react-modal";
-import "../../../../styles/pages/justice/dashboard/_otp.scss";
+import React, { useState, useRef, useEffect } from 'react';
+import Modal from 'react-modal';
+// import '../../../../styles/pages/justice/dashboard/_otp.scss' // imported it in the index.sccs
 
 const otpStyles = {
   content: {

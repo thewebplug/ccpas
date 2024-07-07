@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import '../../../../styles/pages/justice/dashboard/_review.scss';
+// import '../../../../styles/pages/justice/dashboard/_review.scss'; // imported it in the index.sccs
 import CaseOtpModal from './otp';
 
 const reviewModalStyles = {
