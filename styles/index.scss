@@ -10,6 +10,7 @@
 @import 'shared/svgs';
 @import 'shared/buttons';
 
+
 @import 'components/sidebar';
 @import 'components/header';
 @import 'components/footer';
@@ -23,9 +24,16 @@
 @import 'pages/admin/deactivate-user';
 @import 'pages/admin/deactivated-user';
 
+
+
 @import 'components/dashboardHeader';
 @import 'components/dashboardSideBar';
 @import 'components/menu';
+@import 'components/admin/adminDashboardSideBar';
+@import 'components/admin/adminDashboardHeader';
+@import 'components/sidebar';
+@import 'components/header';
+@import 'components/footer';
 
 @import 'pages/home';
 @import 'pages/justice/home';
@@ -35,11 +43,15 @@
 @import 'pages/justice/dashboard/create-case';
 @import 'pages/justice/dashboard/case-details';
 @import 'pages/justice/dashboard/cases';
-
 @import 'pages/justice/dashboard/expungedoc';
-
+@import 'pages/justice/dashboard/chat/chat';
 @import 'pages/justice/dashboard/case-file';
 @import 'pages/justice/dashboard/otp.scss';
 @import 'pages/justice/dashboard/review.scss';
+@import 'pages/justice/admin/layout';
+@import 'pages/justice/admin/home';
+@import 'pages/justice/admin/add-user';
+@import 'pages/justice/admin/added-user';
+@import 'pages/justice/admin/departments';
 
 

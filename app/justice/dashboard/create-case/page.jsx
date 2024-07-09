@@ -1,36 +1,332 @@
 "use client";
+import { createCase } from "@/app/apis/case";
+import axios from "axios";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function CreateCase() {
-  const [image, setImage] = useState("");
-  const [chargeSheet, setChargeSheet] = useState(null);
-  const [evidenceAndWitness, setEvidenceAndWitness] = useState(null);
-  const [expertReport, setExpertReport] = useState(null);
-  const [courtDocument, setCourtDocument] = useState(null);
-  const [transcripts, setTranscripts] = useState(null);
-  const [discoveryMaterials, setDiscoveryMaterials] = useState(null);
-  const [miscellaneous, setMiscellaneous] = useState(null);
-  const [correspondence, setCorrespondence] = useState(null);
-  const [audio, setAudio] = useState(null);
-  const [video, setVideo] = useState(null);
+
+
+  const offences = {
+    "ADVANCE FEE FRAUD": [
+      "OBT",
+      "Conspiracy",
+      "Attempt to commit AFF Crimes",
+      "Forgery&Uttering",
+      "possession of fraudlent Documents",
+      "Stealing by Conversion",
+      "Cheating",
+      "Impersonation",
+      "Use of Premises",
+      "Currency Counterfeiting",
+      "Other AFF",
+    ],
+    "BANK / SECURITY FRAUD": [
+      "Issuance of Dud Cheque",
+      "Breach of Trust",
+      "Currency Counterfeiting",
+      "Stealing by Conversion",
+      "Cheque Kitting",
+      "Cheque Cloning",
+      "Conspiracy",
+    ],
+    "ECONOMIC GOVERNANCE FRAUD": [
+      "Abuse of Office",
+      "Diversion",
+      "Missapropriation of Public Fund",
+      "Conversion",
+      "Breach of Trust",
+      "Bribery, Extortion, Embezzlement",
+      "Forgery&Uttering",
+      "Conspiracy",
+    ],
+    "MONEY LAUNDERING": [
+      "Attempt",
+      "Conspiracy",
+      "Aiding to Conspire",
+      "Convertion / Transfer",
+      "Aiding Convertion / Transfer",
+      "Conceal / Disguise the origin of POC",
+      "Aiding to Conceal / Disguise the origin of POC",
+      "Possession of POC",
+      "Aiding to Possess POC",
+      "Non Disclosure, Non-declaration/ False declaration",
+      "Aiding; Non Disclosure, Non-declaration/ False declaration",
+      "Acquire/ Use / retain POC",
+      "Aiding to Acquire with/ Use of / retain from POC",
+      "Removal of POC from Jurisdiction",
+      "Aiding to remove POC from Jurisdiction",
+      "Taking posession or control of POC",
+      "Aiding to take possession and control of POC",
+      "incite",
+      "induce",
+      "procure",
+      "Unjustified lifestyle",
+      "Unjustified properties/ assets acquisition",
+      "Financial Transactions, outside Financial Institution, exceeding approved thresholds",
+      "Failure to do know-your-Customer (KYC) requirement",
+    ],
+    "TERRORISM FINANCING": [
+      "Financing Terrorist Act (Directly/ Indirectly)",
+      "Soliciting Funds for Terrorist Act",
+      "Acquisition of Funds for Terrorist Act",
+      "Possession of funds intended for Terrorist Act",
+      "Makes assets, resources, services etc available for Terrorist Act",
+      "Distribution of funds for Terrorist Act",
+      "Attempt to commit/ facilitate/ participate in Terrorist Financing",
+      "Conspiracy",
+      "Aiding and abetting",
+    ],
+    "PROCUREMENT FRAUD": [
+      "Contract inflation",
+      "Breach of Trust",
+      "Contract/ Tender Splitting",
+      "Bid Rigging",
+      "Forgery&Uttering",
+      "Coilusion",
+      "Conspiracy",
+      "Manupulation",
+    ],
+    "CYBER CRIME": [
+      "Email Hacking",
+      "Attempt",
+      "Conspiracy",
+      "Aiding & Abetting",
+      "Fraudlent issuance of e-instructions",
+      "Credit Card Fraud",
+      "email Phishing",
+      "ATM & POS Transaction Fraud",
+      "Identity Theft",
+      "Electronic Signature Fraud",
+      "Cyber Terrorisim",
+      "Cyber Squatting",
+      "Theft of Electronic Device",
+      "Imputing and Supressing of Data",
+    ],
+    "EXTRACTIVE INDUSTRIES FRAUD": [
+      "Illegal Oil Bunkering & Pipeline Vandalism",
+      "Illegal Dealing in Petroleum Product",
+      "Illegal Quarrying",
+      "Illegal Mining",
+      "Forgery",
+      "Breach of Trust",
+      "Cheating/Stealing & Conversion",
+      "Attempt",
+      "Conspiracy",
+      "OBT",
+      "Diversion of Petroleum Product",
+      "Possession of Fraudulent Documents",
+      "Bid Rigging",
+      "Under/Non payments of Levys",
+      "Issuance of Dud Check",
+    ],
+    "LANDS & PROPERTY FRAUD": [
+      "Conversion",
+      "Cheating",
+      "OBT",
+      "Conspiracy",
+      "Forgery",
+      "Stealing",
+      "Breach of Trust",
+      "Using as Geniune",
+      "Tampering",
+    ],
+    "TAX FRAUD": [
+      "Underdeclaration of revenue",
+      "False information/ False Statement",
+      "Non Registration",
+      "Non Remittance of Tax Deducted",
+      "Forgery",
+      "Conspiracy",
+      "Failure to Deduct Taxes",
+      "Operating without License",
+    ],
+  };
+
+
+  const cases = [
+    "ASMS/ABJ/001",
+    "ASMS/ABJ/002",
+    "ASMS/ABJ/003",
+    "ASMS/ABJ/004",
+    "ASMS/ABJ/005",
+    "ASMS/ABJ/006",
+    "ASMS/ABJ/007",
+    "ASMS/ABJ/008",
+    "ASMS/ABJ/009",
+  ];
+  const courts = [
+    "ASMS/ABJ/001",
+    "ASMS/ABJ/002",
+    "ASMS/ABJ/003",
+    "ASMS/ABJ/004",
+    "ASMS/ABJ/005",
+    "ASMS/ABJ/006",
+    "ASMS/ABJ/007",
+    "ASMS/ABJ/008",
+    "ASMS/ABJ/009",
+  ];
+  const chargeSheets = [
+    "ASMS/ABJ/001",
+    "ASMS/ABJ/002",
+    "ASMS/ABJ/003",
+    "ASMS/ABJ/004",
+    "ASMS/ABJ/005",
+    "ASMS/ABJ/006",
+    "ASMS/ABJ/007",
+    "ASMS/ABJ/008",
+    "ASMS/ABJ/009",
+  ];
+
+
+
+  const judges = [
+    "Saleem Jibril",
+    "Osho James",
+    "James Teddy",
+    "John doe",
+  ];
+
+  const clerks = [
+    "Saleem Jibril",
+    "Osho James",
+    "James Teddy",
+    "John doe",
+  ];
+
+  const justiceOfficers = [
+    "Jibril",
+    "Osho James",
+    "James Teddy",
+    "John doe",
+  ];
+  const lawOfficers = [
+    "Fincl",
+    "Osho James",
+    "James Teddy",
+    "John doe",
+  ];
+
+  
+  const auth = useSelector((state) => state.auth);
+  const [filteredoffences, setFilteredOffences] = useState(
+    Object.keys(offences)
+  );
+  const [offense, setOffense] = useState("");
+  const [accusedImage, setAccusedImage] = useState("");
+  const [chargeSheet, setChargeSheet] = useState("");
+  const [evidenceAndWitness, setEvidenceAndWitness] = useState("");
+  const [expertReport, setExpertReport] = useState("");
+  const [courtDocument, setCourtDocument] = useState("");
+  const [transcripts, setTranscripts] = useState("");
+  const [discoveryMaterials, setDiscoveryMaterials] = useState("");
+  const [miscellaneous, setMiscellaneous] = useState("");
+  const [correspondence, setCorrespondence] = useState("");
+  const [caseNumber, setCaseNumber] = useState("");
+  const [audio, setAudio] = useState("");
+  const [video, setVideo] = useState("");
   const [images, setImages] = useState([]);
+  const [docs, setDocs] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const mediaRef = useRef(null);
+  const [docLoading, setDocLoading] = useState(false);
+  const mediaRef = useRef("");
+  const [activeSearchInput, setActiveSearchInput] = useState("");
+  const [filteredOffenceType, setFilteredOffenceType] = useState(
+    offences[offense]
+  );
+  const [offenseType, setOffenseType] = useState([]);
+  const [filteredCases, setFilteredCases] = useState(cases);
+  const [filteredCourt, setFilteredCourt] = useState(courts);
+  const [court, setCourt] = useState("");
+  const [filteredJudges, setFilteredJudges] = useState(judges);
+  const [filteredClerks, setFilteredClerks] = useState(clerks);
+  const [clerk, setClerk] = useState("");
+  const [judge, setJudge] = useState("");
+  const [justiceOfficer, setJusticeOfficer] = useState("");
+  const [courtLocation, setCourtLocation] = useState("");
+  const [filteredJusticeOfficers, setFilteredJusticeOfficers] = useState("");
+  const [filteredChargeSheet, setFilteredChargeSheet] = useState(chargeSheets);
+  const [agency, setAgency] = useState("FMOJ");
+  const [filteredlawOfficers, setFilteredLawOfficers] = useState([lawOfficers]);
+  const [lawOfficer, setLawOfficer] = useState("");
+  const [accusedFirstName, setAccusedFirstName] = useState("");
+  const [accusedMiddleName, setAccusedMiddleName] = useState("");
+  const [accusedLastName, setAccusedLastName] = useState("");
+  const [accusedAlias, setAccusedAlias] = useState("");
+  const [accusedNin, setAccusedNin] = useState("");
+  const [accusedBvn, setAccusedBvn] = useState("");
+  const [caseStatus, setCaseStatus] = useState("unassigned");
+  const [accusedStatus, setAccusedStatus] = useState("unassigned");
+  const [dateInitiated, setDateInitiated] = useState("");
+  const [associate, setAssociate] = useState([]);
+  const [assoc, setAssoc] = useState("");
+  const [legalBasis, setLegalBasis] = useState("");
+  const [particularsOfOffense, setParticularsOfOffense] = useState("");
+  const [chargeDetails, setChargeDetails] = useState("");
+  const [legalBriefAndMemoranda, setLegalBriefAndMemoranda] = useState("");
+  const [metadata, setMetadata] = useState("");
+  const [metadatas, setMetadatas] = useState([]);
+  const [keyword, setKeyword] = useState("");
+  const [keywords, setKeywords] = useState([]);
 
-  const handleCreateCase = (e) => {
+  const handleCreateCase = async (e) => {
     e.preventDefault();
-    setModalOpen(true)
-    // window.location.href = "/justice/dashboard";
-  }
+    const response = await createCase(
+      caseNumber,
+      offense,
+  "fmojDept",
+  court,
+  courtLocation,
+  clerk,
+  judge,
+  chargeSheet,
+  offenseType,
+  agency,
+  lawOfficer,
+  legalBasis,
+  particularsOfOffense,
+  chargeDetails,
+  legalBriefAndMemoranda,
+  accusedImage,
+  accusedFirstName,
+  accusedLastName,
+  accusedMiddleName,
+  accusedBvn,
+  accusedNin,
+  accusedAlias,
+  caseStatus,
+  accusedStatus,
+  dateInitiated,
+  associate,
+  docs,
+  images,
+  auth?.token
+    );
 
-  const handleMugShotUpload = (image) => {
-    if(image) {
-      setImages([image, ...images])
+    console.log('case created', response);
+
+    if(response?.data?.statusCode === 201) {
+      alert("Case created successfully");
+      window.location.href = "/justice/dashboard/cases"
+    } else {
+      alert("Something went wrong")
     }
+
+  };
+
+
+  const handleAssAssoc = (e) => {
+   if(assoc !== "") {
+    const temp = associate;
+    temp.push({name: assoc});
+    setAssociate([...temp]);
+    setAssoc("")
+   }
+    
   }
 
-  const fileUpload = (e, imageType) => {
+  const handleMugShotUpload = (e, docType) => {
     // setUploadLoading(true);
 
     let files = e.target.files;
@@ -50,20 +346,260 @@ export default function CreateCase() {
       for (let i = 0; i < files.length; i++) {
         fileToUri(files[0], (err, result) => {
           if (result) {
-            console.log('result for you', result);
-            // if (imageType === 1) {
-            //   setImage1URI(result.split(",")[1]);
-            //   // console.log('setImage1URI', result.split(",")[1]);
-            // } else if (imageType === 2) {
-            //   setImage2URI(result.split(",")[1]);
-            //   // console.log('setImage2URI', result.split(",")[1]);
-            // }
+            console.log("result", result);
+
+            axios
+              .post(
+                `https://kaxl3c7ehj.execute-api.us-east-1.amazonaws.com/dev/v1/upload`,
+                {
+                  user: "teddy",
+                  media_type: docType,
+                  contents: result,
+                }
+                // ,{
+                //   headers: {
+                //     Authorization: `Bearer ${auth ? auth.token : ""}`,
+                //   },
+                // }
+              )
+              .then((response) => {
+                console.log("response file uploaded", response);
+                if (response?.status === 200) {
+                  const temp = images;
+                  temp.push({url: response?.data?.body?.data});
+                  setImages([...temp]);
+                }
+              })
+              .catch((err) => {
+                console.log("ERRRR", err);
+                // setUploadLoading(false);
+              });
+          }
+        });
+      }
+    }
+  };
+  const handleImageUpload = (e, docType) => {
+    // setUploadLoading(true);
+
+    let files = e.target.files;
+
+    const fileToUri = (file, cb) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        cb(null, reader.result);
+      };
+      reader.onerror = function (error) {
+        cb(error, null);
+      };
+    };
+
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        fileToUri(files[0], (err, result) => {
+          if (result) {
+            console.log("result", result);
+
+            axios
+              .post(
+                `https://kaxl3c7ehj.execute-api.us-east-1.amazonaws.com/dev/v1/upload`,
+                {
+                  user: "teddy",
+                  media_type: docType,
+                  contents: result,
+                }
+                // ,{
+                //   headers: {
+                //     Authorization: `Bearer ${auth ? auth.token : ""}`,
+                //   },
+                // }
+              )
+              .then((response) => {
+                console.log("response file uploaded", response);
+                if (response?.status === 200) {
+                  setAccusedImage(response?.data?.body?.data);
+                }
+              })
+              .catch((err) => {
+                console.log("ERRRR", err);
+                // setUploadLoading(false);
+              });
           }
         });
       }
     }
   };
 
+  const handleFileUpload = (e) => {
+    setDocLoading(true);
+
+    let files = e.target.files;
+    let docType = files[0]?.type.split("/")[1];
+
+    const fileToUri = (file, cb) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        cb(null, reader.result);
+      };
+      reader.onerror = function (error) {
+        cb(error, null);
+      };
+    };
+
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        fileToUri(files[0], (err, result) => {
+          if (result) {
+            console.log("result", result);
+
+            axios
+              .post(
+                `https://kaxl3c7ehj.execute-api.us-east-1.amazonaws.com/dev/v1/upload`,
+                {
+                  user: "teddy",
+                  media_type: docType === "mpeg" ? "mp3" : docType,
+                  contents: result,
+                }
+                // ,{
+                //   headers: {
+                //     Authorization: `Bearer ${auth ? auth.token : ""}`,
+                //   },
+                // }
+              )
+              .then((response) => {
+                console.log("response file uploaded", response);
+                if (response?.status === 200) {
+                  const temp = docs;
+                  console.log("temp", temp);
+                  temp.push({
+                    name: files[0]?.name,
+                    url: response?.data?.body?.data,
+                  });
+                  setDocs([...temp]);
+                }
+
+                setDocLoading(false);
+              })
+              .catch((err) => {
+                console.log("ERRRR", err);
+                setDocLoading(false);
+              });
+          }
+        });
+      }
+    }
+  };
+
+  useEffect(() => {
+    console.log("docs", docs);
+  }, [docs]);
+
+  const handleFileRemove = (index) => {
+    const temp = docs;
+    console.log("temp", temp);
+    temp.splice(index, 1)
+    setDocs([...temp]);
+  };
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = Object.keys(offences)?.filter((item) =>
+      item.toLowerCase().includes(offense.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredOffences(temp);
+    setFilteredOffenceType(offences[offense]);
+  }, [offense]);
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = offences[offense]?.filter((item) =>
+      item.toLowerCase().includes(offenseType.toLocaleLowerCase())
+    );
+    setFilteredOffenceType(temp);
+  }, [offenseType]);
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = cases.filter((item) =>
+      item.toLowerCase().includes(caseNumber.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredCases(temp);
+  }, [caseNumber]);
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = judges.filter((item) =>
+      item.toLowerCase().includes(judge.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredJudges(temp);
+  }, [judge]);
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = courts.filter((item) =>
+      item.toLowerCase().includes(court.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredCourt(temp);
+  }, [court]);
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = clerks.filter((item) =>
+      item.toLowerCase().includes(clerk.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredClerks(temp);
+  }, [clerk]);
+
+  useEffect(() => {
+    console.log("yooo");
+    const temp = justiceOfficers.filter((item) =>
+      item.toLowerCase().includes(justiceOfficer.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredJusticeOfficers(temp);
+  }, [justiceOfficer]);
+  useEffect(() => {
+    console.log("yooo");
+    const temp = chargeSheets.filter((item) =>
+      item.toLowerCase().includes(chargeSheet.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredChargeSheet(temp);
+  }, [chargeSheet]);
+  useEffect(() => {
+    console.log("yooo");
+    const temp = lawOfficers.filter((item) =>
+      item.toLowerCase().includes(lawOfficer.toLocaleLowerCase())
+    );
+    console.log("temp", temp);
+    setFilteredLawOfficers(temp);
+  }, [lawOfficer]);
+
+
+  
+  const handleAddMetadata = () => {
+    if(metadata !== "") {
+      const temp = metadatas;
+      temp.push(metadata);
+      setMetadatas([...temp]);
+      setMetadata("")
+     }
+  }
+  const handleAddKeyword = () => {
+    if(keyword !== "") {
+      const temp = keywords;
+      temp.push(keyword);
+      setKeywords([...temp]);
+      setKeyword("")
+     }
+  }
   return (
     <form className="case-from" onSubmit={handleCreateCase}>
       <div className="case-from__grid">
@@ -72,38 +608,113 @@ export default function CreateCase() {
           <input
             type="text"
             className=""
-            placeholder="Type case number"
+            placeholder="Enter Case Number"
             required
+            value={caseNumber}
+            onChange={(e) => setCaseNumber(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "caseNumber"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("caseNumber")
+            }
           />
-          {/* <div className="case-from__grid__input__filled">
-          PF00458
-          </div> */}
+
+          {activeSearchInput === "caseNumber" && (
+            <div className="case-from__grid__input__search-dropdown">
+              {filteredCases.map((caseNum, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setCaseNumber(caseNum);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {caseNum}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <div className="case-from__grid__input">
-          <label htmlFor="">Offense Category:</label>
-          <select name="" id="" required>
-            <option value="">Offense Category</option>
-            <option value="Offense Category">Offense Category</option>
-          </select>
-          {/* <div className="case-from__grid__input__filled">
-          Criminal Case
-          </div> */}
+          <label htmlFor="">Offence Category:</label>
+          <input
+            type="text"
+            className=""
+            placeholder="Enter Offence"
+            required
+            value={offense}
+            onChange={(e) => setOffense(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "offence"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("offence")
+            }
+          />
+
+          {activeSearchInput === "offence" && (
+            <div className="case-from__grid__input__search-dropdown">
+              {filteredoffences.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setOffense(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <div className="case-from__grid__input">
-          <label htmlFor="">FMoJ Dept:</label>
-          <select name="" id="" required>
-            <option value="">Select FMoJ Dept</option>
-            <option value="FMoJ Dept">FMoJ Dept</option>
-          </select>
-          {/* <div className="case-from__grid__input__filled">
-          Public Prosecution
-          </div> */}
+          <label htmlFor="">Offence Type:</label>
+          <input
+            type="text"
+            className=""
+            placeholder="Enter Offence"
+            required
+            value={offenseType}
+            onChange={(e) => setOffenseType(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "offenceType"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("offenceType")
+            }
+          />
+
+          {activeSearchInput === "offenceType" && (
+            <div className="case-from__grid__input__search-dropdown">
+              {filteredOffenceType?.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setOffenseType(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
+
+      
 
         <div className="case-from__grid__input">
           <label htmlFor="">Assigned Justice Officer:</label>
           <div className="case-from__grid__input__flex">
-            <input type="text" placeholder="Select assigned officer" required />
+            <input type="text" placeholder="Select assigned officer" required
+            
+            value={justiceOfficer}
+            onChange={(e) => setJusticeOfficer(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "justiceOfficer"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("justiceOfficer")
+            }
+            />
             <svg
               width="21"
               height="20"
@@ -129,6 +740,22 @@ export default function CreateCase() {
                 </clipPath>
               </defs>
             </svg>
+
+            {activeSearchInput === "justiceOfficer" && (
+            <div className="case-from__grid__input__flex__search-dropdown">
+              {filteredJusticeOfficers.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setJusticeOfficer(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
           </div>
 
           {/* <div className="case-from__grid__input__contact">
@@ -156,17 +783,40 @@ Ahmed Aisha
             className=""
             placeholder="Type court number"
             required
+            value={court}
+            onChange={(e) => setCourt(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "court"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("court")
+            }
           />
+
+{activeSearchInput === "court" && (
+            <div className="case-from__grid__input__search-dropdown">
+              {filteredCourt.map((court, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setCourt(court);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {court}
+                </div>
+              ))}
+            </div>
+          )}
           {/* <div className="case-from__grid__input__contact">
 Ahmed Aisha
 </div> */}
         </div>
         <div className="case-from__grid__input">
           <label htmlFor="">Court Location:</label>
-          <select name="" id="" required>
-            <option value="">Select court location</option>
-            <option value="Court location">Court location</option>
-          </select>
+        <input type="text"
+        placeholder="Select Court Location"
+        value={courtLocation}
+          onChange={(e) => setCourtLocation(e.target.value)}/>
           {/* <div className="case-from__grid__input__filled">
           Federal High Court, Abuja
           </div> */}
@@ -178,62 +828,46 @@ Ahmed Aisha
             className=""
             placeholder="Type Court Clerk"
             required
+            value={clerk}
+          onChange={(e) => setClerk(e.target.value)}
+          onClick={() =>
+              activeSearchInput === "clerk"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("clerk")
+            }
           />
-          {/* <div className="case-from__grid__input__filled">
-          Hauwa Jada
-          </div> */}
+
+          {activeSearchInput === "clerk" && (
+            <div className="case-from__grid__input__search-dropdown">
+              {filteredClerks.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setClerk(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="case-from__grid__input">
-          <label htmlFor="">Court Location:</label>
-          <select name="" id="" required>
-            <option value="">Select assigned Judge</option>
-            <option value="Assigned Judge">Assigned Judge</option>
-          </select>
-          {/* <div className="case-from__grid__input__contact">
-          Olatunde Cardoso
-</div> */}
-        </div>
-      </div>
-      <div className="case-from__grid">
-        <div className="case-from__grid__input">
-          <label htmlFor="">Charge Sheet No</label>
-          <input
-            type="text"
-            className=""
-            placeholder="Type Sheet No"
-            required
-          />
-          {/* <div className="case-from__grid__input__contact">
-          NPF898458
-</div> */}
-        </div>
-        <div className="case-from__grid__input">
-          <label htmlFor="">Offence Type:</label>
-          <select name="" id="" required>
-            <option value="">Select Offence Type</option>
-            <option value="Offence Type">Offence Type</option>
-          </select>
-          {/* <div className="case-from__grid__input__filled">
-          Armed Robbery
-          </div> */}
-        </div>
-        <div className="case-from__grid__input">
-          <label htmlFor="">Agency:</label>
-          <select name="" id="" required>
-            <option value="">Select Agency</option>
-            <option value="Agency">Agency</option>
-          </select>
-
-          {/* <div className="case-from__grid__input__filled">
-Police
-</div> */}
-        </div>
-
-        <div className="case-from__grid__input">
-          <label htmlFor="">Law Enforcement Officer:</label>
+          <label htmlFor="">Assigned Judge:</label>
           <div className="case-from__grid__input__flex">
-            <input type="text" placeholder="Select assigned officer" required />
+            <input type="text" placeholder="Select assigned officer"
+            //  required
+            
+            value={judge}
+            onChange={(e) => setJudge(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "judge"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("judge")
+            }
+            />
             <svg
               width="21"
               height="20"
@@ -259,6 +893,144 @@ Police
                 </clipPath>
               </defs>
             </svg>
+
+            {activeSearchInput === "judge" && (
+            <div className="case-from__grid__input__flex__search-dropdown">
+              {filteredJudges.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setJudge(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
+          </div>
+          {/* <div className="case-from__grid__input__contact">
+          Olatunde Cardoso
+</div> */}
+        </div>
+      </div>
+      <div className="case-from__grid">
+        <div className="case-from__grid__input">
+          <label htmlFor="">Charge Sheet No</label>
+          <input
+            type="text"
+            className=""
+            placeholder="Type Sheet No"
+            required
+
+            value={chargeSheet}
+            onChange={(e) => setChargeSheet(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "chargeSheet"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("chargeSheet")
+            }
+          />
+          {/* <div className="case-from__grid__input__contact">
+          NPF898458
+</div> */}
+
+{activeSearchInput === "chargeSheet" && (
+            <div className="case-from__grid__input__flex__search-dropdown">
+              {filteredChargeSheet.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setChargeSheet(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="case-from__grid__input">
+          <label htmlFor="">FMoJ Dept:</label>
+          <select name="" id="" required>
+            <option value="">Select FMoJ Dept</option>
+            <option value="FMoJ Dept">FMoJ Dept</option>
+          </select>
+          {/* <div className="case-from__grid__input__filled">
+          Public Prosecution
+          </div> */}
+        </div>
+        <div className="case-from__grid__input">
+          <label htmlFor="">Agency:</label>
+          <input type="text"
+           value={agency}
+           onChange={(e) => setAgency(e.target.value)}
+          disabled
+          />
+
+          {/* <div className="case-from__grid__input__filled">
+Police
+</div> */}
+        </div>
+
+        <div className="case-from__grid__input">
+          <label htmlFor="">Law Enforcement Officer:</label>
+          <div className="case-from__grid__input__flex">
+            <input type="text" placeholder="Select assigned officer" required
+            
+            value={lawOfficer}
+            onChange={(e) => setLawOfficer(e.target.value)}
+            onClick={() =>
+              activeSearchInput === "lawOfficer"
+                ? setActiveSearchInput(null)
+                : setActiveSearchInput("lawOfficer")
+            }
+            />
+
+            
+            <svg
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_4643_76588)">
+                <path
+                  d="M15.4497 14.9489C12.7161 17.6825 8.28392 17.6825 5.55025 14.9489C2.81658 12.2152 2.81658 7.78303 5.55025 5.04936C8.28392 2.31569 12.7161 2.31569 15.4497 5.04936C18.1834 7.78303 18.1834 12.2152 15.4497 14.9489ZM15.4497 14.9489L21 20.4991"
+                  stroke="#7E92A2"
+                  stroke-width="1.5"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_4643_76588">
+                  <rect
+                    width="20"
+                    height="20"
+                    fill="white"
+                    transform="translate(0.5)"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+
+            {activeSearchInput === "lawOfficer" && (
+            <div className="case-from__grid__input__flex__search-dropdown">
+              {filteredlawOfficers.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setLawOfficer(item);
+                    setActiveSearchInput(null);
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
           </div>
 
           {/* <div className="case-from__grid__input__contact">
@@ -278,11 +1050,64 @@ Ahmed Aisha
           </div> */}
         </div>
       </div>
+      <div className="case-from__grid case-from__grid-mini">
+      <div className="case-from__grid__input case-from__grid__assoc">
+            <label htmlFor="">Keywords:</label>
+         {/* <form onSubmit={handleAssAssoc}> */}
+       <div>
+       <input type="text" placeholder="Enter keyword related to record"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          />
+          <button
+          onClick={handleAddKeyword}
+          type="button"
+          >Add</button>
+       </div>
+         {/* </form> */}
+
+            {keywords?.length > 0 && <div className="case-from__grid__assoc__list">
+              {keywords?.map((item, index) => <div key={index}>{item}</div>)}
+            </div>}
+
+            {/* <div className="case-from__accused__bio__input__case-assoc">
+              <div>Okoro Madu</div>
+              <div>Shekau Ahmed</div>
+              <div>Tope Adeniyi</div>
+            </div> */}
+          </div>
+
+          <div className="case-from__grid__input case-from__grid__assoc">
+            <label htmlFor="">Tags:</label>
+         {/* <form onSubmit={handleAssAssoc}> */}
+       <div>
+       <input type="text" placeholder="Enter tag related to record"
+          value={metadata}
+          onChange={(e) => setMetadata(e.target.value)}
+          />
+          <button
+          onClick={handleAddMetadata}
+          type="button"
+          >Add</button>
+       </div>
+         {/* </form> */}
+
+            {metadatas?.length > 0 && <div className="case-from__grid__assoc__list">
+              {metadatas?.map((item, index) => <div key={index}>{item}</div>)}
+            </div>}
+
+            {/* <div className="case-from__accused__bio__input__case-assoc">
+              <div>Okoro Madu</div>
+              <div>Shekau Ahmed</div>
+              <div>Tope Adeniyi</div>
+            </div> */}
+          </div>
+      </div>
 
       <div className="case-from__accused">
         <div className="case-from__accused__bio">
           <div className="case-from__accused__bio__title">Accused Bio</div>
-          {!image && (
+          {!accusedImage && (
             <label className="pointer">
               <Image
                 className="case-from__accused__bio__img"
@@ -298,7 +1123,7 @@ Ahmed Aisha
                 hidden
                 ref={mediaRef}
                 accept="image/*"
-                onChange={(e) => setImage(e.target.files[0])}
+                onChange={(e) => handleImageUpload(e, "png")}
               />
               <label className="case-from__accused__bio__img-label">
                 <svg
@@ -318,11 +1143,11 @@ Ahmed Aisha
             </label>
           )}
 
-          {image && (
+          {accusedImage && (
             <Image
               className="case-from__accused__bio__img"
               alt=""
-              src={image && URL?.createObjectURL(image)}
+              src={`https://${accusedImage}`}
               width={215}
               height={171}
               style={{ objectFit: "cover" }}
@@ -337,6 +1162,8 @@ Ahmed Aisha
               id=""
               placeholder="Type Accused First Name"
               required
+              value={accusedFirstName}
+              onChange={(e) => setAccusedFirstName(e.target.value)}
             />
             {/* <div className="case-from__accused__bio__input__filled">
             Frank  Ammadou
@@ -354,6 +1181,8 @@ Ahmed Aisha
               id=""
               placeholder="Type Accused Middle Name"
               required
+              value={accusedMiddleName}
+              onChange={(e) => setAccusedMiddleName(e.target.value)}
             />
            
             {/* <div className="case-from__accused__bio__input__filled">
@@ -372,6 +1201,8 @@ Ahmed Aisha
               id=""
               placeholder="Type Accused Last Name"
               required
+              value={accusedLastName}
+              onChange={(e) => setAccusedLastName(e.target.value)}
             />
            
             {/* <div className="case-from__accused__bio__input__filled">
@@ -390,6 +1221,8 @@ Ahmed Aisha
               id=""
               placeholder="Type Accused Alias"
               required
+              value={accusedAlias}
+              onChange={(e) => setAccusedAlias(e.target.value)}
             />
 
             {/* <div className="case-from__accused__bio__input__filled">
@@ -408,6 +1241,8 @@ Ahmed Aisha
               id=""
               placeholder="Type NIN"
               required
+              value={accusedNin}
+              onChange={(e) => setAccusedNin(e.target.value)}
             />
 
             {/* <div className="case-from__accused__bio__input__filled">
@@ -426,6 +1261,8 @@ Ahmed Aisha
               id=""
               placeholder="Type BVN"
               required
+              value={accusedBvn}
+              onChange={(e) => setAccusedBvn(e.target.value)}
             />
 
             {/* <div className="case-from__accused__bio__input__filled">
@@ -436,22 +1273,30 @@ Ahmed Aisha
 
               </div> */}
           </div>
-          <div className="case-from__accused__bio__input">
+          {/* <div className="case-from__accused__bio__input">
             <label htmlFor="">Case Status:</label>
 
             <select name="" id="" required>
               <option value="">Select Status</option>
               <option value="Status">Status</option>
             </select>
-            {/* <button className="case-from__accused__bio__input__case-status" disabled>
+            <button className="case-from__accused__bio__input__case-status" disabled>
           Filed in Court
-            </button> */}
-          </div>
+            </button>
+          </div> */}
           <div className="case-from__accused__bio__input">
             <label htmlFor="">Accused Status:</label>
-            <select name="" id="" required>
+            <select name="" id="" required
+            
+            value={accusedStatus}
+            onChange={(e) => setAccusedStatus(e.target.value)}
+            >
               <option value="">Select Accused Status</option>
-              <option value="Accused Status">Accused Status</option>
+              <option value="On Bail">On Bail</option>
+              <option value="In Custody">In Custody</option>
+              <option value="Convicted">Convicted</option>
+              <option value="Discharged">Discharged</option>
+              <option value="Deceased">Deceased</option>
             </select>
             {/* <button className="case-from__accused__bio__input__case-remanded" disabled>
           Remamnded in Jail
@@ -465,6 +1310,8 @@ Ahmed Aisha
               id=""
               placeholder="Type Accused Full Name"
               required
+              value={dateInitiated}
+            onChange={(e) => setDateInitiated(e.target.value)}
             />
 
             {/* <button className="case-from__accused__bio__input__case-date" disabled>
@@ -473,15 +1320,22 @@ Ahmed Aisha
           </div>
           <div className="case-from__accused__bio__input case-from__accused__bio__assoc">
             <label htmlFor="">Known Associates:</label>
-            <select name="" id="" required>
-              <option value="">Type Associates</option>
-              <option value="Associates">Associates</option>
-            </select>
+         {/* <form onSubmit={handleAssAssoc}> */}
+       <div>
+       <input type="text" placeholder="Enter Known Associates"
+          value={assoc}
+          onChange={(e) => setAssoc(e.target.value)}
+          />
+          <button
+          onClick={handleAssAssoc}
+          type="button"
+          >Add</button>
+       </div>
+         {/* </form> */}
 
-            <div className="case-from__accused__bio__assoc__list">
-              <div>Shekau Ahmed</div>
-              <div></div>
-            </div>
+            {associate?.length > 0 && <div className="case-from__accused__bio__assoc__list">
+              {associate?.map((item, index) => <div key={index}>{item?.name}</div>)}
+            </div>}
 
             {/* <div className="case-from__accused__bio__input__case-assoc">
               <div>Okoro Madu</div>
@@ -498,6 +1352,9 @@ Ahmed Aisha
               id=""
               placeholder="Insert the legal basis"
               required
+
+              value={legalBasis}
+              onChange={(e) => setLegalBasis(e.target.value)}
             ></textarea>
           </div>
           <div className="case-from__accused__details__input">
@@ -507,6 +1364,8 @@ Ahmed Aisha
               id=""
               placeholder="Insert the particulars of offence"
               required
+              value={particularsOfOffense}
+              onChange={(e) => setParticularsOfOffense(e.target.value)}
             ></textarea>
           </div>
           <div className="case-from__accused__details__input">
@@ -516,6 +1375,8 @@ Ahmed Aisha
               id=""
               placeholder="Insert the charge details"
               required
+              value={chargeDetails}
+              onChange={(e) => setChargeDetails(e.target.value)}
             ></textarea>
           </div>
           <div className="case-from__accused__details__input">
@@ -525,6 +1386,8 @@ Ahmed Aisha
               id=""
               placeholder="Insert the legal brief and memoranda"
               required
+              value={legalBriefAndMemoranda}
+              onChange={(e) => setLegalBriefAndMemoranda(e.target.value)}
             ></textarea>
           </div>
         </div>
@@ -532,761 +1395,207 @@ Ahmed Aisha
           <div className="case-from__accused__attachment__title">
             ATTACHMENT
           </div>
-          <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-first">
-            Attach New Document{" "}
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-                fill="#292D32"
-              />
-              <path
-                d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-                fill="#292D32"
-              />
-            </svg>
-          </div>
           <label className="pointer">
-            {!chargeSheet && (
-              <input
-                type="file"
-                multiple
-                // accept='video/*'
-                accept="application/pdf"
-                hidden
-                onChange={(e) => setChargeSheet(e.target.files[0])}
-                ref={mediaRef}
-              />
-            )}
-            <div className={chargeSheet ? "case-from__accused__attachment__doc case-from__accused__attachment__doc-filled" : "case-from__accused__attachment__doc"}>
-              {!chargeSheet && "Attach Charge sheet"}
-              {!chargeSheet && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-                    fill="#292D32"
-                  />
-                  <path
-                    d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-                    fill="#292D32"
-                  />
-                </svg>
-              )}
-              {chargeSheet && (
-                <div>
-                  <svg
-                    width="20"
-                    height="21"
-                    viewBox="0 0 20 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15.4417 8.00065L10.8333 3.39232C10.7162 3.27507 10.5574 3.20913 10.3917 3.20898H6.66667C6.05888 3.20898 5.47598 3.45043 5.04621 3.8802C4.61644 4.30997 4.375 4.89286 4.375 5.50065V15.5007C4.375 16.1084 4.61644 16.6913 5.04621 17.1211C5.47598 17.5509 6.05888 17.7923 6.66667 17.7923H13.3333C13.9411 17.7923 14.524 17.5509 14.9538 17.1211C15.3836 16.6913 15.625 16.1084 15.625 15.5007V8.41732C15.6184 8.26032 15.553 8.11156 15.4417 8.00065ZM11.0417 5.34232L13.4917 7.79232H11.0417V5.34232ZM13.3333 16.5423H6.66667C6.3904 16.5423 6.12545 16.4326 5.9301 16.2372C5.73475 16.0419 5.625 15.7769 5.625 15.5007V5.50065C5.625 5.22438 5.73475 4.95943 5.9301 4.76408C6.12545 4.56873 6.3904 4.45898 6.66667 4.45898H9.79167V8.41732C9.79382 8.58241 9.86037 8.74013 9.97711 8.85687C10.0939 8.97362 10.2516 9.04016 10.4167 9.04232H14.375V15.5007C14.375 15.7769 14.2653 16.0419 14.0699 16.2372C13.8746 16.4326 13.6096 16.5423 13.3333 16.5423Z"
-                      fill="#334655"
-                    />
-                    <path
-                      d="M11.2417 12.8743C10.7293 12.5528 10.3436 12.0641 10.15 11.491C10.3294 10.9548 10.3836 10.3847 10.3083 9.82433C10.2843 9.68316 10.2155 9.55347 10.112 9.45448C10.0085 9.35549 9.87592 9.29244 9.73382 9.27468C9.59172 9.25692 9.44769 9.28538 9.32303 9.35586C9.19837 9.42634 9.09972 9.53508 9.04168 9.66599C8.9468 10.3397 9.01833 11.0263 9.25001 11.666C8.93351 12.4054 8.58029 13.1285 8.19168 13.8327C7.60001 14.166 6.79168 14.666 6.66668 15.241C6.56668 15.7077 7.44168 16.9077 8.93334 14.3077C9.59662 14.0614 10.276 13.861 10.9667 13.7077C11.4772 13.9996 12.0468 14.1733 12.6333 14.216C12.768 14.2195 12.9007 14.1831 13.0148 14.1114C13.1288 14.0397 13.2192 13.9358 13.2744 13.8129C13.3296 13.69 13.3472 13.5536 13.3251 13.4207C13.303 13.2878 13.2421 13.1644 13.15 13.066C12.8 12.7077 11.7583 12.8077 11.2417 12.8743ZM7.25834 15.3743C7.49188 14.9747 7.80028 14.6238 8.16668 14.341C7.60001 15.241 7.25834 15.3993 7.25834 15.3827V15.3743ZM9.69168 9.69933C9.90834 9.69933 9.89168 10.6577 9.74168 10.916C9.62868 10.523 9.61154 10.1086 9.69168 9.70766V9.69933ZM8.96668 13.766C9.24902 13.2509 9.49409 12.7162 9.70001 12.166C9.92077 12.5768 10.2278 12.935 10.6 13.216C10.0409 13.356 9.49453 13.5428 8.96668 13.7743V13.766ZM12.8833 13.616C12.8833 13.616 12.7333 13.7993 11.775 13.3827C12.8167 13.316 12.9917 13.5577 12.8833 13.6243V13.616Z"
-                      fill="#334655"
-                    />
-                  </svg>
-                  Charge_sheet.PDF
-                </div>
-              )}
-
-              {chargeSheet && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  onClick={() => setChargeSheet(null)}
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M12.0001 13.0597L6.53039 18.5294L5.46973 17.4688L10.9394 11.9991L5.46973 6.52941L6.53039 5.46875L12.0001 10.9384L17.4697 5.46875L18.5304 6.52941L13.0607 11.9991L18.5304 17.4688L17.4697 18.5294L12.0001 13.0597Z"
-                    fill="#0E0E2C"
-                  />
-                </svg>
-              )}
-            </div>
-          </label>
-          <label className="pointer">
-            {!evidenceAndWitness && (
-              <input
-                type="file"
-                multiple
-                // accept='video/*'
-                accept="application/pdf"
-                hidden
-                onChange={(e) => setEvidenceAndWitness(e.target.files[0])}
-                ref={mediaRef}
-              />
-            )}
-            <div className={evidenceAndWitness ? "case-from__accused__attachment__doc case-from__accused__attachment__doc-filled" : "case-from__accused__attachment__doc"}>
-              {!evidenceAndWitness && "Attach Evidence and Witness"}{" "}
-              {!evidenceAndWitness && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-                    fill="#292D32"
-                  />
-                  <path
-                    d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-                    fill="#292D32"
-                  />
-                </svg>
-              )}
-              {evidenceAndWitness && (
-                <div>
-                  <svg
-                    width="20"
-                    height="21"
-                    viewBox="0 0 20 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15.4417 8.00065L10.8333 3.39232C10.7162 3.27507 10.5574 3.20913 10.3917 3.20898H6.66667C6.05888 3.20898 5.47598 3.45043 5.04621 3.8802C4.61644 4.30997 4.375 4.89286 4.375 5.50065V15.5007C4.375 16.1084 4.61644 16.6913 5.04621 17.1211C5.47598 17.5509 6.05888 17.7923 6.66667 17.7923H13.3333C13.9411 17.7923 14.524 17.5509 14.9538 17.1211C15.3836 16.6913 15.625 16.1084 15.625 15.5007V8.41732C15.6184 8.26032 15.553 8.11156 15.4417 8.00065ZM11.0417 5.34232L13.4917 7.79232H11.0417V5.34232ZM13.3333 16.5423H6.66667C6.3904 16.5423 6.12545 16.4326 5.9301 16.2372C5.73475 16.0419 5.625 15.7769 5.625 15.5007V5.50065C5.625 5.22438 5.73475 4.95943 5.9301 4.76408C6.12545 4.56873 6.3904 4.45898 6.66667 4.45898H9.79167V8.41732C9.79382 8.58241 9.86037 8.74013 9.97711 8.85687C10.0939 8.97362 10.2516 9.04016 10.4167 9.04232H14.375V15.5007C14.375 15.7769 14.2653 16.0419 14.0699 16.2372C13.8746 16.4326 13.6096 16.5423 13.3333 16.5423Z"
-                      fill="#334655"
-                    />
-                    <path
-                      d="M11.2417 12.8743C10.7293 12.5528 10.3436 12.0641 10.15 11.491C10.3294 10.9548 10.3836 10.3847 10.3083 9.82433C10.2843 9.68316 10.2155 9.55347 10.112 9.45448C10.0085 9.35549 9.87592 9.29244 9.73382 9.27468C9.59172 9.25692 9.44769 9.28538 9.32303 9.35586C9.19837 9.42634 9.09972 9.53508 9.04168 9.66599C8.9468 10.3397 9.01833 11.0263 9.25001 11.666C8.93351 12.4054 8.58029 13.1285 8.19168 13.8327C7.60001 14.166 6.79168 14.666 6.66668 15.241C6.56668 15.7077 7.44168 16.9077 8.93334 14.3077C9.59662 14.0614 10.276 13.861 10.9667 13.7077C11.4772 13.9996 12.0468 14.1733 12.6333 14.216C12.768 14.2195 12.9007 14.1831 13.0148 14.1114C13.1288 14.0397 13.2192 13.9358 13.2744 13.8129C13.3296 13.69 13.3472 13.5536 13.3251 13.4207C13.303 13.2878 13.2421 13.1644 13.15 13.066C12.8 12.7077 11.7583 12.8077 11.2417 12.8743ZM7.25834 15.3743C7.49188 14.9747 7.80028 14.6238 8.16668 14.341C7.60001 15.241 7.25834 15.3993 7.25834 15.3827V15.3743ZM9.69168 9.69933C9.90834 9.69933 9.89168 10.6577 9.74168 10.916C9.62868 10.523 9.61154 10.1086 9.69168 9.70766V9.69933ZM8.96668 13.766C9.24902 13.2509 9.49409 12.7162 9.70001 12.166C9.92077 12.5768 10.2278 12.935 10.6 13.216C10.0409 13.356 9.49453 13.5428 8.96668 13.7743V13.766ZM12.8833 13.616C12.8833 13.616 12.7333 13.7993 11.775 13.3827C12.8167 13.316 12.9917 13.5577 12.8833 13.6243V13.616Z"
-                      fill="#334655"
-                    />
-                  </svg>
-                  Evidence and Witness.PDF
-                </div>
-              )}
-              {evidenceAndWitness && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  onClick={() => setEvidenceAndWitness(null)}
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M12.0001 13.0597L6.53039 18.5294L5.46973 17.4688L10.9394 11.9991L5.46973 6.52941L6.53039 5.46875L12.0001 10.9384L17.4697 5.46875L18.5304 6.52941L13.0607 11.9991L18.5304 17.4688L17.4697 18.5294L12.0001 13.0597Z"
-                    fill="#0E0E2C"
-                  />
-                </svg>
-              )}
-            </div>
-          </label>
-          <label className="pointer">
-            {!expertReport && (
-              <input
-                type="file"
-                multiple
-                // accept='video/*'
-                accept="application/pdf"
-                hidden
-                onChange={(e) => setExpertReport(e.target.files[0])}
-                ref={mediaRef}
-              />
-            )}
-            <div className={expertReport ? "case-from__accused__attachment__doc case-from__accused__attachment__doc-filled" : "case-from__accused__attachment__doc"}>
-              {!expertReport && "Attach Expert Report"}{" "}
-              {!expertReport && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-                    fill="#292D32"
-                  />
-                  <path
-                    d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-                    fill="#292D32"
-                  />
-                </svg>
-              )}
-              {expertReport && (
-                <div>
-                  <svg
-                    width="20"
-                    height="21"
-                    viewBox="0 0 20 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15.4417 8.00065L10.8333 3.39232C10.7162 3.27507 10.5574 3.20913 10.3917 3.20898H6.66667C6.05888 3.20898 5.47598 3.45043 5.04621 3.8802C4.61644 4.30997 4.375 4.89286 4.375 5.50065V15.5007C4.375 16.1084 4.61644 16.6913 5.04621 17.1211C5.47598 17.5509 6.05888 17.7923 6.66667 17.7923H13.3333C13.9411 17.7923 14.524 17.5509 14.9538 17.1211C15.3836 16.6913 15.625 16.1084 15.625 15.5007V8.41732C15.6184 8.26032 15.553 8.11156 15.4417 8.00065ZM11.0417 5.34232L13.4917 7.79232H11.0417V5.34232ZM13.3333 16.5423H6.66667C6.3904 16.5423 6.12545 16.4326 5.9301 16.2372C5.73475 16.0419 5.625 15.7769 5.625 15.5007V5.50065C5.625 5.22438 5.73475 4.95943 5.9301 4.76408C6.12545 4.56873 6.3904 4.45898 6.66667 4.45898H9.79167V8.41732C9.79382 8.58241 9.86037 8.74013 9.97711 8.85687C10.0939 8.97362 10.2516 9.04016 10.4167 9.04232H14.375V15.5007C14.375 15.7769 14.2653 16.0419 14.0699 16.2372C13.8746 16.4326 13.6096 16.5423 13.3333 16.5423Z"
-                      fill="#334655"
-                    />
-                    <path
-                      d="M11.2417 12.8743C10.7293 12.5528 10.3436 12.0641 10.15 11.491C10.3294 10.9548 10.3836 10.3847 10.3083 9.82433C10.2843 9.68316 10.2155 9.55347 10.112 9.45448C10.0085 9.35549 9.87592 9.29244 9.73382 9.27468C9.59172 9.25692 9.44769 9.28538 9.32303 9.35586C9.19837 9.42634 9.09972 9.53508 9.04168 9.66599C8.9468 10.3397 9.01833 11.0263 9.25001 11.666C8.93351 12.4054 8.58029 13.1285 8.19168 13.8327C7.60001 14.166 6.79168 14.666 6.66668 15.241C6.56668 15.7077 7.44168 16.9077 8.93334 14.3077C9.59662 14.0614 10.276 13.861 10.9667 13.7077C11.4772 13.9996 12.0468 14.1733 12.6333 14.216C12.768 14.2195 12.9007 14.1831 13.0148 14.1114C13.1288 14.0397 13.2192 13.9358 13.2744 13.8129C13.3296 13.69 13.3472 13.5536 13.3251 13.4207C13.303 13.2878 13.2421 13.1644 13.15 13.066C12.8 12.7077 11.7583 12.8077 11.2417 12.8743ZM7.25834 15.3743C7.49188 14.9747 7.80028 14.6238 8.16668 14.341C7.60001 15.241 7.25834 15.3993 7.25834 15.3827V15.3743ZM9.69168 9.69933C9.90834 9.69933 9.89168 10.6577 9.74168 10.916C9.62868 10.523 9.61154 10.1086 9.69168 9.70766V9.69933ZM8.96668 13.766C9.24902 13.2509 9.49409 12.7162 9.70001 12.166C9.92077 12.5768 10.2278 12.935 10.6 13.216C10.0409 13.356 9.49453 13.5428 8.96668 13.7743V13.766ZM12.8833 13.616C12.8833 13.616 12.7333 13.7993 11.775 13.3827C12.8167 13.316 12.9917 13.5577 12.8833 13.6243V13.616Z"
-                      fill="#334655"
-                    />
-                  </svg>
-                  Expert Report.PDF
-                </div>
-              )}
-              {expertReport && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  onClick={() => setExpertReport(null)}
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M12.0001 13.0597L6.53039 18.5294L5.46973 17.4688L10.9394 11.9991L5.46973 6.52941L6.53039 5.46875L12.0001 10.9384L17.4697 5.46875L18.5304 6.52941L13.0607 11.9991L18.5304 17.4688L17.4697 18.5294L12.0001 13.0597Z"
-                    fill="#0E0E2C"
-                  />
-                </svg>
-              )}
-            </div>
-          </label>
-          <label className="pointer">
-            {!courtDocument && (
-              <input
-                type="file"
-                multiple
-                // accept='video/*'
-                accept="application/pdf"
-                hidden
-                onChange={(e) => setCourtDocument(e.target.files[0])}
-                ref={mediaRef}
-              />
-            )}
-            <div className={chargeSheet ? "case-from__accused__attachment__doc case-from__accused__attachment__doc-filled" : "case-from__accused__attachment__doc"}>
-              {!courtDocument && "Attach Court Document"}{" "}
-              {!courtDocument && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-                    fill="#292D32"
-                  />
-                  <path
-                    d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-                    fill="#292D32"
-                  />
-                </svg>
-              )}
-              {courtDocument && (
-                <div>
-                  <svg
-                    width="20"
-                    height="21"
-                    viewBox="0 0 20 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15.4417 8.00065L10.8333 3.39232C10.7162 3.27507 10.5574 3.20913 10.3917 3.20898H6.66667C6.05888 3.20898 5.47598 3.45043 5.04621 3.8802C4.61644 4.30997 4.375 4.89286 4.375 5.50065V15.5007C4.375 16.1084 4.61644 16.6913 5.04621 17.1211C5.47598 17.5509 6.05888 17.7923 6.66667 17.7923H13.3333C13.9411 17.7923 14.524 17.5509 14.9538 17.1211C15.3836 16.6913 15.625 16.1084 15.625 15.5007V8.41732C15.6184 8.26032 15.553 8.11156 15.4417 8.00065ZM11.0417 5.34232L13.4917 7.79232H11.0417V5.34232ZM13.3333 16.5423H6.66667C6.3904 16.5423 6.12545 16.4326 5.9301 16.2372C5.73475 16.0419 5.625 15.7769 5.625 15.5007V5.50065C5.625 5.22438 5.73475 4.95943 5.9301 4.76408C6.12545 4.56873 6.3904 4.45898 6.66667 4.45898H9.79167V8.41732C9.79382 8.58241 9.86037 8.74013 9.97711 8.85687C10.0939 8.97362 10.2516 9.04016 10.4167 9.04232H14.375V15.5007C14.375 15.7769 14.2653 16.0419 14.0699 16.2372C13.8746 16.4326 13.6096 16.5423 13.3333 16.5423Z"
-                      fill="#334655"
-                    />
-                    <path
-                      d="M11.2417 12.8743C10.7293 12.5528 10.3436 12.0641 10.15 11.491C10.3294 10.9548 10.3836 10.3847 10.3083 9.82433C10.2843 9.68316 10.2155 9.55347 10.112 9.45448C10.0085 9.35549 9.87592 9.29244 9.73382 9.27468C9.59172 9.25692 9.44769 9.28538 9.32303 9.35586C9.19837 9.42634 9.09972 9.53508 9.04168 9.66599C8.9468 10.3397 9.01833 11.0263 9.25001 11.666C8.93351 12.4054 8.58029 13.1285 8.19168 13.8327C7.60001 14.166 6.79168 14.666 6.66668 15.241C6.56668 15.7077 7.44168 16.9077 8.93334 14.3077C9.59662 14.0614 10.276 13.861 10.9667 13.7077C11.4772 13.9996 12.0468 14.1733 12.6333 14.216C12.768 14.2195 12.9007 14.1831 13.0148 14.1114C13.1288 14.0397 13.2192 13.9358 13.2744 13.8129C13.3296 13.69 13.3472 13.5536 13.3251 13.4207C13.303 13.2878 13.2421 13.1644 13.15 13.066C12.8 12.7077 11.7583 12.8077 11.2417 12.8743ZM7.25834 15.3743C7.49188 14.9747 7.80028 14.6238 8.16668 14.341C7.60001 15.241 7.25834 15.3993 7.25834 15.3827V15.3743ZM9.69168 9.69933C9.90834 9.69933 9.89168 10.6577 9.74168 10.916C9.62868 10.523 9.61154 10.1086 9.69168 9.70766V9.69933ZM8.96668 13.766C9.24902 13.2509 9.49409 12.7162 9.70001 12.166C9.92077 12.5768 10.2278 12.935 10.6 13.216C10.0409 13.356 9.49453 13.5428 8.96668 13.7743V13.766ZM12.8833 13.616C12.8833 13.616 12.7333 13.7993 11.775 13.3827C12.8167 13.316 12.9917 13.5577 12.8833 13.6243V13.616Z"
-                      fill="#334655"
-                    />
-                  </svg>
-                  Court Document.PDF
-                </div>
-              )}
-              {courtDocument && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  onClick={() => setCourtDocument(null)}
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M12.0001 13.0597L6.53039 18.5294L5.46973 17.4688L10.9394 11.9991L5.46973 6.52941L6.53039 5.46875L12.0001 10.9384L17.4697 5.46875L18.5304 6.52941L13.0607 11.9991L18.5304 17.4688L17.4697 18.5294L12.0001 13.0597Z"
-                    fill="#0E0E2C"
-                  />
-                </svg>
-              )}
-            </div>
-          </label>
-          <label className="pointer">
-            {!transcripts && (
-              <input
-                type="file"
-                multiple
-                // accept='video/*'
-                accept="application/pdf"
-                hidden
-                onChange={(e) => setTranscripts(e.target.files[0])}
-                ref={mediaRef}
-              />
-            )}
-            <div className={transcripts ? "case-from__accused__attachment__doc case-from__accused__attachment__doc-filled" : "case-from__accused__attachment__doc"}>
-              {!transcripts && "Attach Transcripts"}{" "}
-              {!transcripts && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-                    fill="#292D32"
-                  />
-                  <path
-                    d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-                    fill="#292D32"
-                  />
-                </svg>
-              )}
-              {transcripts && (
-                <div>
-                  <svg
-                    width="20"
-                    height="21"
-                    viewBox="0 0 20 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15.4417 8.00065L10.8333 3.39232C10.7162 3.27507 10.5574 3.20913 10.3917 3.20898H6.66667C6.05888 3.20898 5.47598 3.45043 5.04621 3.8802C4.61644 4.30997 4.375 4.89286 4.375 5.50065V15.5007C4.375 16.1084 4.61644 16.6913 5.04621 17.1211C5.47598 17.5509 6.05888 17.7923 6.66667 17.7923H13.3333C13.9411 17.7923 14.524 17.5509 14.9538 17.1211C15.3836 16.6913 15.625 16.1084 15.625 15.5007V8.41732C15.6184 8.26032 15.553 8.11156 15.4417 8.00065ZM11.0417 5.34232L13.4917 7.79232H11.0417V5.34232ZM13.3333 16.5423H6.66667C6.3904 16.5423 6.12545 16.4326 5.9301 16.2372C5.73475 16.0419 5.625 15.7769 5.625 15.5007V5.50065C5.625 5.22438 5.73475 4.95943 5.9301 4.76408C6.12545 4.56873 6.3904 4.45898 6.66667 4.45898H9.79167V8.41732C9.79382 8.58241 9.86037 8.74013 9.97711 8.85687C10.0939 8.97362 10.2516 9.04016 10.4167 9.04232H14.375V15.5007C14.375 15.7769 14.2653 16.0419 14.0699 16.2372C13.8746 16.4326 13.6096 16.5423 13.3333 16.5423Z"
-                      fill="#334655"
-                    />
-                    <path
-                      d="M11.2417 12.8743C10.7293 12.5528 10.3436 12.0641 10.15 11.491C10.3294 10.9548 10.3836 10.3847 10.3083 9.82433C10.2843 9.68316 10.2155 9.55347 10.112 9.45448C10.0085 9.35549 9.87592 9.29244 9.73382 9.27468C9.59172 9.25692 9.44769 9.28538 9.32303 9.35586C9.19837 9.42634 9.09972 9.53508 9.04168 9.66599C8.9468 10.3397 9.01833 11.0263 9.25001 11.666C8.93351 12.4054 8.58029 13.1285 8.19168 13.8327C7.60001 14.166 6.79168 14.666 6.66668 15.241C6.56668 15.7077 7.44168 16.9077 8.93334 14.3077C9.59662 14.0614 10.276 13.861 10.9667 13.7077C11.4772 13.9996 12.0468 14.1733 12.6333 14.216C12.768 14.2195 12.9007 14.1831 13.0148 14.1114C13.1288 14.0397 13.2192 13.9358 13.2744 13.8129C13.3296 13.69 13.3472 13.5536 13.3251 13.4207C13.303 13.2878 13.2421 13.1644 13.15 13.066C12.8 12.7077 11.7583 12.8077 11.2417 12.8743ZM7.25834 15.3743C7.49188 14.9747 7.80028 14.6238 8.16668 14.341C7.60001 15.241 7.25834 15.3993 7.25834 15.3827V15.3743ZM9.69168 9.69933C9.90834 9.69933 9.89168 10.6577 9.74168 10.916C9.62868 10.523 9.61154 10.1086 9.69168 9.70766V9.69933ZM8.96668 13.766C9.24902 13.2509 9.49409 12.7162 9.70001 12.166C9.92077 12.5768 10.2278 12.935 10.6 13.216C10.0409 13.356 9.49453 13.5428 8.96668 13.7743V13.766ZM12.8833 13.616C12.8833 13.616 12.7333 13.7993 11.775 13.3827C12.8167 13.316 12.9917 13.5577 12.8833 13.6243V13.616Z"
-                      fill="#334655"
-                    />
-                  </svg>
-                  Transcripts.PDF
-                </div>
-              )}
-              {transcripts && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  onClick={() => setTranscripts(null)}
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M12.0001 13.0597L6.53039 18.5294L5.46973 17.4688L10.9394 11.9991L5.46973 6.52941L6.53039 5.46875L12.0001 10.9384L17.4697 5.46875L18.5304 6.52941L13.0607 11.9991L18.5304 17.4688L17.4697 18.5294L12.0001 13.0597Z"
-                    fill="#0E0E2C"
-                  />
-                </svg>
-              )}
-            </div>
-          </label>
-          <label className="pointer">
-            {!discoveryMaterials && (
-              <input
-                type="file"
-                multiple
-                // accept='video/*'
-                accept="application/pdf"
-                hidden
-                onChange={(e) => setDiscoveryMaterials(e.target.files[0])}
-                ref={mediaRef}
-              />
-            )}
-            <div className={discoveryMaterials ? "case-from__accused__attachment__doc case-from__accused__attachment__doc-filled" : "case-from__accused__attachment__doc"}>
-              {!discoveryMaterials && "Attach Discovery Materials"}{" "}
-              {!discoveryMaterials && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-                    fill="#292D32"
-                  />
-                  <path
-                    d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-                    fill="#292D32"
-                  />
-                </svg>
-              )}
-              {discoveryMaterials && (
-                <div>
-                  <svg
-                    width="20"
-                    height="21"
-                    viewBox="0 0 20 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15.4417 8.00065L10.8333 3.39232C10.7162 3.27507 10.5574 3.20913 10.3917 3.20898H6.66667C6.05888 3.20898 5.47598 3.45043 5.04621 3.8802C4.61644 4.30997 4.375 4.89286 4.375 5.50065V15.5007C4.375 16.1084 4.61644 16.6913 5.04621 17.1211C5.47598 17.5509 6.05888 17.7923 6.66667 17.7923H13.3333C13.9411 17.7923 14.524 17.5509 14.9538 17.1211C15.3836 16.6913 15.625 16.1084 15.625 15.5007V8.41732C15.6184 8.26032 15.553 8.11156 15.4417 8.00065ZM11.0417 5.34232L13.4917 7.79232H11.0417V5.34232ZM13.3333 16.5423H6.66667C6.3904 16.5423 6.12545 16.4326 5.9301 16.2372C5.73475 16.0419 5.625 15.7769 5.625 15.5007V5.50065C5.625 5.22438 5.73475 4.95943 5.9301 4.76408C6.12545 4.56873 6.3904 4.45898 6.66667 4.45898H9.79167V8.41732C9.79382 8.58241 9.86037 8.74013 9.97711 8.85687C10.0939 8.97362 10.2516 9.04016 10.4167 9.04232H14.375V15.5007C14.375 15.7769 14.2653 16.0419 14.0699 16.2372C13.8746 16.4326 13.6096 16.5423 13.3333 16.5423Z"
-                      fill="#334655"
-                    />
-                    <path
-                      d="M11.2417 12.8743C10.7293 12.5528 10.3436 12.0641 10.15 11.491C10.3294 10.9548 10.3836 10.3847 10.3083 9.82433C10.2843 9.68316 10.2155 9.55347 10.112 9.45448C10.0085 9.35549 9.87592 9.29244 9.73382 9.27468C9.59172 9.25692 9.44769 9.28538 9.32303 9.35586C9.19837 9.42634 9.09972 9.53508 9.04168 9.66599C8.9468 10.3397 9.01833 11.0263 9.25001 11.666C8.93351 12.4054 8.58029 13.1285 8.19168 13.8327C7.60001 14.166 6.79168 14.666 6.66668 15.241C6.56668 15.7077 7.44168 16.9077 8.93334 14.3077C9.59662 14.0614 10.276 13.861 10.9667 13.7077C11.4772 13.9996 12.0468 14.1733 12.6333 14.216C12.768 14.2195 12.9007 14.1831 13.0148 14.1114C13.1288 14.0397 13.2192 13.9358 13.2744 13.8129C13.3296 13.69 13.3472 13.5536 13.3251 13.4207C13.303 13.2878 13.2421 13.1644 13.15 13.066C12.8 12.7077 11.7583 12.8077 11.2417 12.8743ZM7.25834 15.3743C7.49188 14.9747 7.80028 14.6238 8.16668 14.341C7.60001 15.241 7.25834 15.3993 7.25834 15.3827V15.3743ZM9.69168 9.69933C9.90834 9.69933 9.89168 10.6577 9.74168 10.916C9.62868 10.523 9.61154 10.1086 9.69168 9.70766V9.69933ZM8.96668 13.766C9.24902 13.2509 9.49409 12.7162 9.70001 12.166C9.92077 12.5768 10.2278 12.935 10.6 13.216C10.0409 13.356 9.49453 13.5428 8.96668 13.7743V13.766ZM12.8833 13.616C12.8833 13.616 12.7333 13.7993 11.775 13.3827C12.8167 13.316 12.9917 13.5577 12.8833 13.6243V13.616Z"
-                      fill="#334655"
-                    />
-                  </svg>
-                  Discovery Materials.PDF
-                </div>
-              )}
-              {discoveryMaterials && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  onClick={() => setDiscoveryMaterials(null)}
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M12.0001 13.0597L6.53039 18.5294L5.46973 17.4688L10.9394 11.9991L5.46973 6.52941L6.53039 5.46875L12.0001 10.9384L17.4697 5.46875L18.5304 6.52941L13.0607 11.9991L18.5304 17.4688L17.4697 18.5294L12.0001 13.0597Z"
-                    fill="#0E0E2C"
-                  />
-                </svg>
-              )}
-            </div>
-          </label>
-          <label className="pointer">
-            {!miscellaneous && (
-              <input
-                type="file"
-                multiple
-                // accept='video/*'
-                accept="application/pdf"
-                hidden
-                onChange={(e) => setMiscellaneous(e.target.files[0])}
-                ref={mediaRef}
-              />
-            )}
-            <div className={miscellaneous ? "case-from__accused__attachment__doc case-from__accused__attachment__doc-filled" : "case-from__accused__attachment__doc"}>
-              {!miscellaneous && "Attach Miscellaneous"}{" "}
-              {!miscellaneous && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-                    fill="#292D32"
-                  />
-                  <path
-                    d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-                    fill="#292D32"
-                  />
-                </svg>
-              )}
-              {miscellaneous && (
-                <div>
-                  <svg
-                    width="20"
-                    height="21"
-                    viewBox="0 0 20 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15.4417 8.00065L10.8333 3.39232C10.7162 3.27507 10.5574 3.20913 10.3917 3.20898H6.66667C6.05888 3.20898 5.47598 3.45043 5.04621 3.8802C4.61644 4.30997 4.375 4.89286 4.375 5.50065V15.5007C4.375 16.1084 4.61644 16.6913 5.04621 17.1211C5.47598 17.5509 6.05888 17.7923 6.66667 17.7923H13.3333C13.9411 17.7923 14.524 17.5509 14.9538 17.1211C15.3836 16.6913 15.625 16.1084 15.625 15.5007V8.41732C15.6184 8.26032 15.553 8.11156 15.4417 8.00065ZM11.0417 5.34232L13.4917 7.79232H11.0417V5.34232ZM13.3333 16.5423H6.66667C6.3904 16.5423 6.12545 16.4326 5.9301 16.2372C5.73475 16.0419 5.625 15.7769 5.625 15.5007V5.50065C5.625 5.22438 5.73475 4.95943 5.9301 4.76408C6.12545 4.56873 6.3904 4.45898 6.66667 4.45898H9.79167V8.41732C9.79382 8.58241 9.86037 8.74013 9.97711 8.85687C10.0939 8.97362 10.2516 9.04016 10.4167 9.04232H14.375V15.5007C14.375 15.7769 14.2653 16.0419 14.0699 16.2372C13.8746 16.4326 13.6096 16.5423 13.3333 16.5423Z"
-                      fill="#334655"
-                    />
-                    <path
-                      d="M11.2417 12.8743C10.7293 12.5528 10.3436 12.0641 10.15 11.491C10.3294 10.9548 10.3836 10.3847 10.3083 9.82433C10.2843 9.68316 10.2155 9.55347 10.112 9.45448C10.0085 9.35549 9.87592 9.29244 9.73382 9.27468C9.59172 9.25692 9.44769 9.28538 9.32303 9.35586C9.19837 9.42634 9.09972 9.53508 9.04168 9.66599C8.9468 10.3397 9.01833 11.0263 9.25001 11.666C8.93351 12.4054 8.58029 13.1285 8.19168 13.8327C7.60001 14.166 6.79168 14.666 6.66668 15.241C6.56668 15.7077 7.44168 16.9077 8.93334 14.3077C9.59662 14.0614 10.276 13.861 10.9667 13.7077C11.4772 13.9996 12.0468 14.1733 12.6333 14.216C12.768 14.2195 12.9007 14.1831 13.0148 14.1114C13.1288 14.0397 13.2192 13.9358 13.2744 13.8129C13.3296 13.69 13.3472 13.5536 13.3251 13.4207C13.303 13.2878 13.2421 13.1644 13.15 13.066C12.8 12.7077 11.7583 12.8077 11.2417 12.8743ZM7.25834 15.3743C7.49188 14.9747 7.80028 14.6238 8.16668 14.341C7.60001 15.241 7.25834 15.3993 7.25834 15.3827V15.3743ZM9.69168 9.69933C9.90834 9.69933 9.89168 10.6577 9.74168 10.916C9.62868 10.523 9.61154 10.1086 9.69168 9.70766V9.69933ZM8.96668 13.766C9.24902 13.2509 9.49409 12.7162 9.70001 12.166C9.92077 12.5768 10.2278 12.935 10.6 13.216C10.0409 13.356 9.49453 13.5428 8.96668 13.7743V13.766ZM12.8833 13.616C12.8833 13.616 12.7333 13.7993 11.775 13.3827C12.8167 13.316 12.9917 13.5577 12.8833 13.6243V13.616Z"
-                      fill="#334655"
-                    />
-                  </svg>
-                  Miscellaneous.PDF
-                </div>
-              )}
-            </div>
-          </label>
-          <label className="pointer">
-            {!correspondence && (
-              <input
-                type="file"
-                multiple
-                // accept='video/*'
-                accept="application/pdf"
-                hidden
-                onChange={(e) => setCorrespondence(e.target.files[0])}
-                ref={mediaRef}
-              />
-            )}
-            <div className={correspondence ? "case-from__accused__attachment__doc case-from__accused__attachment__doc-filled" : "case-from__accused__attachment__doc"}>
-              {!correspondence && "Attach Correspondence"}{" "}
-              {correspondence && (
-                <div>
-                  <svg
-                    width="20"
-                    height="21"
-                    viewBox="0 0 20 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15.4417 8.00065L10.8333 3.39232C10.7162 3.27507 10.5574 3.20913 10.3917 3.20898H6.66667C6.05888 3.20898 5.47598 3.45043 5.04621 3.8802C4.61644 4.30997 4.375 4.89286 4.375 5.50065V15.5007C4.375 16.1084 4.61644 16.6913 5.04621 17.1211C5.47598 17.5509 6.05888 17.7923 6.66667 17.7923H13.3333C13.9411 17.7923 14.524 17.5509 14.9538 17.1211C15.3836 16.6913 15.625 16.1084 15.625 15.5007V8.41732C15.6184 8.26032 15.553 8.11156 15.4417 8.00065ZM11.0417 5.34232L13.4917 7.79232H11.0417V5.34232ZM13.3333 16.5423H6.66667C6.3904 16.5423 6.12545 16.4326 5.9301 16.2372C5.73475 16.0419 5.625 15.7769 5.625 15.5007V5.50065C5.625 5.22438 5.73475 4.95943 5.9301 4.76408C6.12545 4.56873 6.3904 4.45898 6.66667 4.45898H9.79167V8.41732C9.79382 8.58241 9.86037 8.74013 9.97711 8.85687C10.0939 8.97362 10.2516 9.04016 10.4167 9.04232H14.375V15.5007C14.375 15.7769 14.2653 16.0419 14.0699 16.2372C13.8746 16.4326 13.6096 16.5423 13.3333 16.5423Z"
-                      fill="#334655"
-                    />
-                    <path
-                      d="M11.2417 12.8743C10.7293 12.5528 10.3436 12.0641 10.15 11.491C10.3294 10.9548 10.3836 10.3847 10.3083 9.82433C10.2843 9.68316 10.2155 9.55347 10.112 9.45448C10.0085 9.35549 9.87592 9.29244 9.73382 9.27468C9.59172 9.25692 9.44769 9.28538 9.32303 9.35586C9.19837 9.42634 9.09972 9.53508 9.04168 9.66599C8.9468 10.3397 9.01833 11.0263 9.25001 11.666C8.93351 12.4054 8.58029 13.1285 8.19168 13.8327C7.60001 14.166 6.79168 14.666 6.66668 15.241C6.56668 15.7077 7.44168 16.9077 8.93334 14.3077C9.59662 14.0614 10.276 13.861 10.9667 13.7077C11.4772 13.9996 12.0468 14.1733 12.6333 14.216C12.768 14.2195 12.9007 14.1831 13.0148 14.1114C13.1288 14.0397 13.2192 13.9358 13.2744 13.8129C13.3296 13.69 13.3472 13.5536 13.3251 13.4207C13.303 13.2878 13.2421 13.1644 13.15 13.066C12.8 12.7077 11.7583 12.8077 11.2417 12.8743ZM7.25834 15.3743C7.49188 14.9747 7.80028 14.6238 8.16668 14.341C7.60001 15.241 7.25834 15.3993 7.25834 15.3827V15.3743ZM9.69168 9.69933C9.90834 9.69933 9.89168 10.6577 9.74168 10.916C9.62868 10.523 9.61154 10.1086 9.69168 9.70766V9.69933ZM8.96668 13.766C9.24902 13.2509 9.49409 12.7162 9.70001 12.166C9.92077 12.5768 10.2278 12.935 10.6 13.216C10.0409 13.356 9.49453 13.5428 8.96668 13.7743V13.766ZM12.8833 13.616C12.8833 13.616 12.7333 13.7993 11.775 13.3827C12.8167 13.316 12.9917 13.5577 12.8833 13.6243V13.616Z"
-                      fill="#334655"
-                    />
-                  </svg>
-                  Correspondence.PDF
-                </div>
-              )}
-              {!correspondence && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-                    fill="#292D32"
-                  />
-                  <path
-                    d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-                    fill="#292D32"
-                  />
-                </svg>
-              )}
-              {correspondence && (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  onClick={() => setCorrespondence(null)}
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M12.0001 13.0597L6.53039 18.5294L5.46973 17.4688L10.9394 11.9991L5.46973 6.52941L6.53039 5.46875L12.0001 10.9384L17.4697 5.46875L18.5304 6.52941L13.0607 11.9991L18.5304 17.4688L17.4697 18.5294L12.0001 13.0597Z"
-                    fill="#0E0E2C"
-                  />
-                </svg>
-              )}
-            </div>
-          </label>
-          <label className="pointer">
-            {!audio && <input
+            <input
               type="file"
               multiple
-              accept='.wav'
+              // accept='video/*'
+              accept=".docx, .pdf, .mp3, .wav, .mov, .mp4"
               hidden
-              onChange={(e) => fileUpload(e)}
+              onChange={(e) => handleFileUpload(e)}
               ref={mediaRef}
-            />}
-            <div className={audio ? "case-from__accused__attachment__doc case-from__accused__attachment__doc-filled" : "case-from__accused__attachment__doc"}>
-              {!audio && "Attach Audio"}{" "}
-              {!audio && <svg
+            />
+            <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-first">
+              {docLoading ? "Loading..." : "Attach New Document"}{" "}
+              {!docLoading && (
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
+                    fill="#292D32"
+                  />
+                  <path
+                    d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
+                    fill="#292D32"
+                  />
+                </svg>
+              )}
+            </div>
+          </label>
+
+          {docs?.map((doc, index) => (
+            <div
+              key={index}
+              className="case-from__accused__attachment__doc case-from__accused__attachment__doc-filled"
+            >
+              <div>
+                <svg
+                  width="20"
+                  height="21"
+                  viewBox="0 0 20 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.4417 8.00065L10.8333 3.39232C10.7162 3.27507 10.5574 3.20913 10.3917 3.20898H6.66667C6.05888 3.20898 5.47598 3.45043 5.04621 3.8802C4.61644 4.30997 4.375 4.89286 4.375 5.50065V15.5007C4.375 16.1084 4.61644 16.6913 5.04621 17.1211C5.47598 17.5509 6.05888 17.7923 6.66667 17.7923H13.3333C13.9411 17.7923 14.524 17.5509 14.9538 17.1211C15.3836 16.6913 15.625 16.1084 15.625 15.5007V8.41732C15.6184 8.26032 15.553 8.11156 15.4417 8.00065ZM11.0417 5.34232L13.4917 7.79232H11.0417V5.34232ZM13.3333 16.5423H6.66667C6.3904 16.5423 6.12545 16.4326 5.9301 16.2372C5.73475 16.0419 5.625 15.7769 5.625 15.5007V5.50065C5.625 5.22438 5.73475 4.95943 5.9301 4.76408C6.12545 4.56873 6.3904 4.45898 6.66667 4.45898H9.79167V8.41732C9.79382 8.58241 9.86037 8.74013 9.97711 8.85687C10.0939 8.97362 10.2516 9.04016 10.4167 9.04232H14.375V15.5007C14.375 15.7769 14.2653 16.0419 14.0699 16.2372C13.8746 16.4326 13.6096 16.5423 13.3333 16.5423Z"
+                    fill="#334655"
+                  />
+                  <path
+                    d="M11.2417 12.8743C10.7293 12.5528 10.3436 12.0641 10.15 11.491C10.3294 10.9548 10.3836 10.3847 10.3083 9.82433C10.2843 9.68316 10.2155 9.55347 10.112 9.45448C10.0085 9.35549 9.87592 9.29244 9.73382 9.27468C9.59172 9.25692 9.44769 9.28538 9.32303 9.35586C9.19837 9.42634 9.09972 9.53508 9.04168 9.66599C8.9468 10.3397 9.01833 11.0263 9.25001 11.666C8.93351 12.4054 8.58029 13.1285 8.19168 13.8327C7.60001 14.166 6.79168 14.666 6.66668 15.241C6.56668 15.7077 7.44168 16.9077 8.93334 14.3077C9.59662 14.0614 10.276 13.861 10.9667 13.7077C11.4772 13.9996 12.0468 14.1733 12.6333 14.216C12.768 14.2195 12.9007 14.1831 13.0148 14.1114C13.1288 14.0397 13.2192 13.9358 13.2744 13.8129C13.3296 13.69 13.3472 13.5536 13.3251 13.4207C13.303 13.2878 13.2421 13.1644 13.15 13.066C12.8 12.7077 11.7583 12.8077 11.2417 12.8743ZM7.25834 15.3743C7.49188 14.9747 7.80028 14.6238 8.16668 14.341C7.60001 15.241 7.25834 15.3993 7.25834 15.3827V15.3743ZM9.69168 9.69933C9.90834 9.69933 9.89168 10.6577 9.74168 10.916C9.62868 10.523 9.61154 10.1086 9.69168 9.70766V9.69933ZM8.96668 13.766C9.24902 13.2509 9.49409 12.7162 9.70001 12.166C9.92077 12.5768 10.2278 12.935 10.6 13.216C10.0409 13.356 9.49453 13.5428 8.96668 13.7743V13.766ZM12.8833 13.616C12.8833 13.616 12.7333 13.7993 11.775 13.3827C12.8167 13.316 12.9917 13.5577 12.8833 13.6243V13.616Z"
+                    fill="#334655"
+                  />
+                </svg>
+                {doc?.name}
+              </div>
+
+              <svg
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                onClick={() => handleFileRemove(index)}
+                className="pointer"
               >
                 <path
-                  d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-                  fill="#292D32"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M11.9991 13.0597L6.52941 18.5294L5.46875 17.4688L10.9384 11.9991L5.46875 6.52941L6.52941 5.46875L11.9991 10.9384L17.4688 5.46875L18.5294 6.52941L13.0597 11.9991L18.5294 17.4688L17.4688 18.5294L11.9991 13.0597Z"
+                  fill="#0E0E2C"
                 />
-                <path
-                  d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-                  fill="#292D32"
-                />
-              </svg>}
-              {audio && <div>
-            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.5 19.4577H7.50002C2.97502 19.4577 1.04169 17.5243 1.04169 12.9993V7.99935C1.04169 3.47435 2.97502 1.54102 7.50002 1.54102H12.5C17.025 1.54102 18.9584 3.47435 18.9584 7.99935V12.9993C18.9584 17.5243 17.025 19.4577 12.5 19.4577ZM7.50002 2.79102C3.65835 2.79102 2.29169 4.15768 2.29169 7.99935V12.9993C2.29169 16.841 3.65835 18.2077 7.50002 18.2077H12.5C16.3417 18.2077 17.7084 16.841 17.7084 12.9993V7.99935C17.7084 4.15768 16.3417 2.79102 12.5 2.79102H7.50002Z" fill="#292D32"/>
-<path d="M8.01666 15.5411C6.7 15.5411 5.625 14.4661 5.625 13.1495C5.625 11.8328 6.7 10.7578 8.01666 10.7578C9.33333 10.7578 10.4083 11.8328 10.4083 13.1495C10.4083 14.4661 9.33333 15.5411 8.01666 15.5411ZM8.01666 12.0162C7.39166 12.0162 6.875 12.5245 6.875 13.1578C6.875 13.7828 7.38333 14.2995 8.01666 14.2995C8.64166 14.2995 9.15833 13.7911 9.15833 13.1578C9.15833 12.5245 8.64166 12.0162 8.01666 12.0162Z" fill="#292D32"/>
-<path d="M9.78351 13.7746C9.44184 13.7746 9.15851 13.4913 9.15851 13.1496V6.97461C9.15851 6.63294 9.44184 6.34961 9.78351 6.34961C10.1252 6.34961 10.4085 6.63294 10.4085 6.97461V13.1496C10.4085 13.4996 10.1252 13.7746 9.78351 13.7746Z" fill="#292D32"/>
-<path d="M12.9335 10.0244C12.7585 10.0244 12.5752 9.99111 12.3918 9.93278L10.4419 9.28275C9.70854 9.04109 9.15851 8.27446 9.15851 7.49946V6.9828C9.15851 6.4578 9.3752 5.99946 9.75853 5.72446C10.1419 5.44946 10.6418 5.38277 11.1418 5.54944L13.0919 6.19946C13.8252 6.44113 14.3752 7.20776 14.3752 7.98276V8.49942C14.3752 9.02442 14.1585 9.48276 13.7752 9.75776C13.5335 9.93276 13.2419 10.0244 12.9335 10.0244ZM10.5919 6.70778C10.5502 6.70778 10.5085 6.71609 10.4835 6.73276C10.4335 6.76609 10.4002 6.85779 10.4002 6.97446V7.49112C10.4002 7.72445 10.6168 8.01609 10.8335 8.09109L12.7835 8.74112C12.8919 8.77445 12.9919 8.77445 13.0419 8.74112C13.0919 8.70779 13.1252 8.61609 13.1252 8.49942V7.98276C13.1252 7.74942 12.9085 7.45778 12.6918 7.38278L10.7419 6.73276C10.6919 6.71609 10.6335 6.70778 10.5919 6.70778Z" fill="#292D32"/>
-</svg>
-
-
-Audio.Mp3
-            </div>}
-              
-              {audio && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 13.0597L6.53039 18.5294L5.46973 17.4688L10.9394 11.9991L5.46973 6.52941L6.53039 5.46875L12.0001 10.9384L17.4697 5.46875L18.5304 6.52941L13.0607 11.9991L18.5304 17.4688L17.4697 18.5294L12.0001 13.0597Z" fill="#0E0E2C"/>
-</svg>}
+              </svg>
             </div>
-          </label>
-          <label className="pointer">
-          {!video && <input
-                        type="file"
-                        multiple
-                        accept='video/*'
-                        // aaccept=".mp3"
-                        hidden
-                        onChange={(e) => setVideo(e.target.files[0])}
-                        ref={mediaRef}
-                      />
-                      }
-          <div className={video ? "case-from__accused__attachment__doc case-from__accused__attachment__doc-filled" : "case-from__accused__attachment__doc"}>
-            {!video && "Attach Video"}{" "}
-
-            {!video && <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-                fill="#292D32"
-              />
-              <path
-                d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-                fill="#292D32"
-              />
-            </svg>}
-            {video && 
-            <div>
-            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10.7334 17.8839H5.67502C2.71669 17.8839 1.66669 15.8089 1.66669 13.8755V7.12552C1.66669 4.24219 2.79169 3.11719 5.67502 3.11719H10.7334C13.6167 3.11719 14.7417 4.24219 14.7417 7.12552V13.8755C14.7417 16.7589 13.6167 17.8839 10.7334 17.8839ZM5.67502 4.38385C3.50002 4.38385 2.93335 4.95052 2.93335 7.12552V13.8755C2.93335 14.9005 3.29169 16.6172 5.67502 16.6172H10.7334C12.9084 16.6172 13.475 16.0505 13.475 13.8755V7.12552C13.475 4.95052 12.9084 4.38385 10.7334 4.38385H5.67502Z" fill="#292D32"/>
-<path d="M17.3166 15.5911C16.9583 15.5911 16.4999 15.4744 15.9749 15.1078L13.7499 13.5494C13.5833 13.4328 13.4833 13.2411 13.4833 13.0328V7.96609C13.4833 7.75776 13.5833 7.56609 13.7499 7.44943L15.9749 5.89109C16.9666 5.19943 17.6916 5.39943 18.0333 5.57443C18.3749 5.75776 18.9583 6.23276 18.9583 7.44109V13.5494C18.9583 14.7578 18.3749 15.2411 18.0333 15.4161C17.8749 15.5078 17.6249 15.5911 17.3166 15.5911ZM14.7416 12.6994L16.6999 14.0661C17.0749 14.3244 17.3416 14.3494 17.4499 14.2911C17.5666 14.2328 17.6916 13.9994 17.6916 13.5494V7.44943C17.6916 6.99109 17.5583 6.76609 17.4499 6.70776C17.3416 6.64943 17.0749 6.67443 16.6999 6.93276L14.7416 8.29943V12.6994Z" fill="#292D32"/>
-<path d="M9.58331 10.291C8.54998 10.291 7.70831 9.44935 7.70831 8.41602C7.70831 7.38268 8.54998 6.54102 9.58331 6.54102C10.6166 6.54102 11.4583 7.38268 11.4583 8.41602C11.4583 9.44935 10.6166 10.291 9.58331 10.291ZM9.58331 7.79102C9.24165 7.79102 8.95831 8.07435 8.95831 8.41602C8.95831 8.75768 9.24165 9.04102 9.58331 9.04102C9.92498 9.04102 10.2083 8.75768 10.2083 8.41602C10.2083 8.07435 9.92498 7.79102 9.58331 7.79102Z" fill="#292D32"/>
-</svg>
-
-
-Video.Mp4
-            </div>}
-            
-            {video && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 13.0597L6.53039 18.5294L5.46973 17.4688L10.9394 11.9991L5.46973 6.52941L6.53039 5.46875L12.0001 10.9384L17.4697 5.46875L18.5304 6.52941L13.0607 11.9991L18.5304 17.4688L17.4697 18.5294L12.0001 13.0597Z" fill="#0E0E2C"/>
-</svg>}
-          </div>
-          </label>
+          ))}
         </div>
       </div>
 
       <div className="case-from__mugshot">
         <div className="case-from__mugshot__title">Mugshot</div>
-        <div className="case-from__mugshot__subtitle">Add Mugshot and add pictures highlighting any tattoos, piercing or body scar</div>
-      </div>
-<div className="case-from__mugshots">
-{images?.map((item, index) => 
-  <Image
-                className="case-from__accused__bio__img"
-                alt=""
-                src={item && URL?.createObjectURL(item)}
-                width={349}
-                height={273}
-                style={{ objectFit: "cover", borderRadius: "12px", minWidth: "349px" }}
-                key={index}
-              />
-)}
-               
-<div className="case-from__mugshots__upload">
-        <label>
-        <div className="case-from__mugshots__upload__inner">
-        <svg width="65" height="64" viewBox="0 0 65 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M32.4985 6.37891C41.3905 6.37891 46.4347 12.449 47.167 19.7816H47.388C53.1171 19.7816 57.7509 24.5543 57.7509 30.4413C57.7509 30.7422 57.7394 31.04 57.7162 31.3346C55.4502 28.5041 52.3884 26.4172 48.9254 25.3428C45.4624 24.2684 41.757 24.2559 38.2868 25.3068C34.8166 26.3576 31.7407 28.4238 29.4555 31.2388C27.1704 34.0539 25.7807 37.4889 25.4657 41.101H17.6059C11.8831 41.101 7.24609 36.3283 7.24609 30.4413C7.24609 24.5543 11.8862 19.7816 17.6059 19.7816H17.83C18.5687 12.4016 23.6065 6.37891 32.4985 6.37891ZM43.5465 56.8838C47.3137 56.8838 50.9267 55.3872 53.5905 52.7234C56.2544 50.0595 57.7509 46.4465 57.7509 42.6793C57.7509 38.912 56.2544 35.299 53.5905 32.6352C50.9267 29.9713 47.3137 28.4748 43.5465 28.4748C39.7792 28.4748 36.1662 29.9713 33.5024 32.6352C30.8385 35.299 29.342 38.912 29.342 42.6793C29.342 46.4465 30.8385 50.0595 33.5024 52.7234C36.1662 55.3872 39.7792 56.8838 43.5465 56.8838ZM43.5465 34.7879C43.965 34.7879 44.3665 34.9542 44.6625 35.2502C44.9585 35.5461 45.1247 35.9476 45.1247 36.3662V41.101H49.8596C50.2781 41.101 50.6796 41.2673 50.9756 41.5633C51.2716 41.8592 51.4378 42.2607 51.4378 42.6793C51.4378 43.0979 51.2716 43.4993 50.9756 43.7953C50.6796 44.0913 50.2781 44.2575 49.8596 44.2575H45.1247V48.9924C45.1247 49.411 44.9585 49.8124 44.6625 50.1084C44.3665 50.4044 43.965 50.5707 43.5465 50.5707C43.1279 50.5707 42.7264 50.4044 42.4304 50.1084C42.1345 49.8124 41.9682 49.411 41.9682 48.9924V44.2575H37.2334C36.8148 44.2575 36.4133 44.0913 36.1173 43.7953C35.8214 43.4993 35.6551 43.0979 35.6551 42.6793C35.6551 42.2607 35.8214 41.8592 36.1173 41.5633C36.4133 41.2673 36.8148 41.101 37.2334 41.101H41.9682V36.3662C41.9682 35.9476 42.1345 35.5461 42.4304 35.2502C42.7264 34.9542 43.1279 34.7879 43.5465 34.7879Z" fill="#37773A" fill-opacity="0.57"/>
-</svg>
-<div className="case-from__mugshots__upload__inner__title">
-
-Drag & drop files or Browse
-</div>
-<div className="case-from__mugshots__upload__inner__subtitle">
-Supported formats: PDF, Word, and PNG
-</div>
-
-
+        <div className="case-from__mugshot__subtitle">
+          Add Mugshot and add pictures highlighting any tattoos, piercing or
+          body scar
         </div>
+      </div>
+      <div className="case-from__mugshots">
+        {images?.map((item, index) => (
+          <Image
+            className="case-from__accused__bio__img"
+            alt=""
+            src={`https://${item?.url}`}
+            width={349}
+            height={273}
+            style={{
+              objectFit: "cover",
+              borderRadius: "12px",
+              minWidth: "349px",
+            }}
+            key={index}
+          />
+        ))}
+        <div className="case-from__mugshots__upload">
+          <label>
+            <div className="case-from__mugshots__upload__inner">
+              <svg
+                width="65"
+                height="64"
+                viewBox="0 0 65 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M32.4985 6.37891C41.3905 6.37891 46.4347 12.449 47.167 19.7816H47.388C53.1171 19.7816 57.7509 24.5543 57.7509 30.4413C57.7509 30.7422 57.7394 31.04 57.7162 31.3346C55.4502 28.5041 52.3884 26.4172 48.9254 25.3428C45.4624 24.2684 41.757 24.2559 38.2868 25.3068C34.8166 26.3576 31.7407 28.4238 29.4555 31.2388C27.1704 34.0539 25.7807 37.4889 25.4657 41.101H17.6059C11.8831 41.101 7.24609 36.3283 7.24609 30.4413C7.24609 24.5543 11.8862 19.7816 17.6059 19.7816H17.83C18.5687 12.4016 23.6065 6.37891 32.4985 6.37891ZM43.5465 56.8838C47.3137 56.8838 50.9267 55.3872 53.5905 52.7234C56.2544 50.0595 57.7509 46.4465 57.7509 42.6793C57.7509 38.912 56.2544 35.299 53.5905 32.6352C50.9267 29.9713 47.3137 28.4748 43.5465 28.4748C39.7792 28.4748 36.1662 29.9713 33.5024 32.6352C30.8385 35.299 29.342 38.912 29.342 42.6793C29.342 46.4465 30.8385 50.0595 33.5024 52.7234C36.1662 55.3872 39.7792 56.8838 43.5465 56.8838ZM43.5465 34.7879C43.965 34.7879 44.3665 34.9542 44.6625 35.2502C44.9585 35.5461 45.1247 35.9476 45.1247 36.3662V41.101H49.8596C50.2781 41.101 50.6796 41.2673 50.9756 41.5633C51.2716 41.8592 51.4378 42.2607 51.4378 42.6793C51.4378 43.0979 51.2716 43.4993 50.9756 43.7953C50.6796 44.0913 50.2781 44.2575 49.8596 44.2575H45.1247V48.9924C45.1247 49.411 44.9585 49.8124 44.6625 50.1084C44.3665 50.4044 43.965 50.5707 43.5465 50.5707C43.1279 50.5707 42.7264 50.4044 42.4304 50.1084C42.1345 49.8124 41.9682 49.411 41.9682 48.9924V44.2575H37.2334C36.8148 44.2575 36.4133 44.0913 36.1173 43.7953C35.8214 43.4993 35.6551 43.0979 35.6551 42.6793C35.6551 42.2607 35.8214 41.8592 36.1173 41.5633C36.4133 41.2673 36.8148 41.101 37.2334 41.101H41.9682V36.3662C41.9682 35.9476 42.1345 35.5461 42.4304 35.2502C42.7264 34.9542 43.1279 34.7879 43.5465 34.7879Z"
+                  fill="#37773A"
+                  fill-opacity="0.57"
+                />
+              </svg>
+              <div className="case-from__mugshots__upload__inner__title">
+                Drag & drop files or Browse
+              </div>
+              <div className="case-from__mugshots__upload__inner__subtitle">
+                Supported formats: PDF, Word, and PNG
+              </div>
+            </div>
 
-        <input
-                type="file"
-                name=""
-                id=""
-                hidden
-                ref={mediaRef}
-                accept="image/*"
-                onChange={(e) => handleMugShotUpload(e.target.files[0])}
-              />
-        </label>
+            <input
+              type="file"
+              name=""
+              id=""
+              hidden
+              ref={mediaRef}
+              accept="image/*"
+              onChange={(e) => handleMugShotUpload(e, "png")}
+            />
+          </label>
+        </div>
       </div>
 
-   
-
-</div>
-      
       <div className="case-from__button-group">
         <button>Cancel</button>
         <button>Next</button>
       </div>
 
-     {modalOpen && <div className="case-from__modal">
-       <div className="case-from__modal__success">
-       <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="80" height="80" rx="40" fill="url(#paint0_linear_4645_76935)"/>
-<path d="M56.018 39.675C56.018 39.172 55.898 38.7 55.697 38.271C54.356 33.945 48.078 34.261 39.148 34.05C37.655 34.015 38.509 32.252 39.033 28.382C39.374 25.865 37.751 22 35.023 22C30.525 22 34.852 25.548 30.875 34.322C28.75 39.01 24 36.384 24 41.093V51.812C24 53.645 24.18 55.407 26.758 55.697C29.257 55.978 28.695 57.759 32.3 57.759H50.344C52.182 57.759 53.677 56.263 53.677 54.425C53.677 53.663 53.41 52.969 52.979 52.407C53.999 51.836 54.699 50.758 54.699 49.508C54.699 48.748 54.433 48.054 54.003 47.493C55.026 46.923 55.728 45.844 55.728 44.592C55.728 43.683 55.36 42.859 54.767 42.256C55.524 41.645 56.018 40.721 56.018 39.675Z" fill="#FFC357"/>
-<path opacity="0.1" d="M44.082 43.0078H52.686C53.856 43.0078 54.954 42.3818 55.552 41.3748C55.798 40.9598 55.661 40.4228 55.245 40.1758C54.83 39.9288 54.293 40.0678 54.046 40.4828C53.763 40.9618 53.24 41.2578 52.685 41.2578H43.875C43.002 41.2578 42.292 40.5478 42.292 39.6748C42.292 38.8018 43.002 38.0918 43.875 38.0918H49.762C50.245 38.0918 50.637 37.6998 50.637 37.2168C50.637 36.7338 50.245 36.3418 49.762 36.3418H43.874C42.036 36.3418 40.541 37.8368 40.541 39.6748C40.541 40.6998 41.016 41.6068 41.746 42.2188C41.131 42.8238 40.748 43.6638 40.748 44.5918C40.748 45.6198 41.226 46.5298 41.96 47.1408C41.349 47.7448 40.97 48.5818 40.97 49.5078C40.97 50.6278 41.529 51.6158 42.379 52.2208C41.855 52.8098 41.527 53.5768 41.527 54.4248C41.527 56.2628 43.022 57.7578 44.86 57.7578H50.344C51.514 57.7578 52.613 57.1328 53.211 56.1258C53.458 55.7108 53.321 55.1738 52.906 54.9268C52.49 54.6818 51.953 54.8168 51.707 55.2318C51.422 55.7108 50.899 56.0078 50.344 56.0078H44.86C43.987 56.0078 43.277 55.2978 43.277 54.4248C43.277 53.5518 43.987 52.8418 44.86 52.8418H51.366C52.536 52.8418 53.636 52.2158 54.233 51.2088C54.48 50.7928 54.343 50.2558 53.928 50.0098C53.509 49.7588 52.974 49.8998 52.729 50.3148C52.44 50.8018 51.93 51.0918 51.366 51.0918H44.303C43.43 51.0918 42.72 50.3808 42.72 49.5078C42.72 48.6348 43.43 47.9248 44.303 47.9248H52.394C53.564 47.9248 54.663 47.2998 55.261 46.2928C55.508 45.8778 55.371 45.3408 54.956 45.0938C54.539 44.8478 54.003 44.9838 53.757 45.3988C53.468 45.8848 52.958 46.1748 52.394 46.1748H44.082C43.209 46.1748 42.499 45.4648 42.499 44.5918C42.499 43.7188 43.208 43.0078 44.082 43.0078Z" fill="black"/>
-<defs>
-<linearGradient id="paint0_linear_4645_76935" x1="40" y1="0" x2="40" y2="80" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FFC357" stop-opacity="0.25"/>
-<stop offset="1" stop-color="#FFC357" stop-opacity="0"/>
-</linearGradient>
-</defs>
-</svg>
+      {modalOpen && (
+        <div className="case-from__modal">
+          <div className="case-from__modal__success">
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 80 80"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                width="80"
+                height="80"
+                rx="40"
+                fill="url(#paint0_linear_4645_76935)"
+              />
+              <path
+                d="M56.018 39.675C56.018 39.172 55.898 38.7 55.697 38.271C54.356 33.945 48.078 34.261 39.148 34.05C37.655 34.015 38.509 32.252 39.033 28.382C39.374 25.865 37.751 22 35.023 22C30.525 22 34.852 25.548 30.875 34.322C28.75 39.01 24 36.384 24 41.093V51.812C24 53.645 24.18 55.407 26.758 55.697C29.257 55.978 28.695 57.759 32.3 57.759H50.344C52.182 57.759 53.677 56.263 53.677 54.425C53.677 53.663 53.41 52.969 52.979 52.407C53.999 51.836 54.699 50.758 54.699 49.508C54.699 48.748 54.433 48.054 54.003 47.493C55.026 46.923 55.728 45.844 55.728 44.592C55.728 43.683 55.36 42.859 54.767 42.256C55.524 41.645 56.018 40.721 56.018 39.675Z"
+                fill="#FFC357"
+              />
+              <path
+                opacity="0.1"
+                d="M44.082 43.0078H52.686C53.856 43.0078 54.954 42.3818 55.552 41.3748C55.798 40.9598 55.661 40.4228 55.245 40.1758C54.83 39.9288 54.293 40.0678 54.046 40.4828C53.763 40.9618 53.24 41.2578 52.685 41.2578H43.875C43.002 41.2578 42.292 40.5478 42.292 39.6748C42.292 38.8018 43.002 38.0918 43.875 38.0918H49.762C50.245 38.0918 50.637 37.6998 50.637 37.2168C50.637 36.7338 50.245 36.3418 49.762 36.3418H43.874C42.036 36.3418 40.541 37.8368 40.541 39.6748C40.541 40.6998 41.016 41.6068 41.746 42.2188C41.131 42.8238 40.748 43.6638 40.748 44.5918C40.748 45.6198 41.226 46.5298 41.96 47.1408C41.349 47.7448 40.97 48.5818 40.97 49.5078C40.97 50.6278 41.529 51.6158 42.379 52.2208C41.855 52.8098 41.527 53.5768 41.527 54.4248C41.527 56.2628 43.022 57.7578 44.86 57.7578H50.344C51.514 57.7578 52.613 57.1328 53.211 56.1258C53.458 55.7108 53.321 55.1738 52.906 54.9268C52.49 54.6818 51.953 54.8168 51.707 55.2318C51.422 55.7108 50.899 56.0078 50.344 56.0078H44.86C43.987 56.0078 43.277 55.2978 43.277 54.4248C43.277 53.5518 43.987 52.8418 44.86 52.8418H51.366C52.536 52.8418 53.636 52.2158 54.233 51.2088C54.48 50.7928 54.343 50.2558 53.928 50.0098C53.509 49.7588 52.974 49.8998 52.729 50.3148C52.44 50.8018 51.93 51.0918 51.366 51.0918H44.303C43.43 51.0918 42.72 50.3808 42.72 49.5078C42.72 48.6348 43.43 47.9248 44.303 47.9248H52.394C53.564 47.9248 54.663 47.2998 55.261 46.2928C55.508 45.8778 55.371 45.3408 54.956 45.0938C54.539 44.8478 54.003 44.9838 53.757 45.3988C53.468 45.8848 52.958 46.1748 52.394 46.1748H44.082C43.209 46.1748 42.499 45.4648 42.499 44.5918C42.499 43.7188 43.208 43.0078 44.082 43.0078Z"
+                fill="black"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_4645_76935"
+                  x1="40"
+                  y1="0"
+                  x2="40"
+                  y2="80"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#FFC357" stop-opacity="0.25" />
+                  <stop offset="1" stop-color="#FFC357" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+            </svg>
 
+            <div className="case-from__modal__success__subtitle">
+              Case Assigned
+            </div>
+            <div className="case-from__modal__success__title">
+              A New case file has been added
+            </div>
 
-        <div className="case-from__modal__success__subtitle">
-        Case Assigned
+            <button
+              onClick={() =>
+                (window.location.href = "/justice/dashboard/cases")
+              }
+            >
+              Close
+            </button>
+          </div>
         </div>
-        <div className="case-from__modal__success__title">
-        A New case file has been added
-        </div>
-        
-      
-        <button onClick={() => window.location.href = "/justice/dashboard/cases"}>Close</button>
-        </div>
-
-    </div>}
+      )}
     </form>
   );
 }

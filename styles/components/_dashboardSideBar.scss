@@ -1,46 +1,74 @@
 .dashboard-sidebar {
-    border-left: 1px solid #eaeef4;
-    border-right: 1px solid #eaeef4;
-    background: #f7fbfe;
-    height: 100%;
+  border-left: 1px solid #eaeef4;
+  border-right: 1px solid #eaeef4;
+  background: #f7fbfe;
+  height: 100vh;
 
-    width: 90px;
-    height: 100%;
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding: 20px;
+  gap: 16px;
+  transition: 0.4s;
+
+  &__item {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: start;
     align-items: center;
-    padding: 20px;
-    gap: 16px;
+    justify-content: start;
+    gap: 10px;
+    cursor: pointer;
+    & > :first-child {
+      min-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--Grey-Grey-30, #eaeef4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    &__item {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 1px solid var(--Grey-Grey-30, #eaeef4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-
-      &:hover {
-        background: #514EF3;
-         
-        & > svg {
-          & > path {
-            fill: #FFF;
-          }
+    &:hover {
+      background: #514EF3;
+       
+      & > svg {
+        & > path {
+          fill: #FFF;
         }
       }
     }
-
-    &__item-active {
-        background: #514EF3;
-         
-        & > svg {
-          & > path {
-            fill: #FFF;
-          }
-        }
     }
+
+
+    &__title {
+      // font-size: 10px;
+      font-weight: 500;
+      display: none;
+      white-space: nowrap;
+    }
+
+
+ 
   }
+
+
+  
+  &:hover {
+    width: 300px;
+
+   .dashboard-sidebar__item__title{
+    display: initial;
+   }
+  }
+
+  &__item-active {
+      background: #514EF3;
+       
+      & > svg {
+        & > path {
+          fill: #FFF;
+        }
+      }
+  }
+}

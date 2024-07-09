@@ -106,8 +106,13 @@ margin: 32px 0 4px 0;
 
     &__subtitle {
       @extend %title-24;
-      font-weight: 600;
+      font-weight: 400;
       color: #949494;
+      & > span {
+        font-weight: 700;
+color: #009B07;
+text-decoration: underline;
+      }
     }
   }
   &__auth {
@@ -192,6 +197,12 @@ font-weight: 600;
             border: 2px solid #028c4b !important;
             outline: none;
           }
+        }
+
+        &__input {
+          @extend %case-input;
+          margin-top: 10px;
+          margin-bottom: 30px;
         }
   
         &__request {

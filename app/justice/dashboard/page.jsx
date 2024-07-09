@@ -4,9 +4,13 @@ import DashboardHeader from "@/app/components/dashboardHeader";
 import DashboardSideBar from "@/app/components/dashboardSideBar";
 import Image from "next/image";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function Dashboard() {
-  const [activeChat, setActiveChat] = useState(null)
+  const auth = useSelector((state) => state.auth);
+  const [activeChat, setActiveChat] = useState(null);
+
+  console.log('auth', auth);
   return (
     <div className="dashboard-home">
           
@@ -15,7 +19,7 @@ export default function Dashboard() {
               <h2 className="dashboard-home__card1__title-group__title">
                 Hi, Aisha
               </h2>
-              <button className="dashboard-home__card1__title-group__button"
+              {/* <button className="dashboard-home__card1__title-group__button"
               onClick={() => window.location.href = "/justice/dashboard/create-case"}
               >
                 Create New Case file
@@ -35,7 +39,7 @@ export default function Dashboard() {
                     fill="#ECECFE"
                   />
                 </svg>
-              </button>
+              </button> */}
             </div>
             <h2 className="dashboard-home__card1__subtitle">
               Dashboard: <span>Cases</span>

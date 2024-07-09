@@ -8,7 +8,7 @@ export const requestAccess = async (
   nin,
   bvn,
   govId,
-  password
+  // password
 ) => {
   try {
     console.log({
@@ -19,9 +19,9 @@ export const requestAccess = async (
       nin,
       bvn,
       govId,
-      password,
+      // password,
     });
-    const res = await axios.post(`http://54.149.227.204:3000/auth/register`, {
+    const res = await axios.post(`https://sso.centraconnect.ai/auth/register`, {
       officialEmail,
       supervisorEmail,
       dob,
@@ -29,7 +29,7 @@ export const requestAccess = async (
       nin,
       bvn,
       govId,
-      password,
+      // password,
       departmentId: "FMOJ",
       subDepartmentId: "JPP|LEA",
     });
@@ -42,8 +42,23 @@ export const requestAccess = async (
 };
 
 export const login = async (officialEmail, govId, password) => {
+  console.log({officialEmail, govId, password});
   try {
-    const res = await axios.post(`http://54.149.227.204:3000/auth/login`, {
+    const res = await axios.post(`https://sso.centraconnect.ai/auth/login`, {
+      officialEmail,
+      govId,
+      password,
+    });
+
+    return res;
+  } catch (error) {
+    console.log("ERROR", error);
+    return error?.response;
+  }
+};
+export const adminLogin = async (officialEmail, govId, password) => {
+  try {
+    const res = await axios.post(`https://sso.centraconnect.ai/auth/login-admin`, {
       officialEmail,
       govId,
       password,
@@ -57,7 +72,7 @@ export const login = async (officialEmail, govId, password) => {
 };
 export const verifyOtp = async (officialEmail, otp) => {
   try {
-    const res = await axios.post(`http://54.149.227.204:3000/auth/verify-otp`, {
+    const res = await axios.post(`https://sso.centraconnect.ai/auth/verify-otp`, {
       officialEmail,
       otp,
     });
@@ -70,9 +85,32 @@ export const verifyOtp = async (officialEmail, otp) => {
 };
 export const requestOtp = async (officialEmail) => {
   try {
-    const res = await axios.post(`http://54.149.227.204:3000/auth/resend-otp`, {
+    const res = await axios.post(`https://sso.centraconnect.ai/auth/resend-otp`, {
       officialEmail,
     });
+
+    return res;
+  } catch (error) {
+    console.log("ERROR", error);
+    return error?.response;
+  }
+};
+
+export const changPassword = async (currentPassword, newPassword, id, token) => {
+  console.log({currentPassword, newPassword});
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const res = await axios.patch(`https://sso.centraconnect.ai/auth/update-password`, {
+      id,
+      currentPassword,
+      newPassword,
+    },
+    config
+  );
 
     return res;
   } catch (error) {

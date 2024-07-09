@@ -1,21 +1,28 @@
 "use client";
 
-import { login, requestOtp, verifyOtp } from "@/app/apis/auth";
+import { changPassword, login, requestOtp, verifyOtp } from "@/app/apis/auth";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 export default function Auth() {
+  const dispatch = useDispatch();
   const [officialEmail, setOfficialEmail] = useState("");
   const [govId, setGovId] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const [token, setToken] = useState("");
+  const [id, setId] = useState("");
   const [otp1, setOtp1] = useState("");
   const [otp2, setOtp2] = useState("");
   const [otp3, setOtp3] = useState("");
   const [otp4, setOtp4] = useState("");
   const [otp5, setOtp5] = useState("");
   const [otp6, setOtp6] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [modalOpenTwo, setmodalOpenTwo] = useState(false);
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -26,15 +33,15 @@ export default function Auth() {
     console.log('response', response);
     // window.location.href = "/justice/dashboard";
 
-    if(response?.status === 201) {
-      setModalOpen(true);
-    }
-    else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
-      window.location.href = "/justice/unauthorized"
-    }
-    else {
-      alert(response?.data?.message)
-    }
+    // if(response?.status === 201) {
+    //   setModalOpen(true);
+    // }
+    // else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
+    //   window.location.href = "/justice/unauthorized"
+    // }
+    // else {
+    //   alert(response?.data?.message)
+    // }
     setLoading(false);
 
     console.log('respoooo', response);
@@ -52,7 +59,22 @@ export default function Auth() {
     // window.location.href = "/justice/dashboard";
 
     if(response?.status === 201) {
-      window.location.href = "/justice/dashboard"
+      localStorage.setItem("token", response?.data?.token);
+      document.cookie = `auth_token=${response?.data?.token}; path=/; max-age=${60 * 60 * 24 * 7};`
+      dispatch({
+        type: "USER_LOGIN_SUCCESS",
+        payload: {
+          token: response?.data?.token,
+        },
+      });
+
+      if(!response?.data?.user?.passwordChange) {
+        setToken(response?.data?.token)
+        setId(response?.data?.user?.id)
+        setmodalOpenTwo(true);
+      }else{
+        window.location.href = "/justice/dashboard"
+      }
     }
     else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
       window.location.href = "/justice/unauthorized"
@@ -90,6 +112,24 @@ export default function Auth() {
 
   }
 
+
+  const handleChangePassword = async (e) => {
+    setLoading(true)
+    e.preventDefault();
+    const response = await changPassword(password, confirmNewPassword, id, token);
+    console.log('response900', response);
+
+    if(response?.data?.statusCode === 200) {
+      window.location.href = "/justice/dashboard"
+    }else {
+          alert('Password update failed')
+
+    }
+    // alert('Password updated')
+    // window.location.href = "/justice/dashboard"
+setLoading(false)
+
+  }
   
   const handleModalClose = (e) => {
     if (e.target.classList.contains("auth__modal")) {
@@ -194,7 +234,7 @@ Department of Public Prosecution Portal
        OTP
         </div>
        <div className="auth__modal__inner__subtitle">
-       Enter the OTP sent to H.aisha@fmoj.gov.ng
+       Enter the OTP sent to {officialEmail}
         </div>
 
         <div className="auth__modal__inner__otp-group">
@@ -244,6 +284,36 @@ Department of Public Prosecution Portal
           <button
           disabled={loading}
           >{loading ? "Loading..." : "Verify OTP"}</button>
+   
+</form>
+    </div>}
+      {modalOpenTwo && <div className="auth__modal"
+      onClick={handleModalClose}
+      >
+       <form className="auth__modal__inner" onSubmit={handleChangePassword}>
+       <div className="auth__modal__inner__title">
+       Change password
+        </div>
+       <div className="auth__modal__inner__subtitle">
+       You are currently using a default password that was sent to {officialEmail}. Please create a new password
+        </div>
+<label>Current Password</label>
+        <input type="password" className="auth__modal__inner__input" value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter the default password gotten via email"
+        required
+        />
+<label>New Password</label>
+        <input type="password" className="auth__modal__inner__input" value={confirmNewPassword}
+        onChange={(e) => setConfirmNewPassword(e.target.value)}
+        placeholder="Enter your new password"
+        required
+        />
+
+
+          <button
+          disabled={loading}
+          >{loading ? "Loading..." : "Change password"}</button>
    
 </form>
     </div>}

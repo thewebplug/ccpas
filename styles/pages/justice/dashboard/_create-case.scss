@@ -11,6 +11,7 @@
     padding: 24px;
 
     &__input {
+      position: relative;
       width: 100%;
       border-radius: 8px;
       & > label {
@@ -37,6 +38,34 @@
           outline: none;
           background: transparent;
         }
+
+        &__search-dropdown {
+          position: absolute;
+          width: 100%;
+          height: 150px;
+          overflow-y: auto;
+          background: #f6fafd;
+          // color: #000;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          top: 78px;
+          left: 0;
+  
+          & > div {
+            min-height: 50px;
+            width: 100%;
+            padding: 0 14px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+  
+            &:hover {
+              background: #e5eff7;
+              color: #000;
+            }
+          }
+        }
       }
 
       &__filled {
@@ -53,7 +82,79 @@ align-items: center;
 gap: 10px;
 text-decoration: underline;
       }
+
+      &__search-dropdown {
+        position: absolute;
+        width: 100%;
+        height: 150px;
+        overflow-y: auto;
+        background: #f6fafd;
+        // color: #000;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+
+        & > div {
+          min-height: 50px;
+          width: 100%;
+          padding: 0 14px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          &:hover {
+            background: #e5eff7;
+            color: #000;
+          }
+        }
+      }
     }
+
+    &__assoc {
+        
+      & > div {
+        display: flex;
+        gap: 10px;
+
+        & > input {
+          @extend %case-input;
+
+        }
+
+        & > button {
+          @extend %create-button;
+          width: 80px;
+          min-height: 100%;
+          border-radius: 8px;
+        }
+      }
+
+        &__list {
+          width: 100%;
+          max-width: 200px;
+          display: flex;
+          gap: 5px;
+          flex-wrap: wrap;
+          margin-top: 8px;
+
+          & > div {
+            width: fit-content;
+            height: 29px;
+            padding: 0 16px;
+            border: 1px solid rgba(46, 46, 46, 1);
+            font-family: Inter;
+font-size: 14px;
+font-weight: 400;
+color: rgba(9, 44, 76, 1);
+border-radius: 40px;
+display: flex;
+align-items: center;
+justify-content: start;
+white-space: nowrap;
+overflow: hidden;
+          }
+        }
+      }
   }
 
   &__accused {
@@ -161,6 +262,23 @@ color: #000;
       }
 
       &__assoc {
+        
+      & > div {
+        display: flex;
+        gap: 10px;
+
+        & > input {
+          @extend %case-input;
+
+        }
+
+        & > button {
+          @extend %create-button;
+          width: 80px;
+          min-height: 100%;
+          border-radius: 8px;
+        }
+      }
 
         &__list {
           width: 100%;
@@ -184,6 +302,8 @@ white-space: nowrap;
 display: flex;
 align-items: center;
 justify-content: center;
+overflow: hidden;
+
           }
         }
       }
@@ -260,6 +380,14 @@ justify-content: center;
           display: flex;
           align-items: center;
           gap: 5px;
+
+          & > svg {
+            min-width: 20px;
+          }
+        }
+
+        & > svg {
+          min-width: 20px;
         }
 
        

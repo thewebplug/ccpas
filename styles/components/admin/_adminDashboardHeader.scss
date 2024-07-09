@@ -1,0 +1,106 @@
+.adminDashboard-header {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eaeef4;
+  border-left: 1px solid #eaeef4;
+  border-right: 1px solid #eaeef4;
+  padding-right: 25px;
+  background: #f7fbfe;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10.31px;
+    &__img {
+      width: 90px;
+      height: 90px;
+      border-right: 1px solid #eaeef4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__title-group {
+      &__title {
+        @extend %title-16;
+        margin-bottom: 5px;
+      }
+      &__subtitle {
+        @extend %title-8;
+      }
+    }
+  }
+
+  &__board {
+    width: 360px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-radius: 70px;
+    border: 1px solid #eaeef4;
+    background: #fff;
+
+    & > h2 {
+      @extend %title-14;
+      color: #092c4c;
+      font-weight: 500;
+
+      & > span {
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__account {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    position: relative;
+    &__button {
+      min-width: 209px;
+      @extend %create-button;
+<<<<<<< HEAD:styles/components/_adminHeader.scss
+      padding: 0 8px;
+      border-radius: 10px;
+
+      box-shadow: 0px 5px 34px 0px rgba(42, 186, 19, 0.42);
+    }
+
+    &__notification {
+      min-width: 60px;
+      @extend %create-button;
+      padding: 0 8px;
+      border-radius: 10px;
+      background-color: #009B07;
+      opacity: 0.8;
+
+      box-shadow: 0px 5px 34px 0px rgba(42, 186, 19, 0.42);
+=======
+      justify-content: end;
+      gap: 60px;
+      padding: 0 16px;
+>>>>>>> 761cfb484808977aafee62b4e41c731ca19d459c:styles/components/admin/_adminDashboardHeader.scss
+    }
+
+    &__search {
+      height: 50px;
+      min-width: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--Grey-Grey-30, #eaeef4);
+    }
+
+    &__img {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+.deactivated-user {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+
+    &__deactivated-notif {
+      // width: 363px;
+      width: 451px;
+      position: absolute;
+      top: 52px;
+      right: 76px;
+      background: #FFF;
+
+      height: 56px;
+      border-radius: 30px;
+      padding: 8px;
+
+      display: flex;
+      align-items: center;
+      gap: 24px;
+
+      & > div {
+        color: var(--Style, #292D32);
+      @extend %title-16;
+      font-weight: 400;
+
+      & > span {
+        font-weight: 700;
+      }
+    }
+  }
+}  
