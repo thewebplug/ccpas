@@ -33,15 +33,15 @@ export default function Auth() {
     console.log('response', response);
     // window.location.href = "/justice/dashboard";
 
-    if(response?.status === 201) {
-      setModalOpen(true);
-    }
-    else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
-      window.location.href = "/justice/unauthorized"
-    }
-    else {
-      alert(response?.data?.message)
-    }
+    // if(response?.status === 201) {
+    //   setModalOpen(true);
+    // }
+    // else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
+    //   window.location.href = "/justice/unauthorized"
+    // }
+    // else {
+    //   alert(response?.data?.message)
+    // }
     setLoading(false);
 
     console.log('respoooo', response);
