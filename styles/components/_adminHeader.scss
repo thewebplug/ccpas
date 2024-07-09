@@ -66,6 +66,8 @@
       @extend %create-button;
       padding: 0 8px;
       border-radius: 10px;
+
+      box-shadow: 0px 5px 34px 0px rgba(42, 186, 19, 0.42);
     }
 
     &__notification {
@@ -73,7 +75,10 @@
       @extend %create-button;
       padding: 0 8px;
       border-radius: 10px;
-      background-color: #12bd1a;
+      background-color: #009B07;
+      opacity: 0.8;
+
+      box-shadow: 0px 5px 34px 0px rgba(42, 186, 19, 0.42);
     }
 
     &__search {

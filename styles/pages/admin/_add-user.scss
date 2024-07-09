@@ -21,10 +21,12 @@
 
   &__content {
     position: relative;
+    // width: 956px;
     width: 700px;
     height: 100vh;
     background: #fff;
     overflow: hidden;
+    // gap: 32px;
 
     .add-user__header {
       background: #fff;
@@ -37,25 +39,25 @@
 
       div {
         display: flex;
+        align-items: center;
 
         svg {
-          margin-right: 10px;
+          margin-right: 20px;
           cursor: pointer;
+        }
+
+        h2 {
+          font-size: 18px;
+          font-weight: 700;
+          color: #061b2e;
         }
       }
 
-      h2 {
-        margin: 0;
-        font-size: 20px;
-        font-weight: 700;
-      }
-
-      .add-user__close {
+      .close-button {
         background: none;
-        border: 1px solid #ccc;
-        border-radius: 50%;
+        border: none;
+        font-size: 24px;
         cursor: pointer;
-        padding: 10px;
       }
     }
 
@@ -64,8 +66,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 100%;
-      
+      // width: 100%;
+
       .user__photo {
         width: 100%;
         height: 100vh;
@@ -87,12 +89,12 @@
           padding: 50px;
         }
 
-        a{
+        a {
           font-size: 12px;
-          color: #12bd1a;
+          color: #009b07;
           cursor: pointer;
           text-decoration: underline;
-          margin-top: 5px;
+          margin-top: 15px;
           margin-bottom: 30px;
           text-align: center;
         }
@@ -118,29 +120,42 @@
         display: flex;
         flex-direction: column;
         padding: 16px;
+        // align-items: flex-start;
+        // gap: 30px;
 
         .form__section {
           margin-bottom: 10px;
 
           .user-info {
             margin-bottom: 12px;
-            
+
             small {
               font-size: 12px;
               color: #969696;
             }
           }
 
+          // .first-middle {
+          //   display: flex;
+          //   align-items: flex-start;
+          //   gap: 24px;
+
+          //   label {
+          //     margin-bottom: 10px;
+          //   }
+
+          // }
+
           input,
           select {
             // width: 30px;
-              padding: 8px;
-              margin-bottom: 20px;
-              margin-right: 8px;
-              border: 2px solid #ccc;
-              color: #9c9c9c;
-              border-radius: 8px;
-              outline: none;
+            padding: 8px;
+            margin-bottom: 20px;
+            margin-right: 8px;
+            border: 2px solid #ccc;
+            color: #9c9c9c;
+            border-radius: 8px;
+            outline: none;
           }
 
           .date {
@@ -153,7 +168,6 @@
             border-radius: 8px;
             outline: none;
           }
-
         }
       }
     }
@@ -177,7 +191,7 @@
       }
 
       .button__invite {
-        background: #009B07;
+        background: #009b07;
         color: #fff;
         border: none;
         width: 50%;

@@ -16,7 +16,7 @@
 
       a {
         text-decoration: none;
-        color: inherit;
+        color: #99a2bb;
         margin: 0 10px;
       }
 
@@ -24,8 +24,8 @@
         width: 50px;
         height: 50px;
         padding: 7px;
-        background-color: lightgreen;
-        color: #000;
+        background-color: #C4FFC7;
+        color: #03380D;
         font-weight: 500;
         border: none;
         border-radius: 5px;
@@ -39,7 +39,8 @@
       h2 {
         font-size: 35px;
         font-weight: 500;
-        color: #000;
+        color: #101828;
+        // line-height: 38px;
       }
     }
   }
@@ -58,19 +59,21 @@
         cursor: pointer;
         font-size: 16px;
         position: relative;
+      }
+
+      .notify {
+        display: flex;
+        justify-content: space-between;
 
         span {
-          width: 14px;
-          height: 14px;
-          border-radius: 50%;
-          padding: 7px;
+          padding: 3px;
+          border: 1px solid #F2F4F7;
+          border-radius: 16px;
           font-size: 10px;
-          font-weight: bold;
-          color: #414141;
-          background-color: #d7d7d7;
-          margin-left: 6px;
+          color: #000;
+          background-color: #e5e5e5;
+          margin-left: 5px;
         }
-
       }
 
       .menu-item {
@@ -82,7 +85,7 @@
       }
       
       .menu-item.active {
-        color: #009B07; /* Green text color */
+        color: #009B07;
       }
 
       .active::after {
@@ -159,21 +162,31 @@
         }
 
         .user-name {
+          display: flex;
+          align-items: center;
           font-size: 15px;
           font-weight: 700;
           color: #000;
+          gap: 12px;
           // margin-bottom: 20px;
     
-          input {
-            margin-right: 10px;
+          // input {
+          //   margin-right: 10px;
+          // }
+
+          div {
+            display: flex;
+            flex-direction: column;
+
+            span {
+              font-size: 14px;
+              font-weight: normal;
+              color: rgb(163, 163, 163);
+              margin-top: 8px; 
+            }
           }
 
-          span {
-            font-size: 14px;
-            font-weight: normal;
-            color: rgb(163, 163, 163);
-            margin-left: 27px;
-          }
+          
         }
 
         svg {
@@ -184,7 +197,7 @@
           &.admin {
             width: 30px;
             padding: 8px 24px;
-            background-color: rgb(57, 57, 253);
+            background-color: #3557CD;
             color: #fff;
             border-radius: 20px;
 
@@ -202,7 +215,7 @@
           &.super-admin {
             width: 30px;
             padding: 10px;
-            background-color: #009B07;
+            background-color: #009B35;
             color: #fff;
             font-size: 13px;
             border-radius: 20px;

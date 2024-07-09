@@ -4,21 +4,18 @@ import Image from "next/image";
 import { useState } from "react";
 import AddUserModal from "./add-user/page";
 import AddedUserModal from "./added-user/page";
+import DeactivateUserModal from "./deactivate-user/page";
+import DeactivatedUser from "./deactivate-user/deactivated-user/page";
 
 const Admin = () => {
-  // const [isModalOpen, setModalOpen] = useState(false);
-
-  // const handleOpenModal = () => {
-  //   setModalOpen(true);
-  // };
-
-  // const handleCloseModal = () => {
-  //   setModalOpen(false);
-  // };
-
 
   const [isAddUserModalOpen, setAddUserModalOpen] = useState(false);
   const [isAddedUserModalOpen, setAddedUserModalOpen] = useState(false);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeactivated, setIsDeactivated] = useState(false);
+
+
 
   const handleOpenAddUserModal = () => {
     setAddUserModalOpen(true);
@@ -36,21 +33,41 @@ const Admin = () => {
     setAddedUserModalOpen(false);
   };
 
+
+
+  // const openModal = () => {
+  //   setIsModalOpen(true);
+  // };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleDeactivate = () => {
+    setIsDeactivated(true);
+    // closeModal(); 
+  };
+
+  const closeDeactivated = () => {
+    setIsDeactivated(false);
+  };
+
   return (
     <div className="admin">
       <header className="admin__header">
         <div className="admin__header__info">
           <nav className="admin__header__breadcrumbs">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            viewBox="0 0 576 512"
-            width="13"
-            height="13"
-            className="home-svg"
-          >
-            <path 
-              fill="#ababab" 
-              d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
+          <svg
+              width="13"
+              height="13"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ marginRight: "10px" }}
+            >
+              <path
+                d="M10.0211 3.40997L7.14109 1.39497C6.35609 0.844969 5.15109 0.874969 4.39609 1.45997L1.89109 3.41497C1.39109 3.80497 0.996094 4.60497 0.996094 5.23497V8.68497C0.996094 9.95997 2.03109 11 3.30609 11H8.69609C9.97109 11 11.0061 9.96497 11.0061 8.68997V5.29997C11.0061 4.62497 10.5711 3.79497 10.0211 3.40997ZM6.37609 8.99997C6.37609 9.20497 6.20609 9.37497 6.00109 9.37497C5.79609 9.37497 5.62609 9.20497 5.62609 8.99997V7.49997C5.62609 7.29497 5.79609 7.12497 6.00109 7.12497C6.20609 7.12497 6.37609 7.29497 6.37609 7.49997V8.99997Z"
+                fill="#99A2BB"
               />
             </svg>
            
@@ -94,12 +111,10 @@ const Admin = () => {
           <div className="menu-item active">User Management</div>
           <div>Department Management</div>
           <div>Support & Feedback</div>
-          <div>
+          <div className="notify">
             Notification 
-            {/* <span>4</span>  */}
-
-            
-            </div>
+            <span>4</span> 
+          </div>
           <div>Access Control</div>
           <div>Email</div>
           <div>Log Activities</div>
@@ -168,38 +183,40 @@ const Admin = () => {
             </thead>
             <tbody>
               {[
-                { name: 'Adeyemi Oloye', email: 'A.oloye@justice.gov.ng', access: 'Admin', title: 'Principal State Counsel', department: 'Department of Public Prosecutions (DPP)' },
+                { name: 'Adeyemi Oloye', email: 'A.oloye@justice.gov.ng', access: 'Admin', title: 'Principal State Counsel', department: 'Department of Public Prosecutions (DPP)', imageUrl: '/assets/avatars/ava-ade.png' },
 
-                { name: 'Emeka Ani', email: 'E.ani@justice.gov.ng', access: 'User', title: 'Legal Officer', department: 'Department of Civil Litigation' },
+                { name: 'Emeka Ani', email: 'E.ani@justice.gov.ng', access: 'User', title: 'Legal Officer', department: 'Department of Civil Litigation', imageUrl: '/assets/avatars/ava-emeka.png' },
 
-                { name: 'Lotanna Okor', email: 'L.okor@justice.gov.ng', access: 'Admin', title: 'Principal State Counsel', department: 'Department of Legal Drafting and Law Review' },
+                { name: 'Lotanna Okor', email: 'L.okor@justice.gov.ng', access: 'Admin', title: 'Principal State Counsel', department: 'Department of Legal Drafting and Law Review', imageUrl: '/assets/avatars/ava-okor.png' },
 
-                { name: 'Demi Nike', email: 'D.nike@justice.gov.ng', access: 'Admin', title: 'Director of Public Prosecutions', department: 'Department of International and Comparative Law' },
+                { name: 'Demi Nike', email: 'D.nike@justice.gov.ng', access: 'Admin', title: 'Director of Public Prosecutions', department: 'Department of International and Comparative Law', imageUrl: '/assets/avatars/ava-demi.png' },
 
-                { name: 'Ahmed Wale', email: 'A.wale@justice.gov.ng', access: 'Admin', title: 'Director of Public Prosecutions', department: 'Department of Citizens\' Rights' },
+                { name: 'Ahmed Wale', email: 'A.wale@justice.gov.ng', access: 'Admin', title: 'Director of Public Prosecutions', department: 'Department of Citizens\' Rights', imageUrl: '/assets/avatars/ava-wale.png' },
 
-                { name: 'Natali Oboi', email: 'N.oboi@justice.gov.ng', access: 'User', title: 'Senior State Counsel', department: 'Department of Finance and Accounts' },
+                { name: 'Natali Oboi', email: 'N.oboi@justice.gov.ng', access: 'User', title: 'Senior State Counsel', department: 'Department of Finance and Accounts', imageUrl: '/assets/avatars/ava-oboli.png' },
 
-                { name: 'Haruna Adamu', email: 'H.adamu@justice.gov.ng', access: 'User', title: 'Solicitor General', department: 'Department of Planning, Research, and Statistics' },
+                { name: 'Haruna Adamu', email: 'H.adamu@justice.gov.ng', access: 'User', title: 'Solicitor General', department: 'Department of Planning, Research, and Statistics', imageUrl: '/assets/avatars/ava-adamu.png' },
 
-                { name: 'Kaduna Dede', email: 'K.dede@justice.gov.ng', access: 'User', title: 'Legal Officer', department: 'Department of Corporate Affairs and External Relations' },
+                { name: 'Kaduna Dede', email: 'K.dede@justice.gov.ng', access: 'User', title: 'Legal Officer', department: 'Department of Corporate Affairs and External Relations', imageUrl: '/assets/avatars/ava-dede.png' },
 
-                { name: 'Anike Mustapha', email: 'A.mustapha@justice.gov.ng', access: 'Super Admin', title: 'Solicitor General of the Federation', department: 'Department of Human Resources Management' },
+                { name: 'Anike Mustapha', email: 'A.mustapha@justice.gov.ng', access: 'Super Admin', title: 'Solicitor General of the Federation', department: 'Department of Human Resources Management', imageUrl: '/assets/avatars/ava-anike.png' },
 
-                { name: 'Kate Adebowale', email: 'K.adebowale@justice.gov.ng', access: 'User', title: 'Junior Legal Officers', department: 'Department of Administration' },
+                { name: 'Kate Adebowale', email: 'K.adebowale@justice.gov.ng', access: 'User', title: 'Junior Legal Officers', department: 'Department of Administration', imageUrl: '/assets/avatars/ava-kate.png' },
               ].map((user, index) => (
                 <tr key={index}>
                   <td className="user-name">
                     <input type="checkbox" />
-                    {/* <Image
+                    <Image
                       alt=""
-                      src="/assets/Frame 10.png"
-                      width={35}
-                      height={35}
+                      src={user.imageUrl} 
+                      width={40}
+                      height={40}
                       style={{ borderRadius: "50%", float: "left" }}
-                    /> */}
+                    />
+                  <div>
                     {user.name} <br />
                     <span>{user.email}</span>
+                  </div>
                   </td>
                   <td>
                     <span 
@@ -267,6 +284,18 @@ const Admin = () => {
           </div>
         </div>
       </div>
+
+      {/* <DeactivateUserModal 
+        // isOpen={isModalOpen} 
+        onClose={closeModal} 
+        onDeactivate={handleDeactivate} 
+      />
+
+      <DeactivatedUser 
+        isOpen={isDeactivated} 
+        onClose={closeDeactivated} 
+      /> */}
+
     </div>
   );
 }
@@ -274,17 +303,5 @@ const Admin = () => {
 export default Admin;
 
 
-// SETTINGS ICON (SVG)
 
-{/* 
-<svg 
-  xmlns="http://www.w3.org/2000/svg" 
-  viewBox="0 0 128 512"
-  width="10"
-  height="10"
-  >
-  <path 
-    fill="#bfbfbf" 
-    d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"
-  />
-</svg> */}
+// imageUrl: 'https://example.com/path/to/image.jpg'
