@@ -64,7 +64,7 @@
     &__button {
       min-width: 209px;
       @extend %create-button;
-<<<<<<< HEAD:styles/components/_adminHeader.scss
+
       padding: 0 8px;
       border-radius: 10px;
 
@@ -80,11 +80,11 @@
       opacity: 0.8;
 
       box-shadow: 0px 5px 34px 0px rgba(42, 186, 19, 0.42);
-=======
+
       justify-content: end;
       gap: 60px;
       padding: 0 16px;
->>>>>>> 761cfb484808977aafee62b4e41c731ca19d459c:styles/components/admin/_adminDashboardHeader.scss
+
     }
 
     &__search {

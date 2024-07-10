@@ -51,14 +51,14 @@ const AdminLayout = ({ children }) => {
                 fill="#99A2BB"
               />
             </svg>
-            <div>Location Management</div>
+            <div>User Management</div>
           </div>
           <div className="admin__inner__main__title">Super Admin</div>
           <div className="admin__inner__main__tabs">
-            <div className="admin__inner__main__tabs__item">
+            <div className="admin__inner__main__tabs__item  admin__inner__main__tabs__active">
               User Management
             </div>
-            <div className="admin__inner__main__tabs__item admin__inner__main__tabs__active">
+            <div className="admin__inner__main__tabs__item ">
               Department Management
             </div>
             <div className="admin__inner__main__tabs__item">
