@@ -1,6 +1,9 @@
 import React from "react";
 
-const DeactivateUserModal = ({ onClose, onDeactivate }) => {
+const DeactivateUserModal = ({ isOpen, onClose, onDeactivate }) => {
+
+  if (!isOpen) return null;
+  
   const handleDeactivate = () => {
     onClose();
     onDeactivate();
@@ -8,7 +11,7 @@ const DeactivateUserModal = ({ onClose, onDeactivate }) => {
 
   return (
     <div className="modal">
-      <div className="added-user__overlay" onClick={onClose}></div>
+      <div className="modal__overlay" onClick={onClose}></div>
       <div className="modal-content">
         <div className="header">
           <div>
@@ -79,7 +82,7 @@ const DeactivateUserModal = ({ onClose, onDeactivate }) => {
               Last Name: <br /> <strong className="last-p">Oloye</strong>
             </p>
           </div>
-          php Copy code
+          {/* php Copy code */}
           <div>
             <p>
               Government Issued ID: <strong>FM56898324</strong>

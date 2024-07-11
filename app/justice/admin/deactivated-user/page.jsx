@@ -1,5 +1,3 @@
-import React from "react";
-
 const DeactivatedUser = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 

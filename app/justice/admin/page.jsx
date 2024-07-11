@@ -1,11 +1,12 @@
-"use client";
+"use client"
 
 import Image from "next/image";
 import { useState } from "react";
 import AddUserModal from "./add-user/page";
 import AddedUserModal from "./added-user/page";
-// import DeactivatedUser from "@/app/admin/deactivate-user/deactivated-user/page";
-// import DeactivateUserModal from "@/app/admin/deactivate-user/page";
+import DeactivateUserModal from "./deactivate-user/page";
+import DeactivatedUser from "./deactivated-user/page";
+// import PreviewUser from "./preview-user/page";
 
 const Admin = () => {
   const [isAddUserModalOpen, setAddUserModalOpen] = useState(false);
@@ -30,9 +31,9 @@ const Admin = () => {
     setAddedUserModalOpen(false);
   };
 
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  // };
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -246,7 +247,7 @@ const Admin = () => {
                 },
               ].map((user, index) => (
                 <tr key={index}>
-                  <td className="user-name">
+                  <td className="user-name" onClick={openModal}>
                     <svg
                       width="20"
                       height="20"
@@ -284,7 +285,7 @@ const Admin = () => {
                       <span>{user.email}</span>
                     </div>
                   </td>
-                  <td>
+                  <td onClick={openModal}>
                     <span
                       className={`access ${user.access
                         .toLowerCase()
@@ -293,9 +294,9 @@ const Admin = () => {
                       {user.access}
                     </span>
                   </td>
-                  <td>{user.title}</td>
-                  <td>{user.department}</td>
-                  <td>
+                  <td onClick={openModal}>{user.title}</td>
+                  <td onClick={openModal}>{user.department}</td>
+                  <td onClick={openModal}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 128 512"
@@ -366,16 +367,15 @@ const Admin = () => {
         </div>
       </div>
 
-      {/* <DeactivateUserModal
-        // isOpen={isModalOpen}
+      {/* <PreviewUser /> */}
+
+      <DeactivateUserModal
+        isOpen={isModalOpen}
         onClose={closeModal}
         onDeactivate={handleDeactivate}
       />
 
-      <DeactivatedUser
-        isOpen={isDeactivated}
-        onClose={closeDeactivated}
-      /> */}
+      <DeactivatedUser isOpen={isDeactivated} onClose={closeDeactivated} />
     </div>
   );
 };

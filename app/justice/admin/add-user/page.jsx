@@ -303,7 +303,7 @@ const AddUserModal = ({ isOpen, onClose, onInvite }) => {
                 </div>
 
                 <div className="form__section">
-                  <div className="user-info">
+                  <div className="user-info work">
                     <h3>User Work Info</h3>
                     <small>Input users work information.</small>
                   </div>
