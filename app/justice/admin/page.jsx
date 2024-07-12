@@ -6,7 +6,7 @@ import AddUserModal from "./add-user/page";
 import AddedUserModal from "./added-user/page";
 import DeactivateUserModal from "./deactivate-user/page";
 import DeactivatedUser from "./deactivated-user/page";
-// import PreviewUser from "./preview-user/page";
+import PreviewUser from "./preview-user/page";
 
 const Admin = () => {
   const [isAddUserModalOpen, setAddUserModalOpen] = useState(false);
@@ -367,7 +367,7 @@ const Admin = () => {
         </div>
       </div>
 
-      {/* <PreviewUser /> */}
+      <PreviewUser />
 
       <DeactivateUserModal
         isOpen={isModalOpen}

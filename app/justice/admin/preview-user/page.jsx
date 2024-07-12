@@ -1,10 +1,10 @@
 import { useState } from "react";
+import Image from "next/image";
 
 import DeactivateUserModal from "../deactivate-user/page";
 import DeactivatedUser from "../deactivated-user/page";
 
 export default function PreviewUser({ onClose }) {
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeactivated, setIsDeactivated] = useState(false);
 
@@ -212,31 +212,303 @@ export default function PreviewUser({ onClose }) {
           </div>
         </header>
 
-
         <div className="preview-user__container">
+          <div className="preview-user__top">
+            <div className="user__info">
+              <div className="user-img">
+                <Image
+                  alt=""
+                  src="/assets/avatars/ava-ade.png"
+                  width={40}
+                  height={40}
+                  style={{ borderRadius: "50%", position: "relative" }}
+                />
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1.25"
+                    y="1.25"
+                    width="17.5"
+                    height="17.5"
+                    rx="8.75"
+                    fill="#12B76A"
+                  />
+                  <rect
+                    x="1.25"
+                    y="1.25"
+                    width="17.5"
+                    height="17.5"
+                    rx="8.75"
+                    stroke="white"
+                    stroke-width="1.5"
+                  />
+                </svg>
+              </div>
 
-        <div className="preview-user__top">
-          <div className="user__info">
-            <div>
-              <h2>Adewumi Oloye Sandra</h2>
-              <span>Access</span>
+              <div className="user-text">
+                <div>
+                  <div className="user-text">
+                    <h2>Adewumi Oloye Sandra</h2>
+                    <span>Admin</span>
+                  </div>
+                  <small>Principal State Counsel</small>
+                </div>
+              </div>
+            </div>
+
+            <div className="contact-icons">
+              <div>
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="0.5"
+                    y="0.5"
+                    width="47"
+                    height="47"
+                    rx="7.5"
+                    fill="white"
+                    stroke="#D6DBE3"
+                  />
+                  <path
+                    d="M31.231 27.26L28.691 26.97C28.3924 26.9349 28.0896 26.968 27.8056 27.0667C27.5215 27.1654 27.2635 27.3273 27.051 27.54L25.211 29.38C22.3722 27.9362 20.0648 25.6288 18.621 22.79L20.471 20.94C20.901 20.51 21.111 19.91 21.041 19.3L20.751 16.78C20.6943 16.2922 20.4602 15.8422 20.0933 15.5159C19.7263 15.1895 19.2521 15.0094 18.761 15.01H17.031C15.901 15.01 14.961 15.95 15.031 17.08C15.561 25.62 22.391 32.44 30.921 32.97C32.051 33.04 32.991 32.1 32.991 30.97V29.24C33.001 28.23 32.241 27.38 31.231 27.26Z"
+                    fill="black"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="0.5"
+                    y="0.5"
+                    width="47"
+                    height="47"
+                    rx="7.5"
+                    fill="white"
+                    stroke="#D6DBE3"
+                  />
+                  <path
+                    d="M22.89 14.538C23.1941 14.335 23.5481 14.2193 23.9134 14.2034C24.2787 14.1876 24.6414 14.2721 24.962 14.448L25.109 14.538L33.109 19.871C33.3596 20.038 33.5693 20.2595 33.7224 20.5188C33.8754 20.7782 33.968 21.0688 33.993 21.369L34 21.535V31C34.0002 31.5046 33.8096 31.9905 33.4665 32.3605C33.1234 32.7305 32.6532 32.9571 32.15 32.995L32 33H16C15.4954 33.0001 15.0094 32.8096 14.6395 32.4665C14.2695 32.1234 14.0428 31.6531 14.005 31.15L14 31V21.535C14 21.2339 14.068 20.9367 14.1989 20.6655C14.3298 20.3944 14.5202 20.1563 14.756 19.969L14.891 19.871L22.89 14.538ZM24 16.202L16.803 21L24 25.798L31.197 21L24 16.202Z"
+                    fill="black"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="0.5"
+                    y="0.5"
+                    width="47"
+                    height="47"
+                    rx="7.5"
+                    fill="white"
+                    stroke="#D6DBE3"
+                  />
+                  <path
+                    d="M29 14H19C16.24 14 14 16.23 14 18.98V24.96V25.96C14 28.71 16.24 30.94 19 30.94H20.5C20.77 30.94 21.13 31.12 21.3 31.34L22.8 33.33C23.46 34.21 24.54 34.21 25.2 33.33L26.7 31.34C26.89 31.09 27.19 30.94 27.5 30.94H29C31.76 30.94 34 28.71 34 25.96V18.98C34 16.23 31.76 14 29 14ZM25 25.75H19C18.59 25.75 18.25 25.41 18.25 25C18.25 24.59 18.59 24.25 19 24.25H25C25.41 24.25 25.75 24.59 25.75 25C25.75 25.41 25.41 25.75 25 25.75ZM29 20.75H19C18.59 20.75 18.25 20.41 18.25 20C18.25 19.59 18.59 19.25 19 19.25H29C29.41 19.25 29.75 19.59 29.75 20C29.75 20.41 29.41 20.75 29 20.75Z"
+                    fill="black"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
 
-          
-        </div>
+          <div className="preview-user__bottom">
+            <div className="detail-header">
+              <div className="detail">User Details</div>
+              <div className="activities">Activities</div>
+            </div>
 
-        {/* --------- */}
+            <div className="log-activities">
+              <h2>Log Activities</h2>
 
-        <div className="preview-user__bottom">
+              <div>
+                <div className="log-details">
+                  <div>
+                    <svg
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="32" height="32" rx="16" fill="#009B07" />
+                      <path
+                        d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
+                        stroke="white"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
 
-        </div>
+                  <div className="log-text">
+                    <div>
+                      <div className="log-text">
+                        <h3>
+                          Adewumi Oloye Expunged Case File{" "}
+                          <span>FM1803093003848</span>
+                        </h3>
+                      </div>
+                      <small>Just Now</small>
+                    </div>
+                  </div>
+                </div>
 
+                <div className="log-details">
+                  <div>
+                    <svg
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="32" height="32" rx="16" fill="#DFF3E0" />
+                      <path
+                        d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
+                        stroke="#009B07"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
 
+                  <div className="log-text">
+                    <div>
+                      <div className="log-text">
+                        <h3>
+                          Adewumi Oloye Expunged Case File{" "}
+                          <span>FM1803093003848</span>
+                        </h3>
+                      </div>
+                      <small>11:30:23 AM JUN 18, 2024</small>
+                    </div>
+                  </div>
+                </div>
 
+                <div className="log-details">
+                  <div>
+                    <svg
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="32" height="32" rx="16" fill="#DFF3E0" />
+                      <path
+                        d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
+                        stroke="#009B07"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <div className="log-text">
+                    <div>
+                      <div className="log-text">
+                        <h3>
+                          Adewumi Oloye Edit Case File{" "}
+                          <span>FM1803093003848</span>
+                        </h3>
+                      </div>
+                      <small>01:19:32 PM JUN 16, 2024</small>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="log-details">
+                  <div>
+                    <svg
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="32" height="32" rx="16" fill="#DFF3E0" />
+                      <path
+                        d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
+                        stroke="#009B07"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <div className="log-text">
+                    <div>
+                      <div className="log-text">
+                        <h3>
+                          Adewumi Oloye was Assigned to Case File{" "}
+                          <span>FM1803093003848</span>
+                        </h3>
+                      </div>
+                      <small>01:19:32 PM JUN 16, 2024</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="log-details">
+                  <div>
+                    <svg
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="32" height="32" rx="16" fill="#DFF3E0" />
+                      <path
+                        d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
+                        stroke="#009B07"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <div className="log-text">
+                    <div>
+                      <div className="log-text">
+                        <h3>
+                          Adewumi Oloye Registered. <span>FM1803093003848</span>
+                        </h3>
+                      </div>
+                      <small>01:19:32 PM JUN 16, 2024</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
 
       <DeactivateUserModal
         isOpen={isModalOpen}
