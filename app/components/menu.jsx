@@ -1,10 +1,14 @@
-export default function Menu({ items, onItemClick }) {
+import { useState } from "react";
+
+export default function Menu({ items, }) {
+  const [menuModalOpenUnique, setMenuModalOpenUnique] = useState(true)
   return (
-    <div className="menu">
+    menuModalOpenUnique && <div className="menu">
+      <div className="menu__inner">
       {items?.map((item, index) => (
         <div 
-          className="menu__inner"
-          onClick={() => onItemClick(item)}
+          className="menu__inner__inner"
+          onClick={item?.function}
           key={index}
         >
           {item?.name}
@@ -13,6 +17,12 @@ export default function Menu({ items, onItemClick }) {
               </svg> */}
       </div>
       ))}
+      </div>
+
+      <div className="menu__modal"
+      onClick={() => setMenuModalOpenUnique(false)}
+      ></div>
+      
     </div>
   );
 }

@@ -354,7 +354,9 @@ export default function Dashboard() {
             <div className="dashboard-home__card2__chat">
               <div className="dashboard-home__card2__chat__title-group">
                 <h2>Secured Chat</h2>
-                <h3>View All</h3>
+                <h3 className="pointer" 
+                onClick={() => window.location.href = "/justice/dashboard/chat"}
+                >View All</h3>
               </div>
 
               <div className={activeChat === 0 ? "dashboard-home__card2__chat__user-card dashboard-home__card2__chat__user-card-active" : "dashboard-home__card2__chat__user-card"}

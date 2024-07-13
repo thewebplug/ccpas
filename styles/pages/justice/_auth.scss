@@ -203,6 +203,8 @@ font-weight: 600;
           @extend %case-input;
           margin-top: 10px;
           margin-bottom: 30px;
+          padding-left: 0;
+          font-size: 1.2rem;
         }
   
         &__request {

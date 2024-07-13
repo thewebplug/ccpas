@@ -1,9 +1,13 @@
 "use client";
 
 import { changPassword, login, requestOtp, verifyOtp } from "@/app/apis/auth";
+import { OutlinedInput, InputAdornment, IconButton } from "@mui/material";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
 
 export default function Auth() {
   const dispatch = useDispatch();
@@ -23,6 +27,8 @@ export default function Auth() {
   const [newPassword, setNewPassword] = useState("");
   const [modalOpenTwo, setmodalOpenTwo] = useState(false);
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -33,15 +39,15 @@ export default function Auth() {
     console.log('response', response);
     // window.location.href = "/justice/dashboard";
 
-    // if(response?.status === 201) {
-    //   setModalOpen(true);
-    // }
-    // else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
-    //   window.location.href = "/justice/unauthorized"
-    // }
-    // else {
-    //   alert(response?.data?.message)
-    // }
+    if(response?.status === 201) {
+      setModalOpen(true);
+    }
+    else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
+      window.location.href = "/justice/unauthorized"
+    }
+    else {
+      alert(response?.data?.message)
+    }
     setLoading(false);
 
     console.log('respoooo', response);
@@ -137,6 +143,10 @@ setLoading(false)
     }
   };
 
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   useEffect(() => {
     const otpInputs = document.querySelectorAll(".auth__modal__inner__otp-group__input");
 
@@ -157,6 +167,10 @@ setLoading(false)
       });
     });
   }, [modalOpen]);
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <main className="auth">
@@ -193,15 +207,37 @@ Department of Public Prosecution Portal
         onChange={(e) => setGovId(e.target.value)}
         />
         <label htmlFor="" className="auth__form__label">Email*</label>
-        <input type="text" className="auth__form__input" placeholder="Enter your ID" required
+        <input type="email" className="auth__form__input" placeholder="Enter your ID" required
         value={officialEmail}
         onChange={(e) => setOfficialEmail(e.target.value)}
         />
         <label htmlFor="" className="auth__form__label">Password*</label>
-        <input type="password" className="auth__form__input" placeholder="Enter password" required
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        />
+
+<OutlinedInput
+              className="auth__form__input"
+              required
+              id="password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              style={{paddingLeft: 0, fontSize: "1.6rem"}}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
 
         <h4 className="auth__form__caution">
         Must be at least 8 characters.
@@ -298,17 +334,59 @@ Department of Public Prosecution Portal
        You are currently using a default password that was sent to {officialEmail}. Please create a new password
         </div>
 <label>Current Password</label>
-        <input type="password" className="auth__modal__inner__input" value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Enter the default password gotten via email"
-        required
-        />
+        
+
+<OutlinedInput
+              className="auth__modal__inner__input"
+              required
+              id="password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter the default password gotten via email"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
 <label>New Password</label>
-        <input type="password" className="auth__modal__inner__input" value={confirmNewPassword}
-        onChange={(e) => setConfirmNewPassword(e.target.value)}
-        placeholder="Enter your new password"
-        required
-        />
+       
+
+<OutlinedInput
+              className="auth__modal__inner__input"
+              required
+              id="password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter your new password"
+              value={confirmNewPassword}
+              onChange={(e) => {
+                setConfirmNewPassword(e.target.value);
+              }}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
 
 
           <button

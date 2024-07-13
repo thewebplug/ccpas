@@ -269,6 +269,7 @@ export default function CreateCase() {
   const [metadatas, setMetadatas] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [keywords, setKeywords] = useState([]);
+  const [mugLoading, setMugLoading] = useState(false);
 
   const handleCreateCase = async (e) => {
     e.preventDefault();
@@ -327,7 +328,7 @@ export default function CreateCase() {
   }
 
   const handleMugShotUpload = (e, docType) => {
-    // setUploadLoading(true);
+    setMugLoading(true);
 
     let files = e.target.files;
 
@@ -369,10 +370,11 @@ export default function CreateCase() {
                   temp.push({url: response?.data?.body?.data});
                   setImages([...temp]);
                 }
+                setMugLoading(false);
               })
               .catch((err) => {
                 console.log("ERRRR", err);
-                // setUploadLoading(false);
+                setMugLoading(false);
               });
           }
         });
@@ -781,7 +783,7 @@ Ahmed Aisha
           <input
             type="text"
             className=""
-            placeholder="Type court number"
+            placeholder="Enter court number"
             required
             value={court}
             onChange={(e) => setCourt(e.target.value)}
@@ -826,7 +828,7 @@ Ahmed Aisha
           <input
             type="text"
             className=""
-            placeholder="Type Court Clerk"
+            placeholder="Enter Court Clerk Name"
             required
             value={clerk}
           onChange={(e) => setClerk(e.target.value)}
@@ -1180,7 +1182,7 @@ Ahmed Aisha
               name=""
               id=""
               placeholder="Type Accused Middle Name"
-              required
+              // required
               value={accusedMiddleName}
               onChange={(e) => setAccusedMiddleName(e.target.value)}
             />
@@ -1395,16 +1397,16 @@ Ahmed Aisha
           <div className="case-from__accused__attachment__title">
             ATTACHMENT
           </div>
-          <label className="pointer">
-            <input
+         {docs?.length < 20 &&  <label className="pointer">
+            {!docLoading && <input
               type="file"
               multiple
               // accept='video/*'
-              accept=".docx, .pdf, .mp3, .wav, .mov, .mp4"
+              accept=".docx, .pdf, .mp3, .wav, .mov, .mp4, .png, .jpg, .jpeg"
               hidden
               onChange={(e) => handleFileUpload(e)}
               ref={mediaRef}
-            />
+            />}
             <div className="case-from__accused__attachment__doc case-from__accused__attachment__doc-first">
               {docLoading ? "Loading..." : "Attach New Document"}{" "}
               {!docLoading && (
@@ -1426,7 +1428,7 @@ Ahmed Aisha
                 </svg>
               )}
             </div>
-          </label>
+          </label>}
 
           {docs?.map((doc, index) => (
             <div
@@ -1497,10 +1499,11 @@ Ahmed Aisha
             key={index}
           />
         ))}
+         {images?.length < 5 &&  
         <div className="case-from__mugshots__upload">
-          <label>
+         <label>
             <div className="case-from__mugshots__upload__inner">
-              <svg
+              {!mugLoading && <svg
                 width="65"
                 height="64"
                 viewBox="0 0 65 64"
@@ -1512,16 +1515,19 @@ Ahmed Aisha
                   fill="#37773A"
                   fill-opacity="0.57"
                 />
-              </svg>
-              <div className="case-from__mugshots__upload__inner__title">
+              </svg>}
+              {!mugLoading && <div className="case-from__mugshots__upload__inner__title">
                 Drag & drop files or Browse
-              </div>
-              <div className="case-from__mugshots__upload__inner__subtitle">
+              </div>}
+              {mugLoading && <div className="case-from__mugshots__upload__inner__title">
+                Loading...
+              </div>}
+             {!mugLoading && <div className="case-from__mugshots__upload__inner__subtitle">
                 Supported formats: PDF, Word, and PNG
-              </div>
+              </div>}
             </div>
 
-            <input
+           {!mugLoading && <input
               type="file"
               name=""
               id=""
@@ -1529,9 +1535,10 @@ Ahmed Aisha
               ref={mediaRef}
               accept="image/*"
               onChange={(e) => handleMugShotUpload(e, "png")}
-            />
+            />}
           </label>
         </div>
+          }
       </div>
 
       <div className="case-from__button-group">

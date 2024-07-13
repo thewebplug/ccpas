@@ -1,11 +1,20 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Departments() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen2, setModalOpen2] = useState(false);
+  const [modalOpen3, setModalOpen3] = useState(false);
+  const [cardActive, setCardActive] = useState(0);
+  const [subDept, setSubDept] = useState(false);
   return (
     <div className="departments">
       <div className="departments__header">
         <div className="departments__header__title">Department</div>
-        <div className="departments__header__button">
+        <button className="departments__header__button"
+        onClick={() => setModalOpen2(true)}
+        >
           Add New Department{" "}
           <svg
             width="16"
@@ -22,7 +31,7 @@ export default function Departments() {
               stroke-linejoin="round"
             />
           </svg>
-        </div>
+        </button>
       </div>
       <div className="departments__actions">
         <form action="" className="departments__actions__input">
@@ -168,7 +177,9 @@ export default function Departments() {
       </div>
 
       <div className="departments__body">
-        <div className="departments__body__inner">
+        <div className="departments__body__inner"
+        onClick={() => setModalOpen(true)}
+        >
           <div>
             <svg
               width="20"
@@ -200,7 +211,9 @@ export default function Departments() {
           <div>132</div>
           <div>132</div>
         </div>
-        <div className="departments__body__inner">
+        <div className="departments__body__inner"
+        onClick={() => setModalOpen(true)}
+        >
           <div>
             <svg
               width="20"
@@ -232,7 +245,9 @@ export default function Departments() {
           <div>132</div>
           <div>132</div>
         </div>
-        <div className="departments__body__inner">
+        <div className="departments__body__inner"
+        onClick={() => setModalOpen(true)}
+        >
           <div>
             <svg
               width="20"
@@ -264,38 +279,7 @@ export default function Departments() {
           <div>132</div>
           <div>132</div>
         </div>
-        <div className="departments__body__inner">
-          <div>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="0.5"
-                y="0.5"
-                width="19"
-                height="19"
-                rx="5.5"
-                fill="white"
-              />
-              <rect
-                x="0.5"
-                y="0.5"
-                width="19"
-                height="19"
-                rx="5.5"
-                stroke="#D0D5DD"
-              />
-            </svg>
-          </div>
-          <div>Department of Public Prosecutions (DPP)</div>
-          <div>Federal Secretariat Complex, Abuja</div>
-          <div>132</div>
-          <div>132</div>
-        </div>
+        
       </div>
 
       <div className="departments__footer">
@@ -340,8 +324,11 @@ export default function Departments() {
           </svg>
         </div>
       </div>
+      {modalOpen && <div className="departments__details-modal"></div>}
 
-      <div className="departments__details">
+      {modalOpen2 || modalOpen3 ? <div className="departments__details-modal departments__details-modal2"></div> : ""}
+
+      {modalOpen && <div className="departments__details">
         <div className="departments__details__header">
           <div>
             <svg
@@ -350,6 +337,8 @@ export default function Departments() {
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className="pointer"
+              onClick={() => setModalOpen(false)}
             >
               <path
                 d="M9.57141 18.8201C9.38141 18.8201 9.19141 18.7501 9.04141 18.6001L2.97141 12.5301C2.68141 12.2401 2.68141 11.7601 2.97141 11.4701L9.04141 5.40012C9.33141 5.11012 9.81141 5.11012 10.1014 5.40012C10.3914 5.69012 10.3914 6.17012 10.1014 6.46012L4.56141 12.0001L10.1014 17.5401C10.3914 17.8301 10.3914 18.3101 10.1014 18.6001C9.96141 18.7501 9.76141 18.8201 9.57141 18.8201Z"
@@ -412,6 +401,8 @@ export default function Departments() {
               viewBox="0 0 40 40"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className="pointer"
+              onClick={() => setModalOpen(false)}
             >
               <rect
                 x="0.5"
@@ -484,7 +475,9 @@ export default function Departments() {
             <div className="departments__details__body__members__table">
               <div className="departments__details__body__members__table__title">
                 <div>Sub Department</div>
-                <button>
+                <button
+                onClick={() => setModalOpen3(true)}
+                >
                   Add New Sub Department{" "}
                   <svg
                     width="17"
@@ -505,7 +498,9 @@ export default function Departments() {
               </div>
 
               <div className="departments__details__body__members__table__cards">
-                <div className="departments__details__body__members__table__cards__card">
+                <div className={cardActive === 1 ? "departments__details__body__members__table__cards__card departments__details__body__members__table__cards__card-active" : "departments__details__body__members__table__cards__card"}
+                onClick={() => cardActive === 1 ? setCardActive(0) : setCardActive(1)}
+                >
                   <div className="departments__details__body__members__table__cards__card__title">
                     Cybercrime
                   </div>
@@ -530,7 +525,10 @@ export default function Departments() {
                     </div>
                   </div>
                 </div>
-                <div className="departments__details__body__members__table__cards__card">
+                
+                <div className={cardActive === 2 ? "departments__details__body__members__table__cards__card departments__details__body__members__table__cards__card-active" : "departments__details__body__members__table__cards__card"}
+                onClick={() => cardActive === 2 ? setCardActive(0) : setCardActive(2)}
+                >
                   <div className="departments__details__body__members__table__cards__card__title">
                     Cybercrime
                   </div>
@@ -555,7 +553,9 @@ export default function Departments() {
                     </div>
                   </div>
                 </div>
-                <div className="departments__details__body__members__table__cards__card">
+                <div className={cardActive === 3 ? "departments__details__body__members__table__cards__card departments__details__body__members__table__cards__card-active" : "departments__details__body__members__table__cards__card"}
+                onClick={() => cardActive === 3 ? setCardActive(0) : setCardActive(3)}
+                >
                   <div className="departments__details__body__members__table__cards__card__title">
                     Cybercrime
                   </div>
@@ -580,9 +580,10 @@ export default function Departments() {
                     </div>
                   </div>
                 </div>
+                
               </div>
 
-              <div className="departments__details__body__members__table__parameters">
+           {cardActive === 0 &&    <div className="departments__details__body__members__table__parameters">
                 <form className="departments__details__body__members__table__parameters__input">
                   <input type="text" placeholder="Search" />
 
@@ -647,7 +648,35 @@ export default function Departments() {
                 <button className="departments__details__body__members__table__parameters__button">
                   Apply
                 </button>
-              </div>
+              </div>}
+
+            {cardActive > 0 &&  <div className="departments__details__body__members__table__parameters-search">
+                <div className="departments__details__body__members__table__parameters-search__filled">
+                  <div>Showing Users from Cybercrime</div>
+                  <div>12 users</div>
+                  <button
+                  onClick={() => setCardActive(0)}
+                  >Clear <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.4991 13.0607L7.02941 18.5304L5.96875 17.4697L11.4384 12.0001L5.96875 6.53039L7.02941 5.46973L12.4991 10.9394L17.9688 5.46973L19.0294 6.53039L13.5597 12.0001L19.0294 17.4697L17.9688 18.5304L12.4991 13.0607Z" fill="white"/>
+</svg>
+</button>
+                </div>
+              <div className="departments__details__body__members__table__parameters-search__filters">
+                  <svg
+                    width="24"
+                    height="25"
+                    viewBox="0 0 24 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M20.1554 3.5H3.84473C3.09527 3.5 2.71709 4.40935 3.24813 4.94039L9.74999 11.4432V18.6875C9.74999 18.9628 9.88433 19.2208 10.1099 19.3787L12.9224 21.3468C13.4773 21.7352 14.25 21.3415 14.25 20.6555V11.4432L20.752 4.94039C21.282 4.41041 20.9064 3.5 20.1554 3.5Z"
+                      fill="#033132"
+                    />
+                  </svg>
+                  Filter
+                </div>
+              </div>}
 
               <div className="departments__details__body__members__table__heading">
                 <div>
@@ -718,7 +747,9 @@ export default function Departments() {
               </div>
 
               <div className="departments__details__body__members__table__body">
-                <div className="departments__details__body__members__table__body__inner">
+                <div className="departments__details__body__members__table__body__inner"
+                
+                >
                   
                   <div>  
                     <svg
@@ -815,7 +846,361 @@ export default function Departments() {
             </div>
           </div>
         </div>
-      </div>
+      </div>}
+
+      {modalOpen2 && 
+      <div className="departments__new-dept">
+      <div className="departments__new-dept__header">
+          <div>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="pointer"
+              onClick={() => setModalOpen2(false)}
+            >
+              <path
+                d="M9.57141 18.8201C9.38141 18.8201 9.19141 18.7501 9.04141 18.6001L2.97141 12.5301C2.68141 12.2401 2.68141 11.7601 2.97141 11.4701L9.04141 5.40012C9.33141 5.11012 9.81141 5.11012 10.1014 5.40012C10.3914 5.69012 10.3914 6.17012 10.1014 6.46012L4.56141 12.0001L10.1014 17.5401C10.3914 17.8301 10.3914 18.3101 10.1014 18.6001C9.96141 18.7501 9.76141 18.8201 9.57141 18.8201Z"
+                fill="#061B2E"
+              />
+              <path
+                d="M20.5014 12.7501H3.67141C3.26141 12.7501 2.92141 12.4101 2.92141 12.0001C2.92141 11.5901 3.26141 11.2501 3.67141 11.2501H20.5014C20.9114 11.2501 21.2514 11.5901 21.2514 12.0001C21.2514 12.4101 20.9114 12.7501 20.5014 12.7501Z"
+                fill="#061B2E"
+              />
+            </svg>
+
+            <div>Add New Department</div>
+          </div>
+
+          <div>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="0.5"
+                y="0.5"
+                width="39"
+                height="39"
+                rx="19.5"
+                fill="white"
+              />
+              <rect
+                x="0.5"
+                y="0.5"
+                width="39"
+                height="39"
+                rx="19.5"
+                stroke="#EAEEF4"
+              />
+              <path
+                d="M21.6933 19.1923C21.5759 19.3097 21.4168 19.3756 21.2508 19.3756C21.0848 19.3756 20.9256 19.3097 20.8083 19.1923C20.6909 19.075 20.625 18.9158 20.625 18.7498C20.625 18.5838 20.6909 18.4247 20.8083 18.3073L25.8083 13.3073C25.8664 13.2492 25.9354 13.2031 26.0113 13.1717C26.0872 13.1402 26.1686 13.124 26.2508 13.124C26.333 13.124 26.4143 13.1402 26.4903 13.1717C26.5662 13.2031 26.6352 13.2492 26.6933 13.3073C26.7514 13.3654 26.7975 13.4344 26.8289 13.5103C26.8604 13.5863 26.8766 13.6676 26.8766 13.7498C26.8766 13.832 26.8604 13.9134 26.8289 13.9893C26.7975 14.0652 26.7514 14.1342 26.6933 14.1923L21.6933 19.1923ZM14.1933 26.6923C14.1352 26.7504 14.0662 26.7965 13.9903 26.828C13.9143 26.8594 13.833 26.8756 13.7508 26.8756C13.6686 26.8756 13.5872 26.8594 13.5113 26.828C13.4354 26.7965 13.3664 26.7504 13.3083 26.6923C13.2502 26.6342 13.2041 26.5652 13.1726 26.4893C13.1412 26.4134 13.125 26.332 13.125 26.2498C13.125 26.1676 13.1412 26.0863 13.1726 26.0103C13.2041 25.9344 13.2502 25.8654 13.3083 25.8073L18.3083 20.8073C18.4256 20.69 18.5848 20.624 18.7508 20.624C18.9168 20.624 19.0759 20.69 19.1933 20.8073C19.3106 20.9247 19.3766 21.0838 19.3766 21.2498C19.3766 21.4158 19.3106 21.575 19.1933 21.6923L14.1933 26.6923Z"
+                fill="black"
+              />
+              <path
+                d="M13.75 26.875C13.5842 26.875 13.4253 26.8092 13.3081 26.6919C13.1908 26.5747 13.125 26.4158 13.125 26.25C13.125 26.0842 13.1908 25.9253 13.3081 25.8081C13.4253 25.6908 13.5842 25.625 13.75 25.625H18.75C18.9158 25.625 19.0747 25.6908 19.1919 25.8081C19.3092 25.9253 19.375 26.0842 19.375 26.25C19.375 26.4158 19.3092 26.5747 19.1919 26.6919C19.0747 26.8092 18.9158 26.875 18.75 26.875H13.75Z"
+                fill="black"
+              />
+              <path
+                d="M14.375 26.2495C14.375 26.4153 14.3092 26.5742 14.1919 26.6915C14.0747 26.8087 13.9158 26.8745 13.75 26.8745C13.5842 26.8745 13.4253 26.8087 13.3081 26.6915C13.1908 26.5742 13.125 26.4153 13.125 26.2495V21.2495C13.125 21.0838 13.1908 20.9248 13.3081 20.8076C13.4253 20.6904 13.5842 20.6245 13.75 20.6245C13.9158 20.6245 14.0747 20.6904 14.1919 20.8076C14.3092 20.9248 14.375 21.0838 14.375 21.2495V26.2495ZM26.875 18.7495C26.875 18.9153 26.8092 19.0742 26.6919 19.1915C26.5747 19.3087 26.4158 19.3745 26.25 19.3745C26.0842 19.3745 25.9253 19.3087 25.8081 19.1915C25.6908 19.0742 25.625 18.9153 25.625 18.7495V13.7495C25.625 13.5838 25.6908 13.4248 25.8081 13.3076C25.9253 13.1904 26.0842 13.1245 26.25 13.1245C26.4158 13.1245 26.5747 13.1904 26.6919 13.3076C26.8092 13.4248 26.875 13.5838 26.875 13.7495V18.7495Z"
+                fill="black"
+              />
+              <path
+                d="M21.25 14.375C21.0842 14.375 20.9253 14.3092 20.8081 14.1919C20.6908 14.0747 20.625 13.9158 20.625 13.75C20.625 13.5842 20.6908 13.4253 20.8081 13.3081C20.9253 13.1908 21.0842 13.125 21.25 13.125H26.25C26.4158 13.125 26.5747 13.1908 26.6919 13.3081C26.8092 13.4253 26.875 13.5842 26.875 13.75C26.875 13.9158 26.8092 14.0747 26.6919 14.1919C26.5747 14.3092 26.4158 14.375 26.25 14.375H21.25Z"
+                fill="black"
+              />
+            </svg>
+
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="pointer"
+              onClick={() => setModalOpen2(false)}
+            >
+              <rect
+                x="0.5"
+                y="0.5"
+                width="39"
+                height="39"
+                rx="19.5"
+                fill="white"
+              />
+              <rect
+                x="0.5"
+                y="0.5"
+                width="39"
+                height="39"
+                rx="19.5"
+                stroke="#EAEEF4"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M19.6233 20.6849L15.3536 24.9546L14.293 23.8939L18.5626 19.6243L14.293 15.3546L15.3536 14.2939L19.6233 18.5636L23.893 14.2939L24.9536 15.3546L20.684 19.6243L24.9536 23.8939L23.893 24.9546L19.6233 20.6849Z"
+                fill="#ED1651"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div className="departments__new-dept__form">
+          <div>
+            <label htmlFor="" className="departments__new-dept__form__label">Name of Department</label>
+
+            <input type="text" className="departments__new-dept__form__input" placeholder="Write down department" />
+          </div>
+          <div>
+            <label htmlFor="" className="departments__new-dept__form__label">Department Code</label>
+
+            <input type="text" className="departments__new-dept__form__input" placeholder="Write down department Code" />
+          </div>
+          <div>
+            <label htmlFor="" className="departments__new-dept__form__label">Description of Department</label>
+<textarea className="departments__new-dept__form__input departments__new-dept__form__textarea" name="" id="" placeholder="Enter a description..."></textarea>
+          
+          </div>
+          <div>
+            <label htmlFor="" className="departments__new-dept__form__label">Department Head</label>
+<div className="departments__new-dept__form__input departments__new-dept__form__select">
+  <div>
+  <Image alt="" src="/assets/logo.png" width={24} height={24} />
+    <div>Femi Adebanjo</div>
+    <div>Admin</div>
+  </div>
+
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+</div>
+          
+          </div>
+
+          <div>
+            <label htmlFor="" className="departments__new-dept__form__label">Department Location</label>
+
+            <input type="text" className="departments__new-dept__form__input" placeholder="Enter department location" />
+          </div>
+          <div>
+            <label htmlFor="" className="departments__new-dept__form__label">Sub Department</label>
+
+            <div className="departments__new-dept__form__options">
+              <div className={subDept && "departments__new-dept__form__options__active"}
+              onClick={() => subDept ? setSubDept("") : setSubDept(true)}
+              ><svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="5" cy="5.5" r="4" fill="#12B76A"/>
+</svg>
+Yes
+</div>
+
+<div
+className={subDept === false && "departments__new-dept__form__options__active"}
+onClick={() => subDept === false ? setSubDept("") : setSubDept(false)}
+>
+<svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="5" cy="5.5" r="4" fill="#DA1E28"/>
+</svg>
+
+No
+</div>
+            </div>
+          </div>
+
+        {subDept &&  <div>
+          <label htmlFor="" className="departments__new-dept__form__label">Add Sub Department</label>
+
+          <div className="departments__new-dept__form__input" >
+            <input type="text" value="Cybercrime" />
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.0013 4.1665V15.8332M4.16797 9.99984H15.8346" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+          </div>
+
+          <div className="departments__new-dept__form__subdept">
+            <div>
+            Cybercrime
+
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 3L3 9M3 3L9 9" stroke="#2C2C2C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+            </div>
+            <div>
+            Terrorism
+
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 3L3 9M3 3L9 9" stroke="#2C2C2C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+            </div>
+          </div>
+
+          </div>}
+
+          <button className="departments__new-dept__form__button">
+          Create New Department
+          </button>
+        </div>
+      </div>}
+
+      {modalOpen3 && 
+      <div className="departments__new-dept">
+      <div className="departments__new-dept__header">
+          <div>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="pointer"
+              onClick={() => setModalOpen2(false)}
+            >
+              <path
+                d="M9.57141 18.8201C9.38141 18.8201 9.19141 18.7501 9.04141 18.6001L2.97141 12.5301C2.68141 12.2401 2.68141 11.7601 2.97141 11.4701L9.04141 5.40012C9.33141 5.11012 9.81141 5.11012 10.1014 5.40012C10.3914 5.69012 10.3914 6.17012 10.1014 6.46012L4.56141 12.0001L10.1014 17.5401C10.3914 17.8301 10.3914 18.3101 10.1014 18.6001C9.96141 18.7501 9.76141 18.8201 9.57141 18.8201Z"
+                fill="#061B2E"
+              />
+              <path
+                d="M20.5014 12.7501H3.67141C3.26141 12.7501 2.92141 12.4101 2.92141 12.0001C2.92141 11.5901 3.26141 11.2501 3.67141 11.2501H20.5014C20.9114 11.2501 21.2514 11.5901 21.2514 12.0001C21.2514 12.4101 20.9114 12.7501 20.5014 12.7501Z"
+                fill="#061B2E"
+              />
+            </svg>
+
+            <div>Add New Sub Department</div>
+          </div>
+
+          <div>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="0.5"
+                y="0.5"
+                width="39"
+                height="39"
+                rx="19.5"
+                fill="white"
+              />
+              <rect
+                x="0.5"
+                y="0.5"
+                width="39"
+                height="39"
+                rx="19.5"
+                stroke="#EAEEF4"
+              />
+              <path
+                d="M21.6933 19.1923C21.5759 19.3097 21.4168 19.3756 21.2508 19.3756C21.0848 19.3756 20.9256 19.3097 20.8083 19.1923C20.6909 19.075 20.625 18.9158 20.625 18.7498C20.625 18.5838 20.6909 18.4247 20.8083 18.3073L25.8083 13.3073C25.8664 13.2492 25.9354 13.2031 26.0113 13.1717C26.0872 13.1402 26.1686 13.124 26.2508 13.124C26.333 13.124 26.4143 13.1402 26.4903 13.1717C26.5662 13.2031 26.6352 13.2492 26.6933 13.3073C26.7514 13.3654 26.7975 13.4344 26.8289 13.5103C26.8604 13.5863 26.8766 13.6676 26.8766 13.7498C26.8766 13.832 26.8604 13.9134 26.8289 13.9893C26.7975 14.0652 26.7514 14.1342 26.6933 14.1923L21.6933 19.1923ZM14.1933 26.6923C14.1352 26.7504 14.0662 26.7965 13.9903 26.828C13.9143 26.8594 13.833 26.8756 13.7508 26.8756C13.6686 26.8756 13.5872 26.8594 13.5113 26.828C13.4354 26.7965 13.3664 26.7504 13.3083 26.6923C13.2502 26.6342 13.2041 26.5652 13.1726 26.4893C13.1412 26.4134 13.125 26.332 13.125 26.2498C13.125 26.1676 13.1412 26.0863 13.1726 26.0103C13.2041 25.9344 13.2502 25.8654 13.3083 25.8073L18.3083 20.8073C18.4256 20.69 18.5848 20.624 18.7508 20.624C18.9168 20.624 19.0759 20.69 19.1933 20.8073C19.3106 20.9247 19.3766 21.0838 19.3766 21.2498C19.3766 21.4158 19.3106 21.575 19.1933 21.6923L14.1933 26.6923Z"
+                fill="black"
+              />
+              <path
+                d="M13.75 26.875C13.5842 26.875 13.4253 26.8092 13.3081 26.6919C13.1908 26.5747 13.125 26.4158 13.125 26.25C13.125 26.0842 13.1908 25.9253 13.3081 25.8081C13.4253 25.6908 13.5842 25.625 13.75 25.625H18.75C18.9158 25.625 19.0747 25.6908 19.1919 25.8081C19.3092 25.9253 19.375 26.0842 19.375 26.25C19.375 26.4158 19.3092 26.5747 19.1919 26.6919C19.0747 26.8092 18.9158 26.875 18.75 26.875H13.75Z"
+                fill="black"
+              />
+              <path
+                d="M14.375 26.2495C14.375 26.4153 14.3092 26.5742 14.1919 26.6915C14.0747 26.8087 13.9158 26.8745 13.75 26.8745C13.5842 26.8745 13.4253 26.8087 13.3081 26.6915C13.1908 26.5742 13.125 26.4153 13.125 26.2495V21.2495C13.125 21.0838 13.1908 20.9248 13.3081 20.8076C13.4253 20.6904 13.5842 20.6245 13.75 20.6245C13.9158 20.6245 14.0747 20.6904 14.1919 20.8076C14.3092 20.9248 14.375 21.0838 14.375 21.2495V26.2495ZM26.875 18.7495C26.875 18.9153 26.8092 19.0742 26.6919 19.1915C26.5747 19.3087 26.4158 19.3745 26.25 19.3745C26.0842 19.3745 25.9253 19.3087 25.8081 19.1915C25.6908 19.0742 25.625 18.9153 25.625 18.7495V13.7495C25.625 13.5838 25.6908 13.4248 25.8081 13.3076C25.9253 13.1904 26.0842 13.1245 26.25 13.1245C26.4158 13.1245 26.5747 13.1904 26.6919 13.3076C26.8092 13.4248 26.875 13.5838 26.875 13.7495V18.7495Z"
+                fill="black"
+              />
+              <path
+                d="M21.25 14.375C21.0842 14.375 20.9253 14.3092 20.8081 14.1919C20.6908 14.0747 20.625 13.9158 20.625 13.75C20.625 13.5842 20.6908 13.4253 20.8081 13.3081C20.9253 13.1908 21.0842 13.125 21.25 13.125H26.25C26.4158 13.125 26.5747 13.1908 26.6919 13.3081C26.8092 13.4253 26.875 13.5842 26.875 13.75C26.875 13.9158 26.8092 14.0747 26.6919 14.1919C26.5747 14.3092 26.4158 14.375 26.25 14.375H21.25Z"
+                fill="black"
+              />
+            </svg>
+
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="pointer"
+              onClick={() => setModalOpen3(false)}
+            >
+              <rect
+                x="0.5"
+                y="0.5"
+                width="39"
+                height="39"
+                rx="19.5"
+                fill="white"
+              />
+              <rect
+                x="0.5"
+                y="0.5"
+                width="39"
+                height="39"
+                rx="19.5"
+                stroke="#EAEEF4"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M19.6233 20.6849L15.3536 24.9546L14.293 23.8939L18.5626 19.6243L14.293 15.3546L15.3536 14.2939L19.6233 18.5636L23.893 14.2939L24.9536 15.3546L20.684 19.6243L24.9536 23.8939L23.893 24.9546L19.6233 20.6849Z"
+                fill="#ED1651"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div className="departments__new-dept__form">
+          <div>
+            <label htmlFor="" className="departments__new-dept__form__label">Name of Department</label>
+
+            <input type="text" className="departments__new-dept__form__input" placeholder="Write down department" />
+          </div>
+          <div>
+            <label htmlFor="" className="departments__new-dept__form__label">Name of Sub Department</label>
+
+            <input type="text" className="departments__new-dept__form__input" placeholder="Write down department Code" />
+          </div>
+          <div>
+            <label htmlFor="" className="departments__new-dept__form__label">Description of Sub Department</label>
+<textarea className="departments__new-dept__form__input departments__new-dept__form__textarea" name="" id="" placeholder="Enter a description..."></textarea>
+          
+          </div>
+          <div>
+            <label htmlFor="" className="departments__new-dept__form__label">Sub Department Head</label>
+<div className="departments__new-dept__form__input departments__new-dept__form__select">
+  <div>
+  <Image alt="" src="/assets/logo.png" width={24} height={24} />
+    <div>Femi Adebanjo</div>
+    <div>Admin</div>
+  </div>
+
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+</div>
+          
+          </div>
+
+          <div>
+            <label htmlFor="" className="departments__new-dept__form__label">Sub Department Location</label>
+
+            <input type="text" className="departments__new-dept__form__input" placeholder="Enter department location" />
+          </div>
+      
+          <button className="departments__new-dept__form__button"
+          onClick={() => setModalOpen3(false)}
+          >
+          Create New Sub Department
+          </button>
+        </div>
+      </div>}
     </div>
   );
 }

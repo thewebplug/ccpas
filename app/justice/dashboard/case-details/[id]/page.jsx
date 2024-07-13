@@ -883,7 +883,8 @@ export default function CreateCase() {
               <div
                 className="case-details__inner__accused__attachment__doc case-details__inner__accused__attachment__doc-filled"
                 key={index}
-              >
+                onClick={() => window.open(`https://${item?.url}`)}
+                >
                 {/* Attach Charge sheet */}
                 <div>
                   <svg
