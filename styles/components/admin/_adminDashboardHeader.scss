@@ -64,9 +64,27 @@
     &__button {
       min-width: 209px;
       @extend %create-button;
+
+      padding: 0 8px;
+      border-radius: 10px;
+
+      box-shadow: 0px 5px 34px 0px rgba(42, 186, 19, 0.42);
+    }
+
+    &__notification {
+      min-width: 60px;
+      @extend %create-button;
+      padding: 0 8px;
+      border-radius: 10px;
+      background-color: #009B07;
+      opacity: 0.8;
+
+      box-shadow: 0px 5px 34px 0px rgba(42, 186, 19, 0.42);
+
       justify-content: end;
       gap: 60px;
       padding: 0 16px;
+
     }
 
     &__search {

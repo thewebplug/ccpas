@@ -10,6 +10,12 @@
 @import 'shared/svgs';
 @import 'shared/buttons';
 
+
+@import 'components/sidebar';
+@import 'components/header';
+@import 'components/footer';
+
+
 @import 'components/dashboardHeader';
 @import 'components/dashboardSideBar';
 @import 'components/menu';
@@ -36,6 +42,11 @@
 @import 'pages/justice/admin/home';
 @import 'pages/justice/admin/add-user';
 @import 'pages/justice/admin/added-user';
+@import 'pages/justice/admin/deactivate-user';
+@import 'pages/justice/admin/deactivated-user';
+
 @import 'pages/justice/admin/departments';
 
+
+@import 'pages/justice/admin/preview-user';
 
