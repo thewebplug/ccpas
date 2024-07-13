@@ -11,7 +11,7 @@ import PreviewUser from "./preview-user/page";
 const Admin = () => {
   const [isAddUserModalOpen, setAddUserModalOpen] = useState(false);
   const [isAddedUserModalOpen, setAddedUserModalOpen] = useState(false);
-
+  const [previewModal, setPreviewModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeactivated, setIsDeactivated] = useState(false);
 
@@ -39,14 +39,8 @@ const Admin = () => {
     setIsModalOpen(false);
   };
 
-  const handleDeactivate = () => {
-    setIsDeactivated(true);
-    // closeModal();
-  };
 
-  const closeDeactivated = () => {
-    setIsDeactivated(false);
-  };
+
 
   return (
     <div className="admin">
@@ -246,8 +240,8 @@ const Admin = () => {
                   imageUrl: "/assets/avatars/ava-kate.png",
                 },
               ].map((user, index) => (
-                <tr key={index}>
-                  <td className="user-name" onClick={openModal}>
+                <tr key={index} onClick={() => setPreviewModal(true)}>
+                  <td className="user-name" >
                     <svg
                       width="20"
                       height="20"
@@ -367,15 +361,10 @@ const Admin = () => {
         </div>
       </div>
 
-      <PreviewUser />
+      <PreviewUser previewModal={previewModal} setPreviewModal={setPreviewModal} />
 
-      <DeactivateUserModal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        onDeactivate={handleDeactivate}
-      />
+     
 
-      <DeactivatedUser isOpen={isDeactivated} onClose={closeDeactivated} />
     </div>
   );
 };

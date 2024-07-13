@@ -8,7 +8,7 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
 
   &__overlay {
     position: absolute;
@@ -175,9 +175,15 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
-            border-bottom: 1px solid #ccc;
+            gap: 40px;
+            
             margin-bottom: 15px;
+
+           .flex-right {
+              width: 50%;
+              border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+            }
 
             h3 {
               font-size: 12px;
@@ -201,22 +207,19 @@
             }
 
             .h2-1 {
+              width: 100%;
               font-size: 14px;
               font-weight: 600;
               color: #009b07;
               margin-bottom: 8px;
-
-              div {
-                display: flex;
+              display: flex;
                 align-items: center;
-                justify-content: center;
                 gap: 4px;
                 text-decoration: underline;
 
-                svg {
-                  margin: 10px 0;
+                & > svg {
+                  margin: 0 !important;
                 }
-              }
             }
             
             .under {
@@ -226,9 +229,12 @@
             }
 
             .flex-left {
+              width: 50%;
               display: flex;
               flex-direction: column;
               align-items: flex-end;
+              border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
 
               svg {
                 margin: 5px 0 8px 0;
@@ -251,7 +257,30 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+
+            &>:first-child {
+              position: relative;
+            }
+
+            &:last-child {
+              & >:first-child::after {
+                display: none;
+              }
+
+            }
+
+            & >:first-child::after {
+              position: absolute;
+              content: "";
+              display: block;
+              width: 1px;
+              height: 30px;
+              background: #E8E8E8;
+              top: 93%;
+              left: 50%;
+              transform: translateX(-50%);
+            }
 
             .log-text {
               display: flex;

@@ -4,7 +4,7 @@ import Image from "next/image";
 import DeactivateUserModal from "../deactivate-user/page";
 import DeactivatedUser from "../deactivated-user/page";
 
-export default function PreviewUser({ onClose }) {
+export default function PreviewUser({ previewModal, setPreviewModal }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeactivated, setIsDeactivated] = useState(false);
 
@@ -25,15 +25,15 @@ export default function PreviewUser({ onClose }) {
     setIsDeactivated(false);
   };
 
-  const [activeTab, setActiveTab] = useState(null);
+  const [activeTab, setActiveTab] = useState("userDetails");
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName === activeTab ? null : tabName);
   };
 
   return (
-    <div className="preview-user">
-      <div className="preview-user__overlay" onClick={onClose}></div>
+    previewModal && <div className="preview-user">
+      <div className="preview-user__overlay" onClick={() => setPreviewModal(false)}></div>
 
       <div className="preview-user__content">
         <header className="preview-user__header">
@@ -44,8 +44,7 @@ export default function PreviewUser({ onClose }) {
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              onClick={onClose}
-            >
+              onClick={() => setPreviewModal(false)}            >
               <path
                 d="M9.57141 18.82C9.38141 18.82 9.19141 18.75 9.04141 18.6L2.97141 12.53C2.68141 12.24 2.68141 11.76 2.97141 11.47L9.04141 5.4C9.33141 5.11 9.81141 5.11 10.1014 5.4C10.3914 5.69 10.3914 6.17 10.1014 6.46L4.56141 12L10.1014 17.54C10.3914 17.83 10.3914 18.31 10.1014 18.6C9.96141 18.75 9.76141 18.82 9.57141 18.82Z"
                 fill="#061B2E"
@@ -183,7 +182,7 @@ export default function PreviewUser({ onClose }) {
               </svg>
             </button>
 
-            <button className="close-button" onClick={onClose}>
+            <button className="close-button" onClick={() => setPreviewModal(false)}>
               <svg
                 width="30"
                 height="30"
@@ -518,8 +517,7 @@ export default function PreviewUser({ onClose }) {
                       <div>
                         <div className="log-text">
                           <h3>
-                            Adewumi Oloye Registered.{" "}
-                            <span>FM1803093003848</span>
+                            Adewumi Oloye registered.{" "}
                           </h3>
                         </div>
                         <small>01:19:32 PM JUN 16, 2024</small>
@@ -535,7 +533,7 @@ export default function PreviewUser({ onClose }) {
                 <div className="title">User Details</div>
 
                 <div className="parent-detail">
-                  <div>
+                  <div className="flex-right">
                     <h3>FMoJ ID</h3>
                     <div className="h2">FM968379821</div>
                   </div>
@@ -562,7 +560,7 @@ export default function PreviewUser({ onClose }) {
                 </div>
 
                 <div className="parent-detail">
-                  <div>
+                  <div className="flex-right">
                     <h3>Gov't Issued Email Address</h3>
                     <div className="h2-1">A.oloye@fmoj.gov.ng</div>
                   </div>
@@ -578,7 +576,7 @@ export default function PreviewUser({ onClose }) {
                 </div>
 
                 <div className="parent-detail">
-                  <div>
+                  <div className="flex-right">
                     <h3>Date of Birth</h3>
                     <div className="h2">JAN 08, 1998</div>
                   </div>
@@ -586,7 +584,7 @@ export default function PreviewUser({ onClose }) {
                   <div className="flex-left">
                     <h3>Department</h3>
                     <div className="h2-1 under">
-                      Department of Public Prosections (DPP)
+                      <div>Department of Public Prosections (DPP)</div>
                       <svg
                         width="12"
                         height="8"
