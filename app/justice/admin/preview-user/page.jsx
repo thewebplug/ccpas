@@ -25,6 +25,12 @@ export default function PreviewUser({ onClose }) {
     setIsDeactivated(false);
   };
 
+  const [activeTab, setActiveTab] = useState(null);
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName === activeTab ? null : tabName);
+  };
+
   return (
     <div className="preview-user">
       <div className="preview-user__overlay" onClick={onClose}></div>
@@ -338,177 +344,300 @@ export default function PreviewUser({ onClose }) {
 
           <div className="preview-user__bottom">
             <div className="detail-header">
-              <div className="detail">User Details</div>
-              <div className="activities">Activities</div>
+              <div
+                className={`detail ${
+                  activeTab === "userDetails" ? "activities" : ""
+                }`}
+                onClick={() => handleTabClick("userDetails")}
+              >
+                User Details
+              </div>
+              <div
+                className={`detail ${
+                  activeTab === "activities" ? "activities" : ""
+                }`}
+                onClick={() => handleTabClick("activities")}
+              >
+                Activities
+              </div>
             </div>
 
-            <div className="log-activities">
-              <h2>Log Activities</h2>
+            {activeTab === "activities" && (
+              <div className="log-activities">
+                <h2>Log Activities</h2>
 
-              <div>
-                <div className="log-details">
-                  <div>
-                    <svg
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="32" height="32" rx="16" fill="#009B07" />
-                      <path
-                        d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
-                        stroke="white"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-
-                  <div className="log-text">
+                <div>
+                  <div className="log-details">
                     <div>
-                      <div className="log-text">
-                        <h3>
-                          Adewumi Oloye Expunged Case File{" "}
-                          <span>FM1803093003848</span>
-                        </h3>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect width="32" height="32" rx="16" fill="#009B07" />
+                        <path
+                          d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
+                          stroke="white"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+
+                    <div className="log-text">
+                      <div>
+                        <div className="log-text">
+                          <h3>
+                            Adewumi Oloye Expunged Case File{" "}
+                            <span>FM1803093003848</span>
+                          </h3>
+                        </div>
+                        <small>Just Now</small>
                       </div>
-                      <small>Just Now</small>
                     </div>
                   </div>
-                </div>
 
-                <div className="log-details">
-                  <div>
-                    <svg
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="32" height="32" rx="16" fill="#DFF3E0" />
-                      <path
-                        d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
-                        stroke="#009B07"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-
-                  <div className="log-text">
+                  <div className="log-details">
                     <div>
-                      <div className="log-text">
-                        <h3>
-                          Adewumi Oloye Expunged Case File{" "}
-                          <span>FM1803093003848</span>
-                        </h3>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect width="32" height="32" rx="16" fill="#DFF3E0" />
+                        <path
+                          d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
+                          stroke="#009B07"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+
+                    <div className="log-text">
+                      <div>
+                        <div className="log-text">
+                          <h3>
+                            Adewumi Oloye Expunged Case File{" "}
+                            <span>FM1803093003848</span>
+                          </h3>
+                        </div>
+                        <small>11:30:23 AM JUN 18, 2024</small>
                       </div>
-                      <small>11:30:23 AM JUN 18, 2024</small>
                     </div>
                   </div>
-                </div>
 
-                <div className="log-details">
-                  <div>
-                    <svg
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="32" height="32" rx="16" fill="#DFF3E0" />
-                      <path
-                        d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
-                        stroke="#009B07"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-
-                  <div className="log-text">
+                  <div className="log-details">
                     <div>
-                      <div className="log-text">
-                        <h3>
-                          Adewumi Oloye Edit Case File{" "}
-                          <span>FM1803093003848</span>
-                        </h3>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect width="32" height="32" rx="16" fill="#DFF3E0" />
+                        <path
+                          d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
+                          stroke="#009B07"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+
+                    <div className="log-text">
+                      <div>
+                        <div className="log-text">
+                          <h3>
+                            Adewumi Oloye Edit Case File{" "}
+                            <span>FM1803093003848</span>
+                          </h3>
+                        </div>
+                        <small>01:19:32 PM JUN 16, 2024</small>
                       </div>
-                      <small>01:19:32 PM JUN 16, 2024</small>
                     </div>
                   </div>
-                </div>
-                
-                <div className="log-details">
-                  <div>
-                    <svg
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="32" height="32" rx="16" fill="#DFF3E0" />
-                      <path
-                        d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
-                        stroke="#009B07"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
 
-                  <div className="log-text">
+                  <div className="log-details">
                     <div>
-                      <div className="log-text">
-                        <h3>
-                          Adewumi Oloye was Assigned to Case File{" "}
-                          <span>FM1803093003848</span>
-                        </h3>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect width="32" height="32" rx="16" fill="#DFF3E0" />
+                        <path
+                          d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
+                          stroke="#009B07"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+
+                    <div className="log-text">
+                      <div>
+                        <div className="log-text">
+                          <h3>
+                            Adewumi Oloye was Assigned to Case File{" "}
+                            <span>FM1803093003848</span>
+                          </h3>
+                        </div>
+                        <small>01:19:32 PM JUN 16, 2024</small>
                       </div>
-                      <small>01:19:32 PM JUN 16, 2024</small>
                     </div>
                   </div>
-                </div>
 
-                <div className="log-details">
-                  <div>
-                    <svg
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="32" height="32" rx="16" fill="#DFF3E0" />
-                      <path
-                        d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
-                        stroke="#009B07"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-
-                  <div className="log-text">
+                  <div className="log-details">
                     <div>
-                      <div className="log-text">
-                        <h3>
-                          Adewumi Oloye Registered. <span>FM1803093003848</span>
-                        </h3>
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect width="32" height="32" rx="16" fill="#DFF3E0" />
+                        <path
+                          d="M15.9987 11.3334V20.6667M11.332 16H20.6654"
+                          stroke="#009B07"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+
+                    <div className="log-text">
+                      <div>
+                        <div className="log-text">
+                          <h3>
+                            Adewumi Oloye Registered.{" "}
+                            <span>FM1803093003848</span>
+                          </h3>
+                        </div>
+                        <small>01:19:32 PM JUN 16, 2024</small>
                       </div>
-                      <small>01:19:32 PM JUN 16, 2024</small>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
+
+            {activeTab === "userDetails" && (
+              <div className="user-details">
+                <div className="title">User Details</div>
+
+                <div className="parent-detail">
+                  <div>
+                    <h3>FMoJ ID</h3>
+                    <div className="h2">FM968379821</div>
+                  </div>
+
+                  <div className="flex-left">
+                    <h3>Security Clearance</h3>
+                    <div>
+                      <svg
+                        width="80"
+                        height="30"
+                        viewBox="0 0 86 36"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect width="86" height="36" rx="18" fill="#EEF4FF" />
+                        <circle cx="12" cy="18" r="3" fill="#6172F3" />
+                        <path
+                          d="M32.2287 17.9091C32.2287 18.9962 32.0298 19.9309 31.6321 20.7131C31.2344 21.492 30.6892 22.0919 29.9964 22.5128C29.3071 22.9304 28.5232 23.1392 27.6449 23.1392C26.7633 23.1392 25.9761 22.9304 25.2834 22.5128C24.594 22.0919 24.0504 21.4903 23.6527 20.7081C23.255 19.9259 23.0561 18.9929 23.0561 17.9091C23.0561 16.822 23.255 15.889 23.6527 15.1101C24.0504 14.3279 24.594 13.728 25.2834 13.3104C25.9761 12.8894 26.7633 12.679 27.6449 12.679C28.5232 12.679 29.3071 12.8894 29.9964 13.3104C30.6892 13.728 31.2344 14.3279 31.6321 15.1101C32.0298 15.889 32.2287 16.822 32.2287 17.9091ZM30.7074 17.9091C30.7074 17.0805 30.5732 16.3828 30.3047 15.8161C30.0395 15.246 29.675 14.8151 29.2109 14.5234C28.7502 14.2285 28.2282 14.081 27.6449 14.081C27.0582 14.081 26.5346 14.2285 26.0739 14.5234C25.6132 14.8151 25.2486 15.246 24.9801 15.8161C24.715 16.3828 24.5824 17.0805 24.5824 17.9091C24.5824 18.7377 24.715 19.437 24.9801 20.0071C25.2486 20.5739 25.6132 21.0047 26.0739 21.2997C26.5346 21.5914 27.0582 21.7372 27.6449 21.7372C28.2282 21.7372 28.7502 21.5914 29.2109 21.2997C29.675 21.0047 30.0395 20.5739 30.3047 20.0071C30.5732 19.437 30.7074 18.7377 30.7074 17.9091ZM37.6589 15.3636V16.5568H33.3436V15.3636H37.6589ZM34.5268 23V14.4787C34.5268 14.0014 34.6312 13.6053 34.84 13.2905C35.0488 12.9723 35.3256 12.7353 35.6703 12.5795C36.015 12.4205 36.3895 12.3409 36.7939 12.3409C37.0922 12.3409 37.3474 12.3658 37.5595 12.4155C37.7716 12.4619 37.929 12.505 38.0318 12.5447L37.6838 13.7479C37.6142 13.728 37.5247 13.7048 37.4153 13.6783C37.3059 13.6484 37.1734 13.6335 37.0176 13.6335C36.6563 13.6335 36.3978 13.723 36.242 13.902C36.0895 14.081 36.0133 14.3395 36.0133 14.6776V23H34.5268ZM42.8269 15.3636V16.5568H38.5115V15.3636H42.8269ZM39.6948 23V14.4787C39.6948 14.0014 39.7992 13.6053 40.008 13.2905C40.2168 12.9723 40.4935 12.7353 40.8382 12.5795C41.1829 12.4205 41.5575 12.3409 41.9618 12.3409C42.2601 12.3409 42.5153 12.3658 42.7275 12.4155C42.9396 12.4619 43.097 12.505 43.1998 12.5447L42.8517 13.7479C42.7821 13.728 42.6926 13.7048 42.5833 13.6783C42.4739 13.6484 42.3413 13.6335 42.1855 13.6335C41.8243 13.6335 41.5658 13.723 41.41 13.902C41.2575 14.081 41.1813 14.3395 41.1813 14.6776V23H39.6948ZM44.3606 23V15.3636H45.8471V23H44.3606ZM45.1113 14.1854C44.8528 14.1854 44.6307 14.0992 44.4451 13.9268C44.2628 13.7512 44.1717 13.5424 44.1717 13.3004C44.1717 13.0552 44.2628 12.8464 44.4451 12.674C44.6307 12.4983 44.8528 12.4105 45.1113 12.4105C45.3699 12.4105 45.5903 12.4983 45.7725 12.674C45.9582 12.8464 46.051 13.0552 46.051 13.3004C46.051 13.5424 45.9582 13.7512 45.7725 13.9268C45.5903 14.0992 45.3699 14.1854 45.1113 14.1854ZM51.0636 23.1541C50.3245 23.1541 49.6881 22.9867 49.1545 22.652C48.6242 22.3139 48.2165 21.8482 47.9315 21.255C47.6464 20.6617 47.5039 19.9822 47.5039 19.2166C47.5039 18.4411 47.6497 17.7566 47.9414 17.1634C48.2331 16.5668 48.6441 16.1011 49.1744 15.7663C49.7047 15.4316 50.3294 15.2642 51.0487 15.2642C51.6287 15.2642 52.1457 15.3719 52.5998 15.5874C53.0539 15.7995 53.4201 16.0978 53.6985 16.4822C53.9802 16.8667 54.1476 17.3158 54.2006 17.8295H52.7539C52.6744 17.4716 52.4921 17.1634 52.207 16.9048C51.9253 16.6463 51.5475 16.517 51.0735 16.517C50.6592 16.517 50.2963 16.6264 49.9847 16.8452C49.6765 17.0606 49.4362 17.3688 49.2638 17.7699C49.0915 18.1676 49.0053 18.6383 49.0053 19.1818C49.0053 19.7386 49.0898 20.2192 49.2589 20.6236C49.4279 21.0279 49.6665 21.3411 49.9748 21.5632C50.2863 21.7853 50.6526 21.8963 51.0735 21.8963C51.3552 21.8963 51.6104 21.8449 51.8391 21.7422C52.0711 21.6361 52.265 21.4853 52.4208 21.2898C52.5799 21.0942 52.6909 20.8589 52.7539 20.5838H54.2006C54.1476 21.0777 53.9869 21.5185 53.7184 21.9062C53.4499 22.294 53.0903 22.599 52.6396 22.821C52.1921 23.0431 51.6668 23.1541 51.0636 23.1541ZM55.7903 23V15.3636H57.2768V23H55.7903ZM56.541 14.1854C56.2825 14.1854 56.0604 14.0992 55.8748 13.9268C55.6925 13.7512 55.6014 13.5424 55.6014 13.3004C55.6014 13.0552 55.6925 12.8464 55.8748 12.674C56.0604 12.4983 56.2825 12.4105 56.541 12.4105C56.7995 12.4105 57.0199 12.4983 57.2022 12.674C57.3878 12.8464 57.4806 13.0552 57.4806 13.3004C57.4806 13.5424 57.3878 13.7512 57.2022 13.9268C57.0199 14.0992 56.7995 14.1854 56.541 14.1854ZM61.4989 23.169C61.015 23.169 60.5775 23.0795 60.1864 22.9006C59.7953 22.7183 59.4854 22.4548 59.2567 22.1101C59.0314 21.7654 58.9187 21.3428 58.9187 20.8423C58.9187 20.4115 59.0015 20.0568 59.1673 19.7784C59.333 19.5 59.5567 19.2796 59.8384 19.1172C60.1201 18.9548 60.435 18.8321 60.783 18.7493C61.131 18.6664 61.4857 18.6035 61.8469 18.5604C62.3043 18.5073 62.6755 18.4643 62.9606 18.4311C63.2456 18.3946 63.4528 18.3366 63.582 18.2571C63.7113 18.1776 63.7759 18.0483 63.7759 17.8693V17.8345C63.7759 17.4003 63.6533 17.0639 63.408 16.8253C63.1661 16.5866 62.8048 16.4673 62.3242 16.4673C61.8237 16.4673 61.4293 16.5784 61.141 16.8004C60.8559 17.0192 60.6587 17.2628 60.5494 17.5312L59.1523 17.2131C59.3181 16.7491 59.56 16.3745 59.8782 16.0895C60.1997 15.8011 60.5692 15.5923 60.9869 15.4631C61.4045 15.3305 61.8436 15.2642 62.3043 15.2642C62.6093 15.2642 62.9324 15.3007 63.2738 15.3736C63.6185 15.4432 63.94 15.5724 64.2383 15.7614C64.5399 15.9503 64.7868 16.2204 64.979 16.5717C65.1713 16.9197 65.2674 17.3722 65.2674 17.929V23H63.8157V21.956H63.756C63.6599 22.1482 63.5157 22.3371 63.3235 22.5227C63.1313 22.7083 62.8844 22.8625 62.5827 22.9851C62.2811 23.1077 61.9199 23.169 61.4989 23.169ZM61.8221 21.9759C62.2331 21.9759 62.5844 21.8946 62.8761 21.7322C63.171 21.5698 63.3948 21.3577 63.5472 21.0959C63.703 20.8307 63.7809 20.5473 63.7809 20.2457V19.2614C63.7279 19.3144 63.6251 19.3641 63.4727 19.4105C63.3235 19.4536 63.1528 19.4917 62.9606 19.5249C62.7683 19.5547 62.5811 19.5829 62.3988 19.6094C62.2165 19.6326 62.064 19.6525 61.9414 19.669C61.6531 19.7055 61.3896 19.7668 61.1509 19.853C60.9156 19.9392 60.7267 20.0634 60.5842 20.2259C60.445 20.3849 60.3754 20.5971 60.3754 20.8622C60.3754 21.2301 60.5112 21.5085 60.783 21.6974C61.0548 21.883 61.4012 21.9759 61.8221 21.9759ZM68.7338 12.8182V23H67.2473V12.8182H68.7338Z"
+                          fill="#3538CD"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="parent-detail">
+                  <div>
+                    <h3>Gov't Issued Email Address</h3>
+                    <div className="h2-1">A.oloye@fmoj.gov.ng</div>
+                  </div>
+
+                  <div className="flex-left">
+                    <h3>Stationed at</h3>
+                    <div>
+                      <p>
+                        FMoJ-Dept of Public Prosecution-<span>Abuja HQ</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="parent-detail">
+                  <div>
+                    <h3>Date of Birth</h3>
+                    <div className="h2">JAN 08, 1998</div>
+                  </div>
+
+                  <div className="flex-left">
+                    <h3>Department</h3>
+                    <div className="h2-1 under">
+                      Department of Public Prosections (DPP)
+                      <svg
+                        width="12"
+                        height="8"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1.33203 6.00004H10.6654M10.6654 6.00004L5.9987 1.33337M10.6654 6.00004L5.9987 10.6667"
+                          stroke="#009B07"
+                          strokeWidth="2" 
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="parent-detail">
+                  <div>
+                    {/* <h3>FMoJ ID</h3>
+        <div className="h2">FM968379821</div> */}
+                  </div>
+                  <div className="flex-left">
+                    <h3>Date of Engagement</h3>
+                    <div className="h2">JAN 08, 1998</div>
+                  </div>
+                </div>
+
+                <div className="parent-detail">
+                  <div>
+                    {/* <h3>FMoJ ID</h3>
+        <div className="h2">FM968379821</div> */}
+                  </div>
+                  <div className="flex-left">
+                    <h3>Location</h3>
+                    <div className="h2">Garki, Abuja</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* </div> */}
+
+            {/* ===========  ENDS HERE =========== */}
           </div>
         </div>
       </div>
+
+      {/* --------------------------------- */}
 
       <DeactivateUserModal
         isOpen={isModalOpen}
@@ -518,5 +647,8 @@ export default function PreviewUser({ onClose }) {
 
       <DeactivatedUser isOpen={isDeactivated} onClose={closeDeactivated} />
     </div>
+    // </div>
+
+    // </div>
   );
 }
