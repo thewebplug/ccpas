@@ -106,6 +106,48 @@
           // .role {
           //   margin-bottom: 20px;
           // }
+
+          .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            .field {
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+
+              .label {
+                font-size: 14px;
+                color: #667085;
+              }
+
+              .select {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                border: 1px solid #e2e8f0;
+                padding: 8px;
+                border-radius: 8px;
+                position: relative;
+
+                select {
+                  border: none;
+                  background: none;
+                  font-size: 14px;
+                  color: #667085;
+                  outline: none;
+                  flex-grow: 1;
+                }
+
+                .dropdown-icon {
+                  position: absolute;
+                  right: 8px;
+                  pointer-events: none;
+                }
+              }
+            }
+          }
         }
       }
 
@@ -181,7 +223,8 @@
               }
 
               .date {
-                width: 200px;                padding: 8px;
+                width: 200px;
+                padding: 8px;
                 margin-bottom: 8px;
                 margin-right: 8px;
                 border: 1px solid #d0d5dd;

@@ -85,30 +85,7 @@ const Admin = () => {
               <tr>
                 <th>
                   <div className="name-header">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect
-                        x="0.5"
-                        y="0.5"
-                        width="19"
-                        height="19"
-                        rx="5.5"
-                        fill="white"
-                      />
-                      <rect
-                        x="0.5"
-                        y="0.5"
-                        width="19"
-                        height="19"
-                        rx="5.5"
-                        stroke="#D0D5DD"
-                      />
-                    </svg>
+                    <input type="checkbox" />
                     <span>Name</span>
                   </div>
                 </th>
@@ -242,30 +219,8 @@ const Admin = () => {
               ].map((user, index) => (
                 <tr key={index} onClick={() => setPreviewModal(true)}>
                   <td className="user-name" >
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect
-                        x="0.5"
-                        y="0.5"
-                        width="19"
-                        height="19"
-                        rx="5.5"
-                        fill="white"
-                      />
-                      <rect
-                        x="0.5"
-                        y="0.5"
-                        width="19"
-                        height="19"
-                        rx="5.5"
-                        stroke="#D0D5DD"
-                      />
-                    </svg>
+                    
+                    <input type="checkbox" />
 
                     <Image
                       alt=""
