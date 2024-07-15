@@ -1,14 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function Chat() {
   const [emojiModal, setEmojiModal] = useState(false)
   const [attachModal, setAttachModal] = useState(false)
   const [fileModal, setFileModal] = useState(false)
   const [tab, setTab] = useState("All")
-  const [text, setText] = useState("")
+  const [text, setText] = useState("");
+  const mediaRef = useRef("");
+
   return (
     <div className="chat">
       <div className="chat__chat-list">
@@ -580,13 +582,27 @@ Supported formats: PDF, Word, and PNG
 </svg>
 
 {attachModal && <div className="chat__chat-room__form__input__attach__list">
-  <div className="chat__chat-room__form__input__attach__list__item">
+ <label style={{width: "100%"}}>
+ <div className="chat__chat-room__form__input__attach__list__item">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M22 10V15C22 20 20 22 15 22H9C4 22 2 20 2 15V9C2 4 4 2 9 2H14" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M22 10H18C15 10 14 9 14 6V2L22 10Z" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 Send File
   </div>
+
+  <input
+                type="file"
+                name=""
+                id=""
+                hidden
+                ref={mediaRef}
+                accept=".pdf, .docx"
+                // onChange={(e) => handleImageUpload(e, "png")}
+              />
+
+ </label>
+ <label style={{width: "100%"}}>
   <div className="chat__chat-room__form__input__attach__list__item">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -598,6 +614,17 @@ Send File
 
 Attach a picture
   </div>
+
+  <input
+                type="file"
+                name=""
+                id=""
+                hidden
+                ref={mediaRef}
+                accept="image/*"
+                // onChange={(e) => handleImageUpload(e, "png")}
+              />
+  </label>
 </div>}
 {attachModal && <div className="chat__chat-room__form__input__attach__anchor">
 
