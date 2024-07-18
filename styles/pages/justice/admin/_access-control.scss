@@ -204,52 +204,6 @@
         }
       }
     }
-  
-    .pagination {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-  
-      .prev,
-      .next {
-        padding: 0.5rem 1rem;
-        border: 1px solid #ddd;
-        background-color: #f8f8f8;
-        cursor: pointer;
-        border-radius: 3px;
-  
-        &:hover {
-          background-color: #e0e0e0;
-        }
-      }
-  
-      .pages {
-        display: flex;
-        align-items: center;
-  
-        .page {
-          padding: 0.5rem 0.75rem;
-          border: 1px solid #ddd;
-          background-color: #f8f8f8;
-          cursor: pointer;
-          border-radius: 3px;
-          margin: 0 0.25rem;
-  
-          &:hover {
-            background-color: #e0e0e0;
-          }
-  
-          &.active {
-            background-color: #d4edda;
-            border-color: #c3e6cb;
-          }
-        }
-  
-        span {
-          padding: 0 0.75rem;
-        }
-      }
-    }
 
   }
 
