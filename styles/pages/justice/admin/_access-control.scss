@@ -6,6 +6,8 @@
   box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
     0px 1px 2px 0px rgba(16, 24, 40, 0.06);
 
+  margin-bottom: 50px;
+
   &__header {
     width: 100%;
     height: 89px;
@@ -34,13 +36,13 @@
       text-align: center;
       cursor: pointer;
 
-      .role {
+      .user {
         width: 50%;
         border-radius: 5px;
         padding: 14px 32px;
       }
 
-      .user {
+      .roles {
         width: 50%;
         border-radius: 5px;
         padding: 14px 32px;
@@ -50,31 +52,13 @@
         color: #101828;
       }
     }
-
-    &__button {
-      position: relative;
-      background-color: #fff;
-      color: #009b07;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 14px 32px;
-      font-weight: 500;
-      font-size: 14px;
-      cursor: pointer;
-
-      svg {
-        position: absolute;
-        top: -15px;
-        left: 85%;
-      }
-    }
   }
 
   &__actions {
     width: 100%;
     height: 97px;
     border-radius: var(--4, 4px);
-    border: 1px solid #eaeaea;
+    border: 1px solid #e6e6e6;
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.04);
     padding: 0 32px;
     display: flex;
@@ -105,6 +89,7 @@
         border: none;
         background: none;
         padding: 14px;
+        color: #637381;
 
         &::placeholder {
           color: #637381;
@@ -124,7 +109,8 @@
   }
 
   &__body {
-    height: 880px;
+    // height: 364px;
+    height: auto;
     overflow-y: auto;
 
     &::-webkit-scrollbar {
@@ -134,26 +120,27 @@
     .access-table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 16px;
-  
+      // margin-bottom: 16px;
+
       thead {
         tr {
           th {
             padding: 18px 10px;
-            background-color: #f8f9fa;;
-            border: 1px solid #eaeaea;
+            background-color: #f8f9fa;
+            border: 1px solid #e6e6e6;
             text-align: center;
             font-size: 12px;
           }
 
           .white {
-            background-color: #FFFFFF;
+            background-color: #ffffff;
           }
 
           .green {
             // width: 94.5px;
-            background-color: #009b07;
-            color: #FFFFFF;
+            // height: 19px;
+            background-color: #009b07;        
+            color: #ffffff;
           }
 
           .user-flex {
@@ -163,13 +150,13 @@
           }
         }
       }
-  
+
       tbody {
         tr {
           td {
             padding: 18px 10px;
-            border: 1px solid #eaeaea;
-  
+            border: 1px solid #e6e6e6;
+
             .user-info {
               display: flex;
               align-items: center;
@@ -177,15 +164,15 @@
               font-weight: 600;
               color: #101828;
               gap: 8px;
-  
+
               .user-details {
                 display: flex;
                 flex-direction: column;
-  
+
                 .user-name {
                   font-weight: 600;
                 }
-  
+
                 .user-email {
                   font-size: 14px;
                   font-weight: normal;
@@ -194,19 +181,26 @@
                   margin-top: 8px;
                 }
               }
+
+              h2 {
+                color: #101828;
+                font-size: 14px;
+                font-weight: 500;
+              }
+
+              svg {
+                cursor: pointer;
+              }
             }
           }
-  
-          // td input[type='checkbox'] {
-          //   display: block;
-          //   margin: 0 auto;
-          // }
+        }
+
+        .new-role {
+          background-color: #f3f3f3;
         }
       }
     }
-
   }
-
 
   &__footer {
     // position: absolute;
