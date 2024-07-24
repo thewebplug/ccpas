@@ -1,11 +1,71 @@
-import React from "react";
+"use client"
+import axios from "axios";
+import Image from "next/image";
+import React, { useRef, useState } from "react";
 
 const AddUserModal = ({ isOpen, onClose, onInvite }) => {
+  const [image, setImage] = useState(null)
+  const mediaRef = useRef("");
+
   if (!isOpen) return null;
+  
 
   const handleInvite = () => {
     onClose();
     onInvite();
+  };
+
+  const handleImageUpload = (e, docType) => {
+    // setUploadLoading(true);
+
+    let files = e.target.files;
+
+    const fileToUri = (file, cb) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        cb(null, reader.result);
+      };
+      reader.onerror = function (error) {
+        cb(error, null);
+      };
+    };
+
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        fileToUri(files[0], (err, result) => {
+          if (result) {
+            console.log("result", result);
+
+            axios
+              .post(
+                `https://kaxl3c7ehj.execute-api.us-east-1.amazonaws.com/dev/v1/upload`,
+                {
+                  user: "teddy",
+                  media_type: docType,
+                  contents: result,
+                }
+                // ,{
+                //   headers: {
+                //     Authorization: `Bearer ${auth ? auth.token : ""}`,
+                //   },
+                // }
+              )
+
+              .then((response) => {
+                console.log("response file uploaded", response);
+                if (response?.status === 200) {
+                  setImage(response?.data?.body?.data);
+                }
+              })
+              .catch((err) => {
+                console.log("ERRRR", err);
+                // setUploadLoading(false);
+              });
+          }
+        });
+      }
+    }
   };
 
   return (
@@ -71,8 +131,9 @@ const AddUserModal = ({ isOpen, onClose, onInvite }) => {
         <div className="admin-user__container">
           <div className="add-user__left">
             <div className="user__photo">
+              <label>
               <div className="test">
-                <div className="upload-photo">
+                {!image && <div className="upload-photo">
                   <svg
                     width="18"
                     height="18"
@@ -88,11 +149,39 @@ const AddUserModal = ({ isOpen, onClose, onInvite }) => {
                       d="M6.96984 8.38C8.83657 8.38 10.3498 6.86672 10.3498 5C10.3498 3.13327 8.83657 1.62 6.96984 1.62C5.10312 1.62 3.58984 3.13327 3.58984 5C3.58984 6.86672 5.10312 8.38 6.96984 8.38Z"
                       fill="#64748B"
                     />
-                  </svg>
-                </div>
+                  </svg> 
+                  
+                  
+
+                </div>}
+                
+                {image &&  <Image
+                  alt=""
+              src={`https://${image}`}
+              // layout="fill"
+              width={90}
+              height={90}
+                  // objectFit="cover"
+                  style={{borderRadius: "50%", zIndex: 2}}
+                  />}
               </div>
 
-              <div className="upload-link">Upload photo</div>
+              
+
+              {!image && <div className="upload-link">Upload photo</div>}
+            
+
+              <input
+                type="file"
+                name=""
+                id=""
+                hidden
+                ref={mediaRef}
+                accept="image/*"
+                onChange={(e) => handleImageUpload(e, "png")}
+              />
+              </label>
+
 
               {/* <div className="upload-form">
                 <label htmlFor="">Role</label>
