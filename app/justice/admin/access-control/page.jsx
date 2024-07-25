@@ -5,7 +5,7 @@ import { useState } from "react";
 import AddRoleModal from "../add-role/page";
 import AddedRoleModal from "../added-role/page";
 import CheckboxToggle from "../add-role/CheckboxToggle";
-// import RequestModal from "../request/page";
+import RequestModal from "../request/page";
 
 export default function Departments() {
   const [isAddRoleModalOpen, setAddRoleModalOpen] = useState(false);
@@ -14,7 +14,8 @@ export default function Departments() {
   const [roles, setRoles] = useState(["Super Admin", "Admin", "Role 1"]);
 
   const [activeTab, setActiveTab] = useState("userDetails");
-  // const [isRequestModalOpen, setRequestModalOpen] = useState(false);
+
+  const [isRequestModalOpen, setRequestModalOpen] = useState(false);
 
   const handleOpenAddRoleModal = () => {
     setAddRoleModalOpen(true);
@@ -43,13 +44,14 @@ export default function Departments() {
     handleOpenAddedRoleModal();
   };
 
-  //   const handleOpenRequestModal = () => {
-  //     setRequestModalOpen(true);
-  // };
 
-  // const handleCloseRequestModal = () => {
-  //   setRequestModalOpen(false);
-  // };
+  const handleOpenRequestModal = () => {
+    setRequestModalOpen(true); 
+  };
+
+  const handleCloseRequestModal = () => {
+    setRequestModalOpen(false); 
+  };
 
   return (
     <div className="access">
@@ -72,7 +74,7 @@ export default function Departments() {
 
         <div 
           className="access__header__button"
-          // onClick={handleOpenRequestModal}
+          onClick={handleOpenRequestModal} // Update onClick to open RequestModal
         >
           Request{" "}
           <svg
@@ -89,10 +91,10 @@ export default function Departments() {
             />
           </svg>
 
-              {/* <RequestModal
-                // isOpen={isRequestModalOpen}
-                // onClose={handleCloseRequestModal}
-              />  */}
+              <RequestModal
+                isOpen={isRequestModalOpen}
+                onClose={handleCloseRequestModal}
+              /> 
         </div>
 
       </div>

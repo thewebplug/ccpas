@@ -1,11 +1,9 @@
 import React from "react";
-import CheckboxToggle from "./CheckboxToggle";
 import Image from "next/image";
+import CheckboxToggle from "../add-role/CheckboxToggle";
 
-const RequestModal = ({ onClose }) => {
-  // isOpen,
-  // if (!isOpen) return null;
-
+const RequestModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
 
   return (
     <div className="request">
@@ -112,233 +110,189 @@ const RequestModal = ({ onClose }) => {
           </div>
         </header>
 
-        {/* -------------------------------------- */}
+        <div className="request-table">
+          <div className="request-table__header">
+            <div className="request-table__header__title">
+              Requests
+              <span>(70)</span>
+            </div>
 
-
-        <div className="add">
-      <div className="add__header">
-        <div className="add__header__title">
-          Requests 
-          <span>(70)</span>
-        </div>
-    
-        <div className="add__header__flex">
-          <div className="add__header__flex__btn1">
-            Approve All
+            <div className="request-table__header__flex">
+              <div className="request-table__header__flex__btn1">Approve All</div>
+              <div className="request-table__header__flex__btn2">Deny All</div>
+            </div>
           </div>
-          <div className="add__header__flex__btn2">
-            Deny All
-          </div>
-        </div>
 
-      </div>
-    
-
-      {/* ---END--- */}
-
-
-
-        <div className="add__body">
-          <table className="add-table">
-            <thead>
-              <tr>
-                <th>
-                  <div className="user-flex">
-                    <div>
-                      <CheckboxToggle />
-                    </div>
-                    <span>Name</span>
-                  </div>
-                </th>
-
-                <th>FMOJ ID</th>
-                <th>BVN</th>
-                <th>NIN</th>
-                <th>Role</th>
-
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                {
-                  name: "Adeyemi Oloye",
-                  email: "A.oloye@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-ade.png",
-                },
-
-                {
-                  name: "Emeka Ani",
-                  email: "E.ani@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-emeka.png",
-                },
-
-                {
-                  name: "Lotanna Okor",
-                  email: "L.okor@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-okor.png",
-                },
-
-                {
-                  name: "Demi Nike",
-                  email: "D.nike@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-demi.png",
-                },
-
-                {
-                  name: "Ahmed Wale",
-                  email: "A.wale@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-wale.png",
-                },
-
-                {
-                  name: "Natali Oboli",
-                  email: "N.oboi@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-oboli.png",
-                },
-
-                {
-                  name: "Haruna Adamu",
-                  email: "H.adamu@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-adamu.png",
-                },
-
-                {
-                  name: "Kaduna Dede",
-                  email: "K.dede@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-dede.png",
-                },
-
-                {
-                  name: "Anike Mustapha",
-                  email: "A.mustapha@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-anike.png",
-                },
-
-                {
-                  name: "Kate Adebowale",
-                  email: "K.adebowale@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-kate.png",
-                },
-              ].map((user, index) => (
-                <tr key={index}>
-                  <td>
-                    <div className="user-info">
-                      <CheckboxToggle />
-
-                      <Image
-                        alt=""
-                        src={user.imageUrl}
-                        width={40}
-                        height={40}
-                        style={{ borderRadius: "50%", float: "left" }}
-                      />
-                      <div className="user-details">
-                        <div className="user-name">{user.name}</div>
-                        <div className="user-email">{user.email}</div>
+          <div className="request-table__body">
+            <table className="request-table-table">
+              <thead>
+                <tr>
+                  <th>
+                    <div className="user-flex">
+                      <div>
+                        <CheckboxToggle />
                       </div>
+                      <span>Name</span>
                     </div>
-                  </td>
+                  </th>
 
-                  <td>PF00364</td>
-                  <td>777896543246</td>
-                  <td>777896543246</td>
+                  <th>FMOJ ID</th>
+                  <th>BVN</th>
+                  <th>NIN</th>
+                  <th>Role</th>
 
-                  <td>
-                  <div className="select">
-                    <select>
-                      <option>Official</option>
-                      <option>Official</option>
-                    </select>        
-                  </div>
-                  </td>
-
-                      <td>
-                        <div className="add__header__flex">
-            <div className="add__header__flex__btn1">
-              Approve
-            </div>
-            <div className="add__header__flex__btn2">
-              Deny
-            </div>
-          </div>
-                      </td>
-                      
-                  {/* {Array(1)
-                    .fill(0)
-                    .map((_, i) => (
-                      <td key={i}>
-                          <div className="add__header__flex__btn1">
-                            Approve All
-                          </div>
-                      </td>
-                      
-                    ))} */}
-    
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-  
+              </thead>
+              <tbody>
+                {[
+                  {
+                    name: "Adeyemi Oloye",
+                    email: "A.oloye@justice.gov.ng",
+                    imageUrl: "/assets/avatars/ava-olo.png",
+                  },
 
+                  {
+                    name: "Emeka Ani",
+                    email: "E.ani@justice.gov.ng",
+                    imageUrl: "/assets/avatars/ava-emeka.png",
+                  },
 
-        <div className="add__footer">
-          <div className="add__footer__nav">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                stroke="#344054"
-                stroke-width="1.67"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+                  {
+                    name: "Lotanna Okor",
+                    email: "L.okor@justice.gov.ng",
+                    imageUrl: "/assets/avatars/ava-okor.png",
+                  },
 
-            <div>Previous</div>
+                  {
+                    name: "Demi Nike",
+                    email: "D.nike@justice.gov.ng",
+                    imageUrl: "/assets/avatars/ava-demi.png",
+                  },
+
+                  {
+                    name: "Ahmed Wale",
+                    email: "A.wale@justice.gov.ng",
+                    imageUrl: "/assets/avatars/ava-wale.png",
+                  },
+
+                  {
+                    name: "Natali Oboli",
+                    email: "N.oboi@justice.gov.ng",
+                    imageUrl: "/assets/avatars/ava-nat.png",
+                  },
+
+                  {
+                    name: "Haruna Adamu",
+                    email: "H.adamu@justice.gov.ng",
+                    imageUrl: "/assets/avatars/ava-haru.png",
+                  },
+
+                  {
+                    name: "Kaduna Dede",
+                    email: "K.dede@justice.gov.ng",
+                    imageUrl: "/assets/avatars/ava-dede.png",
+                  },
+
+                  {
+                    name: "Anike Mustapha",
+                    email: "A.mustapha@justice.gov.ng",
+                    imageUrl: "/assets/avatars/ava-must.png",
+                  },
+
+                  {
+                    name: "Kate Adebowale",
+                    email: "K.adebowale@justice.gov.ng",
+                    imageUrl: "/assets/avatars/ava-bowa.png",
+                  },
+                ].map((user, index) => (
+                  <tr key={index}>
+                    <td>
+                      <div className="user-info">
+                        <CheckboxToggle />
+
+                        <Image
+                          alt=""
+                          src={user.imageUrl}
+                          width={40}
+                          height={40}
+                          style={{ borderRadius: "50%", float: "left" }}
+                        />
+                        <div className="user-details">
+                          <div className="user-name">{user.name}</div>
+                          <div className="user-email">{user.email}</div>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>PF00364</td>
+                    <td>777896543246</td>
+                    <td>777896543246</td>
+
+                    <td>
+                      <div className="select">
+                        <select>
+                          <option>Official</option>
+                          <option>Official</option>
+                        </select>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div className="request-table__header__flex">
+                        <div className="request-table__header__flex__btn1">Approve</div>
+                        <div className="request-table__header__flex__btn2">Deny</div>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
-          {/* pagination */}
+          <div className="request-table__footer">
+            <div className="request-table__footer__nav">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
+                  stroke="#344054"
+                  stroke-width="1.67"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
 
-          <div className="add__footer__nav">
-            <div>Next</div>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                stroke="#344054"
-                stroke-width="1.67"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+              <div>Previous</div>
+            </div>
+
+            {/* pagination */}
+
+            <div className="request-table__footer__nav">
+              <div>Next</div>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
+                  stroke="#344054"
+                  stroke-width="1.67"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
           </div>
         </div>
-
-      </div>
-
-
-
-
-
-
-
-
-
-        {/* -------------------------------------------- */}
-
-
       </div>
     </div>
   );
