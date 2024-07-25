@@ -1,4 +1,4 @@
-.add-role {
+.request {
   position: fixed;
   top: 0;
   left: 0;
@@ -27,7 +27,7 @@
     overflow: hidden;
     // gap: 32px;
 
-    .add-role__header {
+    .request__header {
       background: var(--Primary-White, #ffffff);
       // height: var(--80, 80px);
       display: flex;
@@ -63,7 +63,7 @@
 
     // ------------
 
-    .add-role-form {
+    .request-form {
       padding: 24px 32px;
       gap: 10px;
       max-height: 520px;

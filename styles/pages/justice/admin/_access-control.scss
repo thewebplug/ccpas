@@ -52,6 +52,24 @@
         color: #101828;
       }
     }
+
+    &__button {
+      position: relative;
+      background-color: #fff;
+      color: #009b07;
+      border: 1px solid #D0D5DD;
+      border-radius: 8px;
+      padding: 14px 32px;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+
+      svg {
+        position: absolute;
+        top: -15px;
+        left: 85%;
+      }
+    }
   }
 
   &__actions {

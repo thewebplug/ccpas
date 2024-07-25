@@ -5,6 +5,7 @@ import { useState } from "react";
 import AddRoleModal from "../add-role/page";
 import AddedRoleModal from "../added-role/page";
 import CheckboxToggle from "../add-role/CheckboxToggle";
+// import RequestModal from "../request/page";
 
 export default function Departments() {
   const [isAddRoleModalOpen, setAddRoleModalOpen] = useState(false);
@@ -13,6 +14,7 @@ export default function Departments() {
   const [roles, setRoles] = useState(["Super Admin", "Admin", "Role 1"]);
 
   const [activeTab, setActiveTab] = useState("userDetails");
+  // const [isRequestModalOpen, setRequestModalOpen] = useState(false);
 
   const handleOpenAddRoleModal = () => {
     setAddRoleModalOpen(true);
@@ -41,6 +43,14 @@ export default function Departments() {
     handleOpenAddedRoleModal();
   };
 
+  //   const handleOpenRequestModal = () => {
+  //     setRequestModalOpen(true);
+  // };
+
+  // const handleCloseRequestModal = () => {
+  //   setRequestModalOpen(false);
+  // };
+
   return (
     <div className="access">
       <div className="access__header">
@@ -59,6 +69,32 @@ export default function Departments() {
             Users
           </div>
         </div>
+
+        <div 
+          className="access__header__button"
+          // onClick={handleOpenRequestModal}
+        >
+          Request{" "}
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="24" height="24" rx="6" fill="#ED1651" />
+            <path
+              d="M9.32528 7.27273V16H7.74432V8.81108H7.69318L5.65199 10.1151V8.66619L7.82102 7.27273H9.32528ZM11.5412 16V14.858L14.571 11.8878C14.8608 11.5952 15.1023 11.3352 15.2955 11.108C15.4886 10.8807 15.6335 10.6605 15.7301 10.4474C15.8267 10.2344 15.875 10.0071 15.875 9.76562C15.875 9.49006 15.8125 9.25426 15.6875 9.05824C15.5625 8.85938 15.3906 8.70597 15.1719 8.59801C14.9531 8.49006 14.7045 8.43608 14.4261 8.43608C14.1392 8.43608 13.8878 8.49574 13.6719 8.61506C13.456 8.73153 13.2884 8.89773 13.169 9.11364C13.0526 9.32955 12.9943 9.58665 12.9943 9.88494H11.4901C11.4901 9.33097 11.6165 8.84943 11.8693 8.44034C12.1222 8.03125 12.4702 7.71449 12.9134 7.49006C13.3594 7.26562 13.8707 7.15341 14.4474 7.15341C15.0327 7.15341 15.5469 7.26278 15.9901 7.48153C16.4332 7.70028 16.777 8 17.0213 8.38068C17.2685 8.76136 17.392 9.19602 17.392 9.68466C17.392 10.0114 17.3295 10.3324 17.2045 10.6477C17.0795 10.9631 16.8594 11.3125 16.544 11.696C16.2315 12.0795 15.7926 12.544 15.2273 13.0895L13.723 14.6193V14.679H17.5241V16H11.5412Z"
+              fill="white"
+            />
+          </svg>
+
+              {/* <RequestModal
+                // isOpen={isRequestModalOpen}
+                // onClose={handleCloseRequestModal}
+              />  */}
+        </div>
+
       </div>
       <div className="access__actions">
         <form action="" className="access__actions__input">
