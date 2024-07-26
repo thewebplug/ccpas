@@ -1,3 +1,4 @@
+"use client"
 export default function Notifications() {
   return (
     <div className="notifications">
@@ -75,7 +76,9 @@ export default function Notifications() {
 
       <div className="notifications__button-group">
         <button>Cancel</button>
-        <button>Save</button>
+        <button
+        onClick={() => window.location.href = "/justice/admin/notification-settings"}
+        >Save</button>
       </div>
     </div>
   );

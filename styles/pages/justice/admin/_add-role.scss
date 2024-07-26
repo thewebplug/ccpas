@@ -111,6 +111,13 @@
           margin-bottom: 16px;
         }
 
+        .actions {
+          & > svg {
+            margin-top: 24px;
+            margin-bottom: 12px;
+          }
+        }
+
         .action-selected {
           width: 140px;
           padding: var(--8, 8px);

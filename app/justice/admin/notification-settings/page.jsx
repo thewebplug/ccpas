@@ -166,7 +166,7 @@ export default function NotificationSettings() {
         <div className="notification-settings__body__inner">
           
           <div className="notification-settings__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo1.png" width={40} height={40} />
             <div>
               <div>Adewumi Oloye</div>
               <div>A.oloye@justice.gov.ng</div>
@@ -201,10 +201,10 @@ export default function NotificationSettings() {
         <div className="notification-settings__body__inner">
           
           <div className="notification-settings__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo2.png" width={40} height={40} />
             <div>
-              <div>Adewumi Oloye</div>
-              <div>A.oloye@justice.gov.ng</div>
+              <div>Emeka Ani</div>
+              <div>E.Ani@justice.gov.ng</div>
             </div>
           </div>
 
@@ -236,10 +236,10 @@ export default function NotificationSettings() {
         <div className="notification-settings__body__inner">
           
           <div className="notification-settings__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo3.png" width={40} height={40} />
             <div>
-              <div>Adewumi Oloye</div>
-              <div>A.oloye@justice.gov.ng</div>
+              <div>Lotanna Okor</div>
+              <div>L.okor@justice.gov.ng</div>
             </div>
           </div>
 
@@ -271,10 +271,10 @@ export default function NotificationSettings() {
         <div className="notification-settings__body__inner">
           
           <div className="notification-settings__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo4.png" width={40} height={40} />
             <div>
-              <div>Adewumi Oloye</div>
-              <div>A.oloye@justice.gov.ng</div>
+              <div>Demi Nike</div>
+              <div>D.nike@justice.gov.ng</div>
             </div>
           </div>
 
@@ -306,10 +306,185 @@ export default function NotificationSettings() {
         <div className="notification-settings__body__inner">
           
           <div className="notification-settings__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo5.png" width={40} height={40} />
             <div>
-              <div>Adewumi Oloye</div>
-              <div>A.oloye@justice.gov.ng</div>
+              <div>Ahmed Wale</div>
+              <div>A.wale@justice.gov.ng</div>
+            </div>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+          
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+          
+        </div>
+        <div className="notification-settings__body__inner">
+          
+          <div className="notification-settings__body__inner__name">
+            <Image alt="" src="/assets/logo6.png" width={40} height={40} />
+            <div>
+              <div>Natali Oboli</div>
+              <div>N.oboli@justice.gov.ng</div>
+            </div>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+          
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+          
+        </div>
+        <div className="notification-settings__body__inner">
+          
+          <div className="notification-settings__body__inner__name">
+            <Image alt="" src="/assets/logo7.png" width={40} height={40} />
+            <div>
+              <div>Haruna Adamu</div>
+              <div>H.adamu@justice.gov.ng</div>
+            </div>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+          
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+          
+        </div>
+        <div className="notification-settings__body__inner">
+          
+          <div className="notification-settings__body__inner__name">
+            <Image alt="" src="/assets/logo8.png" width={40} height={40} />
+            <div>
+              <div>Kaduna Dede</div>
+              <div>K.dede@justice.gov.ng</div>
+            </div>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+          
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+          
+        </div>
+        <div className="notification-settings__body__inner">
+          
+          <div className="notification-settings__body__inner__name">
+            <Image alt="" src="/assets/logo9.png" width={40} height={40} />
+            <div>
+              <div>Anike Mustapha</div>
+              <div>A.mustapha@justice.gov.ng</div>
+            </div>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+          
+          <div className="notification-settings__body__inner__buttons">
+            <button>None</button>
+            <button>In-app</button>
+            <button>Email</button>
+          </div>
+          
+        </div>
+        <div className="notification-settings__body__inner">
+          
+          <div className="notification-settings__body__inner__name">
+            <Image alt="" src="/assets/logo2.png" width={40} height={40} />
+            <div>
+              <div>Kate Adebowale</div>
+              <div>K.adebowale@justice.gov.ng</div>
             </div>
           </div>
 

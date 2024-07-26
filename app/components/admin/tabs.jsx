@@ -55,13 +55,13 @@ export default function AdminTabs() {
                 fill="#99A2BB"
               />
             </svg>
-            <div>{pathname?.split('/')[3] === "departments" ? "Department Management" : "User Management"}</div>
+            <div>{pathname?.split('/')[3] ? pathname?.split('/')[3] : "User Management"}</div>
           </div>
           <div className="admin__inner__main__title">Super Admin</div>
 
         <div className="admin__inner__main__tabs">
             <div 
-            className={!pathname?.includes("departments") ? "admin__inner__main__tabs__item admin__inner__main__tabs__active" : "admin__inner__main__tabs__item"}
+            className={!pathname?.split('/')[3] ? "admin__inner__main__tabs__item admin__inner__main__tabs__active" : "admin__inner__main__tabs__item"}
             onClick={() => window.location.href = "/justice/admin"}
 
             >
@@ -73,16 +73,32 @@ export default function AdminTabs() {
             >
               Department Management
             </div>
-            <div className="admin__inner__main__tabs__item">
+            <div 
+            
+            className={pathname?.includes("support") ? "admin__inner__main__tabs__item admin__inner__main__tabs__active" : "admin__inner__main__tabs__item"}
+                  onClick={() => window.location.href = "/justice/admin/support"}
+            
+            >
               Support & Feedback
             </div>
-            <div className="admin__inner__main__tabs__item">
+            <div 
+            className={pathname?.includes("notification") ? "admin__inner__main__tabs__item admin__inner__main__tabs__active" : "admin__inner__main__tabs__item"}
+            onClick={() => window.location.href = "/justice/admin/notifications"}
+      >
               Notification{" "}
-              <div className="admin__inner__main__tabs__item__badge">4</div>
+              {/* <div className="admin__inner__main__tabs__item__badge">4</div> */}
             </div>
-            <div className="admin__inner__main__tabs__item">Access Control</div>
+            <div 
+                        className={pathname?.includes("access-control") ? "admin__inner__main__tabs__item admin__inner__main__tabs__active" : "admin__inner__main__tabs__item"}
+                        onClick={() => window.location.href = "/justice/admin/access-control"}
+            
+            >Access Control</div>
             <div className="admin__inner__main__tabs__item">Email</div>
-            <div className="admin__inner__main__tabs__item">Log Activites</div>
+            <div 
+                                    className={pathname?.includes("logs") ? "admin__inner__main__tabs__item admin__inner__main__tabs__active" : "admin__inner__main__tabs__item"}
+                                    onClick={() => window.location.href = "/justice/admin/logs"}
+            
+            >Log Activites</div>
           </div>
         
         </>

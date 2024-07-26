@@ -1,13 +1,19 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import TicketDetails from "../ticket-details/page";
 
 export default function Logs() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalOpen2, setModalOpen2] = useState(false);
-  const [modalOpen3, setModalOpen3] = useState(false);
-  const [cardActive, setCardActive] = useState(0);
-  const [subDept, setSubDept] = useState(false);
+  const [ticketModal, setTicketModal] = useState(false);
+
+  const handleTicketModalOpen = () => {
+    setTicketModal(true);
+  };
+
+  const handleTicketModalClose = () => {
+    setTicketModal(false);
+  };
+
   return (
     <div className="support">
       <div className="support__header">
@@ -241,7 +247,7 @@ export default function Logs() {
       <div className="support__body">
         <div
           className="support__body__inner"
-          onClick={() => setModalOpen(true)}
+          onClick={handleTicketModalOpen}
         >
           <div>#TC-192</div>
           <div>Help, I can’t find my case file</div>
@@ -308,7 +314,7 @@ export default function Logs() {
         </div>
         <div
           className="support__body__inner"
-          onClick={() => setModalOpen(true)}
+          onClick={handleTicketModalOpen}
         >
           <div>#TC-192</div>
           <div>Help, I can’t find my case file</div>
@@ -375,7 +381,7 @@ export default function Logs() {
         </div>
         <div
           className="support__body__inner"
-          onClick={() => setModalOpen(true)}
+          onClick={handleTicketModalOpen}
         >
           <div>#TC-192</div>
           <div>Help, I can’t find my case file</div>
@@ -442,7 +448,7 @@ export default function Logs() {
         </div>
         <div
           className="support__body__inner"
-          onClick={() => setModalOpen(true)}
+          onClick={handleTicketModalOpen}
         >
           <div>#TC-192</div>
           <div>Help, I can’t find my case file</div>
@@ -510,7 +516,7 @@ export default function Logs() {
         </div>
         <div
           className="support__body__inner"
-          onClick={() => setModalOpen(true)}
+          onClick={handleTicketModalOpen}
         >
           <div>#TC-192</div>
           <div>Help, I can’t find my case file</div>
@@ -579,7 +585,7 @@ export default function Logs() {
         </div>
         <div
           className="support__body__inner"
-          onClick={() => setModalOpen(true)}
+          onClick={handleTicketModalOpen}
         >
           <div>#TC-192</div>
           <div>Help, I can’t find my case file</div>
@@ -695,6 +701,12 @@ export default function Logs() {
           </svg>
         </div>
       </div>
+
+      <TicketDetails 
+      isOpen={ticketModal}
+      onClose={handleTicketModalClose}
+      />
+
     </div>
   );
 }

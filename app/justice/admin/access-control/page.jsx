@@ -6,12 +6,12 @@ import AddRoleModal from "../add-role/page";
 import AddedRoleModal from "../added-role/page";
 import CheckboxToggle from "../add-role/CheckboxToggle";
 import UserRequest from "../user-request/page";
-// import InviteUser from "../invite-user/page";
-// import TicketDetails from "../ticket-details/page";
+import InviteUser from "../invite-user/page";
 
 export default function Departments() {
   const [isAddRoleModalOpen, setAddRoleModalOpen] = useState(false);
   const [isAddedRoleModalOpen, setAddedRoleModalOpen] = useState(false);
+  const [inviteUserModal, setInviteUserModal] = useState(false);
   const [roleName, setRoleName] = useState("");
   const [roles, setRoles] = useState(["Super Admin", "Admin", "Role 1"]);
 
@@ -33,6 +33,14 @@ export default function Departments() {
 
   const handleCloseAddedRoleModal = () => {
     setAddedRoleModalOpen(false);
+  };
+
+  const handleInviteUserOpen = () => {
+    setInviteUserModal(true);
+  };
+
+  const handleInviteUserClose = () => {
+    setInviteUserModal(false);
   };
 
   const handleTabClick = (tabName) => {
@@ -197,7 +205,10 @@ export default function Departments() {
                 <th>Transfer within</th>
                 <th>Transfer Outside</th>
                 <th>Expunge</th>
-                <th>Invite User</th>
+                <th
+                className="pointer"
+                onClick={handleInviteUserOpen}
+                >Invite User</th>
                 <th>Grant Access</th>
                 <th>View Users</th>
                 <th>View Users</th>
@@ -271,9 +282,11 @@ export default function Departments() {
         roleName={roleName}
       />
 
-      {/* <InviteUser /> */}
+      <InviteUser 
+      isOpen={inviteUserModal}
+      onClose={handleInviteUserClose}
+      />
 
-      {/* <TicketDetails /> */}
 
       {activeTab === "roles" && (
         <div className="access__body">
