@@ -5,7 +5,9 @@ import { useState } from "react";
 import AddRoleModal from "../add-role/page";
 import AddedRoleModal from "../added-role/page";
 import CheckboxToggle from "../add-role/CheckboxToggle";
-import RequestModal from "../request/page";
+import UserRequest from "../user-request/page";
+// import InviteUser from "../invite-user/page";
+// import TicketDetails from "../ticket-details/page";
 
 export default function Departments() {
   const [isAddRoleModalOpen, setAddRoleModalOpen] = useState(false);
@@ -15,7 +17,7 @@ export default function Departments() {
 
   const [activeTab, setActiveTab] = useState("userDetails");
 
-  const [isRequestModalOpen, setRequestModalOpen] = useState(false);
+  const [isUserRequestOpen, setUserRequestOpen] = useState(false);
 
   const handleOpenAddRoleModal = () => {
     setAddRoleModalOpen(true);
@@ -44,13 +46,12 @@ export default function Departments() {
     handleOpenAddedRoleModal();
   };
 
-
-  const handleOpenRequestModal = () => {
-    setRequestModalOpen(true); 
+  const handleOpenUserRequest = () => {
+    setUserRequestOpen(true);
   };
 
-  const handleCloseRequestModal = () => {
-    setRequestModalOpen(false); 
+  const handleCloseUserRequest = () => {
+    setUserRequestOpen(false);
   };
 
   return (
@@ -72,9 +73,9 @@ export default function Departments() {
           </div>
         </div>
 
-        <div 
+        <div
           className="access__header__button"
-          onClick={handleOpenRequestModal} // Update onClick to open RequestModal
+          onClick={handleOpenUserRequest}
         >
           Request{" "}
           <svg
@@ -90,13 +91,7 @@ export default function Departments() {
               fill="white"
             />
           </svg>
-
-              <RequestModal
-                isOpen={isRequestModalOpen}
-                onClose={handleCloseRequestModal}
-              /> 
         </div>
-
       </div>
       <div className="access__actions">
         <form action="" className="access__actions__input">
@@ -150,7 +145,7 @@ export default function Departments() {
       </div>
 
       {/* --------------- */}
-      
+
       {activeTab === "userDetails" && (
         <div className="access__body">
           <table className="access-table">
@@ -258,6 +253,11 @@ export default function Departments() {
         </div>
       )}
 
+          <UserRequest
+            isOpen={isUserRequestOpen}
+            onClose={handleCloseUserRequest}
+          />
+
       <AddRoleModal
         isOpen={isAddRoleModalOpen}
         onClose={handleCloseAddRoleModal}
@@ -270,6 +270,10 @@ export default function Departments() {
         onClose={handleCloseAddedRoleModal}
         roleName={roleName}
       />
+
+      {/* <InviteUser /> */}
+
+      {/* <TicketDetails /> */}
 
       {activeTab === "roles" && (
         <div className="access__body">
