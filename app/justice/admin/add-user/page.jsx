@@ -222,7 +222,7 @@ const AddUserModal = ({ isOpen, onClose, onInvite }) => {
                     </svg>
                     <select>
                       <option>Admin</option>
-                      <option>Admin</option>
+                      <option>User</option>
                     
                     </select>
 
@@ -259,7 +259,7 @@ const AddUserModal = ({ isOpen, onClose, onInvite }) => {
                     </svg>
                     <select>
                       <option>Official</option>
-                      <option>Official</option>
+                      <option>Unofficial</option>
                     </select>
                     <svg
                       className="dropdown-icon"
