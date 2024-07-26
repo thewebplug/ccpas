@@ -1,0 +1,48 @@
+.added-role {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+
+  &__added-notif {
+    width: 411px;
+    position: absolute;
+    top: 50%;
+    left: 37%;
+    height: 56px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 8px;
+    background: var(--Color, #fff);
+    box-shadow: 0px 13.777px 31.296px 0px rgba(0, 0, 0, 0.15) 0px 0px 20px 0px
+      rgba(0, 0, 0, 0.4);
+
+    & > div {
+      color: var(--Style, #292d32);
+      @extend %title-16;
+      font-weight: 400;
+
+      & > span {
+        font-weight: 700;
+        // color: #d2ffe5;
+      }
+    }
+  }
+}

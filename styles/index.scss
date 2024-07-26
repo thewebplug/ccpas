@@ -37,12 +37,19 @@
 @import 'pages/justice/dashboard/case-file';
 @import 'pages/justice/dashboard/otp.scss';
 @import 'pages/justice/dashboard/review.scss';
+
 @import 'pages/justice/admin/layout';
 @import 'pages/justice/admin/home';
 @import 'pages/justice/admin/add-user';
 @import 'pages/justice/admin/added-user';
 @import 'pages/justice/admin/deactivate-user';
 @import 'pages/justice/admin/deactivated-user';
+@import 'pages/justice/admin/access-control';
+@import 'pages/justice/admin/add-role';
+@import 'pages/justice/admin/added-role';
+@import 'pages/justice/admin/invite-user';
+@import 'pages/justice/admin/user-request';
+@import 'pages/justice/admin/ticket-details';
 @import 'pages/justice/admin/departments';
 @import 'pages/justice/admin/preview-user';
 @import 'pages/justice/admin/logs';
