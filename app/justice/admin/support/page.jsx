@@ -249,13 +249,13 @@ export default function Logs() {
           className="support__body__inner"
           onClick={handleTicketModalOpen}
         >
-          <div>#TC-192</div>
-          <div>Help, I can’t find my case file</div>
+          <div>#TC-233</div>
+          <div>Help! my a criminal is missing from the record</div>
           <div className="support__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo1.png" width={40} height={40} />
             <div>
-              <div>Adewumi Oloye</div>
-              <div>A.oloye@justice.gov.ng</div>
+              <div>Natali Oboli</div>
+              <div>N.oboli@justice.gov.ng</div>
             </div>
           </div>
           <button className="support__body__inner__status">Admin</button>
@@ -316,13 +316,13 @@ export default function Logs() {
           className="support__body__inner"
           onClick={handleTicketModalOpen}
         >
-          <div>#TC-192</div>
-          <div>Help, I can’t find my case file</div>
+          <div>#TC-534</div>
+          <div>Help! someone expunged my case file and i don’t know who</div>
           <div className="support__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo2.png" width={40} height={40} />
             <div>
-              <div>Adewumi Oloye</div>
-              <div>A.oloye@justice.gov.ng</div>
+              <div>Emeka Ani</div>
+              <div>E.Ani@justice.gov.ng</div>
             </div>
           </div>
           <button className="support__body__inner__status">Admin</button>
@@ -383,13 +383,13 @@ export default function Logs() {
           className="support__body__inner"
           onClick={handleTicketModalOpen}
         >
-          <div>#TC-192</div>
-          <div>Help, I can’t find my case file</div>
+          <div>#TC-908</div>
+          <div>Help! How retrieve an expunged case file back</div>
           <div className="support__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo3.png" width={40} height={40} />
             <div>
-              <div>Adewumi Oloye</div>
-              <div>A.oloye@justice.gov.ng</div>
+              <div>Lotanna Okor</div>
+              <div>L.okor@justice.gov.ng</div>
             </div>
           </div>
           <button className="support__body__inner__status">Admin</button>
@@ -450,13 +450,13 @@ export default function Logs() {
           className="support__body__inner"
           onClick={handleTicketModalOpen}
         >
-          <div>#TC-192</div>
-          <div>Help, I can’t find my case file</div>
+          <div>#TC-092</div>
+          <div>Help! my a criminal is missing from the record</div>
           <div className="support__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo4.png" width={40} height={40} />
             <div>
-              <div>Adewumi Oloye</div>
-              <div>A.oloye@justice.gov.ng</div>
+              <div>Demi Nike</div>
+              <div>D.nike@justice.gov.ng</div>
             </div>
           </div>
           <button className="support__body__inner__status support__body__inner__status-assigned">Assigned</button>
@@ -521,10 +521,10 @@ export default function Logs() {
           <div>#TC-192</div>
           <div>Help, I can’t find my case file</div>
           <div className="support__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo5.png" width={40} height={40} />
             <div>
-              <div>Adewumi Oloye</div>
-              <div>A.oloye@justice.gov.ng</div>
+              <div>Ahmed Wale</div>
+              <div>A.wale@justice.gov.ng</div>
             </div>
           </div>
           <button className="support__body__inner__status support__body__inner__status-assigned">Assigned</button>
@@ -588,9 +588,9 @@ export default function Logs() {
           onClick={handleTicketModalOpen}
         >
           <div>#TC-192</div>
-          <div>Help, I can’t find my case file</div>
+          <div>How can i expunge a file from the records </div>
           <div className="support__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo6.png" width={40} height={40} />
             <div>
               <div>Adewumi Oloye</div>
               <div>A.oloye@justice.gov.ng</div>
