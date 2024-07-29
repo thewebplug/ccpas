@@ -16,7 +16,7 @@ export default function Logs() {
           className="logs__header__button"
           onClick={() => setModalOpen2(true)}
         >
-          Export{" "}
+          Exports{" "}
           <svg
             width="22"
             height="22"
