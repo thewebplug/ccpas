@@ -209,7 +209,9 @@ export default function Sidebar() {
           Super Admin Section
         </div>
       </div>
-      <div className="adminDashboard-sidebar__item">
+      <div className="adminDashboard-sidebar__item"
+      onClick={handleLogout}
+      >
         <div>
           <svg
             width="24"
