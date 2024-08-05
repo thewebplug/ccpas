@@ -256,6 +256,7 @@
         justify-content: center;
         gap: 12px;
         padding: 24px;
+        border-bottom: 1px solid #009b07;
 
         h2 {
           font-size: 14px;
@@ -348,7 +349,7 @@
           color: #101828;
           font-size: 20px;
           font-weight: 500;
-          margin-bottom: 10px;
+          margin-bottom: 15px;
         }
 
         .asset {
@@ -371,6 +372,35 @@
           font-size: 16px;
           font-weight: 500;
           margin: 15px 0;
+        }
+
+
+        .table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 16px;
+          border: 1px solid #eaecf0;
+          // border-radius: 12px;
+      
+          th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #e6e6e6;
+            color: #667085;
+            font-size: 14px;
+            font-weight: 400;
+          }
+      
+          th {
+            background-color: #f9fafb;
+          }
+      
+          .link {
+            color: green;
+            text-decoration: underline;
+            font-size: 12px;
+            font-weight: 400;
+          }
         }
       }
     }

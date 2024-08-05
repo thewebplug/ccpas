@@ -5,7 +5,7 @@ import Image from "next/image";
 import Menu from "../menu/page";
 // import AddedFavourite from "../added-favourite/page";
 
-const ExcitingCase = ({ isOpen, onClose }) => {
+const ExcitingCase = ({ isOpen, onClose,  text, maxLength  }) => {
   // if (!isOpen) return null;
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,6 +13,33 @@ const ExcitingCase = ({ isOpen, onClose }) => {
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+
+  // const truncateString = (str, maxLength) => {
+  //   if (str.length > maxLength) {
+  //     return str.substring(0, maxLength) + "...";
+  //   }
+  //   return str;
+  // };
+
+  const assets = [
+    {
+      id: "EFCC/ABJ/INV/012/2024",
+      description:
+        "The EFCC conducted a raid on June 18, 2024, following a thorough investigation into allegat...",
+      amount: "$10,000",
+      status: "Checked In",
+      image: "/assets/avatars/goods.png",
+    },
+    {
+      id: "EFCC/ABJ/INV/012/2024",
+      description:
+        "The EFCC conducted a raid on June 18, 2024, following a thorough investigation into allegat...",
+      amount: "₦10,000",
+      status: "Checked Out",
+      image: "/assets/avatars/goods.png",
+    },
+  ];
 
   return (
     <div className="exciting-cases">
@@ -601,7 +628,7 @@ const ExcitingCase = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* <div className="exciting-cases__body__right__bottom">
+          <div className="exciting-cases__body__right__bottom">
             <div>
               <div>
                 <h2>Legal Basis</h2>
@@ -623,15 +650,11 @@ const ExcitingCase = ({ isOpen, onClose }) => {
               <div>
                 <h2>Charge Details</h2>
                 <div className="bottom-content">
-                  The accused, on April 15, 2024, at approximately 11:30 AM, at
-                  the XYZ Bank branch located on Victoria Island, Lagos,
-                  Nigeria, did unlawfully and intentionally commit armed
-                  robbery. The accused, armed with pistols and wearing masks,
-                  entered the bank premises and threatened customers and staff
-                  with violence. The accused forcibly stole a significant amount
-                  of cash and valuables from the bank, thereby commiting the
-                  offense of armed robbery.
-                  <p className="center">Read More</p>
+                  The accused are changing with the following offense: <br />
+                  Armed Robbery - Contrary to Section XX of the Criminal Code
+                  Act <br />
+                  Illegal Possession of Firearms - Contrary to Section XX of the
+                  Firearms Act
                 </div>
               </div>
             </div>
@@ -640,23 +663,6 @@ const ExcitingCase = ({ isOpen, onClose }) => {
               <div>
                 <h2>Legal Basis</h2>
                 <div className="bottom-content">
-                  The charges are based on the following legal provisions:{" "}
-                  <br />
-                  <span>1. Armed Robbery:</span>
-                  The accused are charged with armed robbery under Section XX of
-                  the Criminal Code Act, which states that "Any person who
-                  commits robbery whilst armed with an offense and shall be
-                  liable upon conviction to imprisonment for life."
-                  <span>2. Illegal Possession of Firearms:</span>
-                  The accused are charged with illegal possession of firearms
-                  under...
-                  <p className="center">Read More</p>
-                </div>
-              </div>
-
-              <div>
-                <h2>Legal Basis</h2>
-                <div className="bottom-content">
                   The accused, on April 15, 2024, at approximately 11:30 AM, at
                   the XYZ Bank branch located on Victoria Island, Lagos,
                   Nigeria, did unlawfully and intentionally commit armed
@@ -668,8 +674,22 @@ const ExcitingCase = ({ isOpen, onClose }) => {
                   <p className="center">Read More</p>
                 </div>
               </div>
+
+              <div>
+                <h2>Legal Basis</h2>
+                <div className="bottom-content">
+                  The prosecution submits that there is prima facie evidence to
+                  support the charges against the accused. The prosecution will
+                  rely on witness testimonies, forensic evidence, and CCTV
+                  footage obtained from the crime scene to establish the guilt
+                  of the accused beyond a reasonable doubt. The prosecution
+                  contends that the accused's actions constitute serious
+                  violations of the law and warrant prosecution to the fullest
+                  extent.
+                </div>
+              </div>
             </div>
-          </div> */}
+          </div>
 
           <div className="exciting-cases__body__right__attachment">
             <h2>Attachment</h2>
@@ -917,7 +937,7 @@ const ExcitingCase = ({ isOpen, onClose }) => {
                   <path d="M15 14L10 11V17L15 14Z" fill="#009B07" />
                 </svg>
                 <div>
-                  <h3>Discovery_Material.PDF</h3>
+                  <h3>Video.Mp4</h3>
                   <span>1.2 MB</span>
                 </div>
               </div>
@@ -969,54 +989,68 @@ const ExcitingCase = ({ isOpen, onClose }) => {
 
             <h3>Link Asset</h3>
 
-            {/* <table>
-              <thread>
-                <th></th>
-                <th>Asset No</th>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Status</th>
-                <th></th>
-              </thread>
-              <tbody>
+            <table className="table">
+              <thead>
                 <tr>
-                  <td>Photo</td>
-                  <td>EFCC/ABJ/INV/012/2024</td>
-                  <td>Note...</td>
-                  <td>$ 10,000</td>
-                  <td>Checked In</td>
-                  <td>
-                    <svg
-                      width="40"
-                      height="40"
-                      viewBox="0 0 40 40"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clip-path="url(#clip0_637_17613)">
-                        <path
-                          d="M16.666 19.9974H23.3327M28.3327 19.9974C28.3327 24.5998 24.6017 28.3307 19.9993 28.3307C15.397 28.3307 11.666 24.5998 11.666 19.9974C11.666 15.395 15.397 11.6641 19.9993 11.6641C24.6017 11.6641 28.3327 15.395 28.3327 19.9974Z"
-                          stroke="#667085"
-                          stroke-width="1.66667"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_637_17613">
-                          <rect
-                            width="20"
-                            height="20"
-                            fill="white"
-                            transform="translate(10 10)"
-                          />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </td>
+                  <th></th>
+                  <th>Asset No</th>
+                  <th>Description</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th></th>
                 </tr>
+              </thead>
+              <tbody>
+                {assets.map((asset, index) => (
+                  <tr key={index}>
+                    <td>
+                      <Image
+                        alt=""
+                        src={asset.image}
+                        width={36}
+                        height={36}
+                        // style={{ float: "left" }}
+                      />
+                    </td>
+                    <td>
+                      <div className="link">{asset.id}</div>
+                    </td>
+                    <td>{asset.description}</td>
+                    <td>{asset.amount}</td>
+                    <td>{asset.status}</td>
+                    <td>
+                      <svg
+                        width="40"
+                        height="40"
+                        viewBox="0 0 40 40"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g clip-path="url(#clip0_637_17613)">
+                          <path
+                            d="M16.666 19.9974H23.3327M28.3327 19.9974C28.3327 24.5998 24.6017 28.3307 19.9993 28.3307C15.397 28.3307 11.666 24.5998 11.666 19.9974C11.666 15.395 15.397 11.6641 19.9993 11.6641C24.6017 11.6641 28.3327 15.395 28.3327 19.9974Z"
+                            stroke="#667085"
+                            stroke-width="1.66667"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_637_17613">
+                            <rect
+                              width="20"
+                              height="20"
+                              fill="white"
+                              transform="translate(10 10)"
+                            />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
-            </table> */}
+            </table>
           </div>
         </div>
       </div>
