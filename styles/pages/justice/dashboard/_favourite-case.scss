@@ -1,4 +1,4 @@
-.exciting-case {
+.fav-cases {
   width: 100%;
   border-radius: var(--8, 8px);
   border: 1px solid var(--Gray-200, #eaecf0);
@@ -17,47 +17,12 @@
     padding: 0 24px;
 
     &__title {
+      @extend %title-24;
       color: var(--Gray-900, #101828);
 
-      @extend %title-18;
       font-weight: 500;
     }
 
-    &__middle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 0 auto;
-      width: 30%;
-      border-radius: 5px;
-      padding: 3px;
-      background-color: #f5f5f5;
-      font-weight: 500;
-      text-align: center;
-      cursor: pointer;
-
-      .close {
-        width: 50%;
-        border-radius: 5px;
-        padding: 14px 32px;
-      }
-
-      .active {
-        width: 50%;
-        border-radius: 5px;
-        padding: 14px 32px;
-        background-color: #ffffff;
-        gap: 12px;
-        text-align: center;
-        color: #101828;
-      }
-    }
-
-    &__button {
-      @extend %create-button;
-      border-radius: 8px;
-      cursor: pointer;
-    }
   }
 
   &__actions {
@@ -122,7 +87,7 @@
       display: none;
     }
 
-    .exciting-case-table {
+    .fav-cases-table {
       width: 100%;
       border-collapse: collapse;
 
@@ -140,6 +105,7 @@
           .user-flex {
             display: flex;
             align-items: center;
+            // justify-content: space-between;
             gap: 8px;
           }
         }
@@ -148,10 +114,9 @@
       tbody {
         tr {
           td {
-            padding: 12px 24px;
+            padding: 20px 24px;
             border-top: 1px solid #e6e6e6;
             border-bottom: 1px solid #e6e6e6;
-            cursor: pointer;
 
             .user-info {
               display: flex;
@@ -174,79 +139,65 @@
 
             .case-status {
               width: 115px;
-              font-size: 14px;
+              font-size: 12px;
               padding: 8px 12px;
-              background-color: #e2e2e2;
+              background-color: #E2E2E2;
               color: #040407;
               border-radius: 20px;
               text-align: center;
             }
 
             .status {
-              font-size: 14px;
-
+              font-size: 12px;
+    
               &.on-bail {
-                padding: 8px 34px;
-                background-color: #eef4ff;
-                color: #3538cd;
+                padding: 8px 31px;
+                background-color: #EEF4FF;
+                color: #3538CD;
                 border-radius: 8px;
                 font-weight: 500;
               }
 
               &.in-custody {
-                padding: 8px 22px;
+                padding: 8px 20px;
                 background-color: rgba(255, 138, 0, 0.14);
-                color: #ff8a00;
+                color: #FF8A00;
                 border-radius: 8px;
               }
 
               &.convicted {
-                padding: 8px 24px;
+                padding: 8px 22px;
                 background-color: rgba(184, 0, 0, 0.12);
-                color: #b80000;
+                color: #B80000;
                 border-radius: 8px;
               }
 
               &.discharged {
-                padding: 8px 20px;
+                padding: 8px 18px;
                 background-color: rgba(0, 156, 7, 0.12);
-                color: #009b07;
+                color: #009B07;
                 border-radius: 8px;
               }
               &.deceased {
-                padding: 8px 25px;
-                background-color: #e2e2e2;
+                padding: 8px 23px;
+                background-color: #E2E2E2;
                 color: #040407;
                 border-radius: 8px;
               }
             }
 
-            .assign-now {
+            .offence-flex {
               display: flex;
               align-items: center;
-              gap: 8px;
-              color: #009b07;
-              font-size: 14px;
-              font-weight: 400;
-              cursor: pointer;
+              justify-content: space-between;
 
-              .text {
-                color: #009b07;
-                text-decoration: underline;
-              }
-
-              .dropdown-icon {
+              .offence-icons {
                 display: flex;
                 align-items: center;
+                gap: 32px;
+                padding: 0 5px;
+                cursor: pointer;
               }
-            }
-
-            .offence-icons {
-              display: flex;
-              align-items: center;
-              gap: 24px;
-              padding: 0 5px;
-              cursor: pointer;
             }
           }
         }
@@ -255,6 +206,9 @@
   }
 
   &__footer {
+    // position: absolute;
+    // bottom: 0;
+    // left: 0;
     @extend %title-16;
     font-weight: 500;
     width: 100%;
@@ -264,6 +218,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
+    // background: var(--Gray-50, #f9fafb);
     border: 1px solid var(--Gray-200, #eaecf0);
     border-radius: 0 0 12px 12px;
 

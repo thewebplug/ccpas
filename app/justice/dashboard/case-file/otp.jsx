@@ -87,7 +87,7 @@ const CaseOtpModal = ({ isOpen, onRequestClose }) => {
         <button
           style={buttonStyle}
           type="button"
-          onClick={() => (window.location.href = "/justice/expunge-doc")}
+          onClick={() => (window.location.href = "/justice/transfer-doc")}
         >
           {isComplete ? "Send" : "Transfer"}
         </button>

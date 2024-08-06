@@ -1,5 +1,4 @@
 "use client";
-import Menu from "@/app/components/menu";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import CaseFileModal from "../../case-file/page";
@@ -7,6 +6,7 @@ import { getCase } from "@/app/apis/case";
 import { useSelector } from "react-redux";
 import { useParams } from "next/navigation";
 import CaseImageModal from "@/app/components/caseImageModal";
+import Menu from "@/app/components/caseDetailsMenu";
 
 export default function CreateCase() {
   const { id } = useParams();
@@ -21,19 +21,9 @@ export default function CreateCase() {
   const [singleCaseMughsots, setSingleCaseMughsots] = useState([]);
   const [singleCaseAttachment, setSingleCaseAttachment] = useState([]);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const openModal = (item) => {
-    setSelectedItem(item);
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-    setSelectedItem(null);
-  };
+ 
 
   //...
 
@@ -221,7 +211,7 @@ Export <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http:/
         </button>
 
         <div className="case-details__banner__actions__more"
-        onClick={() => setMenuActive(!menuActive)}
+        onClick={() => setMenuActive(true)}
         >
 
         <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -234,9 +224,9 @@ Export <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http:/
 </g>
 </svg>
 
-{menuActive &&<Menu items={[{name: "Edit Case file"}, {name: "Create New Case file", function: () => window.location.href = "/justice/dashboard/create-case"}, {name: "Upload existing case file", function: () => window.location.href = "/justice/dashboard/create-case"}]} />}
 
         </div>
+ <Menu open={menuActive} setOpen={setMenuActive} />
 
       </div>
     </div>
@@ -816,6 +806,9 @@ Copy
       </div>
 
       <CaseImageModal open={modalOpen} setOpen={setModalOpen} images={singleCaseMughsots} />
+     
+
+     
     </div>
   );
 }

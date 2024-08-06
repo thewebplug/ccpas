@@ -347,6 +347,7 @@ export default function CreateCase() {
               .catch((err) => {
                 console.log("ERRRR", err);
                 setMugLoading(false);
+                alert("Mugshot upload failed. please try again")
               });
           }
         });

@@ -1,32 +1,72 @@
 "use client";
-
-import { useState } from "react";
-import CheckboxToggle from "../admin/add-role/CheckboxToggle";
-// import ExcitingCase from "./exciting-case/page";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { assignCase, getCases } from "@/app/apis/case";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import moment from "moment";
+import CheckboxToggle from "@/app/justice/admin/add-role/CheckboxToggle";
 
 export default function Cases() {
+  const auth = useSelector((state) => state.auth);
 
-  // const [isExcitingCaseOpen, setIsExcitingCaseOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(0);
+  const [assignee, setAssignee] = useState(null);
+  const [cases, setCases] = useState([]);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedId, setSelectedId] = useState("");
+  const [loading, setLoading] = useState("");
+  const [caseType, setCaseType] = useState("active");
+  const open = Boolean(anchorEl);
 
-  // const handleOpenExcitingCase = () => {
-  //   setIsExcitingCaseOpen(true);
-  // };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-  // const handleCloseExcitingCase = () => {
-  //   setIsExcitingCaseOpen(false);
-  // };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleModalClose = (e) => {
+    if (e.target.classList.contains("cases__modal")) {
+      setModalOpen(false);
+    }
+  };
+  const handleGetCases = async () => {
+    const response = await getCases(auth?.token);
+    console.log("gotten cases", response);
+    if (response?.status === 200) {
+      setCases(response?.data?.reverse());
+    }
+  };
+
+  const handleAssign = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const response = await assignCase(selectedId, assignee, auth?.token);
+    console.log("gotten cases", response);
+    // if (response?.status === 200) {
+    //   setCases(response?.data?.reverse());
+    // }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    handleGetCases();
+  }, []);
 
   return (
     <div className="exciting-case">
       <div className="exciting-case__header">
-        <div className="exciting-case__header__title">Cases</div>
+        <div className="exciting-case__header__title">Deactivated cases</div>
 
-        <div className="exciting-case__header__middle">
-          <div className="active">Active</div>
-          <div className="close">Close</div>
-        </div>
-
-        <div className="exciting-case__header__button">
+       
+        <button
+          className="exciting-case__header__button"
+          onClick={() =>
+            (window.location.href = "/justice/dashboard/create-case")
+          }
+        >
           Create New Case{" "}
           <svg
             width="16"
@@ -43,7 +83,7 @@ export default function Cases() {
               stroke-linejoin="round"
             />
           </svg>
-        </div>
+        </button>
       </div>
 
       <div className="exciting-case__actions">
@@ -226,131 +266,68 @@ export default function Cases() {
           </thead>
 
           <tbody>
-            {[
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "EFCC",
-                caseStatus: "Unassigned",
-                status: "On Bail",
-                offences: "Terrorism",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "CUSTOM",
-                caseStatus: "Unassigned",
-                status: "In Custody",
-                offences: "Cyber Crime",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "NPF",
-                caseStatus: "Unassigned",
-                status: "On Bail",
-                offences: "Armed Robbery",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "DSS",
-                caseStatus: "Unassigned",
-                status: "In Custody",
-                offences: "Fraud",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "NPF",
-                caseStatus: "Unassigned",
-                status: "Convicted",
-                offences: "Vandalism",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "IMMIGRATION",
-                caseStatus: "Unassigned",
-                status: "Discharged",
-                offences: "Impersonation",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "EFCC",
-                caseStatus: "Unassigned",
-                status: "Convicted",
-                offences: "Smuggling",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "CUSTOM",
-                caseStatus: "Unassigned",
-                status: "Deceased",
-                offences: "Currency Defacing",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "DSS",
-                caseStatus: "Unassigned",
-                status: "Discharged",
-                offences: "Fraud",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "NPF",
-                caseStatus: "Unassigned",
-                status: "Deceased",
-                offences: "Cyber Crime",
-              },
-            ].map((user, index) => (
-              <tr key={index}>
+            {cases.map((item, index) => (
+              <tr key={index}
+              onClick={() => {
+                // if (assignee) {
+                  window.location.href = `/justice/dashboard/case-details/${item?.id}`
+                // }
+              }}
+              >
                 <td>
                   <div className="user-info">
                     <CheckboxToggle />
                     <div>
-                      <h2>{user.date}</h2>
+                      <h2>
+                        {moment(item?.dateInitiated).format("MMMM D, YYYY")}
+                      </h2>
                     </div>
                   </div>
                 </td>
 
-                <td>{user.caseNo}</td>
-                <td>{user.agency}</td>
+                <td>{item?.caseNumber}</td>
+                <td>{item?.agency}</td>
                 <td>
-                  <div className="case-status">{user.caseStatus}</div>
+                  <div className="case-status">{item.caseStatus}</div>
                 </td>
 
                 <td>
                   <span
-                    className={`status ${user.status
+                    className={`status ${item.accusedStatus
                       .toLowerCase()
                       .replace(" ", "-")}`}
                   >
-                    {user.status}
+                    {item.accusedStatus}
                   </span>
                 </td>
-                <td>{user.offences}</td>
+                <td>
+                  {item.offenseCategory}
+                  {/* , {item.offenseType} */}
+                </td>
                 <td>
                   <div className="assign-now">
-                    <span className="text">Assign Now</span>
-                    <span className="dropdown-icon">
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M14.9336 6.82031H9.74195H5.06695C4.26695 6.82031 3.86695 7.78698 4.43361 8.35365L8.75028 12.6703C9.44195 13.362 10.5669 13.362 11.2586 12.6703L12.9003 11.0286L15.5753 8.35365C16.1336 7.78698 15.7336 6.82031 14.9336 6.82031Z"
-                          fill="#009B07"
-                        />
-                      </svg>
-                    </span>
+                    {item?.assignedJudge === "" ? (
+                      <>
+                        <span className="text">Assign Now</span>
+
+                        <span className="dropdown-icon">
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M14.9336 6.82031H9.74195H5.06695C4.26695 6.82031 3.86695 7.78698 4.43361 8.35365L8.75028 12.6703C9.44195 13.362 10.5669 13.362 11.2586 12.6703L12.9003 11.0286L15.5753 8.35365C16.1336 7.78698 15.7336 6.82031 14.9336 6.82031Z"
+                              fill="#009B07"
+                            />
+                          </svg>
+                        </span>
+                      </>
+                    ) : (
+                      item?.assignedJudge
+                    )}
                   </div>
                 </td>
                 <td>
@@ -404,7 +381,7 @@ export default function Cases() {
           </tbody>
         </table>
 
-          {/*<ExcitingCase isOpen={isExcitingCaseOpen} onClose={handleCloseExcitingCase} /> */}
+        {/*<ExcitingCase isOpen={isExcitingCaseOpen} onClose={handleCloseExcitingCase} /> */}
       </div>
 
       {/* footer */}

@@ -18,6 +18,8 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     width: '630px',
     height: '630px',
+    backgroundColor: "#FFF",
+    zIndex: 90
   },
 };
 

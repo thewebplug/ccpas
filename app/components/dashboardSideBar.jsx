@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 
 export default function Sidebar() {
   const pathname = usePathname();
+  console.log('pathname', pathname.split("/")?.length);
   const dispatch = useDispatch();
   const [dropdownActive, setDropdownActive] = useState(false)
 
@@ -20,7 +21,6 @@ export default function Sidebar() {
     window.scrollTo(0, 0);
   };
 
-  console.log("ginger", pathname?.split("/")?.length);
 
   return (
     <div className="adminDashboard-sidebar">
@@ -149,7 +149,7 @@ export default function Sidebar() {
           </div>
           <div
             className={
-              pathname?.includes("cases")
+              pathname?.includes("cases") && pathname.split("/")?.length < 5
                 && "adminDashboard-sidebar__item-container__sub-items__active"
                 
             }
@@ -180,7 +180,7 @@ export default function Sidebar() {
                 && "adminDashboard-sidebar__item-container__sub-items__active"
                 
             }
-            onClick={() => window.location.href = "/justice/dashboard/favourite-cases"}
+            onClick={() => window.location.href = "/justice/dashboard/cases/favourite-cases"}
           >
             <svg
               width="13"
@@ -207,7 +207,7 @@ export default function Sidebar() {
                 && "adminDashboard-sidebar__item-container__sub-items__active"
                 
             }
-            onClick={() => window.location.href = "/justice/dashboard/transferred-cases"}
+            onClick={() => window.location.href = "/justice/dashboard/cases/transferred-cases"}
           >
             <svg
               width="13"
@@ -234,7 +234,7 @@ export default function Sidebar() {
                 && "adminDashboard-sidebar__item-container__sub-items__active"
                 
             }
-            onClick={() => window.location.href = "/justice/dashboard/deactivated-cases"}
+            onClick={() => window.location.href = "/justice/dashboard/cases/deactivated-cases"}
           >
             <svg
               width="13"
