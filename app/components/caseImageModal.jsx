@@ -31,8 +31,9 @@ export default function CaseImageModal({open, setOpen, images}) {
 </svg>
 
 <div className="case-image-modal__grid__slide__thumbnails">
-{images?.map((image) => <Image
-              alt=""
+{images?.map((image, index) => <Image
+              alt="["
+              key={index}
               src={`https://${image?.url}`}
               width={80}
               height={80}

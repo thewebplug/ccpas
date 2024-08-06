@@ -260,7 +260,7 @@ Copy
 
           <div className="case-details__grid__personal-details__image-grid">
             {[...singleCaseMughsots]?.slice(1, 4)?.map((item, index) => (
-              <div className="case-details__grid__personal-details__image-grid__image">
+              <div className="case-details__grid__personal-details__image-grid__image" key={index}>
                 <Image
                   alt=""
                   src={`https://${item?.url}`}
@@ -582,7 +582,7 @@ Copy
 
             <div className="case-details__grid__case-details__attachments__uploaded-files-grid">
               {singleCaseAttachment?.map((doc, index) => (
-                <div className="case-details__grid__case-details__attachments__uploaded-files-grid__card">
+                <div className="case-details__grid__case-details__attachments__uploaded-files-grid__card" key={index}>
                   <div className="case-details__grid__case-details__attachments__uploaded-files-grid__card__card-group">
                     {doc?.type?.includes("pdf") && (
                       <svg
