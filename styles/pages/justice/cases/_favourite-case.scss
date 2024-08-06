@@ -98,7 +98,7 @@
             background-color: #f8f9fa;
             border-top: 1px solid #e6e6e6;
             border-bottom: 1px solid #e6e6e6;
-            text-align: start;;
+            text-align: start;
             font-size: 12px;
           }
 
@@ -117,18 +117,19 @@
             padding: 12px 24px;
             border-top: 1px solid #e6e6e6;
             border-bottom: 1px solid #e6e6e6;
+            font-size: 12px;
 
             .user-info {
               display: flex;
               align-items: center;
-              font-size: 14px;
+              // font-size: 14px;
               font-weight: 600;
               color: #101828;
               gap: 8px;
 
               h2 {
                 color: #101828;
-                font-size: 14px;
+                // font-size: 14px;
                 font-weight: 500;
               }
 
@@ -139,7 +140,7 @@
 
             .case-status {
               width: 115px;
-              font-size: 14px;
+              font-size: 12px;
               padding: 8px 12px;
               background-color: #E2E2E2;
               color: #040407;
@@ -148,10 +149,10 @@
             }
 
             .status {
-              font-size: 14px;
+              font-size: 12px;
     
-              &.on-ball {
-                padding: 8px 34px;
+              &.on-bail {
+                padding: 8px 31px;
                 background-color: #EEF4FF;
                 color: #3538CD;
                 border-radius: 8px;
@@ -159,27 +160,27 @@
               }
 
               &.in-custody {
-                padding: 8px 22px;
+                padding: 8px 20px;
                 background-color: rgba(255, 138, 0, 0.14);
                 color: #FF8A00;
                 border-radius: 8px;
               }
 
               &.convicted {
-                padding: 8px 24px;
+                padding: 8px 22px;
                 background-color: rgba(184, 0, 0, 0.12);
                 color: #B80000;
                 border-radius: 8px;
               }
 
               &.discharged {
-                padding: 8px 20px;
+                padding: 8px 18px;
                 background-color: rgba(0, 156, 7, 0.12);
                 color: #009B07;
                 border-radius: 8px;
               }
               &.deceased {
-                padding: 8px 25px;
+                padding: 8px 23px;
                 background-color: #E2E2E2;
                 color: #040407;
                 border-radius: 8px;

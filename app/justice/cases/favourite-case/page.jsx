@@ -118,8 +118,8 @@ export default function FavouriteCase() {
                   <span>Case status</span>
                   <div>
                     <svg
-                      width="17"
-                      height="16"
+                      width="14"
+                      height="13"
                       viewBox="0 0 17 16"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -153,8 +153,8 @@ export default function FavouriteCase() {
                   <span>Status of Suspect</span>
                   <div>
                     <svg
-                      width="17"
-                      height="16"
+                      width="14"
+                      height="13"
                       viewBox="0 0 17 16"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -193,7 +193,7 @@ export default function FavouriteCase() {
                 caseNo: "PF00364",
                 agency: "EFCC",
                 caseStatus: "Unassigned",
-                status: "On Ball",
+                status: "On Bail",
                 offences: "Terrorism",
               },
               {
@@ -209,7 +209,7 @@ export default function FavouriteCase() {
                 caseNo: "PF00364",
                 agency: "NPF",
                 caseStatus: "Unassigned",
-                status: "On Ball",
+                status: "On Bail",
                 offences: "Armed Robbery",
               },
               {
@@ -301,8 +301,8 @@ export default function FavouriteCase() {
                     <div className="offence-icons">
                       <span>
                         <svg
-                          width="20"
-                          height="20"
+                          width="18"
+                          height="18"
                           viewBox="0 0 20 20"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -316,8 +316,8 @@ export default function FavouriteCase() {
 
                       <span>
                         <svg
-                          width="20"
-                          height="20"
+                          width="18"
+                          height="18"
                           viewBox="0 0 20 20"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -334,8 +334,8 @@ export default function FavouriteCase() {
 
                       <span>
                         <svg
-                          width="20"
-                          height="20"
+                          width="18"
+                          height="18"
                           viewBox="0 0 20 20"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
