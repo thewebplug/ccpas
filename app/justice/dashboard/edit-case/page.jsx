@@ -770,7 +770,7 @@ export default function EditCase() {
               ""
             )}
             {[...images]?.reverse()?.map((item, index) => (
-              <div className="create-case__grid__personal-details__image-grid__image">
+              <div className="create-case__grid__personal-details__image-grid__image" key={index}>
                 <Image
                   alt=""
                   src={`https://${item?.url}`}
@@ -1565,7 +1565,7 @@ Ahmed Aisha
 
             <div className="create-case__grid__case-details__attachments__uploaded-files-grid">
               {docs?.map((doc, index) => (
-                <div className="create-case__grid__case-details__attachments__uploaded-files-grid__card">
+                <div className="create-case__grid__case-details__attachments__uploaded-files-grid__card" key={index}>
                   <div className="create-case__grid__case-details__attachments__uploaded-files-grid__card__card-group">
                     {doc?.type.includes("pdf") && (
                       <svg
