@@ -60,7 +60,8 @@ const Menu = () => {
             stroke-linejoin="round"
           />
         </svg>
-        Make Favourites
+        {/* Make Favourites */}
+        Remove from Favourites
         <AddedFavourite
           isOpen={isModalOpen} 
           onClose={handleCloseModal} 
