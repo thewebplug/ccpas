@@ -3,7 +3,7 @@
 import React from "react";
 
 const InviteUser = ({ isOpen, onClose }) => {
-  // if (!isOpen) return null;
+  if (!isOpen) return null;
 
   return (
     <div className="invite-user">

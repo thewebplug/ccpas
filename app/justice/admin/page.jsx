@@ -14,6 +14,7 @@ const Admin = () => {
   const [previewModal, setPreviewModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeactivated, setIsDeactivated] = useState(false);
+  const [selectAll, setSelectAll] = useState(false);
 
   const handleOpenAddUserModal = () => {
     setAddUserModalOpen(true);
@@ -85,7 +86,7 @@ const Admin = () => {
               <tr>
                 <th>
                   <div className="name-header">
-                    <input type="checkbox" />
+                    <input type="checkbox" value={selectAll} onChange={(e) => setSelectAll(e.target.checked)} />
                     <span>Name</span>
                   </div>
                 </th>
@@ -220,7 +221,7 @@ const Admin = () => {
                 <tr key={index} onClick={() => setPreviewModal(true)}>
                   <td className="user-name" >
                     
-                    <input type="checkbox" />
+                    <input type="checkbox" checked={selectAll} />
 
                     <Image
                       alt=""

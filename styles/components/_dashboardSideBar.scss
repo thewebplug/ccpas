@@ -1,4 +1,4 @@
-.dashboard-sidebar {
+.adminDashboard-sidebar {
   border-left: 1px solid #eaeef4;
   border-right: 1px solid #eaeef4;
   background: #f7fbfe;
@@ -20,6 +20,9 @@
     justify-content: start;
     gap: 10px;
     cursor: pointer;
+    padding: 10px 0 ;
+
+
     & > :first-child {
       min-width: 50px;
     height: 50px;
@@ -29,15 +32,15 @@
     align-items: center;
     justify-content: center;
 
-    &:hover {
-      background: #514EF3;
+    // &:hover {
+    //   background: #514EF3;
        
-      & > svg {
-        & > path {
-          fill: #FFF;
-        }
-      }
-    }
+    //   & > svg {
+    //     & > path {
+    //       fill: #FFF;
+    //     }
+    //   }
+    // }
     }
 
 
@@ -49,7 +52,22 @@
     }
 
 
+    &:hover {
+      background: #DCFFDE;
+      border-radius: 6px;
+
+      color: #009B07;
+      
+    }
  
+  }
+
+  &__item-active {
+
+      & > :first-child {
+        background: #DCFFDE;
+
+      }
   }
 
 
@@ -57,18 +75,20 @@
   &:hover {
     width: 300px;
 
-   .dashboard-sidebar__item__title{
-    display: initial;
-   }
+   .adminDashboard-sidebar__item__title{
+     display: initial;
+    }
+    .adminDashboard-sidebar__item{
+      padding: 10px 14px;
+
+    }
+    .adminDashboard-sidebar__item-active{
+      background: #DCFFDE;
+      border-radius: 6px;
+
+      color: #009B07;
+    }
   }
 
-  &__item-active {
-      background: #514EF3;
-       
-      & > svg {
-        & > path {
-          fill: #FFF;
-        }
-      }
-  }
+ 
 }

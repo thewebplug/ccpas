@@ -1,0 +1,131 @@
+.notifications {
+    padding-left: 64px;
+
+    &__perf {
+        width: 100%;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        padding-bottom: 32px;
+        border-bottom: 1px solid #EAECF0;
+        padding-bottom: 32px;
+        margin-bottom: 24px;
+
+        & >:first-child {
+        & >:first-child {
+        @extend %title-18;
+        font-weight: 500;
+        color: #101828;
+        margin-bottom: 4px;
+        }
+        & >:last-child {
+        @extend %title-14;
+        font-weight: 400;
+        color: #667085;
+        }
+        }
+
+        & >:last-child {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            & >:first-child {
+                @extend %trans-button;
+            }
+            & >:last-child {
+                @extend %primary-button;
+                width: 80px;
+                height: 40px;
+            }
+        }
+    }
+
+    &__notif {
+        width: 100%;
+        display: flex;
+        align-items: start;
+        gap: 64px;
+
+        &__card1 {
+            white-space: nowrap;
+            & >:first-child {
+                @extend %title-18;
+                font-weight: 500;
+                color: #101828;
+                margin-bottom: 4px;
+                }
+                & >:last-child {
+                @extend %title-14;
+                font-weight: 400;
+                color: #667085;
+                }
+        }
+
+        &__card2 {
+            width: 100%;
+            &__inner {
+                display: flex;
+            align-items: start;
+            justify-content: space-between;
+            // background: blue;
+            border-bottom: 1px solid #EAECF0;
+            padding-bottom: 32px;
+            margin-bottom: 24px;
+
+            & >:first-child {
+                @extend %title-16;
+                font-weight: 400;
+                color: #344054;
+                margin-top: 7px;
+                // background: yellow;
+                }
+
+                & >:last-child {
+                    display: flex;
+            align-items: center;
+            gap: 4px;
+            
+            
+            & > button{
+                @extend %primary-button;
+                width: 80px;
+                height: 40px;
+                background: #EEE;
+                color: #344054;
+                border: none;
+            }
+            & >:first-child {
+                @extend %primary-button;
+                width: 80px;
+                height: 40px;
+            }
+                }
+            }
+           
+               
+        }
+
+      
+
+    }
+
+    &__button-group {
+        display: flex;
+        justify-content: end;
+        gap: 12px;   
+        padding-top: 17px;
+        border-top: 1px solid #EAECF0;
+
+
+        & >:first-child {
+            @extend %trans-button;
+            margin: 0;
+        }
+        & >:last-child {
+            @extend %primary-button;
+            width: 80px;
+            height: 40px;
+            margin: 0;
+        }
+    }
+}

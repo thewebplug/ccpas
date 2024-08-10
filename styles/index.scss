@@ -19,7 +19,6 @@
 @import 'components/dashboardHeader';
 @import 'components/dashboardSideBar';
 @import 'components/menu';
-@import 'components/admin/adminDashboardSideBar';
 @import 'components/admin/adminDashboardHeader';
 @import 'components/sidebar';
 @import 'components/header';
@@ -38,6 +37,7 @@
 @import 'pages/justice/dashboard/case-file';
 @import 'pages/justice/dashboard/otp.scss';
 @import 'pages/justice/dashboard/review.scss';
+
 @import 'pages/justice/admin/layout';
 @import 'pages/justice/admin/home';
 @import 'pages/justice/admin/add-user';
@@ -50,12 +50,12 @@
 @import 'pages/justice/admin/invite-user';
 @import 'pages/justice/admin/user-request';
 @import 'pages/justice/admin/ticket-details';
-
-
 @import 'pages/justice/admin/departments';
-
-
 @import 'pages/justice/admin/preview-user';
+@import 'pages/justice/admin/logs';
+@import 'pages/justice/admin/notifications';
+@import 'pages/justice/admin/notification-settings';
+@import 'pages/justice/admin/support';
 
 
 

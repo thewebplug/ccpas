@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 
 const TicketDetails = ({ isOpen, onClose }) => {
-  // if (!isOpen) return null;
+  if (!isOpen) return null;
 
   return (
     <div className="ticket-details">
