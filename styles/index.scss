@@ -25,6 +25,8 @@
 @import 'components/footer';
 @import 'components/caseImageModal';
 @import 'components/caseDetailsMenu';
+@import 'components/finance/tabs';
+@import 'components/finance/nav';
 
 @import 'pages/home';
 @import 'pages/justice/home';
@@ -63,3 +65,7 @@
 @import 'pages/justice/dashboard/added-favourite';
 
 @import 'pages/justice/dashboard/finance/home';
+@import 'pages/justice/dashboard/finance/layout';
+@import 'pages/justice/dashboard/finance/invoice-and-billing';
+@import 'pages/justice/dashboard/finance/transfer';
+@import 'pages/justice/dashboard/finance/overview';

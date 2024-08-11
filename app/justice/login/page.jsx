@@ -82,9 +82,9 @@ export default function Auth() {
         window.location.href = "/justice/dashboard"
       }
     }
-    // else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
-    //   window.location.href = "/justice/unauthorized"
-    // }
+    else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
+      window.location.href = "/justice/unauthorized"
+    }
     else {
       alert(response?.data?.message)
     }
