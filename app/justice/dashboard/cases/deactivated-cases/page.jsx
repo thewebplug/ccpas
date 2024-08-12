@@ -5,7 +5,7 @@ import { assignCase, getCases } from "@/app/apis/case";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import CheckboxToggle from "@/app/justice/admin/add-role/CheckboxToggle";
+import CheckboxToggle from "../../../admin/add-role/CheckboxToggle";
 
 export default function Cases() {
   const auth = useSelector((state) => state.auth);
@@ -56,13 +56,14 @@ export default function Cases() {
   }, []);
 
   return (
-    <div className="exciting-case">
-      <div className="exciting-case__header">
-        <div className="exciting-case__header__title">Deactivated cases</div>
+    <div className="cases">
+      <div className="cases__header">
+        <div className="cases__header__title">Deactivated Cases</div>
 
        
+
         <button
-          className="exciting-case__header__button"
+          className="cases__header__button"
           onClick={() =>
             (window.location.href = "/justice/dashboard/create-case")
           }
@@ -86,8 +87,8 @@ export default function Cases() {
         </button>
       </div>
 
-      <div className="exciting-case__actions">
-        <form action="" className="exciting-case__actions__input">
+      <div className="cases__actions">
+        <form action="" className="cases__actions__input">
           <svg
             width="16"
             height="17"
@@ -107,7 +108,7 @@ export default function Cases() {
         </form>
 
         {/* Case No */}
-        <form action="" className="exciting-case__actions__input">
+        <form action="" className="cases__actions__input">
           <input type="text" placeholder="Case No" />
           <svg
             width="16"
@@ -127,19 +128,19 @@ export default function Cases() {
         </form>
 
         {/* Agency */}
-        <form action="" className="exciting-case__actions__input">
+        <form action="" className="cases__actions__input">
           <select name="" id="">
             <option value="">Agency</option>
           </select>
         </form>
 
         {/* Status of Suspect */}
-        <form action="" className="exciting-case__actions__input">
+        <form action="" className="cases__actions__input">
           <select name="" id="">
             <option value="">Status of Suspect </option>
           </select>
         </form>
-        <div className="exciting-case__actions__filters">
+        <div className="cases__actions__filters">
           <svg
             width="24"
             height="25"
@@ -158,8 +159,8 @@ export default function Cases() {
 
       {/* --------------- */}
 
-      <div className="exciting-case__body">
-        <table className="exciting-case-table">
+      <div className="cases__body">
+        <table className="cases-table">
           <thead>
             <tr>
               <th>
@@ -386,8 +387,8 @@ export default function Cases() {
 
       {/* footer */}
 
-      <div className="exciting-case__footer">
-        <div className="exciting-case__footer__nav">
+      <div className="cases__footer">
+        <div className="cases__footer__nav">
           <svg
             width="20"
             height="20"
@@ -409,7 +410,7 @@ export default function Cases() {
 
         {/* pagination */}
 
-        <div className="exciting-case__footer__nav">
+        <div className="cases__footer__nav">
           <div>Next</div>
           <svg
             width="20"

@@ -172,7 +172,7 @@ export default function Sidebar() {
               />
             </svg>
 
-            <div>Exciting Case list</div>
+            <div>Case list</div>
           </div>
           <div
             className={

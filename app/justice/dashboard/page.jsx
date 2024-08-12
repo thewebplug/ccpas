@@ -45,7 +45,9 @@ export default function Dashboard() {
               Dashboard: <span>Cases</span>
             </h2>
             <div className="dashboard-home__card1__stats">
-              <div className="dashboard-home__card1__stats__card">
+              <div className="dashboard-home__card1__stats__card"
+              onClick={() => window.location.href ="/justice/dashboard/cases"}
+              >
                 <h3 className="dashboard-home__card1__stats__card__title">
                   All Cases
                 </h3>
@@ -71,13 +73,16 @@ export default function Dashboard() {
                   </h4>
                 </div>
               </div>
-              <div className="dashboard-home__card1__stats__card">
+              <div className="dashboard-home__card1__stats__card"
+                            onClick={() => window.location.href ="/justice/dashboard/cases"}
+
+              >
                 <h3 className="dashboard-home__card1__stats__card__title">
-                  All Cases
+                  New Cases
                 </h3>
 
                 <div className="dashboard-home__card1__stats__card__subtitle-group">
-                  <h4>2,318</h4>
+                  <h4>318</h4>
                   <h4>
                     +10.38%
                     <svg
@@ -97,13 +102,16 @@ export default function Dashboard() {
                   </h4>
                 </div>
               </div>
-              <div className="dashboard-home__card1__stats__card dashboard-home__card1__stats__card-unassigned">
+              <div className="dashboard-home__card1__stats__card dashboard-home__card1__stats__card-unassigned"
+                            onClick={() => window.location.href ="/justice/dashboard/unassigned-cases"}
+
+              >
                 <h3 className="dashboard-home__card1__stats__card__title">
-                  All Cases
+                  Unassigned Cases
                 </h3>
 
                 <div className="dashboard-home__card1__stats__card__subtitle-group">
-                  <h4>2,318</h4>
+                  <h4>40</h4>
                   <h4>
                     +10.38%
                     <svg
@@ -123,13 +131,16 @@ export default function Dashboard() {
                   </h4>
                 </div>
               </div>
-              <div className="dashboard-home__card1__stats__card">
+              <div className="dashboard-home__card1__stats__card"
+                            onClick={() => window.location.href ="/justice/dashboard/cases"}
+
+              >
                 <h3 className="dashboard-home__card1__stats__card__title">
-                  All Cases
+                  Cases in review
                 </h3>
 
                 <div className="dashboard-home__card1__stats__card__subtitle-group">
-                  <h4>2,318</h4>
+                  <h4>189</h4>
                   <h4>
                     +10.38%
                     <svg
@@ -149,13 +160,16 @@ export default function Dashboard() {
                   </h4>
                 </div>
               </div>
-              <div className="dashboard-home__card1__stats__card">
+              <div className="dashboard-home__card1__stats__card"
+                            onClick={() => window.location.href ="/justice/dashboard/cases"}
+
+              >
                 <h3 className="dashboard-home__card1__stats__card__title">
-                  All Cases
+                Cases Filed in Court
                 </h3>
 
                 <div className="dashboard-home__card1__stats__card__subtitle-group">
-                  <h4>2,318</h4>
+                  <h4>1,500</h4>
                   <h4>
                     +10.38%
                     <svg
@@ -175,13 +189,16 @@ export default function Dashboard() {
                   </h4>
                 </div>
               </div>
-              <div className="dashboard-home__card1__stats__card">
+              <div className="dashboard-home__card1__stats__card"
+                            onClick={() => window.location.href ="/justice/dashboard/cases"}
+
+              >
                 <h3 className="dashboard-home__card1__stats__card__title">
-                  All Cases
+                  Closed Cases
                 </h3>
 
                 <div className="dashboard-home__card1__stats__card__subtitle-group">
-                  <h4>2,318</h4>
+                  <h4>800</h4>
                   <h4>
                     +10.38%
                     <svg
@@ -201,13 +218,16 @@ export default function Dashboard() {
                   </h4>
                 </div>
               </div>
-              <div className="dashboard-home__card1__stats__card">
+              <div className="dashboard-home__card1__stats__card"
+                            onClick={() => window.location.href ="/justice/dashboard/cases"}
+
+              >
                 <h3 className="dashboard-home__card1__stats__card__title">
-                  All Cases
+                  Reopened Cases
                 </h3>
 
                 <div className="dashboard-home__card1__stats__card__subtitle-group">
-                  <h4>2,318</h4>
+                  <h4>300</h4>
                   <h4>
                     +10.38%
                     <svg
@@ -227,13 +247,16 @@ export default function Dashboard() {
                   </h4>
                 </div>
               </div>
-              <div className="dashboard-home__card1__stats__card dashboard-home__card1__stats__card-last">
+              <div className="dashboard-home__card1__stats__card dashboard-home__card1__stats__card-last"
+                            onClick={() => window.location.href ="/justice/dashboard/cases"}
+
+              >
                 <h3 className="dashboard-home__card1__stats__card__title">
-                  All Cases
+                  High Priority Cases
                 </h3>
 
                 <div className="dashboard-home__card1__stats__card__subtitle-group">
-                  <h4>2,318</h4>
+                  <h4>140</h4>
                   <h4></h4>
                 </div>
               </div>
@@ -246,7 +269,7 @@ export default function Dashboard() {
                 <div className="dashboard-home__card1__agency-stats__card__title-group">
                   <Image
                     alt=""
-                    src="/assets/logo.png"
+                    src="/assets/police.png"
                     width={28}
                     height={28}
                     style={{ borderRadius: "50%" }}
@@ -261,45 +284,45 @@ export default function Dashboard() {
                 <div className="dashboard-home__card1__agency-stats__card__title-group">
                   <Image
                     alt=""
-                    src="/assets/logo.png"
+                    src="/assets/efcc.png"
                     width={28}
                     height={28}
                     style={{ borderRadius: "50%" }}
                   />
-                  <h3>POLICE FORCE</h3>
+                  <h3>EFCC</h3>
                 </div>
                 <h4 className="dashboard-home__card1__agency-stats__card__subtitle">
-                  1,071
+                  820
                 </h4>
               </div>
               <div className="dashboard-home__card1__agency-stats__card">
                 <div className="dashboard-home__card1__agency-stats__card__title-group">
                   <Image
                     alt=""
-                    src="/assets/logo.png"
+                    src="/assets/icpc.png"
                     width={28}
                     height={28}
                     style={{ borderRadius: "50%" }}
                   />
-                  <h3>POLICE FORCE</h3>
+                  <h3>ICPC</h3>
                 </div>
                 <h4 className="dashboard-home__card1__agency-stats__card__subtitle">
-                  1,071
+                  573
                 </h4>
               </div>
               <div className="dashboard-home__card1__agency-stats__card">
                 <div className="dashboard-home__card1__agency-stats__card__title-group">
                   <Image
                     alt=""
-                    src="/assets/logo.png"
+                    src="/assets/dss.png"
                     width={28}
                     height={28}
                     style={{ borderRadius: "50%" }}
                   />
-                  <h3>POLICE FORCE</h3>
+                  <h3>DSS</h3>
                 </div>
                 <h4 className="dashboard-home__card1__agency-stats__card__subtitle">
-                  1,071
+                  220
                 </h4>
               </div>
 
@@ -307,45 +330,45 @@ export default function Dashboard() {
                 <div className="dashboard-home__card1__agency-stats__card__title-group">
                   <Image
                     alt=""
-                    src="/assets/logo.png"
+                    src="/assets/immigration.png"
                     width={28}
                     height={28}
                     style={{ borderRadius: "50%" }}
                   />
-                  <h3>POLICE FORCE</h3>
+                  <h3>IMMIGRATION</h3>
                 </div>
                 <h4 className="dashboard-home__card1__agency-stats__card__subtitle">
-                  1,071
+                  662
                 </h4>
               </div>
               <div className="dashboard-home__card1__agency-stats__card dashboard-home__card1__agency-stats__card-max">
                 <div className="dashboard-home__card1__agency-stats__card__title-group">
                   <Image
                     alt=""
-                    src="/assets/logo.png"
+                    src="/assets/civil defence.png"
                     width={28}
                     height={28}
                     style={{ borderRadius: "50%" }}
                   />
-                  <h3>POLICE FORCE</h3>
+                  <h3>CIVIL DEFENCE</h3>
                 </div>
                 <h4 className="dashboard-home__card1__agency-stats__card__subtitle">
-                  1,071
+                  541
                 </h4>
               </div>
               <div className="dashboard-home__card1__agency-stats__card dashboard-home__card1__agency-stats__card-max">
                 <div className="dashboard-home__card1__agency-stats__card__title-group">
                   <Image
                     alt=""
-                    src="/assets/logo.png"
+                    src="/assets/customs.png"
                     width={28}
                     height={28}
                     style={{ borderRadius: "50%" }}
                   />
-                  <h3>POLICE FORCE</h3>
+                  <h3>CUSTOMS</h3>
                 </div>
                 <h4 className="dashboard-home__card1__agency-stats__card__subtitle">
-                  1,071
+                  697
                 </h4>
               </div>
             </div>
