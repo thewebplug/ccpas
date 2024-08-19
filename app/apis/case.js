@@ -170,3 +170,22 @@ export const assignCase = async (id, name, token) => {
     return error?.response;
   }
 };
+
+
+export const getCaseSummary = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const res = await axios.get(`https://ccppas.centraconnect.ai/fmoj/summary`,
+      config
+    );
+
+    return res;
+  } catch (error) {
+    console.log("ERROR", error);
+    return error?.response;
+  }
+};

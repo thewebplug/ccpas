@@ -4,8 +4,6 @@ export function middleware(request) {
   // Check for a token in cookies
   const token = request.cookies.get('auth_token')?.value
 
-  console.log('victony', token);
-
   if (!token) {
     return NextResponse.redirect(new URL('/justice/login', request.url))
   }

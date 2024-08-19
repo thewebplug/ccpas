@@ -271,7 +271,7 @@ export default function Cases() {
               <tr key={index}
               onClick={() => {
                 // if (assignee) {
-                  window.location.href = `/justice/dashboard/case-details/${item?.id}`
+                  window.location.href = `/justice/dashboard/cases/deactivated-cases/${item?.id}`
                 // }
               }}
               >

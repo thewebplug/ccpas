@@ -299,8 +299,12 @@ export default function Sidebar() {
         <div className="adminDashboard-sidebar__item__title">Task</div>
       </div>
       <div
-        className="adminDashboard-sidebar__item"
-        // onClick={() => window.location.href = "/justice/dashboard/create-case"}
+       className={
+        pathname?.includes("email")
+          ? "adminDashboard-sidebar__item adminDashboard-sidebar__item-active"
+          : "adminDashboard-sidebar__item"
+      }
+        onClick={() => window.location.href = "/justice/dashboard/email"}
       >
         <div>
           <svg
