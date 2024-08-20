@@ -172,6 +172,8 @@ export const assignCase = async (id, name, token) => {
 };
 
 
+
+
 export const getCaseSummary = async (token) => {
   const config = {
     headers: {
@@ -182,6 +184,28 @@ export const getCaseSummary = async (token) => {
     const res = await axios.get(`https://ccppas.centraconnect.ai/fmoj/summary`,
       config
     );
+
+    return res;
+  } catch (error) {
+    console.log("ERROR", error);
+    return error?.response;
+  }
+};
+
+
+export const classifyCase = async (id, classification, token) => {
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const res = await axios.patch(`https://ccppas.centraconnect.ai/fmoj/case/${id}/classifyCase`, {
+      class: classification
+    },
+    config
+  );
 
     return res;
   } catch (error) {

@@ -16,6 +16,7 @@
     gap: 20px;
     // top: 100%;
     // left: 10%;
+    overflow-y: auto;
   
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   
@@ -27,6 +28,25 @@
       color: #494949;
       font-weight: 400;
       cursor: pointer;
+  
+      svg {
+        flex-shrink: 0;
+      }
+
+      &__svg-rotate {
+        transform: rotate(90deg);
+      }
+    }
+
+    &__menu-sub-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+      color: #494949;
+      font-weight: 400;
+      cursor: pointer;
+      padding-left: 40px;
   
       svg {
         flex-shrink: 0;

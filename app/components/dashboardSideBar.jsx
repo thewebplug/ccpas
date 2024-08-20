@@ -350,6 +350,22 @@ export default function Sidebar() {
       </div>
       <div
         className={
+          pathname?.includes("finance")
+            ? "adminDashboard-sidebar__item adminDashboard-sidebar__item-active"
+            : "adminDashboard-sidebar__item"
+        }
+        onClick={() => (window.location.href = "/justice/dashboard/finance")}
+      >
+        <div>
+        <svg fill="#94A3B8" width="24"
+            height="24"
+             viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs></defs><title>finance</title><rect x="2" y="28" width="28" height="2"></rect><path d="M27,11a1,1,0,0,0,1-1V7a1,1,0,0,0-.66-.94l-11-4a1,1,0,0,0-.68,0l-11,4A1,1,0,0,0,4,7v3a1,1,0,0,0,1,1H6V24H4v2H28V24H26V11ZM6,7.7,16,4.06,26,7.7V9H6ZM18,24H14V11h4ZM8,11h4V24H8ZM24,24H20V11h4Z" transform="translate(0 0)"></path><rect id="_Transparent_Rectangle_" data-name="<Transparent Rectangle>" class="cls-1" style={{fill: "none"}} width="32" height="32"></rect></g></svg>
+        </div>
+
+        <div className="adminDashboard-sidebar__item__title">Finance</div>
+      </div>
+      <div
+        className={
           pathname?.includes("admin")
             ? "adminDashboard-sidebar__item adminDashboard-sidebar__item-active"
             : "adminDashboard-sidebar__item"

@@ -398,7 +398,7 @@ export default function CreateCase() {
                 `https://kaxl3c7ehj.execute-api.us-east-1.amazonaws.com/dev/v1/upload`,
                 {
                   user: "teddy",
-                  media_type: docType === "mpeg" ? "mp3" : docType,
+                  media_type: docType.includes("mpeg") ? "mp3" : docType,
                   contents: result,
                 }
                 // ,{
@@ -540,8 +540,14 @@ export default function CreateCase() {
       setKeyword("");
     }
   };
+
+  useEffect(() => {
+    if(judge?.length > 0) {
+      setCaseStatus("Assigned");
+    }
+  }, [judge]);
   return (
-    <div className="create-case">
+    <form className="create-case" onSubmit={handleCreateCase}>
       <div className="create-case__nav">
         <svg
           width="12"
@@ -596,12 +602,15 @@ export default function CreateCase() {
       <div className="create-case__title">
         <div>New Case File</div>
         <div>
-          <button>Cancel</button>
-          <button>Save</button>
+          <button
+          type="button"
+          onClick={() => window.location.href = "/justice/dashboard/cases"}
+          >Cancel</button>
+          <button type="submit">Save</button>
         </div>
       </div>
 
-      <div className="create-case__grid">
+      <div className="create-case__grid" >
         <div className="create-case__grid__personal-details">
           {images?.length < 1 && (
             <label>
@@ -889,9 +898,14 @@ export default function CreateCase() {
           </div>
           <div className="create-case__grid__case-details__case-status">
             <label htmlFor="caseStatus">Case status:</label>
-            <select name="" id="" required>
+            <select name="" id="" required
+            value={caseStatus}
+            onChange={(e) => setCaseStatus(e.target.value)}
+            >
               <option value="">Select Status</option>
-              <option value="Status">Status</option>
+              <option value="Unassigned">Unassigned</option>
+              <option value="Assigned">Assigned</option>
+              <option value="Filed in Court">Filed in Court</option>
             </select>
           </div>
           <div className="create-case__grid__case-details__title">
@@ -1634,7 +1648,7 @@ Ahmed Aisha
             </div>
           </div>
 
-          <div className="create-case__grid__case-details__title">
+          {/* <div className="create-case__grid__case-details__title">
             Asset Siezure
           </div>
           <div className="create-case__grid__case-details__subtitle">
@@ -1708,8 +1722,8 @@ Ahmed Aisha
             </div>
 
             <div className="create-case__grid__case-details__assets__button-group">
-              <button>Cancel</button>
-              <button>Link Asset</button>
+              <button type="button">Cancel</button>
+              <button type="button">Link Asset</button>
             </div>
 
             <div className="create-case__grid__case-details__assets__table-header">
@@ -1802,11 +1816,11 @@ Ahmed Aisha
                 </svg>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
       <CaseImageModal open={modalOpen} images={images} />
-    </div>
+    </form>
   );
 }
