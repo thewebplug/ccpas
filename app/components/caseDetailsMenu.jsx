@@ -290,6 +290,7 @@ const Menu = ({ open, setOpen, classifyCaseFunction, caseNumber, caseId }) => {
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
           item={selectedItem}
+          caseNumber={caseNumber}
         />
 
         <ExpungeCaseModal

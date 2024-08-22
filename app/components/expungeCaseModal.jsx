@@ -44,7 +44,7 @@ export default function ExpungeCaseModal({caseDetails, setModalOpen, modalOpen }
         const otp = `${otp1}${otp2}${otp3}${otp4}`
         const response = await verifyExpunge(otp, doc, caseDetails?.caseNumber, auth?.userInfo?.officialEmail, auth?.token);
         console.log('otp response', response);
-        if(response?.data?.statusCode === 200) {
+        if(response?.data?.statusCode === 201) {
           setModaleStage(4);
         }else {
           toast.error("Unable to expunge case. Please try again later")

@@ -292,3 +292,37 @@ export const verifyExpunge = async (
     return error?.response;
   }
 };
+
+export const transferCase = async (
+  caseNumber,
+    fmojDept,
+    token
+) => {
+  console.log("otp object", {
+    caseNumber,
+    fmojDept,
+    token
+  });
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const res = await axios.patch(
+      `https://ccppas.centraconnect.ai/fmoj/transfer/${caseNumber}/fmoj-dept`,
+      
+      {
+        fmojDept,
+        token,
+      },
+      config
+    );
+
+    return res;
+  } catch (error) {
+    console.log("ERROR", error);
+    return error?.response;
+  }
+};
