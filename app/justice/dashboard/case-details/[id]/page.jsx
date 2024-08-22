@@ -244,7 +244,7 @@ Export <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http:/
 
 
         </div>
- <Menu open={menuActive} setOpen={setMenuActive} classifyCaseFunction={handleClassifyCase} />
+ <Menu open={menuActive} setOpen={setMenuActive} classifyCaseFunction={handleClassifyCase} caseId={singleCase?.id} caseNumber={singleCase?.caseNumber} />
 
       </div>
     </div>

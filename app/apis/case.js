@@ -31,14 +31,13 @@ export const createCase = async (
   mugshot,
   token
 ) => {
-
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
   try {
-    console.log( {
+    console.log({
       caseNumber,
       offenseCategory,
       fmojDept,
@@ -66,8 +65,8 @@ export const createCase = async (
       dateInitiated,
       associate,
       attachment,
-      mugshot
-    },);
+      mugshot,
+    });
     const res = await axios.post(
       `https://ccppas.centraconnect.ai/fmoj/case`,
       {
@@ -98,7 +97,7 @@ export const createCase = async (
         dateInitiated,
         associate,
         attachment,
-        mugshot
+        mugshot,
       },
       config
     );
@@ -106,10 +105,9 @@ export const createCase = async (
     return res;
   } catch (error) {
     console.log("ERROR", error);
-    return error?.response
+    return error?.response;
   }
 };
-
 
 export const getCases = async (token) => {
   const config = {
@@ -118,7 +116,8 @@ export const getCases = async (token) => {
     },
   };
   try {
-    const res = await axios.get(`https://ccppas.centraconnect.ai/fmoj/cases`,
+    const res = await axios.get(
+      `https://ccppas.centraconnect.ai/fmoj/cases`,
       config
     );
 
@@ -136,7 +135,8 @@ export const getCase = async (id, token) => {
     },
   };
   try {
-    const res = await axios.get(`https://ccppas.centraconnect.ai/fmoj/case/${id}`,
+    const res = await axios.get(
+      `https://ccppas.centraconnect.ai/fmoj/case/${id}`,
       config
     );
 
@@ -147,10 +147,11 @@ export const getCase = async (id, token) => {
   }
 };
 
-
 export const assignCase = async (id, name, token) => {
   console.log({
-    id, name, token
+    id,
+    name,
+    token,
   });
   const config = {
     headers: {
@@ -158,11 +159,13 @@ export const assignCase = async (id, name, token) => {
     },
   };
   try {
-    const res = await axios.put(`https://ccppas.centraconnect.ai/crud/assigned-judge/${id}`, {
-      name
-    },
-    config
-  );
+    const res = await axios.put(
+      `https://ccppas.centraconnect.ai/crud/assigned-judge/${id}`,
+      {
+        name,
+      },
+      config
+    );
 
     return res;
   } catch (error) {
@@ -170,9 +173,6 @@ export const assignCase = async (id, name, token) => {
     return error?.response;
   }
 };
-
-
-
 
 export const getCaseSummary = async (token) => {
   const config = {
@@ -181,7 +181,8 @@ export const getCaseSummary = async (token) => {
     },
   };
   try {
-    const res = await axios.get(`https://ccppas.centraconnect.ai/fmoj/summary`,
+    const res = await axios.get(
+      `https://ccppas.centraconnect.ai/fmoj/summary`,
       config
     );
 
@@ -192,8 +193,40 @@ export const getCaseSummary = async (token) => {
   }
 };
 
-
 export const classifyCase = async (id, classification, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const res = await axios.patch(
+      `https://ccppas.centraconnect.ai/fmoj/case/${id}/classifyCase`,
+      {
+        class: classification,
+      },
+      config
+    );
+
+    return res;
+  } catch (error) {
+    console.log("ERROR", error);
+    return error?.response;
+  }
+};
+
+export const expungeCase = async (
+  fileLink,
+  caseNumber,
+  officialEmail,
+  token
+) => {
+  console.log({
+    fileLink,
+    caseNumber,
+    officialEmail,
+    token,
+  });
 
   const config = {
     headers: {
@@ -201,11 +234,57 @@ export const classifyCase = async (id, classification, token) => {
     },
   };
   try {
-    const res = await axios.patch(`https://ccppas.centraconnect.ai/fmoj/case/${id}/classifyCase`, {
-      class: classification
+    const res = await axios.post(
+      `https://ccppas.centraconnect.ai/fmoj/expunge/initiate`,
+      {
+        fileLink,
+        caseNumber,
+        officialEmail,
+        token,
+      },
+      config
+    );
+
+    return res;
+  } catch (error) {
+    console.log("ERROR", error);
+    return error?.response;
+  }
+};
+
+export const verifyExpunge = async (
+  otp,
+  fileLink,
+  caseNumber,
+  officialEmail,
+  token
+) => {
+  console.log("otp object", {
+    otp,
+    fileLink,
+    caseNumber,
+    officialEmail,
+    token,
+  });
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
     },
-    config
-  );
+  };
+  try {
+    const res = await axios.post(
+      `https://ccppas.centraconnect.ai/fmoj/expunge/verify-and-create/${caseNumber}?otp=${otp}`,
+      
+      {
+        otp,
+        fileLink,
+        caseNumber,
+        officialEmail,
+        token,
+      },
+      config
+    );
 
     return res;
   } catch (error) {
