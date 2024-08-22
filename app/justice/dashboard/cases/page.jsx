@@ -346,47 +346,30 @@ export default function Cases() {
                 </td>
                 <td>
                   <div className="offence-icons">
-                    <span>
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M2.5 4.9974H4.16667M4.16667 4.9974H17.5M4.16667 4.9974V16.6641C4.16667 17.1061 4.34226 17.53 4.65482 17.8426C4.96738 18.1551 5.39131 18.3307 5.83333 18.3307H14.1667C14.6087 18.3307 15.0326 18.1551 15.3452 17.8426C15.6577 17.53 15.8333 17.1061 15.8333 16.6641V4.9974H4.16667ZM6.66667 4.9974V3.33073C6.66667 2.8887 6.84226 2.46478 7.15482 2.15222C7.46738 1.83966 7.89131 1.66406 8.33333 1.66406H11.6667C12.1087 1.66406 12.5326 1.83966 12.8452 2.15222C13.1577 2.46478 13.3333 2.8887 13.3333 3.33073V4.9974M8.33333 9.16406V14.1641M11.6667 9.16406V14.1641"
-                          stroke="#667085"
-                          stroke-width="1.66667"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
+                    <span className="pointer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.location.href = `/justice/dashboard/case-details/${item?.id}`
+                    }}
+                    >
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.833984 10.0026C0.833984 10.0026 4.16732 3.33594 10.0007 3.33594C15.834 3.33594 19.1673 10.0026 19.1673 10.0026C19.1673 10.0026 15.834 16.6693 10.0007 16.6693C4.16732 16.6693 0.833984 10.0026 0.833984 10.0026Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.0007 12.5026C11.3814 12.5026 12.5006 11.3833 12.5006 10.0026C12.5006 8.62189 11.3814 7.5026 10.0007 7.5026C8.61994 7.5026 7.50065 8.62189 7.50065 10.0026C7.50065 11.3833 8.61994 12.5026 10.0007 12.5026Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
                     </span>
 
-                    <span>
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g clip-path="url(#clip0_517_14405)">
-                          <path
-                            d="M14.166 2.50286C14.3849 2.28399 14.6447 2.11037 14.9307 1.99192C15.2167 1.87347 15.5232 1.8125 15.8327 1.8125C16.1422 1.8125 16.4487 1.87347 16.7347 1.99192C17.0206 2.11037 17.2805 2.28399 17.4993 2.50286C17.7182 2.72173 17.8918 2.98156 18.0103 3.26753C18.1287 3.5535 18.1897 3.85999 18.1897 4.16952C18.1897 4.47905 18.1287 4.78555 18.0103 5.07152C17.8918 5.35748 17.7182 5.61732 17.4993 5.83619L6.24935 17.0862L1.66602 18.3362L2.91602 13.7529L14.166 2.50286Z"
-                            stroke="#667085"
-                            stroke-width="1.66667"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_517_14405">
-                            <rect width="20" height="20" fill="white" />
-                          </clipPath>
-                        </defs>
-                      </svg>
+                    <span className="pointer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      // window.location.href = `/justice/dashboard/case-details/${item?.id}`
+                    }}>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.99935 1.66406L12.5743 6.88073L18.3327 7.7224L14.166 11.7807L15.1493 17.5141L9.99935 14.8057L4.84935 17.5141L5.83268 11.7807L1.66602 7.7224L7.42435 6.88073L9.99935 1.66406Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
                     </span>
                   </div>
                 </td>
