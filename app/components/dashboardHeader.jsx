@@ -3,9 +3,11 @@
 import Image from "next/image";
 import Menu from "./menu";
 import { useState } from "react";
+import Notifications from "./notifications";
 
 export default function DashboardHeader() {
   const [menuActive, setMenuActive] = useState(false)
+  const [open, setOpen] = useState(false)
 
     return (
         <div className="dashboard-header">
@@ -79,7 +81,9 @@ export default function DashboardHeader() {
             </svg>
           </div>
 
-<div className="dashboard-header__account__notifications">
+<div className="dashboard-header__account__notifications"
+onClick={() => setOpen(true)}
+>
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9.04173 19.0069H14.9583C14.7196 20.425 13.486 21.5054 12 21.5054C10.514 21.5054 9.28037 20.425 9.04173 19.0069ZM12 2.00781C16.1421 2.00781 19.5 5.36567 19.5 9.50781V13.5063L20.9183 16.6664C20.9732 16.7887 21.0016 16.9213 21.0016 17.0554C21.0016 17.5801 20.5763 18.0054 20.0516 18.0054H3.95219C3.8184 18.0054 3.68613 17.9772 3.56402 17.9225C3.08515 17.7081 2.87073 17.1461 3.08511 16.6672L4.50001 13.5067L4.50011 9.49489L4.50453 9.24497C4.6436 5.21425 7.95588 2.00781 12 2.00781Z" fill="black"/>
 <circle cx="17.5" cy="5.5" r="4" fill="#BA0000" stroke="#E9E9E9"/>
@@ -98,6 +102,8 @@ export default function DashboardHeader() {
             style={{ borderRadius: "50%" }}
           />
         </div>
+
+        <Notifications open={open} setOpen={setOpen} />
       </div>
     )
 }

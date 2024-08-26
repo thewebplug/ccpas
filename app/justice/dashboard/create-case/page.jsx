@@ -4,7 +4,7 @@ import CaseImageModal from "@/app/components/caseImageModal";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function CreateCase() {
   const offences = {
@@ -184,6 +184,7 @@ export default function CreateCase() {
   const justiceOfficers = ["Jibril", "Osho James", "James Teddy", "John doe"];
   const lawOfficers = ["Fincl", "Osho James", "James Teddy", "John doe"];
 
+  const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const [filteredoffences, setFilteredOffences] = useState(
     Object.keys(offences)
@@ -204,6 +205,7 @@ export default function CreateCase() {
   const [images, setImages] = useState([]);
   const [docs, setDocs] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [docLoading, setDocLoading] = useState(false);
   const mediaRef = useRef("");
   const [activeSearchInput, setActiveSearchInput] = useState("");
@@ -248,6 +250,7 @@ export default function CreateCase() {
 
   const handleCreateCase = async (e) => {
     e.preventDefault();
+    setLoading(true)
     const response = await createCase(
       caseNumber,
       offense,
@@ -285,9 +288,19 @@ export default function CreateCase() {
     if (response?.data?.statusCode === 201) {
       alert("Case created successfully");
       window.location.href = "/justice/dashboard/cases";
-    } else {
+    } else if(res?.data?.statusCode === 403) {
+      document.cookie =
+      "auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+    dispatch({
+      type: "LOGOUT_SUCCESS",
+    });
+    localStorage.removeItem("token");
+    window.location.href = "/justice/login";
+    } 
+    else {
       alert("Something went wrong");
     }
+    setLoading(false)
   };
 
   const handleAssAssoc = (e) => {

@@ -602,7 +602,7 @@ Copy
               {singleCaseAttachment?.map((doc, index) => (
                 <div className="case-details__grid__case-details__attachments__uploaded-files-grid__card" key={index}>
                   <div className="case-details__grid__case-details__attachments__uploaded-files-grid__card__card-group">
-                    {doc?.type?.includes("pdf") && (
+                    {doc?.url?.includes("pdf") && (
                       <svg
                         width="24"
                         height="24"
@@ -632,7 +632,7 @@ Copy
                       </svg>
                     )}
 
-                    {doc?.type?.includes("mp3") || doc?.type?.includes("wav") ? (
+                    {doc?.url?.includes("mp3") || doc?.url?.includes("wav") ? (
                       <svg
                         width="24"
                         height="24"
@@ -668,11 +668,11 @@ Copy
                       ""
                     )}
 
-                    {doc?.type?.includes("mp4") ||
-                    doc?.type?.includes("mov") ||
-                    doc?.type?.includes("flac") ||
-                    doc?.type?.includes("alac") ||
-                    doc?.type?.includes("aiff") ? (
+                    {doc?.url?.includes("mp4") ||
+                    doc?.url?.includes("mov") ||
+                    doc?.url?.includes("flac") ||
+                    doc?.url?.includes("alac") ||
+                    doc?.url?.includes("aiff") ? (
                       <svg
                         width="24"
                         height="24"

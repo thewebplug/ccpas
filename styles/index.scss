@@ -25,6 +25,7 @@
 @import 'components/footer';
 @import 'components/caseImageModal';
 @import 'components/caseDetailsMenu';
+@import 'components/notifications';
 @import 'components/finance/tabs';
 @import 'components/finance/nav';
 
@@ -43,6 +44,7 @@
 @import 'pages/justice/dashboard/review.scss';
 @import 'pages/justice/dashboard/profile.scss';
 @import 'pages/justice/dashboard/deactivated-case.scss';
+@import 'pages/justice/dashboard/calendar';
 
 @import 'pages/justice/admin/layout';
 @import 'pages/justice/admin/home';

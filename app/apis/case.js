@@ -101,7 +101,7 @@ export const createCase = async (
       },
       config
     );
-
+    
     return res;
   } catch (error) {
     console.log("ERROR", error);
