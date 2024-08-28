@@ -4,6 +4,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import bootstrap5Plugin from '@fullcalendar/bootstrap5'
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from 'next/link';
@@ -111,7 +112,7 @@ console.log('selectedEvent', selectedEvent);
     <div className="demo-app calendar">
       <div className="demo-app-main">
         <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, bootstrap5Plugin]}
           headerToolbar={{
             left: "prev,next today",
             center: "title",
@@ -133,6 +134,10 @@ console.log('selectedEvent', selectedEvent);
         eventChange={function(){}}
         eventRemove={function(){}}
         */
+       eventColor="#F0F9F2"  // Default color for all events
+  eventTextColor="#03781D"
+  eventBorderColor="#C2EECC"
+
         />
       </div>
 
