@@ -185,6 +185,7 @@ background: var(--White, #FFF);
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 10px;
 
             & > div {
                 @extend %title-14;
@@ -283,7 +284,7 @@ color: #009B07;
         gap: 120px;
         border-bottom: 1px solid #EAECF0;
         padding: 21px 0;
-        & > input {
+        & > input, & > select {
             @extend %case-input;
             width: 100%;
             height: 44px;
@@ -296,7 +297,7 @@ color: #009B07;
         }
         &:nth-child(2) {
 
-            & > input {
+            & > input, & > select {
                 background: #FFF !important;
                 color: #092C4C !important;
                 font-weight: 500 !important;

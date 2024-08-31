@@ -1,12 +1,13 @@
 "use client"
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddUserModal from "./add-user/page";
 import AddedUserModal from "./added-user/page";
 import DeactivateUserModal from "./deactivate-user/page";
 import DeactivatedUser from "./deactivated-user/page";
 import PreviewUser from "./preview-user/page";
+import { listUsers } from "@/app/apis/users";
 
 const Admin = () => {
   const [isAddUserModalOpen, setAddUserModalOpen] = useState(false);
@@ -15,6 +16,7 @@ const Admin = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeactivated, setIsDeactivated] = useState(false);
   const [selectAll, setSelectAll] = useState(false);
+  const [users, setUsers] = useState([]);
 
   const handleOpenAddUserModal = () => {
     setAddUserModalOpen(true);
@@ -41,6 +43,17 @@ const Admin = () => {
   };
 
 
+
+  const handleFetUsers = async () => {
+    const response = await listUsers();
+    console.log('response from users', response);
+    setUsers(response?.data?.data);
+  }
+
+
+  useEffect(() => {
+    handleFetUsers();
+  }, [])
 
 
   return (
@@ -119,105 +132,13 @@ const Admin = () => {
                     </svg>
                   </div>
                 </th>
-                <th>Title</th>
+                <th>Gov ID</th>
                 <th>Department</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              {[
-                {
-                  name: "Adeyemi Oloye",
-                  email: "A.oloye@justice.gov.ng",
-                  access: "Admin",
-                  title: "Principal State Counsel",
-                  department: "Department of Public Prosecutions (DPP)",
-                  imageUrl: "/assets/avatars/ava-ade.png",
-                },
-
-                {
-                  name: "Emeka Ani",
-                  email: "E.ani@justice.gov.ng",
-                  access: "User",
-                  title: "Legal Officer",
-                  department: "Department of Civil Litigation",
-                  imageUrl: "/assets/avatars/ava-emeka.png",
-                },
-
-                {
-                  name: "Lotanna Okor",
-                  email: "L.okor@justice.gov.ng",
-                  access: "Admin",
-                  title: "Principal State Counsel",
-                  department: "Department of Legal Drafting and Law Review",
-                  imageUrl: "/assets/avatars/ava-okor.png",
-                },
-
-                {
-                  name: "Demi Nike",
-                  email: "D.nike@justice.gov.ng",
-                  access: "Admin",
-                  title: "Director of Public Prosecutions",
-                  department: "Department of International and Comparative Law",
-                  imageUrl: "/assets/avatars/ava-demi.png",
-                },
-
-                {
-                  name: "Ahmed Wale",
-                  email: "A.wale@justice.gov.ng",
-                  access: "Admin",
-                  title: "Director of Public Prosecutions",
-                  department: "Department of Citizens' Rights",
-                  imageUrl: "/assets/avatars/ava-wale.png",
-                },
-
-                {
-                  name: "Natali Oboli",
-                  email: "N.oboi@justice.gov.ng",
-                  access: "User",
-                  title: "Senior State Counsel",
-                  department: "Department of Finance and Accounts",
-                  imageUrl: "/assets/avatars/ava-oboli.png",
-                },
-
-                {
-                  name: "Haruna Adamu",
-                  email: "H.adamu@justice.gov.ng",
-                  access: "User",
-                  title: "Solicitor General",
-                  department:
-                    "Department of Planning, Research, and Statistics",
-                  imageUrl: "/assets/avatars/ava-adamu.png",
-                },
-
-                {
-                  name: "Kaduna Dede",
-                  email: "K.dede@justice.gov.ng",
-                  access: "User",
-                  title: "Legal Officer",
-                  department:
-                    "Department of Corporate Affairs and External Relations",
-                  imageUrl: "/assets/avatars/ava-dede.png",
-                },
-
-                {
-                  name: "Anike Mustapha",
-                  email: "A.mustapha@justice.gov.ng",
-                  access: "Super Admin",
-                  title: "Solicitor General of the Federation",
-                  department: "Department of Human Resources Management",
-                  imageUrl: "/assets/avatars/ava-anike.png",
-                },
-
-                {
-                  name: "Kate Adebowale",
-                  email: "K.adebowale@justice.gov.ng",
-                  access: "User",
-                  title: "Junior Legal Officers",
-                  department: "Department of Administration",
-                  imageUrl: "/assets/avatars/ava-kate.png",
-                },
-              ].map((user, index) => (
+              {users?.map((user, index) => (
                 <tr key={index} onClick={() => setPreviewModal(true)}>
                   <td className="user-name" >
                     
@@ -225,26 +146,25 @@ const Admin = () => {
 
                     <Image
                       alt=""
-                      src={user.imageUrl}
+                      // src={user.imageUrl}
+                      src="/assets/avatars/ava-ade.png"
                       width={40}
                       height={40}
                       style={{ borderRadius: "50%", float: "left" }}
                     />
                     <div>
-                      {user.name} <br />
-                      <span>{user.email}</span>
+                      {user.officialEmail} <br />
+                      <span>{user.supervisorEmail}</span>
                     </div>
                   </td>
                   <td onClick={openModal}>
                     <span
-                      className={`access ${user.access
-                        .toLowerCase()
-                        .replace(" ", "-")}`}
+                      className={`access user`}
                     >
-                      {user.access}
+                      User
                     </span>
                   </td>
-                  <td onClick={openModal}>{user.title}</td>
+                  <td onClick={openModal}>{user.govId}</td>
                   <td onClick={openModal}>{user.department}</td>
                   <td onClick={openModal}>
                     <svg

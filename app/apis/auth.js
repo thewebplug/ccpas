@@ -118,3 +118,25 @@ export const changPassword = async (currentPassword, newPassword, id, token) => 
     return error?.response;
   }
 };
+
+export const getProfile = async (officialEmail, token) => {
+  console.log({officialEmail, token});
+  
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const res = await axios.post(`https://sso.centraconnect.ai/auth/profile`, {
+      officialEmail
+    },
+    config
+  );
+
+    return res;
+  } catch (error) {
+    console.log("ERROR", error);
+    return error?.response;
+  }
+};
