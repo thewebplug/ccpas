@@ -1,5 +1,6 @@
 import AdminHeader from "@/app/components/admin/adminDashboardHeader";
-import AdminSidebar from "@/app/components/admin/adminDashboardSidebar";
+import Sidebar from "@/app/components/dashboardSideBar";
+// import AdminSidebar from "@/app/components/admin/adminDashboardSidebar";
 import React from "react";
 
 const CasesLayout = ({ children }) => {
@@ -7,7 +8,8 @@ const CasesLayout = ({ children }) => {
     <main className="cases">
       <AdminHeader />
       <div className="cases__inner">
-        <AdminSidebar />
+        {/* <AdminSidebar /> */}
+        <Sidebar />
         <div className="cases__inner__main">
           <div className="cases__inner__main__nav">
             <svg
