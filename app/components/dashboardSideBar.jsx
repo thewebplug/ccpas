@@ -1,11 +1,14 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 export default function Sidebar() {
   const pathname = usePathname();
+  console.log('pathname', pathname.split("/")?.length);
   const dispatch = useDispatch();
+  const [dropdownActive, setDropdownActive] = useState(false)
 
   const handleLogout = () => {
     document.cookie =
@@ -17,15 +20,17 @@ export default function Sidebar() {
     window.location.href = "/justice/login";
     window.scrollTo(0, 0);
   };
-  
 
-  console.log('ginger', pathname?.split('/')?.length);
 
   return (
     <div className="adminDashboard-sidebar">
       <div
-         className={pathname?.includes("dashboard") && pathname?.split('/')?.length < 4 ? "adminDashboard-sidebar__item adminDashboard-sidebar__item-active" : "adminDashboard-sidebar__item"}
-         onClick={() => window.location.href = "/justice/dashboard"}
+        className={
+          pathname?.includes("dashboard") && pathname?.split("/")?.length < 4
+            ? "adminDashboard-sidebar__item adminDashboard-sidebar__item-active"
+            : "adminDashboard-sidebar__item"
+        }
+        onClick={() => (window.location.href = "/justice/dashboard")}
       >
         <div>
           <svg
@@ -55,33 +60,202 @@ export default function Sidebar() {
         </div>
         <div className="adminDashboard-sidebar__item__title">Dashboard</div>
       </div>
-      <div
-        className={pathname?.includes("cases") ? "adminDashboard-sidebar__item adminDashboard-sidebar__item-active" : "adminDashboard-sidebar__item"}
-        onClick={() => window.location.href = "/justice/dashboard/cases"}
-      >
-        <div>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
+      <div className="adminDashboard-sidebar__item-container">
+        <div
+          className={
+            pathname?.includes("cases")
+              ? "adminDashboard-sidebar__item-container__item adminDashboard-sidebar__item-container__item-active"
+              : "adminDashboard-sidebar__item-container__item"
+          }
+          onClick={() => setDropdownActive(!dropdownActive)}
+        >
+          <div>
+            <div>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.3697 4.89012L13.5097 2.28012C12.6497 1.90012 11.3497 1.90012 10.4897 2.28012L4.62969 4.89012C3.14969 5.55012 2.92969 6.45012 2.92969 6.93012C2.92969 7.41012 3.14969 8.31012 4.62969 8.97012L10.4897 11.5801C10.9197 11.7701 11.4597 11.8701 11.9997 11.8701C12.5397 11.8701 13.0797 11.7701 13.5097 11.5801L19.3697 8.97012C20.8497 8.31012 21.0697 7.41012 21.0697 6.93012C21.0697 6.45012 20.8597 5.55012 19.3697 4.89012Z"
+                  fill="#94A3B8"
+                />
+                <path
+                  d="M12.0003 17.04C11.6203 17.04 11.2403 16.96 10.8903 16.81L4.15031 13.81C3.12031 13.35 2.32031 12.12 2.32031 10.99C2.32031 10.58 2.65031 10.25 3.06031 10.25C3.47031 10.25 3.80031 10.58 3.80031 10.99C3.80031 11.53 4.25031 12.23 4.75031 12.45L11.4903 15.45C11.8103 15.59 12.1803 15.59 12.5003 15.45L19.2403 12.45C19.7403 12.23 20.1903 11.54 20.1903 10.99C20.1903 10.58 20.5203 10.25 20.9303 10.25C21.3403 10.25 21.6703 10.58 21.6703 10.99C21.6703 12.11 20.8703 13.35 19.8403 13.81L13.1003 16.81C12.7603 16.96 12.3803 17.04 12.0003 17.04Z"
+                  fill="#94A3B8"
+                />
+                <path
+                  d="M12.0003 22C11.6203 22 11.2403 21.92 10.8903 21.77L4.15031 18.77C3.04031 18.28 2.32031 17.17 2.32031 15.95C2.32031 15.54 2.65031 15.21 3.06031 15.21C3.47031 15.21 3.80031 15.54 3.80031 15.95C3.80031 16.58 4.17031 17.15 4.75031 17.41L11.4903 20.41C11.8103 20.55 12.1803 20.55 12.5003 20.41L19.2403 17.41C19.8103 17.16 20.1903 16.58 20.1903 15.95C20.1903 15.54 20.5203 15.21 20.9303 15.21C21.3403 15.21 21.6703 15.54 21.6703 15.95C21.6703 17.17 20.9503 18.27 19.8403 18.77L13.1003 21.77C12.7603 21.92 12.3803 22 12.0003 22Z"
+                  fill="#94A3B8"
+                />
+              </svg>
+            </div>
+            <div className="adminDashboard-sidebar__item__title">Cases</div>
+          </div>
+          {dropdownActive ? 
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.34876 3.42336L10.3438 7.4184C10.5365 7.61107 10.5365 7.92345 10.3438 8.11611L9.87782 8.58206C9.68547 8.77441 9.37373 8.77478 9.18093 8.58288L5.9999 5.41675L2.81888 8.58288C2.62608 8.77478 2.31434 8.77441 2.12199 8.58206L1.65604 8.11611C1.46336 7.92343 1.46336 7.61105 1.65604 7.4184L5.65103 3.42336C5.84371 3.23071 6.15609 3.23071 6.34876 3.42336Z" fill="#009B07"/>
+          </svg>
+          
+          : <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M19.3697 4.89012L13.5097 2.28012C12.6497 1.90012 11.3497 1.90012 10.4897 2.28012L4.62969 4.89012C3.14969 5.55012 2.92969 6.45012 2.92969 6.93012C2.92969 7.41012 3.14969 8.31012 4.62969 8.97012L10.4897 11.5801C10.9197 11.7701 11.4597 11.8701 11.9997 11.8701C12.5397 11.8701 13.0797 11.7701 13.5097 11.5801L19.3697 8.97012C20.8497 8.31012 21.0697 7.41012 21.0697 6.93012C21.0697 6.45012 20.8597 5.55012 19.3697 4.89012Z"
-              fill="#94A3B8"
+              d="M5 7.5L10 12.5L15 7.5"
+              stroke="#94A3B8"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             />
-            <path
-              d="M12.0003 17.04C11.6203 17.04 11.2403 16.96 10.8903 16.81L4.15031 13.81C3.12031 13.35 2.32031 12.12 2.32031 10.99C2.32031 10.58 2.65031 10.25 3.06031 10.25C3.47031 10.25 3.80031 10.58 3.80031 10.99C3.80031 11.53 4.25031 12.23 4.75031 12.45L11.4903 15.45C11.8103 15.59 12.1803 15.59 12.5003 15.45L19.2403 12.45C19.7403 12.23 20.1903 11.54 20.1903 10.99C20.1903 10.58 20.5203 10.25 20.9303 10.25C21.3403 10.25 21.6703 10.58 21.6703 10.99C21.6703 12.11 20.8703 13.35 19.8403 13.81L13.1003 16.81C12.7603 16.96 12.3803 17.04 12.0003 17.04Z"
-              fill="#94A3B8"
-            />
-            <path
-              d="M12.0003 22C11.6203 22 11.2403 21.92 10.8903 21.77L4.15031 18.77C3.04031 18.28 2.32031 17.17 2.32031 15.95C2.32031 15.54 2.65031 15.21 3.06031 15.21C3.47031 15.21 3.80031 15.54 3.80031 15.95C3.80031 16.58 4.17031 17.15 4.75031 17.41L11.4903 20.41C11.8103 20.55 12.1803 20.55 12.5003 20.41L19.2403 17.41C19.8103 17.16 20.1903 16.58 20.1903 15.95C20.1903 15.54 20.5203 15.21 20.9303 15.21C21.3403 15.21 21.6703 15.54 21.6703 15.95C21.6703 17.17 20.9503 18.27 19.8403 18.77L13.1003 21.77C12.7603 21.92 12.3803 22 12.0003 22Z"
-              fill="#94A3B8"
-            />
-          </svg>
+          </svg>}
         </div>
-        <div className="adminDashboard-sidebar__item__title">Cases</div>
+
+       
+        <div className={dropdownActive ? "adminDashboard-sidebar__item-container__sub-items" : "adminDashboard-sidebar__item-container__sub-items-inactive"}>
+          <div
+            className={
+              pathname?.includes("create-case")
+                && "adminDashboard-sidebar__item-container__sub-items__active"
+                
+            }
+            onClick={() =>
+              (window.location.href = "/justice/dashboard/create-case")
+            }
+          >
+            <svg
+              width="13"
+              height="8"
+              viewBox="0 0 13 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask id="path-1-inside-1_58_45759" fill="white">
+                <path d="M0 0H13V8H8C3.58172 8 0 4.41828 0 0Z" />
+              </mask>
+              <path
+                d="M0 0H13H0ZM13 10H8C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6H13V10ZM8 10C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6V10ZM13 0V8V0Z"
+                fill="#EBEBEB"
+                mask="url(#path-1-inside-1_58_45759)"
+              />
+            </svg>
+
+            <div>New Cases</div>
+          </div>
+          <div
+            className={
+              pathname?.includes("cases") && pathname.split("/")?.length < 5
+                && "adminDashboard-sidebar__item-container__sub-items__active"
+                
+            }
+            onClick={() => window.location.href = "/justice/dashboard/cases"}
+          >
+            <svg
+              width="13"
+              height="8"
+              viewBox="0 0 13 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask id="path-1-inside-1_58_45759" fill="white">
+                <path d="M0 0H13V8H8C3.58172 8 0 4.41828 0 0Z" />
+              </mask>
+              <path
+                d="M0 0H13H0ZM13 10H8C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6H13V10ZM8 10C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6V10ZM13 0V8V0Z"
+                fill="#EBEBEB"
+                mask="url(#path-1-inside-1_58_45759)"
+              />
+            </svg>
+
+            <div>Case list</div>
+          </div>
+          <div
+            className={
+              pathname?.includes("favourite")
+                && "adminDashboard-sidebar__item-container__sub-items__active"
+                
+            }
+            onClick={() => window.location.href = "/justice/dashboard/cases/favourite-cases"}
+          >
+            <svg
+              width="13"
+              height="8"
+              viewBox="0 0 13 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask id="path-1-inside-1_58_45759" fill="white">
+                <path d="M0 0H13V8H8C3.58172 8 0 4.41828 0 0Z" />
+              </mask>
+              <path
+                d="M0 0H13H0ZM13 10H8C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6H13V10ZM8 10C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6V10ZM13 0V8V0Z"
+                fill="#EBEBEB"
+                mask="url(#path-1-inside-1_58_45759)"
+              />
+            </svg>
+
+            <div>Favourites</div>
+          </div>
+          <div
+            className={
+              pathname?.includes("transferred")
+                && "adminDashboard-sidebar__item-container__sub-items__active"
+                
+            }
+            onClick={() => window.location.href = "/justice/dashboard/cases/transferred-cases"}
+          >
+            <svg
+              width="13"
+              height="8"
+              viewBox="0 0 13 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask id="path-1-inside-1_58_45759" fill="white">
+                <path d="M0 0H13V8H8C3.58172 8 0 4.41828 0 0Z" />
+              </mask>
+              <path
+                d="M0 0H13H0ZM13 10H8C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6H13V10ZM8 10C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6V10ZM13 0V8V0Z"
+                fill="#EBEBEB"
+                mask="url(#path-1-inside-1_58_45759)"
+              />
+            </svg>
+
+            <div>Transferred Case</div>
+          </div>
+          <div
+            className={
+              pathname?.includes("deactivated")
+                && "adminDashboard-sidebar__item-container__sub-items__active"
+                
+            }
+            onClick={() => window.location.href = "/justice/dashboard/cases/deactivated-cases"}
+          >
+            <svg
+              width="13"
+              height="8"
+              viewBox="0 0 13 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask id="path-1-inside-1_58_45759" fill="white">
+                <path d="M0 0H13V8H8C3.58172 8 0 4.41828 0 0Z" />
+              </mask>
+              <path
+                d="M0 0H13H0ZM13 10H8C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6H13V10ZM8 10C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6V10ZM13 0V8V0Z"
+                fill="#EBEBEB"
+                mask="url(#path-1-inside-1_58_45759)"
+              />
+            </svg>
+
+            <div>Deactivated Case</div>
+          </div>
+        </div>
       </div>
       <div
         className="adminDashboard-sidebar__item"
@@ -124,9 +298,14 @@ export default function Sidebar() {
 
         <div className="adminDashboard-sidebar__item__title">Task</div>
       </div>
+      
       <div
-        className="adminDashboard-sidebar__item"
-        // onClick={() => window.location.href = "/justice/dashboard/create-case"}
+       className={
+        pathname?.includes("email")
+          ? "adminDashboard-sidebar__item adminDashboard-sidebar__item-active"
+          : "adminDashboard-sidebar__item"
+      }
+        onClick={() => window.location.href = "/justice/dashboard/email"}
       >
         <div>
           <svg
@@ -145,9 +324,14 @@ export default function Sidebar() {
 
         <div className="adminDashboard-sidebar__item__title">Email</div>
       </div>
+
       <div
-         className={pathname?.includes("chat") ? "adminDashboard-sidebar__item adminDashboard-sidebar__item-active" : "adminDashboard-sidebar__item"}
-         onClick={() => window.location.href = "/justice/dashboard/chat"}
+        className={
+          pathname?.includes("chat")
+            ? "adminDashboard-sidebar__item adminDashboard-sidebar__item-active"
+            : "adminDashboard-sidebar__item"
+        }
+        onClick={() => (window.location.href = "/justice/dashboard/chat")}
       >
         <div>
           <svg
@@ -166,9 +350,31 @@ export default function Sidebar() {
 
         <div className="adminDashboard-sidebar__item__title">Message</div>
       </div>
-      <div 
-      className={pathname?.includes("admin") ? "adminDashboard-sidebar__item adminDashboard-sidebar__item-active" : "adminDashboard-sidebar__item"}
-      onClick={() => window.location.href = "/justice/admin"}
+
+      <div
+        className={
+          pathname?.includes("finance")
+            ? "adminDashboard-sidebar__item adminDashboard-sidebar__item-active"
+            : "adminDashboard-sidebar__item"
+        }
+        onClick={() => (window.location.href = "/justice/dashboard/finance")}
+      >
+        <div>
+        <svg fill="#94A3B8" width="24"
+            height="24"
+             viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs></defs><title>finance</title><rect x="2" y="28" width="28" height="2"></rect><path d="M27,11a1,1,0,0,0,1-1V7a1,1,0,0,0-.66-.94l-11-4a1,1,0,0,0-.68,0l-11,4A1,1,0,0,0,4,7v3a1,1,0,0,0,1,1H6V24H4v2H28V24H26V11ZM6,7.7,16,4.06,26,7.7V9H6ZM18,24H14V11h4ZM8,11h4V24H8ZM24,24H20V11h4Z" transform="translate(0 0)"></path><rect id="_Transparent_Rectangle_" data-name="<Transparent Rectangle>" class="cls-1" style={{fill: "none"}} width="32" height="32"></rect></g></svg>
+        </div>
+
+        <div className="adminDashboard-sidebar__item__title">Finance</div>
+      </div>
+
+      <div
+        className={
+          pathname?.includes("admin")
+            ? "adminDashboard-sidebar__item adminDashboard-sidebar__item-active"
+            : "adminDashboard-sidebar__item"
+        }
+        onClick={() => (window.location.href = "/justice/admin")}
       >
         <div>
           <svg
@@ -209,7 +415,7 @@ export default function Sidebar() {
           Super Admin Section
         </div>
       </div>
-      <div className="adminDashboard-sidebar__item">
+      <div className="adminDashboard-sidebar__item" onClick={handleLogout}>
         <div>
           <svg
             width="24"

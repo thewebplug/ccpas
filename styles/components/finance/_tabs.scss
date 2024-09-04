@@ -1,0 +1,44 @@
+
+.finance-tabs {
+    display: flex;
+    gap: 22px;
+    border-bottom: 1px solid #eaecf0;
+    width: 100%;
+    max-width: 1440px;
+    margin: 37px 0;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &__item {
+      color: var(--Gray-500, #667085);
+      @extend %title-14;
+      font-weight: 500;
+      height: 38px;
+      display: flex;
+      align-items: start;
+      gap: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+
+      &__badge {
+        @extend %title-12;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--Gray-700, #344054);
+        font-weight: 500;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #f2f4f7;
+      }
+    }
+
+    &__active {
+      color: var(--Green-50, #24a148) !important;
+      border-bottom: 2px solid #24a148;
+    }
+  }

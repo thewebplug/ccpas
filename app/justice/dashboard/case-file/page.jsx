@@ -3,6 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import ReviewModal from './review'
+import { transferCase } from '@/app/apis/case';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const customStyles = {
   content: {
@@ -18,10 +21,13 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     width: '630px',
     height: '630px',
+    backgroundColor: "#FFF",
+    zIndex: 90
   },
 };
 
-const CaseFileModal = ({ isOpen, onRequestClose  }) => {
+const CaseFileModal = ({ caseNumber, isOpen, onRequestClose  }) => {
+  const auth = useSelector((state) => state.auth);
   const [destinationAgency, setDestinationAgency] = useState('');
   const [email, setEmail] = useState('');
   const [note, setNote] = useState('');
@@ -29,11 +35,22 @@ const CaseFileModal = ({ isOpen, onRequestClose  }) => {
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsReviewModalOpen(true);; // Open OTP modal
-    onRequestClose(); // Close Case File modal
+    console.log('hello!!');
+    
 
+    const response = await transferCase(caseNumber, destinationAgency, auth?.token);
+    console.log('response', response);
+    if(response?.status === 200) {
+      setIsReviewModalOpen(true); // Open OTP modal
+      onRequestClose(); // Close Case File modal
+  
+    }else {
+      toast.error("Unable to transfer case. PLease try again later")
+    }
+    
+    
 
     // Handle the form submission logic here
     console.log({
@@ -72,16 +89,16 @@ const CaseFileModal = ({ isOpen, onRequestClose  }) => {
       >
         <div className="case-file">
           <h2>You are about sending this case file</h2>
-          <div className="case-id">PF309583</div>
-          {/* <div className={styles['case-id']}>PF309583</div> */}
+          <div className="case-id">{caseNumber}</div>
+          {/* <div className={styles['case-id']}>{caseNumber}</div> */}
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Department</label>
               <select value={destinationAgency} onChange={(e) => setDestinationAgency(e.target.value)} required>
                 <option value="" disabled>Select an agency</option>
-                <option value="Homicide">Homicide</option>
-                <option value="Legal">Legal</option>
+                <option value="FMOJ">FMOJ</option>
                 <option value="EFCC">EFCC</option>
+                <option value="NPF">NPF</option>
                 {/* Add more options... */}
               </select>
             </div>
@@ -120,7 +137,7 @@ const CaseFileModal = ({ isOpen, onRequestClose  }) => {
         title="Director of Operations"
         date="06-06-2024"
         department={destinationAgency}
-        caseId="PF309583"
+        caseId="{caseNumber}"
       />
     </>
   );

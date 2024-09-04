@@ -1,0 +1,19 @@
+.finance-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    color: #99a2bb;
+    @extend %title-10;
+    font-weight: 400;
+
+    & > :last-child {
+      font-weight: 500;
+      padding: 4px 8px;
+      background: #c4ffc7;
+      border-radius: 4px;
+      color: #03380d;
+      text-transform: capitalize;
+    }
+  }

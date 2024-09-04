@@ -1,11 +1,11 @@
 import React from "react";
 
-const AddedFavourite = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
+const AddedFavourite = ({ open, setOpen }) => {
 
   return (
+    open &&
     <div className="added-favourite">
-      <div className="added-favourite__overlay" onClick={onClose}></div>
+      <div className="added-favourite__overlay" onClick={() => setOpen(false)}></div>
       <div className="added-favourite__added-notif">
         <svg
           width="42"

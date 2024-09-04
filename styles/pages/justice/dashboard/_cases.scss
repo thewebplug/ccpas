@@ -1,374 +1,335 @@
+
 .cases {
   width: 100%;
-  padding: 24px;
+  border-radius: var(--8, 8px);
+  border: 1px solid var(--Gray-200, #eaecf0);
+  background: var(--Color, #fff);
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
+    0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+
+  margin-bottom: 50px;
 
   &__header {
     width: 100%;
+    height: 89px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
 
     &__title {
-      & > :first-child {
-        @extend %title-40;
-        margin-bottom: 8px;
+      @extend %title-24;
+      color: var(--Gray-900, #101828);
+
+      font-weight: 500;
+    }
+
+    &__middle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 auto;
+      width: 30%;
+      border-radius: 5px;
+      padding: 3px;
+      background-color: #f5f5f5;
+      font-weight: 500;
+      text-align: center;
+      cursor: pointer;
+
+      .close {
+        width: 50%;
+        border-radius: 5px;
+        padding: 14px 32px;
       }
 
-      & > :last-child {
-        @extend %title-16;
-        font-weight: 400;
-        color: #999999;
+      .active {
+        width: 50%;
+        border-radius: 5px;
+        padding: 14px 32px;
+        background-color: #ffffff;
+        gap: 12px;
+        text-align: center;
+        color: #101828;
       }
     }
 
-    &__form {
-      width: 100%;
-      max-width: 536px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      border: 1px solid #e1e1e1;
-      border-radius: 35px;
-      padding: 4px 4px 4px 30px;
-
-      & > input {
-        border: none;
-        outline: none;
-        color: #999999;
-        width: 100%;
-        background: transparent;
-
-        &::placeholder {
-          color: #999999;
-        }
-      }
-
-      & > button {
-        width: 100%;
-        max-width: 141px;
-        @extend %create-button;
-      }
-    }
-
-    &__filter {
-      width: 211px;
-      display: flex;
-      justify-content: end;
-      align-items: center;
-      gap: 32px;
-
-      & > svg {
-        cursor: pointer;
-      }
+    &__button {
+      @extend %create-button;
+      border-radius: 8px;
+      cursor: pointer;
+      min-width: 185px;
     }
   }
 
-  &__table {
-    height: 500px;
-    position: relative;
-    &__header {
-        @extend %title-12;
-        height: 59px;
-        margin-top: 12px;
-        font-weight: 500;
-        color: #667085;
-        display: grid;
-        align-items: center;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-        gap: 24px;
-        border-bottom: 1px solid rgba(1, 91, 224, 1);
-        padding-left: 12px;
-        background: var(--Gray-50, #f9fafb);
-        border: 1px solid var(--Gray-200, #eaecf0);
-        border-radius: 12px 12px 0 0;
-  
-        & > div {
-          display: flex;
-          align-items: center;
-          gap: 4px;
+  &__actions {
+    width: 100%;
+    height: 97px;
+    border-radius: var(--4, 4px);
+    border: 1px solid #e6e6e6;
+    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.04);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    &__input {
+      width: 100%;
+      max-width: 418px;
+      height: 49px;
+      border-radius: var(--4, 4px);
+      border: 1px solid #f6f6f6;
+      background: #fafafa;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 14px;
+
+      & > input,
+      select {
+        @extend %title-14;
+        font-weight: 400;
+
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: none;
+        background: none;
+        padding: 14px;
+        color: #637381;
+
+        &::placeholder {
+          color: #637381;
         }
       }
+    }
 
-  &__inner {
-    height: 500px;
+    &__filters {
+      @extend %title-14;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--Style, #033132);
+      font-weight: 600;
+      padding: 0 12px;
+    }
+  }
+
+  &__body {
+    height: auto;
     overflow-y: auto;
 
     &::-webkit-scrollbar {
       display: none;
     }
-    &__body {
-      position: relative;
-      @extend %title-14;
-      font-weight: 400;
-      color: #667085;
-      height: 79px;
-      display: grid;
-      align-items: center;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-      gap: 24px;
-      border-bottom: 1px solid #EAECF0;
-      padding-left: 12px;
-      cursor: pointer;
 
-      & > :first-child {
-        color: var(--Gray-900, #101828);
+    .cases-table {
+      width: 100%;
+      border-collapse: collapse;
 
-        font-weight: 500;
-      }
+      thead {
+        tr {
+          th {
+            padding: 12px 24px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #e6e6e6;
+            border-bottom: 1px solid #e6e6e6;
+            text-align: start;
+            font-size: 12px;
+          }
 
-      &__case-status {
-        @extend %title-14;
-        color: #000;
-        font-weight: 500;
-        width: 100%;
-        min-width: 140px;
-        height: 36px;
-        border-radius: 40px;
-        background: #ffc700;
-        border: none;
-        outline: none;
-      }
-
-     
-
-      &__unassigned {
-        background: #d0d0d0;
-      }
-      &__review {
-        background: #ffc700;
-      }
-      &__filed {
-        background: #42be65;
-        color: #fff;
-      }
-      &__closed {
-        background: #000;
-        color: #fff;
-      }
-      &__re-opened {
-        background: #054ada;
-        color: #fff;
-      }
-
-      &__accused-status {
-        @extend %title-10;
-        color: #000;
-        font-weight: 500;
-        width: 100%;
-        max-width: 140px;
-        height: 31px;
-        border-radius: 8px;
-        border: none;
-        outline: none;
-        background: #EEF4FF;
-      }
-
-      &__bail{
-        background: #EEF4FF;
-        color: #3538CD;
-      }
-      &__custody{
-background: rgba(255, 138, 0, 0.14);
-        color: #FF8A00;
-      }
-      &__convicted {
-background: rgba(184, 0, 0, 0.12);
-color: #B80000;
-      }
-      &__discharged {
-background: rgba(0, 155, 7, 0.12);
-color: #009B07;
-      }
-      &__deceased {
-        background: #E2E2E2;
-        color: #040407;
-      }
-
-      &__options {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        
-      }
-
-      &__assign {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        color: #009b07;
-        text-decoration: underline;
-        cursor: pointer;
-      }
-    }
-  }
-
-    &__footer {
-      // position: absolute;
-      // bottom: 0;
-      // left: 0;
-        @extend %title-16;
-        font-weight: 500;
-        width: 100%;
-        height: 59px;
-        color: #667085;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 24px;
-        background: var(--Gray-50, #f9fafb);
-        border: 1px solid var(--Gray-200, #eaecf0);
-        border-radius: 0 0 12px 12px;
-  
-        &__nav {
-            width: fit-content;
-            height: 36px;
-            padding: 0 14px;
-            @extend %title-14;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          color: var(--Gray-700, #344054);
-border-radius: 8px;
-border: 1px solid var(--Gray-300, #D0D5DD);
-background: var(--White, #FFF);
-box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-        }
-
-        &__pagination {
+          .user-flex {
             display: flex;
-            justify-content: center;
             align-items: center;
-            width: 100%;
-            gap: 62px;
-            @extend %title-16;
-            font-weight: 400;
-            color: #9fa2b4;
-      
-            &__rows {
-              & > select {
-                width: fit-content;
-                color: #4b506d;
-                border: none;
-                outline: none;
+            gap: 8px;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          &:hover {
+            background: #f0f0f0;
+          }
+
+          &:nth-child(even) {
+            background: #f0f0f0;
+}
+
+          td {
+            padding: 20px 24px;
+            border-top: 1px solid #e6e6e6;
+            border-bottom: 1px solid #e6e6e6;
+            cursor: pointer;
+
+            .user-info {
+              display: flex;
+              align-items: center;
+              font-size: 14px;
+              font-weight: 600;
+              color: #101828;
+              gap: 8px;
+
+              h2 {
+                color: #101828;
+                font-size: 14px;
+                font-weight: 500;
+              }
+
+              svg {
+                cursor: pointer;
               }
             }
-      
-            &__pages {
+
+            .case-status {
+              width: 115px;
+              font-size: 14px;
+              padding: 8px 12px;
+              background-color: #e2e2e2;
+              color: #040407;
+              border-radius: 20px;
+              text-align: center;
+            }
+
+            .status {
+              font-size: 14px;
+
+              &.on-bail {
+                padding: 8px 34px;
+                background-color: #eef4ff;
+                color: #3538cd;
+                border-radius: 8px;
+                font-weight: 500;
+              }
+
+              &.in-custody {
+                padding: 8px 22px;
+                background-color: rgba(255, 138, 0, 0.14);
+                color: #ff8a00;
+                border-radius: 8px;
+              }
+
+              &.convicted {
+                padding: 8px 24px;
+                background-color: rgba(184, 0, 0, 0.12);
+                color: #b80000;
+                border-radius: 8px;
+              }
+
+              &.discharged {
+                padding: 8px 20px;
+                background-color: rgba(0, 156, 7, 0.12);
+                color: #009b07;
+                border-radius: 8px;
+              }
+              &.deceased {
+                padding: 8px 25px;
+                background-color: #e2e2e2;
+                color: #040407;
+                border-radius: 8px;
+              }
+            }
+
+            .assign-now {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              color: #009b07;
+              font-size: 14px;
+              font-weight: 400;
+              cursor: pointer;
+
+              .text {
+                color: #009b07;
+                text-decoration: underline;
+              }
+
+              .dropdown-icon {
+                display: flex;
+                align-items: center;
+              }
+            }
+
+            .offence-icons {
               display: flex;
               align-items: center;
               gap: 24px;
-      
-              & > :last-child {
-                display: flex;
-                gap: 12px;
+              padding: 0 5px;
+              cursor: pointer;
+
+              & > span {
+                & > svg {
+                  &:hover {
+                    & > path {
+                      stroke: #009b07;
+                    }
+                  }
+                }
               }
             }
           }
-      }
-  }
-
-  &__modal {
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &__inner {
-      width: 100%;
-      max-width: 540px;
-      min-height: 339px;
-      border-radius: 12px;
-      padding: 40px 65px;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 56px;
-
-      &__title {
-        @extend %title-20;
-        font-weight: 700;
-      }
-
-      &__form {
-        width: 100%;
-        max-width: 410px;
-
-        & > select, & > input {
-          margin-top: 6px;
-          width: 100%;
-          height: 44px;
-          border-radius: 8px;
-          padding: 0 14px;
-          border: 1px solid #d0d5dd;
         }
-
-        &__names {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          flex-wrap: wrap;
-          margin-top: 12px;
-
-          & > div {
-            border-radius: 31px;
-            background: #e7e7e7;
-            padding: 12px 24px;
-            width: fit-content;
-            height: fit-content;
-            white-space: nowrap;
-            font-size: 16px;
-            font-weight: 400;
-            color: #000;
-            display: flex;
-            gap: 10px;
-          }
-        }
-        & > button {
-          @extend %create-button;
-          max-width: 410px;
-          margin-top: 20px;
-        }
-      }
-
-      & > button {
-        @extend %create-button;
-        max-width: 410px;
       }
     }
+  }
 
-    &__success {
-      width: 100%;
-      max-width: 540px;
-      min-height: 339px;
-      border-radius: 12px;
-      padding: 40px 65px;
-      background: #fff;
+  &__footer {
+    @extend %title-16;
+    font-weight: 500;
+    width: 100%;
+    height: 59px;
+    color: #667085;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    border: 1px solid var(--Gray-200, #eaecf0);
+    border-radius: 0 0 12px 12px;
+
+    &__nav {
+      width: fit-content;
+      height: 36px;
+      padding: 0 14px;
+      @extend %title-14;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 40px;
+      gap: 8px;
+      color: var(--Gray-700, #344054);
+      border-radius: 8px;
+      border: 1px solid var(--Gray-300, #d0d5dd);
+      background: var(--White, #fff);
+      box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    }
 
-      &__title {
-        @extend %title-20;
-        font-weight: 700;
+    &__pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      gap: 62px;
+      @extend %title-16;
+      font-weight: 400;
+      color: #9fa2b4;
+
+      &__rows {
+        & > select {
+          width: fit-content;
+          color: #4b506d;
+          border: none;
+          outline: none;
+        }
       }
 
-      & > button {
-        @extend %create-button;
-        max-width: 410px;
+      &__pages {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        & > :last-child {
+          display: flex;
+          gap: 12px;
+        }
       }
     }
   }

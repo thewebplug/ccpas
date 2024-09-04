@@ -1,16 +1,94 @@
 "use client";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { assignCase, getCases } from "@/app/apis/case";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import moment from "moment";
+import CheckboxToggle from "../../../admin/add-role/CheckboxToggle";
 
-import CheckboxToggle from "../../admin/add-role/CheckboxToggle";
+export default function Cases() {
+  const auth = useSelector((state) => state.auth);
 
-export default function FavouriteCase() {
+  const [modalOpen, setModalOpen] = useState(0);
+  const [assignee, setAssignee] = useState(null);
+  const [cases, setCases] = useState([]);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedId, setSelectedId] = useState("");
+  const [loading, setLoading] = useState("");
+  const [caseType, setCaseType] = useState("active");
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleModalClose = (e) => {
+    if (e.target.classList.contains("cases__modal")) {
+      setModalOpen(false);
+    }
+  };
+  const handleGetCases = async () => {
+    const response = await getCases(auth?.token);
+    console.log("gotten cases", response);
+    if (response?.status === 200) {
+      setCases(response?.data?.reverse());
+    }
+  };
+
+  const handleAssign = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const response = await assignCase(selectedId, assignee, auth?.token);
+    console.log("gotten cases", response);
+    // if (response?.status === 200) {
+    //   setCases(response?.data?.reverse());
+    // }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    handleGetCases();
+  }, []);
 
   return (
-    <div className="fav-cases">
-      <div className="fav-cases__header">
-        <div className="fav-cases__header__title">Favourites Cases</div>
+    <div className="cases">
+      <div className="cases__header">
+        <div className="cases__header__title">Transferred Cases</div>
+
+       
+
+        <button
+          className="cases__header__button"
+          onClick={() =>
+            (window.location.href = "/justice/dashboard/create-case")
+          }
+        >
+          Create New Case{" "}
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.9987 3.3335V12.6668M3.33203 8.00016H12.6654"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
       </div>
-      <div className="fav-cases__actions">
-        <form action="" className="fav-cases__actions__input">
+
+      <div className="cases__actions">
+        <form action="" className="cases__actions__input">
           <svg
             width="16"
             height="17"
@@ -30,7 +108,7 @@ export default function FavouriteCase() {
         </form>
 
         {/* Case No */}
-        <form action="" className="fav-cases__actions__input">
+        <form action="" className="cases__actions__input">
           <input type="text" placeholder="Case No" />
           <svg
             width="16"
@@ -50,19 +128,19 @@ export default function FavouriteCase() {
         </form>
 
         {/* Agency */}
-        <form action="" className="fav-cases__actions__input">
+        <form action="" className="cases__actions__input">
           <select name="" id="">
             <option value="">Agency</option>
           </select>
         </form>
 
         {/* Status of Suspect */}
-        <form action="" className="fav-cases__actions__input">
+        <form action="" className="cases__actions__input">
           <select name="" id="">
             <option value="">Status of Suspect </option>
           </select>
         </form>
-        <div className="fav-cases__actions__filters">
+        <div className="cases__actions__filters">
           <svg
             width="24"
             height="25"
@@ -81,8 +159,8 @@ export default function FavouriteCase() {
 
       {/* --------------- */}
 
-      <div className="fav-cases__body">
-        <table className="fav-cases-table">
+      <div className="cases__body">
+        <table className="cases-table">
           <thead>
             <tr>
               <th>
@@ -118,8 +196,8 @@ export default function FavouriteCase() {
                   <span>Case status</span>
                   <div>
                     <svg
-                      width="14"
-                      height="13"
+                      width="17"
+                      height="16"
                       viewBox="0 0 17 16"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -153,8 +231,8 @@ export default function FavouriteCase() {
                   <span>Status of Suspect</span>
                   <div>
                     <svg
-                      width="14"
-                      height="13"
+                      width="17"
+                      height="16"
                       viewBox="0 0 17 16"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -183,192 +261,134 @@ export default function FavouriteCase() {
                 </div>
               </th>
               <th>Offences</th>
+              <th>Assignee</th>
+              <th></th>
             </tr>
           </thead>
 
           <tbody>
-            {[
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "EFCC",
-                caseStatus: "Unassigned",
-                status: "On Bail",
-                offences: "Terrorism",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "CUSTOM",
-                caseStatus: "Unassigned",
-                status: "In Custody",
-                offences: "Cyber Crime",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "NPF",
-                caseStatus: "Unassigned",
-                status: "On Bail",
-                offences: "Armed Robbery",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "DSS",
-                caseStatus: "Unassigned",
-                status: "In Custody",
-                offences: "Fraud",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "NPF",
-                caseStatus: "Unassigned",
-                status: "Convicted",
-                offences: "Vandalism",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "IMMIGRATION",
-                caseStatus: "Unassigned",
-                status: "Discharged",
-                offences: "Impersonation",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "EFCC",
-                caseStatus: "Unassigned",
-                status: "Convicted",
-                offences: "Smuggling",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "CUSTOM",
-                caseStatus: "Unassigned",
-                status: "Deceased",
-                offences: "Currency Defacing",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "DSS",
-                caseStatus: "Unassigned",
-                status: "Discharged",
-                offences: "Fraud",
-              },
-              {
-                date: "JAN-6-2022",
-                caseNo: "PF00364",
-                agency: "NPF",
-                caseStatus: "Unassigned",
-                status: "Deceased",
-                offences: "Cyber Crime",
-              },
-            ].map((user, index) => (
-              <tr key={index}>
+            {cases.map((item, index) => (
+              <tr key={index}
+              onClick={() => {
+                // if (assignee) {
+                  window.location.href = `/justice/dashboard/case-details/${item?.id}`
+                // }
+              }}
+              >
                 <td>
                   <div className="user-info">
                     <CheckboxToggle />
                     <div>
-                      <h2>{user.date}</h2>
+                      <h2>
+                        {moment(item?.dateInitiated).format("MMMM D, YYYY")}
+                      </h2>
                     </div>
                   </div>
                 </td>
 
-                <td>{user.caseNo}</td>
-                <td>{user.agency}</td>
+                <td>{item?.caseNumber}</td>
+                <td>{item?.agency}</td>
                 <td>
-                  <div className="case-status">{user.caseStatus}</div>
+                  <div className="case-status">{item.caseStatus}</div>
                 </td>
 
                 <td>
                   <span
-                    className={`status ${user.status
+                    className={`status ${item.accusedStatus
                       .toLowerCase()
                       .replace(" ", "-")}`}
                   >
-                    {user.status}
+                    {item.accusedStatus}
                   </span>
                 </td>
                 <td>
-                  <div className="offence-flex">
-                    <span>{user.offences}</span>
+                  {item.offenseCategory}
+                  {/* , {item.offenseType} */}
+                </td>
+                <td>
+                  <div className="assign-now">
+                    {item?.assignedJudge === "" ? (
+                      <>
+                        <span className="text">Assign Now</span>
 
-                    <div className="offence-icons">
-                      <span>
-                        <svg
-                          width="18"
-                          height="18"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M9.99935 1.66406L12.5743 6.88073L18.3327 7.7224L14.166 11.7807L15.1494 17.5141L9.99935 14.8057L4.84935 17.5141L5.83268 11.7807L1.66602 7.7224L7.42435 6.88073L9.99935 1.66406Z"
-                            fill="#FFD02A"
-                          />
-                        </svg>
-                      </span>
+                        <span className="dropdown-icon">
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M14.9336 6.82031H9.74195H5.06695C4.26695 6.82031 3.86695 7.78698 4.43361 8.35365L8.75028 12.6703C9.44195 13.362 10.5669 13.362 11.2586 12.6703L12.9003 11.0286L15.5753 8.35365C16.1336 7.78698 15.7336 6.82031 14.9336 6.82031Z"
+                              fill="#009B07"
+                            />
+                          </svg>
+                        </span>
+                      </>
+                    ) : (
+                      item?.assignedJudge
+                    )}
+                  </div>
+                </td>
+                <td>
+                  <div className="offence-icons">
+                    <span>
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M2.5 4.9974H4.16667M4.16667 4.9974H17.5M4.16667 4.9974V16.6641C4.16667 17.1061 4.34226 17.53 4.65482 17.8426C4.96738 18.1551 5.39131 18.3307 5.83333 18.3307H14.1667C14.6087 18.3307 15.0326 18.1551 15.3452 17.8426C15.6577 17.53 15.8333 17.1061 15.8333 16.6641V4.9974H4.16667ZM6.66667 4.9974V3.33073C6.66667 2.8887 6.84226 2.46478 7.15482 2.15222C7.46738 1.83966 7.89131 1.66406 8.33333 1.66406H11.6667C12.1087 1.66406 12.5326 1.83966 12.8452 2.15222C13.1577 2.46478 13.3333 2.8887 13.3333 3.33073V4.9974M8.33333 9.16406V14.1641M11.6667 9.16406V14.1641"
+                          stroke="#667085"
+                          stroke-width="1.66667"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </span>
 
-                      <span>
-                        <svg
-                          width="18"
-                          height="18"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+                    <span>
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g clip-path="url(#clip0_517_14405)">
                           <path
-                            d="M2.5 4.9974H4.16667M4.16667 4.9974H17.5M4.16667 4.9974V16.6641C4.16667 17.1061 4.34226 17.53 4.65482 17.8426C4.96738 18.1551 5.39131 18.3307 5.83333 18.3307H14.1667C14.6087 18.3307 15.0326 18.1551 15.3452 17.8426C15.6577 17.53 15.8333 17.1061 15.8333 16.6641V4.9974H4.16667ZM6.66667 4.9974V3.33073C6.66667 2.8887 6.84226 2.46478 7.15482 2.15222C7.46738 1.83966 7.89131 1.66406 8.33333 1.66406H11.6667C12.1087 1.66406 12.5326 1.83966 12.8452 2.15222C13.1577 2.46478 13.3333 2.8887 13.3333 3.33073V4.9974M8.33333 9.16406V14.1641M11.6667 9.16406V14.1641"
+                            d="M14.166 2.50286C14.3849 2.28399 14.6447 2.11037 14.9307 1.99192C15.2167 1.87347 15.5232 1.8125 15.8327 1.8125C16.1422 1.8125 16.4487 1.87347 16.7347 1.99192C17.0206 2.11037 17.2805 2.28399 17.4993 2.50286C17.7182 2.72173 17.8918 2.98156 18.0103 3.26753C18.1287 3.5535 18.1897 3.85999 18.1897 4.16952C18.1897 4.47905 18.1287 4.78555 18.0103 5.07152C17.8918 5.35748 17.7182 5.61732 17.4993 5.83619L6.24935 17.0862L1.66602 18.3362L2.91602 13.7529L14.166 2.50286Z"
                             stroke="#667085"
                             stroke-width="1.66667"
                             stroke-linecap="round"
                             stroke-linejoin="round"
                           />
-                        </svg>
-                      </span>
-
-                      <span>
-                        <svg
-                          width="18"
-                          height="18"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g clip-path="url(#clip0_517_14405)">
-                            <path
-                              d="M14.166 2.50286C14.3849 2.28399 14.6447 2.11037 14.9307 1.99192C15.2167 1.87347 15.5232 1.8125 15.8327 1.8125C16.1422 1.8125 16.4487 1.87347 16.7347 1.99192C17.0206 2.11037 17.2805 2.28399 17.4993 2.50286C17.7182 2.72173 17.8918 2.98156 18.0103 3.26753C18.1287 3.5535 18.1897 3.85999 18.1897 4.16952C18.1897 4.47905 18.1287 4.78555 18.0103 5.07152C17.8918 5.35748 17.7182 5.61732 17.4993 5.83619L6.24935 17.0862L1.66602 18.3362L2.91602 13.7529L14.166 2.50286Z"
-                              stroke="#667085"
-                              stroke-width="1.66667"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_517_14405">
-                              <rect width="20" height="20" fill="white" />
-                            </clipPath>
-                          </defs>
-                        </svg>
-                      </span>
-                    </div>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_517_14405">
+                            <rect width="20" height="20" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </span>
                   </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+
+        {/*<ExcitingCase isOpen={isExcitingCaseOpen} onClose={handleCloseExcitingCase} /> */}
       </div>
 
       {/* footer */}
 
-      <div className="fav-cases__footer">
-        <div className="fav-cases__footer__nav">
+      <div className="cases__footer">
+        <div className="cases__footer__nav">
           <svg
             width="20"
             height="20"
@@ -390,7 +410,7 @@ export default function FavouriteCase() {
 
         {/* pagination */}
 
-        <div className="fav-cases__footer__nav">
+        <div className="cases__footer__nav">
           <div>Next</div>
           <svg
             width="20"

@@ -23,6 +23,10 @@
 @import 'components/sidebar';
 @import 'components/header';
 @import 'components/footer';
+@import 'components/caseImageModal';
+@import 'components/caseDetailsMenu';
+@import 'components/finance/tabs';
+@import 'components/finance/nav';
 
 @import 'pages/home';
 @import 'pages/justice/home';
@@ -37,6 +41,8 @@
 @import 'pages/justice/dashboard/case-file';
 @import 'pages/justice/dashboard/otp.scss';
 @import 'pages/justice/dashboard/review.scss';
+@import 'pages/justice/dashboard/profile.scss';
+@import 'pages/justice/dashboard/deactivated-case.scss';
 
 @import 'pages/justice/admin/layout';
 @import 'pages/justice/admin/home';
@@ -56,13 +62,12 @@
 @import 'pages/justice/admin/notifications';
 @import 'pages/justice/admin/notification-settings';
 @import 'pages/justice/admin/support';
+@import 'pages/justice/dashboard/favourite-case';
+@import 'pages/justice/dashboard/added-favourite';
 
-
-
-@import 'pages/justice/cases/home';
-@import 'pages/justice/cases/favourite-case';
-@import 'pages/justice/cases/exciting-case';
-@import 'pages/justice/cases/menu';
-@import 'pages/justice/cases/added-favourite';
-
-@import 'pages/justice/cases/layout';
+@import 'pages/justice/dashboard/finance/home';
+@import 'pages/justice/dashboard/finance/layout';
+@import 'pages/justice/dashboard/finance/invoice-and-billing';
+@import 'pages/justice/dashboard/finance/transfer';
+@import 'pages/justice/dashboard/finance/overview';
+@import 'pages/justice/dashboard/email/email';
