@@ -1,7 +1,10 @@
 import React from "react";
 import CheckboxToggle from "./CheckboxToggle";
+import { createRole } from "@/app/apis/auth";
+import { useSelector } from "react-redux";
 
 const AddRoleModal = ({ isOpen, onClose, onCreate, roleName, setRoleName }) => {
+  const auth = useSelector((state) => state.auth);
   if (!isOpen) return null;
 
   const handleInvite = () => {
@@ -16,6 +19,19 @@ const AddRoleModal = ({ isOpen, onClose, onCreate, roleName, setRoleName }) => {
   // console.log({
   //   roleName
   // })
+
+  const handleCreateRole = async(e) => {
+    e.preventDefault();
+    const response = await createRole(roleName, auth?.token);
+    console.log("createRole", response);
+    if(response?.data?.statusCode === 201) {
+      alert("Role created successfully");
+      onClose();
+    onCreate();
+    }else {
+      alert("Something went wrong")
+    }
+  }
 
   return (
     <div className="add-role">
@@ -124,7 +140,7 @@ const AddRoleModal = ({ isOpen, onClose, onCreate, roleName, setRoleName }) => {
 
         {/* ---------------- */}
 
-        <form className="add-role-form">
+        <form className="add-role-form" onSubmit={handleCreateRole}>
           <div className="form-group">
             <label htmlFor="roleName">Enter Name of Role</label>
             <input
@@ -133,6 +149,7 @@ const AddRoleModal = ({ isOpen, onClose, onCreate, roleName, setRoleName }) => {
               value={roleName}
               placeholder="Enter Name of Role"
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -143,6 +160,7 @@ const AddRoleModal = ({ isOpen, onClose, onCreate, roleName, setRoleName }) => {
             <textarea
               id="departmentDescription"
               placeholder="Enter a description..."
+              required
             ></textarea>
           </div>
 
@@ -695,7 +713,7 @@ const AddRoleModal = ({ isOpen, onClose, onCreate, roleName, setRoleName }) => {
             </div>
           </div>
 
-          <button className="create-btn" onClick={handleInvite}>
+          <button className="create-btn" type="submit">
             Create New Role
           </button>
         </form>

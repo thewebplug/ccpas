@@ -1,5 +1,5 @@
 "use client";
-import { getProfile } from "@/app/apis/auth";
+import { changPassword, getProfile } from "@/app/apis/auth";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -12,6 +12,10 @@ export default function Profile() {
   const [tab, setTab] = useState("Personal Info");
   const [user, setUser] = useState(null);
   const [image, setImage] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const mediaRef = useRef(null);
 
 
@@ -28,6 +32,18 @@ export default function Profile() {
   useEffect(() => {
     handleGetProfile();
   }, []);
+
+  const handleChangePassword = async (e) => {
+    setLoading(true)
+    if(newPassword !== confirmNewPassword) {
+      alert("New password does not match confirmed password")
+      return;
+    }
+    e.preventDefault();
+    const response = await changPassword(currentPassword, newPassword, auth?.userInfo?.govId, auth?.token);
+    console.log('change password', response);
+    setLoading(false)
+  }
 
   return (
     <div className="profile">
@@ -468,11 +484,22 @@ export default function Profile() {
               <button>Email</button>
             </div>
           </div>
+
+          <div className="profile__title-group">
+        <div>
+          <div></div>
+          <div></div>
+        </div>
+        <div>
+          <button>Cancel</button>
+          <button>Save</button>
+        </div>
+      </div>
         </>
       )}
 
       {tab === "Password" && (
-        <>
+        <form onSubmit={handleChangePassword}>
           <div className="profile__group">
             <div className="profile__group__label">
               <div className="profile__group__label__title">
@@ -480,14 +507,14 @@ export default function Profile() {
               </div>
             </div>
 
-            <input type="password" />
+            <input type="password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} required />
           </div>
           <div className="profile__group">
             <div className="profile__group__label">
               <div className="profile__group__label__title">New password</div>
             </div>
 
-            <input type="password" />
+            <input type="password"  value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
             <div></div>
             <div className="profile__group__instruction">
               Your new password must be than 8 characters.
@@ -500,21 +527,23 @@ export default function Profile() {
               </div>
             </div>
 
-            <input type="password" />
+            <input type="password"  value={confirmNewPassword} onChange={(e) => setConfirmNewPassword(e.target.value)} required />
           </div>
-        </>
-      )}
 
-      <div className="profile__title-group">
+          <div className="profile__title-group">
         <div>
           <div></div>
           <div></div>
         </div>
         <div>
-          <button>Cancel</button>
-          <button>Save</button>
+        <button type="button">Cancel</button>
+        <button type="submit" disabled={loading}>{loading ? "Loading..." : "Save"}</button>
         </div>
       </div>
+        </form>
+      )}
+
+      
     </div>
   );
 }

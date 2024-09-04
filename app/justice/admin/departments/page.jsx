@@ -1,13 +1,35 @@
 "use client";
+import { createDepartment } from "@/app/apis/departments";
 import Image from "next/image";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function Departments() {
+  const auth = useSelector((state) => state.auth);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalOpen2, setModalOpen2] = useState(false);
   const [modalOpen3, setModalOpen3] = useState(false);
   const [cardActive, setCardActive] = useState(0);
   const [subDept, setSubDept] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [deptName, setDeptName] = useState("");
+
+  const handleCreateDepartment = async (e) => {
+    console.log('hit me!');
+    
+    e.preventDefault()
+    setLoading(true)
+    const response = await createDepartment(deptName, auth?.token);
+    console.log('createDepartment', response);
+
+    if(response?.data?.statusCode === 201) {
+      setModalOpen2(false);
+
+      alert("Department created")
+    }
+    setLoading(false)
+  }
+  
   return (
     <div className="departments">
       <div className="departments__header">
@@ -951,11 +973,15 @@ export default function Departments() {
           </div>
         </div>
 
-        <div className="departments__new-dept__form">
+        <form className="departments__new-dept__form" onSubmit={handleCreateDepartment}>
           <div>
             <label htmlFor="" className="departments__new-dept__form__label">Name of Department</label>
 
-            <input type="text" className="departments__new-dept__form__input" placeholder="Write down department" />
+            <input type="text" className="departments__new-dept__form__input" placeholder="Write down department"
+            
+            value={deptName}
+            onChange={(e) => setDeptName(e.target.value)}
+            />
           </div>
           <div>
             <label htmlFor="" className="departments__new-dept__form__label">Department Code</label>
@@ -1046,10 +1072,12 @@ No
 
           </div>}
 
-          <button className="departments__new-dept__form__button">
-          Create New Department
+          <button className="departments__new-dept__form__button"
+          type="submit"
+          >
+          {loading ? "Loading..." : "Create New Department"}
           </button>
-        </div>
+        </form>
       </div>}
 
       {modalOpen3 && 
@@ -1155,11 +1183,14 @@ No
           </div>
         </div>
 
-        <div className="departments__new-dept__form">
+        <form className="departments__new-dept__form" >
           <div>
             <label htmlFor="" className="departments__new-dept__form__label">Name of Department</label>
 
-            <input type="text" className="departments__new-dept__form__input" placeholder="Write down department" />
+            <input type="text" className="departments__new-dept__form__input" placeholder="Write down department"
+            
+            required
+            />
           </div>
           <div>
             <label htmlFor="" className="departments__new-dept__form__label">Name of Sub Department</label>
@@ -1195,11 +1226,13 @@ No
           </div>
       
           <button className="departments__new-dept__form__button"
-          onClick={() => setModalOpen3(false)}
+          onClick={() => console.log("collage")
+          }
+          // type="submit"
           >
-          Create New Sub Department
+          {loading ? "Loading..." : "Create New Sub Department"}
           </button>
-        </div>
+        </form>
       </div>}
     </div>
   );

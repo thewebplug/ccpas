@@ -1,19 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddRoleModal from "../add-role/page";
 import AddedRoleModal from "../added-role/page";
 import CheckboxToggle from "../add-role/CheckboxToggle";
 import UserRequest from "../user-request/page";
 import InviteUser from "../invite-user/page";
+import { getRoles } from "@/app/apis/auth";
+import { useSelector } from "react-redux";
+import { listUsers } from "@/app/apis/users";
 
 export default function Departments() {
+  const auth = useSelector((state) => state.auth);
   const [isAddRoleModalOpen, setAddRoleModalOpen] = useState(false);
   const [isAddedRoleModalOpen, setAddedRoleModalOpen] = useState(false);
   const [inviteUserModal, setInviteUserModal] = useState(false);
   const [roleName, setRoleName] = useState("");
-  const [roles, setRoles] = useState(["Super Admin", "Admin", "Role 1"]);
+  const [roles, setRoles] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const [activeTab, setActiveTab] = useState("userDetails");
 
@@ -62,6 +67,28 @@ export default function Departments() {
     setUserRequestOpen(false);
   };
 
+
+  const handleGetRoles = async () => {
+    const defaultRoles = [{name: "Super Admin"}, {name: "Admin"}, {name: "Role 1"}]
+    const response = await getRoles(auth?.token);
+    console.log('getRoles', response);
+
+    if(response?.data?.statusCode === 200) {
+      setRoles([...defaultRoles, ...response?.data?.data]);
+    }
+  }
+
+  const handleFetUsers = async () => {
+    const response = await listUsers();
+    console.log('response from users', response);
+    setUsers(response?.data?.data);
+  }
+
+
+  useEffect(() => {
+    handleGetRoles();
+    handleFetUsers();
+  }, [])
   return (
     <div className="access">
       <div className="access__header">
@@ -221,7 +248,7 @@ export default function Departments() {
                     <div className="user-info">
                       <CheckboxToggle />
                       <div>
-                        <h2>{role}</h2>
+                        <h2>{role?.name}</h2>
                       </div>
                     </div>
                   </td>
@@ -336,67 +363,7 @@ export default function Departments() {
               </tr>
             </thead>
             <tbody>
-              {[
-                {
-                  name: "Adeyemi Oloye",
-                  email: "A.oloye@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-ade.png",
-                },
-
-                {
-                  name: "Emeka Ani",
-                  email: "E.ani@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-emeka.png",
-                },
-
-                {
-                  name: "Lotanna Okor",
-                  email: "L.okor@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-okor.png",
-                },
-
-                {
-                  name: "Demi Nike",
-                  email: "D.nike@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-demi.png",
-                },
-
-                {
-                  name: "Ahmed Wale",
-                  email: "A.wale@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-wale.png",
-                },
-
-                {
-                  name: "Natali Oboli",
-                  email: "N.oboi@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-oboli.png",
-                },
-
-                {
-                  name: "Haruna Adamu",
-                  email: "H.adamu@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-adamu.png",
-                },
-
-                {
-                  name: "Kaduna Dede",
-                  email: "K.dede@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-dede.png",
-                },
-
-                {
-                  name: "Anike Mustapha",
-                  email: "A.mustapha@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-anike.png",
-                },
-
-                {
-                  name: "Kate Adebowale",
-                  email: "K.adebowale@justice.gov.ng",
-                  imageUrl: "/assets/avatars/ava-kate.png",
-                },
-              ].map((user, index) => (
+              {users?.map((user, index) => (
                 <tr key={index}>
                   <td>
                     <div className="user-info">
@@ -404,14 +371,14 @@ export default function Departments() {
 
                       <Image
                         alt=""
-                        src={user.imageUrl}
+                        src="/assets/avatars/ava-ade.png"
                         width={40}
                         height={40}
                         style={{ borderRadius: "50%", float: "left" }}
                       />
                       <div className="user-details">
-                        <div className="user-name">{user.name}</div>
-                        <div className="user-email">{user.email}</div>
+                        <div className="user-name">{user.officialEmail}</div>
+                        <div className="user-email">{user.supervisorEmail}</div>
                       </div>
                     </div>
                   </td>

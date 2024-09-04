@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { getNotifications } from "../apis/users";
+import { useEffect } from "react";
 
 export default function Notifications({open, setOpen}) {
     const handleClose = (e) => {
@@ -6,6 +8,15 @@ export default function Notifications({open, setOpen}) {
             setOpen(false)
         }
     }
+
+    const handleGetNotifications = async () => {
+      const response = await getNotifications();
+      console.log('notifications response', response);
+    }
+
+    useEffect(() => {
+      handleGetNotifications();
+    }, [])
   return (
     open && <div className="notifications"
     onClick={handleClose}
