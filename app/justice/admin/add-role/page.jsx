@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import CheckboxToggle from "./CheckboxToggle";
 import { createRole } from "@/app/apis/auth";
