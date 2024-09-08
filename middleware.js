@@ -16,7 +16,7 @@ export function middleware(request) {
     // Check if the token has expired
     if (decodedToken.exp * 1000 < Date.now()) {
       // Token has expired
-      alert("Session expired")
+      alert("Session expired. Please login again")
       const response = NextResponse.redirect(new URL('/justice/login', request.url))
       
       // Remove the expired token from cookies
