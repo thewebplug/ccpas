@@ -3,6 +3,7 @@
   width: 100%;
   margin: auto;
   padding: 33px 0;
+
   &__header {
     display: flex;
     align-items: center;
@@ -11,6 +12,7 @@
 
     &__inner {
       height: fit-content;
+
       &__title {
         @extend %title-16;
         margin-bottom: 4.81px;
@@ -51,10 +53,10 @@
     }
 
     &__error {
-        color: #E0003E;
-font-size: 14px;
-font-weight: 600;
-margin: 32px 0 4px 0;
+      color: #E0003E;
+      font-size: 14px;
+      font-weight: 600;
+      margin: 32px 0 4px 0;
     }
 
     &__label {
@@ -75,17 +77,17 @@ margin: 32px 0 4px 0;
     }
 
     &__button {
-        @extend %primary-button;
+      @extend %primary-button;
     }
 
     &__request {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 14px;
-        font-weight: 500;
-        color: #009B07;
-        margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #009B07;
+      margin-top: 24px;
     }
   }
 
@@ -108,13 +110,15 @@ margin: 32px 0 4px 0;
       @extend %title-24;
       font-weight: 400;
       color: #949494;
+
       & > span {
         font-weight: 700;
-color: #009B07;
-text-decoration: underline;
+        color: #009B07;
+        text-decoration: underline;
       }
     }
   }
+
   &__auth {
     display: flex;
     flex-direction: column;
@@ -142,91 +146,185 @@ text-decoration: underline;
     align-items: center;
     justify-content: center;
 
-
     &__inner {
-        width: fit-content;
-        min-height: 393px;
-        border-radius: 12px;
-        padding: 40px 65px;
-        background: #FFF;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+      width: fit-content;
+      min-height: 393px;
+      border-radius: 12px;
+      padding: 40px 65px;
+      background: #FFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
+      &__title {
+        color: #009B07;
+        @extend %title-32;
+        font-weight: 550;
+        margin-bottom: 8px;
+      }
+
+      &__subtitle {
+        color: var(--Secondary, #667085);
+        @extend %title-14;
+        font-weight: 400;
+        margin-bottom: 40px;
+      }
+
+      &__otp-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        align-items: center;
+        gap: 26px;
+        margin-bottom: 42px;
+
+        & > input {
+          width: 75px;
+          height: 62px;
+          border-radius: 10px;
+          border: 1px solid var(--Linear, #206DB0);
+          background: var(--Gray-Text-box, #F5F5F5);
+          text-align: center;
+          color: var(--Gray-Active-text-colour, #161616);
+          font-size: 24px;
+          font-weight: 600;
+        }
+
+        &__active {
+          border: 2px solid #028c4b !important;
+          outline: none;
+        }
+      }
+
+      &__input {
+        @extend %case-input;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        padding-left: 0;
+        font-size: 1.2rem;
+      }
+
+      &__request {
+        text-align: center;
+        @extend %title-14;
+        font-weight: 400;
+        text-decoration-line: underline;
+        color: #126FB5;
+        margin-bottom: 50px;
+      }
+
+      & > button {
+        @extend %create-button;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+// Media Query for screens 430px and below
+@media (max-width: 430px) {
+  .auth {
+    padding: 20px 16px;
+
+    &__header {
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 60px;
+
+      &__inner {
+        text-align: center;
 
         &__title {
-          color: #009B07;
-@extend %title-32;
-font-weight: 550;
-margin-bottom: 8px;
+          font-size: 14px;
         }
 
         &__subtitle {
-          color: var(--Secondary, #667085);
-@extend %title-14;
-font-weight: 400;
-margin-bottom: 40px;
+          font-size: 12px;
+        }
+      }
+    }
+
+    &__title {
+      font-size: 24px;
+      margin-bottom: 80px;
+    }
+
+    &__form {
+      max-width: 100%;
+
+      &__title {
+        font-size: 24px;
+      }
+
+      &__subtitle {
+        font-size: 18px;
+      }
+
+      &__label {
+        font-size: 14px;
+      }
+
+      &__input {
+        font-size: 14px;
+        padding: 12px;
+      }
+
+      &__button {
+        font-size: 16px;
+        padding: 12px;
+      }
+
+      &__request {
+        font-size: 12px;
+        margin-top: 16px;
+      }
+    }
+
+    &__unauth {
+      &__title {
+        font-size: 28px;
+      }
+
+      &__subtitle {
+        font-size: 18px;
+      }
+    }
+
+    &__auth {
+      &__title {
+        font-size: 28px;
+      }
+    }
+
+    &__modal {
+      &__inner {
+        width: 90%;
+        padding: 20px 16px;
+
+        &__title {
+          font-size: 20px;
+        }
+
+        &__subtitle {
+          font-size: 14px;
+          margin-bottom: 20px;
         }
 
         &__otp-group {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-          align-items: center;
-          gap: 26px;
-          margin-bottom: 42px;
-  
+          grid-template-columns: repeat(6, 1fr);
+          gap: 10px;
+          margin-bottom: 20px;
+
           & > input {
-            width: 75px;
-            height: 62px;
-
-            border-radius: 10px;
-border: 1px solid var(--Linear, #206DB0);
-background: var(--Gray-Text-box, #F5F5F5);
-
-           
-            text-align: center;
-  
-            
-            color: var(--Gray-Active-text-colour, #161616);
-font-size: 24px;
-font-weight: 600;
-
-          }
-  
-          &__active {
-            border: 2px solid #028c4b !important;
-            outline: none;
+            width: 40px;
+            height: 48px;
+            font-size: 18px;
           }
         }
 
-        &__input {
-          @extend %case-input;
-          margin-top: 10px;
-          margin-bottom: 30px;
-          padding-left: 0;
-          font-size: 1.2rem;
+        & > button {
+          width: 100%;
         }
-  
-        &__request {
-          text-align: center;
-@extend %title-14;
-font-weight: 400;
-text-decoration-line: underline;
-color: #126FB5;
-margin-bottom: 50px;
-        }
-
-        
-
-       
-       
-
-        
-& > button {
-@extend %create-button;
-max-width: 100%;
-}
-        
+      }
     }
-}
+  }
 }

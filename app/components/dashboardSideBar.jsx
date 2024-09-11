@@ -298,6 +298,7 @@ export default function Sidebar() {
 
         <div className="adminDashboard-sidebar__item__title">Task</div>
       </div>
+      
       <div
        className={
         pathname?.includes("email")
@@ -323,6 +324,7 @@ export default function Sidebar() {
 
         <div className="adminDashboard-sidebar__item__title">Email</div>
       </div>
+
       <div
         className={
           pathname?.includes("chat")
@@ -348,6 +350,7 @@ export default function Sidebar() {
 
         <div className="adminDashboard-sidebar__item__title">Message</div>
       </div>
+
       <div
         className={
           pathname?.includes("finance")
@@ -364,6 +367,7 @@ export default function Sidebar() {
 
         <div className="adminDashboard-sidebar__item__title">Finance</div>
       </div>
+
       <div
         className={
           pathname?.includes("calendar")

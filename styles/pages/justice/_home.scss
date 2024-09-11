@@ -11,6 +11,7 @@
   &__logo {
     margin-bottom: 32px;
   }
+
   &__title {
     @extend %title-32;
     text-align: center;
@@ -18,14 +19,14 @@
   }
 
   &__subtitle {
-      @extend %title-20;
-      margin-bottom: 93px;
-      color: #009b07;
+    @extend %title-20;
+    margin-bottom: 93px;
+    color: #009b07;
   }
 
   &__subsubtitle {
     @extend %title-30;
-      text-align: center;
+    text-align: center;
     margin-bottom: 32px;
   }
 
@@ -35,7 +36,6 @@
     gap: 24px;
 
     &__card {
-      // width: 100%;
       width: 470px;
       height: 96px;
       border-radius: 10px;
@@ -55,15 +55,13 @@
     display: grid;
     gap: 32px;
     grid-template-columns: 1fr 1fr 1fr;
-margin-bottom: 90px;
+    margin-bottom: 90px;
 
-&__img {
-  border: 10px solid #00AC08;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-
+    &__img {
+      border: 10px solid #00AC08;
+      border-radius: 50%;
+      cursor: pointer;
+    }
   }
 
   &__button {
@@ -74,6 +72,55 @@ margin-bottom: 90px;
     &:hover {
       background: #009b07;
       border: 1px solid #009b07;
+    }
+  }
+}
+
+// Media Query for screens 430px and below
+@media (max-width: 430px) {
+  .justice-home {
+    padding: 80px 16px;
+
+    &__logo {
+      margin-bottom: 24px;
+    }
+
+    &__title {
+      // @extend %title-24;
+      margin-bottom: 8px;
+    }
+
+    &__subtitle {
+      // @extend %title-18;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    &__subsubtitle {
+      // @extend %title-20;
+      margin-bottom: 24px;
+    }
+
+    &__cards {
+      &__card {
+        width: 100%;
+        height: auto;
+        padding: 16px;
+        gap: 10px;
+        font-size: 16px;
+      }
+    }
+
+    &__agency-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    &__button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
     }
   }
 }

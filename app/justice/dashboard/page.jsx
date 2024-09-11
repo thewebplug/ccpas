@@ -18,7 +18,7 @@ export default function Dashboard() {
 
   const loadSummary = async () => {
     const response = await getCaseSummary(auth?.token);
-    
+
     let star1 = 0;
     const interval1 = setInterval(() => {
       if (star1 < response?.data?.data?.totalCases) {
@@ -314,6 +314,7 @@ export default function Dashboard() {
                 width={28}
                 height={28}
                 style={{ borderRadius: "50%" }}
+                className="agencies-img"
               />
               <h3>POLICE FORCE</h3>
             </div>
@@ -329,6 +330,7 @@ export default function Dashboard() {
                 width={28}
                 height={28}
                 style={{ borderRadius: "50%" }}
+                className="agencies-img"
               />
               <h3>EFCC</h3>
             </div>
@@ -344,6 +346,7 @@ export default function Dashboard() {
                 width={28}
                 height={28}
                 style={{ borderRadius: "50%" }}
+                className="agencies-img"
               />
               <h3>ICPC</h3>
             </div>
@@ -359,6 +362,7 @@ export default function Dashboard() {
                 width={28}
                 height={28}
                 style={{ borderRadius: "50%" }}
+                className="agencies-img"
               />
               <h3>DSS</h3>
             </div>
@@ -375,6 +379,7 @@ export default function Dashboard() {
                 width={28}
                 height={28}
                 style={{ borderRadius: "50%" }}
+                className="agencies-img"
               />
               <h3>IMMIGRATION</h3>
             </div>
@@ -390,6 +395,7 @@ export default function Dashboard() {
                 width={28}
                 height={28}
                 style={{ borderRadius: "50%" }}
+                className="agencies-img"
               />
               <h3>CIVIL DEFENCE</h3>
             </div>
@@ -405,6 +411,7 @@ export default function Dashboard() {
                 width={28}
                 height={28}
                 style={{ borderRadius: "50%" }}
+                className="agencies-img"
               />
               <h3>CUSTOMS</h3>
             </div>
@@ -414,6 +421,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+
       <div className="dashboard-home__card2">
         <div className="dashboard-home__card2__chat">
           <div className="dashboard-home__card2__chat__title-group">
@@ -904,6 +912,8 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+
+
     </div>
   );
 }

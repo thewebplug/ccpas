@@ -13,6 +13,7 @@
       display: flex;
       align-items: center;
       gap: 10.31px;
+      position: relative;
       &__img {
         width: 90px;
         height: 90px;
@@ -31,6 +32,10 @@
           @extend %title-8;
         }
       }
+    }
+
+    &__mobile-menu {
+      display: none;
     }
 
     &__board {
@@ -96,4 +101,236 @@
         border-radius: 50%;
       }
     }
+
+
+    @media (max-width: 768px) {
+      // display: none;
+      // width: 100vw;
+      height: 70px;
+      padding-right: 0;
+
+      &__mobile-menu {
+        display: block;
+        position: absolute;
+  
+        .hamburger-menu {
+          border: none;
+          background-color: transparent;
+        }
+      }
+  
+      &__logo {
+      
+        
+        &__img {
+          border-right: none;
+        }
+
+          .small-img {
+            width: 33.0445px;
+            height: 33.0445px;
+            margin-left: 25px;
+          }
+      
+        
+  
+        &__title-group {
+          &__title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+          }
+  
+          &__subtitle {
+            display: none;
+          }
+        }
+      }
+  
+      &__board {
+        display: none;
+      }
+  
+      &__account {
+        &__button {
+          // display: none;
+          display: flex;
+          // align-items: center;
+          flex-direction: column;
+          min-width: 50px;
+          min-height: 30px;
+          // padding: 5px 8px;
+          background-color: #009b07;
+          border-radius: 8px;
+  
+          font-size: 10px;
+  
+          svg {
+            width: 15px;
+            height: 15px;
+          }
+        }
+  
+        .pointer {
+          margin-left: 15px;
+          width: 35px;
+          height: 35px;
+        }
+
+        &__notifications,
+        &__search {
+          display: none;
+        }
+      }
+    }
+
   }
+
+
+
+
+
+
+
+
+// .dashboard-header {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 10px 20px;
+
+//   &__logo {
+//     display: flex;
+//     align-items: center;
+
+//     &__img {
+//       margin-right: 10px;
+//     }
+
+//     &__title-group {
+//       display: flex;
+//       flex-direction: column;
+
+//       &__title {
+//         font-size: 18px;
+//       }
+
+//       &__subtitle {
+//         font-size: 12px;
+//       }
+//     }
+//   }
+
+//   &__mobile-menu {
+//     display: none;
+//   }
+
+//   &__board {
+//     display: flex;
+//     align-items: center;
+
+//     h2 {
+//       margin-left: 10px;
+//     }
+//   }
+
+//   &__account {
+//     display: flex;
+//     align-items: center;
+
+//     &__button {
+//       background: none;
+//       border: none;
+//       color: white;
+//       display: flex;
+//       align-items: center;
+//       font-size: 16px;
+//       cursor: pointer;
+
+//       svg {
+//         margin-left: 5px;
+//       }
+//     }
+
+//     &__search {
+//       margin-left: 15px;
+//     }
+
+//     &__notifications {
+//       margin-left: 15px;
+//       width: 45px;
+//       height: 45px;
+//       border-radius: 8px;
+//       background: #e4e4e499;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+
+//       svg {
+//         width: 18px;
+//         height: 18px;
+//       }
+//     }
+//   }
+
+//   @media (max-width: 768px) {
+//     &__mobile-menu {
+//       display: block;
+
+//       .hamburger-menu {
+//         border: none;
+//         background-color: transparent;
+//         margin-right: 5px;
+//       }
+//     }
+
+//     &__logo {
+//       .small-img {
+//         width: 33.0445px;
+//         height: 33.0445px;
+//       }
+
+//       &__title-group {
+//         &__title {
+//           font-size: 16px;
+//           font-weight: 600;
+//           color: #000;
+//         }
+
+//         &__subtitle {
+//           display: none;
+//         }
+//       }
+//     }
+//     // ,
+//     // &__account
+
+//     &__board {
+//       display: none;
+//     }
+
+//     &__account {
+//       &__button {
+//         display: flex;
+//         align-items: center;
+//         // width: 100px;
+//         padding: 5px 8px;
+//         background-color: #009b07;
+//         border-radius: 8px;
+
+//         font-size: 10px;
+
+//         svg {
+//           width: 15px;
+//           height: 15px;
+//         }
+//       }
+
+//       .pointer {
+//         margin-left: 15px;
+//         width: 35px;
+//         height: 35px;
+//       }
+//     }
+//   }
+// }
