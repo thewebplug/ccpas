@@ -207,4 +207,8 @@
       color: #009b07;
     }
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }

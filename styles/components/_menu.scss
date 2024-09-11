@@ -48,4 +48,14 @@ background: #F5F5F5;
   z-index: 9;
 }
 
+@media (max-width: 768px) {
+  &__inner {
+    width: 183px;
+
+    &__inner {
+      height: 37px;
+    }
+  }
+}
+
 }
