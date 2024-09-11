@@ -5,6 +5,13 @@ import React, { useRef, useState } from "react";
 
 const AddUserModal = ({ isOpen, onClose, onInvite }) => {
   const [image, setImage] = useState(null)
+  const [supervisorEmail, setSupervisorEmail] = useState(null)
+  const [profileImage, setProfileImage] = useState(null)
+  const [dob, setDob] = useState(null)
+  const [doe, setDoe] = useState(null)
+  const [nin, setNin] = useState(null)
+  const [bvn, setBvn] = useState(null)
+  const [govId, setGovId] = useState(null)
   const mediaRef = useRef("");
 
   if (!isOpen) return null;
