@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react";
-import AddedFavourite from "../added-favourite/page";
+// import AddedFavourite from "../added-favourite/page";
 
 const Menu = () => {
 
@@ -62,10 +62,10 @@ const Menu = () => {
         </svg>
         {/* Make Favourites */}
         Remove from Favourites
-        <AddedFavourite
+        {/* <AddedFavourite
           isOpen={isModalOpen} 
           onClose={handleCloseModal} 
-        />
+        /> */}
       </div>
 
       <div className="menu-item">
