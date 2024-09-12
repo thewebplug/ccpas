@@ -18,6 +18,9 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: -1;
+      width: 100%;
+      max-width: 512px;
+      height: 512px;
     }
 
   }

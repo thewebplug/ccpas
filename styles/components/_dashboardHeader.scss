@@ -125,84 +125,33 @@
 
 
     @media (max-width: 768px) {
-      // display: none;
-      // width: 100vw;
-      height: 70px;
-      padding-right: 0;
 
-      &__mobile-menu {
-        display: block;
-        position: absolute;
-  
-        .hamburger-menu {
-          border: none;
-          background-color: transparent;
-        }
-      }
-  
       &__logo {
-      
-        
+        &__mobile-menu {
+          display: initial;
+          
+          & > button {
+            background: none;
+          border: none;
+          }
+        }
         &__img {
-          border-right: none;
+          display: none;
         }
-
-          .small-img {
-            width: 33.0445px;
-            height: 33.0445px;
-            margin-left: 25px;
-          }
-      
-        
-  
         &__title-group {
-          &__title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #000;
-          }
-  
-          &__subtitle {
-            display: none;
-          }
-        }
-      }
-  
-      &__board {
-        display: none;
-      }
-  
-      &__account {
-        &__button {
-          // display: none;
-          display: flex;
-          flex-direction: column;
-          min-width: 50px;
-          margin: 0;
-          // min-height: 20px;
-          // padding: 5px 8px;
-          background-color: #009b07;
-          border-radius: 8px;
-  
-          font-size: 10px;
-  
-          svg {
-            width: 15px;
-            height: 15px;
-          }
-        }
-  
-        .pointer {
-          margin-left: 15px;
-          width: 35px;
-          height: 35px;
-        }
-
-        &__notifications,
-        &__search {
           display: none;
         }
       }
+      &__board {
+        display: none;
+      }
+
+      &__account {
+        &__button {
+          display: none;
+        }
+      }
+     
     }
 
   }

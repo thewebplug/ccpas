@@ -9,14 +9,17 @@ const DashboardLayout = ({ children }) => {
     <main className="dashboard">
       <DashboardHeader />
       <div className="dashboard__inner">
+        <div className="dashboard__inner__img">
         <Image
-            className="dashboard__inner__img"
+            
             alt=""
             src="/assets/bglogo.png"
-            width={520}
-            height={520}
+            objectFit="cover"
+            layout="fill"
             style={{ borderRadius: "50%" }}
           />
+        </div>
+        
         <DashboardSideBar />
         {children}
       </div>

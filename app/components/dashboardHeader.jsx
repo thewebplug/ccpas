@@ -14,7 +14,7 @@ export default function DashboardHeader() {
   return (
     <div className="dashboard-header">
       <div className="dashboard-header__logo">
-        <div className="dashboard-header__mobile-menu">
+        <div className="dashboard-header__logo__mobile-menu">
           <button
             className="hamburger-menu"
             onClick={() => setMobileMenuActive(!mobileMenuActive)}

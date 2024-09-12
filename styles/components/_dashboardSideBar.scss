@@ -209,6 +209,28 @@
   }
 
   @media (max-width: 768px) {
+    width: 50px;
+    padding: 0;
     display: none;
+
+    &__item-container {
+      &__item {
+      padding: 0;
+      display: none;
+
+      & > div {
+        & > :first-child {
+          display: none;
+        min-width: 30px;
+        min-height: 30px;
+        }
+      }
+      }
+    }
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // background: yellow;
+    // z-index: 1;
   }
 }
