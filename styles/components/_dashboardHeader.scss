@@ -32,11 +32,13 @@
           @extend %title-8;
         }
       }
+
+      &__mobile-menu {
+        display: none;
+      }
     }
 
-    &__mobile-menu {
-      display: none;
-    }
+  
 
     &__board {
       width: 360px;

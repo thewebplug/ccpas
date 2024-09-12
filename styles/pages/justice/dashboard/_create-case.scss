@@ -472,7 +472,7 @@
               align-items: start;
               gap: 8px;
 
-              & >:first-child {
+              & > :first-child {
                 min-width: 24px;
               }
 
@@ -490,7 +490,7 @@
               }
             }
 
-            & >:last-child {
+            & > :last-child {
               min-width: 32px;
             }
           }
@@ -640,5 +640,35 @@
     }
   }
 
- 
+  @media (max-width: 768px) {
+    &__title {
+      margin-top: 20px;
+
+      & > :last-child {
+        & > button {
+          width: 64px;
+          height: 28px;
+        }
+      }
+    }
+
+    .create-case__grid {
+      grid-template-columns: 1fr;
+
+      &__case-details {
+        margin-top: 100rem;
+
+        &__case-status {
+          & > select {
+            max-width: 141px;
+          }
+        }
+
+        &__grid,
+        &__notes {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
 }
