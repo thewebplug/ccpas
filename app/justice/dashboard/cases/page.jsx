@@ -281,14 +281,15 @@ export default function Cases() {
 
           <tbody>
             {cases.map((item, index) => (
-              <tr key={index}
-              onClick={() => {
-                // if (assignee) {
-                  window.location.href = `/justice/dashboard/case-details/${item?.id}`
-                // }
-              }}
+              <tr
+                key={index}
+                onClick={() => {
+                  // if (assignee) {
+                  window.location.href = `/justice/dashboard/case-details/${item?.id}`;
+                  // }
+                }}
               >
-                <td>
+                <td data-cell="date initiated">
                   <div className="user-info">
                     <CheckboxToggle />
                     <div>
@@ -299,13 +300,13 @@ export default function Cases() {
                   </div>
                 </td>
 
-                <td>{item?.caseNumber}</td>
-                <td>{item?.agency}</td>
-                <td>
+                <td data-cell="case no">{item?.caseNumber}</td>
+                <td data-cell="agency">{item?.agency}</td>
+                <td data-cell="case status">
                   <div className="case-status">{item.caseStatus}</div>
                 </td>
 
-                <td>
+                <td data-cell="suspect status">
                   <span
                     className={`status ${item.accusedStatus
                       .toLowerCase()
@@ -314,11 +315,11 @@ export default function Cases() {
                     {item.accusedStatus}
                   </span>
                 </td>
-                <td>
+                <td data-cell="offences">
                   {item.offenseCategory}
                   {/* , {item.offenseType} */}
                 </td>
-                <td>
+                <td data-cell="assignee">
                   <div className="assign-now">
                     {item?.assignedJudge === "" ? (
                       <>
@@ -344,32 +345,61 @@ export default function Cases() {
                     )}
                   </div>
                 </td>
-                <td>
+                <td data-cell="view">
                   <div className="offence-icons">
-                    <span className="pointer"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      window.location.href = `/justice/dashboard/case-details/${item?.id}`
-                    }}
+                    <span
+                      className="pointer"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.location.href = `/justice/dashboard/case-details/${item?.id}`;
+                      }}
                     >
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0.833984 10.0026C0.833984 10.0026 4.16732 3.33594 10.0007 3.33594C15.834 3.33594 19.1673 10.0026 19.1673 10.0026C19.1673 10.0026 15.834 16.6693 10.0007 16.6693C4.16732 16.6693 0.833984 10.0026 0.833984 10.0026Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10.0007 12.5026C11.3814 12.5026 12.5006 11.3833 12.5006 10.0026C12.5006 8.62189 11.3814 7.5026 10.0007 7.5026C8.61994 7.5026 7.50065 8.62189 7.50065 10.0026C7.50065 11.3833 8.61994 12.5026 10.0007 12.5026Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M0.833984 10.0026C0.833984 10.0026 4.16732 3.33594 10.0007 3.33594C15.834 3.33594 19.1673 10.0026 19.1673 10.0026C19.1673 10.0026 15.834 16.6693 10.0007 16.6693C4.16732 16.6693 0.833984 10.0026 0.833984 10.0026Z"
+                          stroke="#667085"
+                          stroke-width="1.66667"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M10.0007 12.5026C11.3814 12.5026 12.5006 11.3833 12.5006 10.0026C12.5006 8.62189 11.3814 7.5026 10.0007 7.5026C8.61994 7.5026 7.50065 8.62189 7.50065 10.0026C7.50065 11.3833 8.61994 12.5026 10.0007 12.5026Z"
+                          stroke="#667085"
+                          stroke-width="1.66667"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
                     </span>
 
-                    <span className="pointer"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      // window.location.href = `/justice/dashboard/case-details/${item?.id}`
-                    }}>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M9.99935 1.66406L12.5743 6.88073L18.3327 7.7224L14.166 11.7807L15.1493 17.5141L9.99935 14.8057L4.84935 17.5141L5.83268 11.7807L1.66602 7.7224L7.42435 6.88073L9.99935 1.66406Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-
+                    <span
+                      className="pointer"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        // window.location.href = `/justice/dashboard/case-details/${item?.id}`
+                      }}
+                    >
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.99935 1.66406L12.5743 6.88073L18.3327 7.7224L14.166 11.7807L15.1493 17.5141L9.99935 14.8057L4.84935 17.5141L5.83268 11.7807L1.66602 7.7224L7.42435 6.88073L9.99935 1.66406Z"
+                          stroke="#667085"
+                          stroke-width="1.66667"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
                     </span>
                   </div>
                 </td>
