@@ -27,8 +27,8 @@
     align-items: center;
     justify-content: space-between;
     height: 95px;
-    border-bottom: 1px solid #D9D9D9;
-    background: #EEEEEE;
+    border-bottom: 1px solid #d9d9d9;
+    background: #eeeeee;
     margin-bottom: 16px;
     padding: 0 24px;
 
@@ -37,13 +37,13 @@
       align-items: center;
       gap: 16px;
       font-weight: 500;
-        color: #7E92A2;
+      color: #7e92a2;
 
       &__case-creator {
         display: flex;
         align-items: center;
         gap: 8px;
-        & >:nth-child(even) {
+        & > :nth-child(even) {
           font-weight: 500;
           color: #101828;
         }
@@ -63,32 +63,39 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        & > button {
-          @extend %title-14;
-          font-weight: 500;
-          border-radius: 8px;
-          background: var(--Indigo-50, #eef4ff);
-          border: none;
-          outline: none;
-          color: var(--Indigo-700, #3538cd);
-          width: 154px;
-          height: 36px;
+
+        &__options {
           display: flex;
           align-items: center;
-          justify-content: center;
-          gap: 4px;
+          gap: 8px;
+
+          &__status {
+            @extend %title-14;
+            font-weight: 500;
+            border-radius: 8px;
+            background: var(--Indigo-50, #eef4ff);
+            border: none;
+            outline: none;
+            color: var(--Indigo-700, #3538cd);
+            width: 154px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+          }
+
+          &__export {
+            @extend %create-button;
+            max-width: 113px;
+            min-width: 113px;
+            border-radius: 8px;
+          }
+
+          &__more {
+            cursor: pointer;
+          }
         }
-      }
-
-      &__export {
-        @extend %create-button;
-        max-width: 113px;
-        min-width: 113px;
-        border-radius: 8px;
-      }
-
-      &__more {
-        cursor: pointer;
       }
     }
   }
@@ -110,11 +117,11 @@
         width: 100%;
         margin: 16px 0;
 
-        & >:first-child {
-          color: #9D9D9D;
-font-weight: 500;
+        & > :first-child {
+          color: #9d9d9d;
+          font-weight: 500;
         }
-        & >:last-child {
+        & > :last-child {
           @extend %title-14;
           display: flex;
           align-items: center;
@@ -175,7 +182,7 @@ font-weight: 500;
           &__overlay {
             @extend %title-32;
             font-weight: 700;
-            color: #FFF;
+            color: #fff;
             width: 100%;
             height: 100%;
             position: absolute;
@@ -241,7 +248,6 @@ font-weight: 500;
         & > :nth-child(even) {
           text-align: end;
         }
-
       }
     }
     &__case-details {
@@ -249,7 +255,7 @@ font-weight: 500;
       width: 100%;
       padding-bottom: 100px;
       border-radius: 16px;
-      border: 1px solid #D6E1D6;
+      border: 1px solid #d6e1d6;
       background: #fff;
       padding: 29px 0 0 0;
 
@@ -912,6 +918,80 @@ font-weight: 500;
 
         & > span {
           font-weight: 700;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__banner {
+      padding: 0 12px;
+
+      &__details {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        font-size: 10px;
+      }
+
+      &__actions {
+        font-size: 10px;
+
+        &__case-status {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+
+          &__options {
+            &__status {
+              width: 84px;
+              height: 30px;
+            }
+
+            &__export {
+              max-width: 57px;
+              min-width: 57px;
+              height: 27px;
+              font-size: 10px;
+
+              & > svg {
+                display: none;
+              }
+            }
+
+            &__more {
+              // display: none;
+
+              & > svg {
+                width: 25px;
+                height: 25px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .case-details__grid {
+      grid-template-columns: 1fr;
+
+      &__case-details {
+        margin-top: 40rem;
+
+        &__grid,
+        &__notes {
+          grid-template-columns: 1fr;
+        }
+
+        &__assets {
+          &__table-header {
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+            padding-left: 0;
+          }
         }
       }
     }

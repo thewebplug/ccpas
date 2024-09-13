@@ -63,5 +63,20 @@
     // background: rgba(255, 255, 0, 0.144);
     // z-index: 1;
   }
+
+  @media (max-width: 768px) {
+    &__menu {
+      width: 200px;
+      height: auto;
+
+      &__menu-item {
+        font-size: 10px;
+      }
+
+      &__menu-sub-item {
+        font-size: 10px;
+      }
+    }
+  }
   
 }
