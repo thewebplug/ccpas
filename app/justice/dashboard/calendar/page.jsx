@@ -4,11 +4,10 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import bootstrap5Plugin from '@fullcalendar/bootstrap5'
+import bootstrap5Plugin from "@fullcalendar/bootstrap5";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from 'next/link';
-
+import Link from "next/link";
 
 export default function Calendar() {
   const [weekendsVisible, setWeekendsVisible] = useState(true);
@@ -84,35 +83,37 @@ export default function Calendar() {
   }
 
   function handleEventClick(clickInfo) {
-    setViewEventOpen(true)
-    setSelectedEvent(clickInfo)
+    setViewEventOpen(true);
+    setSelectedEvent(clickInfo);
     console.log("clickInfo", clickInfo);
     //   if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
     //     clickInfo.event.remove()
     //   }
   }
 
-  useEffect (() => {
-console.log('selectedEvent', selectedEvent);
-
-  }, [selectedEvent])
+  useEffect(() => {
+    console.log("selectedEvent", selectedEvent);
+  }, [selectedEvent]);
 
   function handleEvents(events) {
     setCurrentEvents(events);
   }
 
   function handleViewModalClose(e) {
-
-    if(e.target.classList.contains("calendar__view-event")) {
-        setViewEventOpen(false)
+    if (e.target.classList.contains("calendar__view-event")) {
+      setViewEventOpen(false);
     }
-    
   }
   return (
     <div className="demo-app calendar">
       <div className="demo-app-main">
         <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, bootstrap5Plugin]}
+          plugins={[
+            dayGridPlugin,
+            timeGridPlugin,
+            interactionPlugin,
+            bootstrap5Plugin,
+          ]}
           headerToolbar={{
             left: "prev,next today",
             center: "title",
@@ -134,10 +135,9 @@ console.log('selectedEvent', selectedEvent);
         eventChange={function(){}}
         eventRemove={function(){}}
         */
-       eventColor="#F0F9F2"  // Default color for all events
-  eventTextColor="#03781D"
-  eventBorderColor="#C2EECC"
-
+          eventColor="#F0F9F2" // Default color for all events
+          eventTextColor="#03781D"
+          eventBorderColor="#C2EECC"
         />
       </div>
 
@@ -384,152 +384,163 @@ console.log('selectedEvent', selectedEvent);
         </div>
       )}
 
-      {viewEventOpen && <div className="calendar__view-event" onClick={handleViewModalClose}>
-        <div className="calendar__view-event__inner"
-        
-        >
-          <div className="calendar__view-event__inner__title">
-            <div className="calendar__view-event__inner__title__inner">
-              <div>
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="5" cy="5" r="5" fill="#03781D" />
-                </svg>
+      {viewEventOpen && (
+        <div className="calendar__view-event" onClick={handleViewModalClose}>
+          <div className="calendar__view-event__inner">
+            <div className="calendar__view-event__inner__title">
+              <div className="calendar__view-event__inner__title__inner">
+                <div>
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="5" cy="5" r="5" fill="#03781D" />
+                  </svg>
 
-                <div>{selectedEvent?.event?.title}</div>
-              </div>
-              <div>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M14.6673 7.9987C14.6673 11.6787 11.6807 14.6654 8.00065 14.6654C4.32065 14.6654 1.33398 11.6787 1.33398 7.9987C1.33398 4.3187 4.32065 1.33203 8.00065 1.33203C11.6807 1.33203 14.6673 4.3187 14.6673 7.9987Z"
-                    stroke="#7E7E7E"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M10.4739 10.1211L8.40724 8.88781C8.04724 8.67448 7.75391 8.16115 7.75391 7.74115V5.00781"
-                    stroke="#7E7E7E"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+                  <div>{selectedEvent?.event?.title}</div>
+                </div>
+                <div>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14.6673 7.9987C14.6673 11.6787 11.6807 14.6654 8.00065 14.6654C4.32065 14.6654 1.33398 11.6787 1.33398 7.9987C1.33398 4.3187 4.32065 1.33203 8.00065 1.33203C11.6807 1.33203 14.6673 4.3187 14.6673 7.9987Z"
+                      stroke="#7E7E7E"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10.4739 10.1211L8.40724 8.88781C8.04724 8.67448 7.75391 8.16115 7.75391 7.74115V5.00781"
+                      stroke="#7E7E7E"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
 
-                <div>{selectedEvent?.event?.start?.toString()?.split("(")[0]} {!!selectedEvent?.event?.end && "-"} {selectedEvent?.event?.end?.toString()?.split("(")[0]}</div>
+                  <div>
+                    {selectedEvent?.event?.start?.toString()?.split("(")[0]}{" "}
+                    {!!selectedEvent?.event?.end && "-"}{" "}
+                    {selectedEvent?.event?.end?.toString()?.split("(")[0]}
+                  </div>
+                </div>
               </div>
+
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_1327_26577)">
+                  <path
+                    d="M12 8C13.1 8 14 7.1 14 6C14 4.9 13.1 4 12 4C10.9 4 10 4.9 10 6C10 7.1 10.9 8 12 8ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10ZM12 16C10.9 16 10 16.9 10 18C10 19.1 10.9 20 12 20C13.1 20 14 19.1 14 18C14 16.9 13.1 16 12 16Z"
+                    fill="#7E7E7E"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_1327_26577">
+                    <rect width="24" height="24" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
             </div>
 
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <div className="calendar__view-event__inner__participants">
+              <div className="calendar__view-event__inner__participants__title">
+                <div>Participants (3)</div>
+                <div>
+                  <div>See all</div>
+
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4.50008 2.04094L7.76008 5.30094C8.14508 5.68594 8.14508 6.31594 7.76008 6.70094L4.50008 9.96094"
+                      stroke="#006FD5"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <div className="calendar__view-event__inner__participants__card">
+                <div>
+                  <Image
+                    alt=""
+                    src="/assets/logo.png"
+                    width={32}
+                    height={32}
+                    style={{ borderRadius: "50%" }}
+                  />
+                  <div>Prashant Kumar Singh</div>
+                </div>
+
+                <button className="calendar__view-event__inner__participants__card__pending">
+                  Pending
+                </button>
+              </div>
+              <div className="calendar__view-event__inner__participants__card">
+                <div>
+                  <Image
+                    alt=""
+                    src="/assets/logo.png"
+                    width={32}
+                    height={32}
+                    style={{ borderRadius: "50%" }}
+                  />
+                  <div>Prashant Kumar Singh</div>
+                </div>
+
+                <button className="calendar__view-event__inner__participants__card__accepted">
+                  Accepted
+                </button>
+              </div>
+              <div className="calendar__view-event__inner__participants__card">
+                <div>
+                  <Image
+                    alt=""
+                    src="/assets/logo.png"
+                    width={32}
+                    height={32}
+                    style={{ borderRadius: "50%" }}
+                  />
+                  <div>Prashant Kumar Singh</div>
+                </div>
+
+                <button className="calendar__view-event__inner__participants__card__rejected">
+                  Rejected
+                </button>
+              </div>
+            </div>
+            <Link
+              href={selectedEvent?.event?.extendedProps?.meetingUrl || ""}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <g clip-path="url(#clip0_1327_26577)">
-                <path
-                  d="M12 8C13.1 8 14 7.1 14 6C14 4.9 13.1 4 12 4C10.9 4 10 4.9 10 6C10 7.1 10.9 8 12 8ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10ZM12 16C10.9 16 10 16.9 10 18C10 19.1 10.9 20 12 20C13.1 20 14 19.1 14 18C14 16.9 13.1 16 12 16Z"
-                  fill="#7E7E7E"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_1327_26577">
-                  <rect width="24" height="24" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
+              <button className="calendar__view-event__inner__link">
+                Go to meet link
+              </button>
+            </Link>
           </div>
-
-          <div className="calendar__view-event__inner__participants">
-            <div className="calendar__view-event__inner__participants__title">
-              <div>Participants (3)</div>
-              <div>
-                <div>See all</div>
-
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.50008 2.04094L7.76008 5.30094C8.14508 5.68594 8.14508 6.31594 7.76008 6.70094L4.50008 9.96094"
-                    stroke="#006FD5"
-                    stroke-width="1.5"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            <div className="calendar__view-event__inner__participants__card">
-                <div>
-                <Image
-              alt=""
-              src="/assets/logo.png"
-              width={32}
-              height={32}
-              style={{borderRadius: "50%"}}
-            />
-                    <div>Prashant Kumar Singh</div>
-                </div>
-
-                <button className="calendar__view-event__inner__participants__card__pending">Pending</button>
-            </div>
-            <div className="calendar__view-event__inner__participants__card">
-                <div>
-                <Image
-              alt=""
-              src="/assets/logo.png"
-              width={32}
-              height={32}
-              style={{borderRadius: "50%"}}
-            />
-                    <div>Prashant Kumar Singh</div>
-                </div>
-
-                <button className="calendar__view-event__inner__participants__card__accepted">Accepted</button>
-            </div>
-            <div className="calendar__view-event__inner__participants__card">
-                <div>
-                <Image
-              alt=""
-              src="/assets/logo.png"
-              width={32}
-              height={32}
-              style={{borderRadius: "50%"}}
-            />
-                    <div>Prashant Kumar Singh</div>
-                </div>
-
-                <button className="calendar__view-event__inner__participants__card__rejected">Rejected</button>
-            </div>
-          </div>
-          <Link href={selectedEvent?.event?.extendedProps?.meetingUrl || ""} target="_blank" rel="noopener noreferrer">
-
-          <button className="calendar__view-event__inner__link"
-          >
-      
-Go to meet link
-          </button>
-          </Link>
         </div>
-      </div>}
+      )}
     </div>
   );
 }
