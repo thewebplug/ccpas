@@ -275,7 +275,7 @@ export default function Cases() {
                 // }
               }}
               >
-                <td>
+                <td data-cell="date initiated">
                   <div className="user-info">
                     <CheckboxToggle />
                     <div>
@@ -286,13 +286,13 @@ export default function Cases() {
                   </div>
                 </td>
 
-                <td>{item?.caseNumber}</td>
-                <td>{item?.agency}</td>
-                <td>
+                <td data-cell="case no">{item?.caseNumber}</td>
+                <td data-cell="agency">{item?.agency}</td>
+                <td data-cell="case status">
                   <div className="case-status">{item.caseStatus}</div>
                 </td>
 
-                <td>
+                <td data-cell="suspect status">
                   <span
                     className={`status ${item.accusedStatus
                       .toLowerCase()
@@ -301,11 +301,11 @@ export default function Cases() {
                     {item.accusedStatus}
                   </span>
                 </td>
-                <td>
+                <td  data-cell="offences">
                   {item.offenseCategory}
                   {/* , {item.offenseType} */}
                 </td>
-                <td>
+                <td data-cell="assignee">
                   <div className="assign-now">
                     {item?.assignedJudge === "" ? (
                       <>

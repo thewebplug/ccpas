@@ -271,7 +271,7 @@ export default function FavouriteCase() {
               },
             ].map((user, index) => (
               <tr key={index}>
-                <td>
+                <td data-cell="date initiated">
                   <div className="user-info">
                     <CheckboxToggle />
                     <div>
@@ -280,13 +280,13 @@ export default function FavouriteCase() {
                   </div>
                 </td>
 
-                <td>{user.caseNo}</td>
-                <td>{user.agency}</td>
-                <td>
+                <td data-cell="case no">{user.caseNo}</td>
+                <td data-cell="agency">{user.agency}</td>
+                <td data-cell="case status">
                   <div className="case-status">{user.caseStatus}</div>
                 </td>
 
-                <td>
+                <td data-cell="suspect status">
                   <span
                     className={`status ${user.status
                       .toLowerCase()
@@ -295,7 +295,7 @@ export default function FavouriteCase() {
                     {user.status}
                   </span>
                 </td>
-                <td>
+                <td data-cell="offences">
                   <div className="offence-flex">
                     <span>{user.offences}</span>
 

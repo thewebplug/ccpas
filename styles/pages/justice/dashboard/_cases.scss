@@ -73,6 +73,9 @@
     justify-content: space-between;
     gap: 16px;
 
+    max-width: 100%;
+    overflow-x: scroll;
+
     &__input {
       width: 100%;
       max-width: 418px;
@@ -117,7 +120,9 @@
 
   &__body {
     height: auto;
-    overflow-y: auto;
+    // overflow-y: auto;
+    max-width: 100%;
+    overflow-x: scroll;
 
     &::-webkit-scrollbar {
       display: none;
@@ -377,43 +382,22 @@
       .cases-table {
 
         thead {
-          display: none;
+          tr {
+            .user-flex {
+              font-size: 10px;
+            }
+          }
         }
 
         tbody {
 
           td {
-            display: grid;
-            gap: 8px;
-            grid-template-columns: 15ch auto;
-            padding: 8px 16px;
+            font-size: 10px;
 
-            .status {
-
-              &.on-bail,
-              &.in-custody,
-              &.convicted,
-              &.discharged,
-              &.deceased {
-                width: 155px;
-                padding: 8px 0px;
-                text-align: center;
-              }
+            .user-info {
+              font-size: 10px;
             }
-          }
 
-          td:first-child {
-            padding-top: 16px;
-          }
-
-          td:last-child {
-            padding-bottom: 16px;
-          }
-
-          td::before {
-            content: attr(data-cell) ": ";
-            font-weight: 700;
-            text-transform: capitalize;
           }
         }
       }
