@@ -165,6 +165,9 @@ export default function CreateCase() {
 
       <div className="case-details__banner">
         <div className="case-details__banner__details">
+          
+
+          <div className="case-details__banner__details__created-by">
           {singleCase?.caseClass === "Confidential" ? (
             <svg
               width="62"
@@ -446,8 +449,6 @@ export default function CreateCase() {
           ) : (
             ""
           )}
-
-          <div className="case-details__banner__details__created-by">
             Case File Created by:
           </div>
           <div className="case-details__banner__details__case-creator">

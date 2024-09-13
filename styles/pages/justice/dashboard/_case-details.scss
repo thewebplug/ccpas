@@ -39,6 +39,13 @@
       font-weight: 500;
       color: #7e92a2;
 
+      &__created-by {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+
       &__case-creator {
         display: flex;
         align-items: center;
@@ -932,6 +939,16 @@
         flex-direction: column;
         gap: 16px;
         font-size: 10px;
+
+        &__created-by {
+          gap: 8px;
+
+          & > svg {
+            // display: none;
+            width: 24px;
+            height: 24px;
+          }
+        }
       }
 
       &__actions {
