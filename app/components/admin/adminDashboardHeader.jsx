@@ -3,10 +3,26 @@
 import Image from "next/image";
 import Menu from "../menu";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 export default function AdminHeader() {
+  const dispatch = useDispatch();
   const [menuActive, setMenuActive] = useState(false);
   const [mobileMenuActive, setMobileMenuActive] = useState(false);
+
+  const handleSidebarOpen = () => {
+    if(mobileMenu) {
+      dispatch({
+        type: "SET_MENU_VISIBLE",
+        payload: false
+      });
+    }else {
+      dispatch({
+        type: "SET_MENU_VISIBLE",
+        payload: true
+      });
+    }
+  }
 
   return (
     <div className="dashboard-header">
@@ -14,7 +30,7 @@ export default function AdminHeader() {
         <div className="dashboard-header__logo__mobile-menu">
           <button
             className="hamburger-menu"
-            onClick={() => setMobileMenuActive(!mobileMenuActive)}
+            onClick={handleSidebarOpen}
           >
             <svg
               width="24"
@@ -34,13 +50,13 @@ export default function AdminHeader() {
               <Sidebar />
             </div> */}
 
-          {mobileMenuActive && (
+          {/* {mobileMenuActive && (
             <div
               className={`mobile-sidebar ${mobileMenuActive ? "active" : ""}`}
             >
               <Sidebar />
             </div>
-          )}
+          )} */}
         </div>
 
         <div className="dashboard-header__logo__img">
