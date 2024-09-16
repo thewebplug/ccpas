@@ -6,12 +6,21 @@
     grid-template-columns: 1fr 1.44fr;
     gap: 36.7px;
 
+    @media (max-width: $tablet) {
+      grid-template-columns: 1fr;
+    }
+
     &__stats {
       &__card {
         background: #fff;
         padding: 27.52px;
         border-radius: 6.88px;
         margin-bottom: 36.7px;
+
+        @media (max-width: $phone) {
+          padding: 20px;
+        }
+
         &__title {
           display: flex;
           align-items: center;
@@ -38,11 +47,14 @@
           display: grid;
           grid-template-columns: 1fr 1fr 1fr 1fr;
           gap: 16.28px;
-
           color: #798ba3;
           @extend %title-22;
           font-weight: 400;
 
+          @media (max-width: $phone) {
+            grid-template-columns: 1fr 1fr;
+          }
+      
           & > div {
             display: flex;
             flex-direction: column;
@@ -61,6 +73,10 @@
       padding: 27.52px;
       background: #fff;
 
+      @media (max-width: $phone) {
+        padding: 20px;
+      }
+
       &__title {
         display: flex;
         align-items: center;
@@ -78,6 +94,7 @@
     border-radius: 6.88px;
     padding: 27.52px;
     background: #fff;
+    overflow-x: auto;
     &__title {
       display: flex;
       align-items: center;
@@ -100,6 +117,11 @@
       background: #fbfbfb;
       box-shadow: 0px -1px 0px 0px #e4e6e8 inset;
       padding: 17px;
+      @media (max-width: $tablet) {
+        width: 1000px;
+      }
+  
+
 
       & > input {
         width: 14px;
@@ -118,6 +140,11 @@
       background: #fbfbfb;
       box-shadow: 0px -1px 0px 0px #e4e6e8 inset;
       padding: 17px;
+      width: 100%;
+
+      @media (max-width: $tablet) {
+        width: 1000px;
+      }
 
       & > input {
         width: 14px;

@@ -100,6 +100,7 @@ Export
       </div>
 
 
+      <div className="overview__transactions-table">
       <div className="overview__transactions-header">
           <input type="checkbox" name="" id="" />
           <div>Payment ID</div>
@@ -376,6 +377,7 @@ Export
             </svg>
           </div>
         ))}
+        </div>
 
         <div className="overview__pagination">
             <div>5 results</div>

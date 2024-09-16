@@ -73,6 +73,11 @@
     justify-content: space-between;
     margin-bottom: 24px;
 
+    
+@media (max-width: $phone) {
+  display: none;
+}
+
     &__set1 {
       display: flex;
       align-items: center;
@@ -125,6 +130,11 @@
     
   }
 
+  &__transactions-table {
+    overflow-x: auto;
+
+  }
+
   &__transactions-header {
     @extend %title-14;
     color: #374151;
@@ -138,6 +148,11 @@
     background: #fbfbfb;
     box-shadow: 0px -1px 0px 0px #e4e6e8 inset;
     padding: 17px;
+
+    
+@media (max-width: $phone) {
+  width: 1000px;
+}
 
     & > input {
       width: 14px;
@@ -156,6 +171,12 @@
     background: #fbfbfb;
     box-shadow: 0px -1px 0px 0px #e4e6e8 inset;
     padding: 17px;
+
+
+    
+@media (max-width: $phone) {
+  width: 1000px;
+}
 
     & > input {
       width: 14px;

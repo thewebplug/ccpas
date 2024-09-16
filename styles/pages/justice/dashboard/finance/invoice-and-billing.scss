@@ -32,6 +32,10 @@
     gap: 42px;
     margin-bottom: 63px;
 
+    @media (max-width: $tablet) {
+      flex-direction: column;
+    }
+
     &__title {
       & >:first-child {
         @extend %title-16;
@@ -119,6 +123,11 @@ align-items: center;
     display: flex;
     align-items: start;
     gap: 42px;
+
+    @media (max-width: $tablet) {
+      flex-direction: column;
+    }
+    
     &__title {
         & >:first-child {
           @extend %title-16;
@@ -148,6 +157,7 @@ align-items: center;
 
     &__table {
       width: 100%;
+      overflow-x: auto;
       &__header {
         display: grid;
         align-items: center;
@@ -163,6 +173,10 @@ font-weight: 500;
 color: #667085;
 
 white-space: nowrap;
+
+@media (max-width: $phone) {
+  width: 1000px;
+}
 
 & > div {
   display: flex;
@@ -192,6 +206,11 @@ height: 72px;
 padding: 0 16px;
 
 white-space: nowrap;
+
+
+@media (max-width: $phone) {
+  width: 1000px;
+}
 
 &__invoice {
   display: flex;

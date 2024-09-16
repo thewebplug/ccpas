@@ -2,14 +2,34 @@
 
 import Image from "next/image";
 import Menu from "./menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Notifications from "./notifications";
 import Sidebar from "./dashboardSideBar";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function DashboardHeader() {
+  const dispatch = useDispatch();
+  const mobileMenu = useSelector((state) => state.mobileMenu);
   const [open, setOpen] = useState(false)
   const [menuActive, setMenuActive] = useState(false);
-  const [mobileMenuActive, setMobileMenuActive] = useState(false);
+
+  useEffect(() => {
+console.log('mobileMenu', mobileMenu);
+
+  }, [mobileMenu])
+  const handleSidebarOpen = () => {
+    if(mobileMenu) {
+      dispatch({
+        type: "SET_MENU_VISIBLE",
+        payload: false
+      });
+    }else {
+      dispatch({
+        type: "SET_MENU_VISIBLE",
+        payload: true
+      });
+    }
+  }
 
   return (
     <div className="dashboard-header">
@@ -17,7 +37,7 @@ export default function DashboardHeader() {
         <div className="dashboard-header__logo__mobile-menu">
           <button
             className="hamburger-menu"
-            onClick={() => setMobileMenuActive(!mobileMenuActive)}
+            onClick={handleSidebarOpen}
           >
             <svg
               width="24"
@@ -37,13 +57,7 @@ export default function DashboardHeader() {
               <Sidebar />
             </div> */}
 
-          {mobileMenuActive && (
-        
-
-            <div className={`mobile-sidebar ${mobileMenuActive ? 'active' : ''}`}>
-              <Sidebar />
-            </div>
-          )}
+         
         </div>
 
         <div className="dashboard-header__logo__img">

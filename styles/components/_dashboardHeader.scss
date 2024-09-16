@@ -127,7 +127,8 @@
 
 
     @media (max-width: 768px) {
-
+      padding-right: 0;
+      padding: 0 20px;
       &__logo {
         &__mobile-menu {
           display: initial;
