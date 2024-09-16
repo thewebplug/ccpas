@@ -468,7 +468,7 @@ export default function Sidebar() {
             }
             onClick={() =>
               (window.location.href =
-                "justice/dashboard/report-and-analytics/finance-and-accounts")
+                "/justice/dashboard/report-and-analytics/finance-and-accounts")
             }
           >
             <svg

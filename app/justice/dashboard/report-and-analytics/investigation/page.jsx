@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReportsTab from "../components/tab";
 import CheckboxToggle from "@/app/justice/admin/add-role/CheckboxToggle";
 import Chart from "chart.js/auto";
@@ -9,6 +9,11 @@ import Chart from "chart.js/auto";
 export default function CreateCase() {
   const [dropDown, setDropDown] = useState("Comprehensive of Case Report(Operation)");
   const [currentType, setCurrentType] = useState("Analytics");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const dateInputRef1 = useRef(null);
+  const dateInputRef2 = useRef(null);
+
 
   
   useEffect(() => {
@@ -168,8 +173,15 @@ export default function CreateCase() {
               CASES FROM EFCC TO COUNTER AGENCY
             </option>
           </select>
-
-          <input type="date" name="" id="" />
+    <div className="reports__inner__filter__date">
+      <input type="date" name="" id="" value={from}  ref={dateInputRef1}
+              onChange={(e) => {
+                setFrom(e.target.value)
+                dateInputRef2.current.showPicker();
+                }} />
+      <input type="date" name="" id="" value={to}  ref={dateInputRef2}
+              onChange={(e) => setTo(e.target.value)} />
+    </div>
 
           <button>Apply</button>
         </div>
@@ -224,7 +236,9 @@ export default function CreateCase() {
           </div>
         </div>
 
-       {currentType === "Analytics" && dropDown === "Comprehensive of Case Report(Operation)" ? <div className="reports__inner__tables">
+       {currentType === "Analytics" && dropDown === "Comprehensive of Case Report(Operation)" ? 
+       
+       <div className="reports__inner__tables">
           <div className="reports__inner__table reports__inner__investigation-table">
             <div className="reports__inner__table__main-header"></div>
             <div className="reports__inner__table__header">
@@ -301,44 +315,7 @@ export default function CreateCase() {
               </div>
               
             </div>
-            <div className="reports__inner__table__footer">
-              <button>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button>
-                Next
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            
           </div>
           <div className="reports__inner__table reports__inner__investigation-table">
             <div className="reports__inner__table__main-header">
@@ -476,44 +453,7 @@ export default function CreateCase() {
               </div>
              
             </div>
-            <div className="reports__inner__table__footer">
-              <button>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button>
-                Next
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            
           </div>
           <div className="reports__inner__table reports__inner__investigation-table">
             <div className="reports__inner__table__main-header">
@@ -651,44 +591,7 @@ export default function CreateCase() {
               </div>
              
             </div>
-            <div className="reports__inner__table__footer">
-              <button>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button>
-                Next
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            
           </div>
          
           <div className="reports__inner__table reports__inner__investigation-table">
@@ -749,44 +652,7 @@ export default function CreateCase() {
                 <div className="reports__inner__table__large">Terrorism</div>
               </div>
             </div>
-            <div className="reports__inner__table__footer">
-              <button>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button>
-                Next
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            
           </div>
 
           <div className="reports__inner__table reports__inner__investigation-table">
@@ -1037,44 +903,7 @@ export default function CreateCase() {
                 </div>
               </div>
             </div>
-            <div className="reports__inner__table__footer">
-              <button>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button>
-                Next
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            
           </div>
           <div className="reports__inner__table reports__inner__investigation-table">
             <div className="reports__inner__table__main-header">
@@ -1324,44 +1153,7 @@ export default function CreateCase() {
                 </div>
               </div>
             </div>
-            <div className="reports__inner__table__footer">
-              <button>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button>
-                Next
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            
           </div>
 
           <div className="reports__inner__table reports__inner__investigation-table">
@@ -1461,44 +1253,7 @@ export default function CreateCase() {
               </div>
              
             </div>
-            <div className="reports__inner__table__footer">
-              <button>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button>
-                Next
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            
           </div>
           <div className="reports__inner__table reports__inner__investigation-table">
             <div className="reports__inner__table__main-header"></div>
@@ -1559,44 +1314,7 @@ export default function CreateCase() {
                 <div className="reports__inner__table__xtra-large">Financial Intelligence Unit</div>
               </div>
             </div>
-            <div className="reports__inner__table__footer">
-              <button>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button>
-                Next
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            
           </div>
           <div className="reports__inner__table reports__inner__investigation-table">
             <div className="reports__inner__table__main-header"></div>
@@ -1657,46 +1375,10 @@ export default function CreateCase() {
                 <div className="reports__inner__table__xtra-large">23/11/2024(Legal Advice)</div>
               </div>
             </div>
-            <div className="reports__inner__table__footer">
-              <button>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button>
-                Next
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            
           </div>
         </div> : ""}
+
        {currentType === "Analytics" && dropDown === "Money laundering Investigation" ? <div className="reports__inner__tables">
           <div className="reports__inner__table reports__inner__investigation-table">
             <div className="reports__inner__table__main-header"></div>
@@ -1743,44 +1425,7 @@ export default function CreateCase() {
               </div>
             </div>
 
-            <div className="reports__inner__table__footer">
-              <button>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button>
-                Next
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            
           </div>
           <div className="reports__inner__table reports__inner__investigation-table">
             <div className="reports__inner__table__main-header">
@@ -1819,44 +1464,7 @@ export default function CreateCase() {
                 <div className="reports__inner__table__small reports__inner__table__center reports__inner__table__bold">141</div>
               </div>
             </div>
-            <div className="reports__inner__table__footer">
-              <button>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button>
-                Next
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            
           </div>
           <div className="reports__inner__table reports__inner__investigation-table">
             <div className="reports__inner__table__main-header">
@@ -1932,44 +1540,7 @@ export default function CreateCase() {
               </div>
             </div>
 
-            <div className="reports__inner__table__footer">
-              <button>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button>
-                Next
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            
           </div>
         
           <div className="reports__inner__table reports__inner__investigation-table">
@@ -2036,44 +1607,7 @@ export default function CreateCase() {
               </div>
             </div>
 
-            <div className="reports__inner__table__footer">
-              <button>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button>
-                Next
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
-                    stroke="#344054"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            
           </div>
         
           <div className="reports__inner__table reports__inner__investigation-table">
@@ -2131,7 +1665,12 @@ predicates
                 <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">141</div>
               </div>
             </div>
-            <div className="reports__inner__table__footer">
+            
+          </div>
+        
+
+        </div> : ""}
+          <div className="reports__inner__table__footer">
               <button>
                 <svg
                   width="20"
@@ -2169,11 +1708,7 @@ predicates
                 </svg>
               </button>
             </div>
-          </div>
         
-
-        
-        </div> : ""}
 
         {currentType === "Table" && <div className="reports__inner__chart">
             <div className="reports__inner__chart__title">

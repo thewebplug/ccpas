@@ -1,13 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReportsTab from "./components/tab";
 import Chart from "chart.js/auto";
 
 export default function CreateCase() {
   const [dropDown, setDropDown] = useState("MLA Foreign Jurisdiction");
   const [currentType, setCurrentType] = useState("Analytics");
-
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const dateInputRef1 = useRef(null);
+  const dateInputRef2 = useRef(null);
   useEffect(() => {
     const ctx = document.getElementById("reportChart");
 
@@ -166,7 +169,15 @@ export default function CreateCase() {
             </option>
           </select>
 
-          <input type="date" name="" id="" />
+          <div className="reports__inner__filter__date">
+      <input type="date" name="" id="" value={from}  ref={dateInputRef1}
+              onChange={(e) => {
+                setFrom(e.target.value)
+                dateInputRef2.current.showPicker();
+                }} />
+      <input type="date" name="" id="" value={to}  ref={dateInputRef2}
+              onChange={(e) => setTo(e.target.value)} />
+    </div>
 
           <button>Apply</button>
         </div>

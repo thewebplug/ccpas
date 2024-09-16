@@ -50,7 +50,7 @@ export default function ReportsTab() {
       <div
         className={pathname?.includes("finance-and-accounts") && "reports__tabs__active"}
         onClick={() => window.location.href =
-          "justice/dashboard/report-and-analytics/finance-and-accounts"}
+          "/justice/dashboard/report-and-analytics/finance-and-accounts"}
       >
         Finance & Accounts
       </div>
