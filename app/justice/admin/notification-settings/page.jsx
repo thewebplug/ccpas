@@ -11,16 +11,15 @@ export default function NotificationSettings() {
   return (
     <div className="notification-settings">
       <div className="notification-settings__header">
-        <div className="notification-settings__header__title">Notification Settings</div>
-        <div
-          className="notification-settings__header__button"
-        >
+        <div className="notification-settings__header__title">
+          Notification Settings
+        </div>
+        <div className="notification-settings__header__button">
           <button>Cancel</button>
           <button>Save</button>
         </div>
       </div>
       <div className="notification-settings__actions">
-      
         <form action="" className="notification-settings__actions__input">
           <input type="text" placeholder="User Name" />
           <svg
@@ -45,8 +44,6 @@ export default function NotificationSettings() {
           </select>
         </form>
 
-      
-
         <form action="" className="notification-settings__actions__input">
           <select name="" id="">
             <option value="">Action</option>
@@ -58,7 +55,7 @@ export default function NotificationSettings() {
           </select>
         </form>
 
- <div className="departments__actions__filters">
+        <div className="departments__actions__filters">
           <svg
             width="24"
             height="25"
@@ -74,7 +71,9 @@ export default function NotificationSettings() {
           Filter
         </div>
 
-        <button className="notification-settings__actions__button">Apply</button>
+        <button className="notification-settings__actions__button">
+          Apply
+        </button>
       </div>
       {/* <div className="notification-settings__parameters">
         <div>
@@ -148,23 +147,33 @@ export default function NotificationSettings() {
       </div> */}
 
       <div className="notification-settings__heading">
-        <div>User Name <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7.9987 3.33203V12.6654M7.9987 12.6654L12.6654 7.9987M7.9987 12.6654L3.33203 7.9987" stroke="#667085" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-</div>
+        <div>
+          User Name{" "}
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.9987 3.33203V12.6654M7.9987 12.6654L12.6654 7.9987M7.9987 12.6654L3.33203 7.9987"
+              stroke="#667085"
+              stroke-width="1.33333"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
 
         <div>Assigned a Case</div>
-        <div>
-        Case status update
-       
-        </div>
+        <div>Case status update</div>
         <div>Received an Email</div>
         <div>Received a Chat Message</div>
       </div>
 
       <div className="notification-settings__body">
         <div className="notification-settings__body__inner">
-          
           <div className="notification-settings__body__inner__name">
             <Image alt="" src="/assets/logo1.png" width={40} height={40} />
             <div>
@@ -190,16 +199,14 @@ export default function NotificationSettings() {
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
+
           <div className="notification-settings__body__inner__buttons">
             <button>None</button>
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
         </div>
         <div className="notification-settings__body__inner">
-          
           <div className="notification-settings__body__inner__name">
             <Image alt="" src="/assets/logo2.png" width={40} height={40} />
             <div>
@@ -225,16 +232,14 @@ export default function NotificationSettings() {
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
+
           <div className="notification-settings__body__inner__buttons">
             <button>None</button>
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
         </div>
         <div className="notification-settings__body__inner">
-          
           <div className="notification-settings__body__inner__name">
             <Image alt="" src="/assets/logo3.png" width={40} height={40} />
             <div>
@@ -260,16 +265,14 @@ export default function NotificationSettings() {
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
+
           <div className="notification-settings__body__inner__buttons">
             <button>None</button>
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
         </div>
         <div className="notification-settings__body__inner">
-          
           <div className="notification-settings__body__inner__name">
             <Image alt="" src="/assets/logo4.png" width={40} height={40} />
             <div>
@@ -295,16 +298,14 @@ export default function NotificationSettings() {
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
+
           <div className="notification-settings__body__inner__buttons">
             <button>None</button>
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
         </div>
         <div className="notification-settings__body__inner">
-          
           <div className="notification-settings__body__inner__name">
             <Image alt="" src="/assets/logo5.png" width={40} height={40} />
             <div>
@@ -330,16 +331,14 @@ export default function NotificationSettings() {
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
+
           <div className="notification-settings__body__inner__buttons">
             <button>None</button>
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
         </div>
         <div className="notification-settings__body__inner">
-          
           <div className="notification-settings__body__inner__name">
             <Image alt="" src="/assets/logo6.png" width={40} height={40} />
             <div>
@@ -365,16 +364,14 @@ export default function NotificationSettings() {
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
+
           <div className="notification-settings__body__inner__buttons">
             <button>None</button>
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
         </div>
         <div className="notification-settings__body__inner">
-          
           <div className="notification-settings__body__inner__name">
             <Image alt="" src="/assets/logo7.png" width={40} height={40} />
             <div>
@@ -400,16 +397,14 @@ export default function NotificationSettings() {
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
+
           <div className="notification-settings__body__inner__buttons">
             <button>None</button>
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
         </div>
         <div className="notification-settings__body__inner">
-          
           <div className="notification-settings__body__inner__name">
             <Image alt="" src="/assets/logo8.png" width={40} height={40} />
             <div>
@@ -435,16 +430,14 @@ export default function NotificationSettings() {
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
+
           <div className="notification-settings__body__inner__buttons">
             <button>None</button>
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
         </div>
         <div className="notification-settings__body__inner">
-          
           <div className="notification-settings__body__inner__name">
             <Image alt="" src="/assets/logo9.png" width={40} height={40} />
             <div>
@@ -470,16 +463,14 @@ export default function NotificationSettings() {
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
+
           <div className="notification-settings__body__inner__buttons">
             <button>None</button>
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
         </div>
         <div className="notification-settings__body__inner">
-          
           <div className="notification-settings__body__inner__name">
             <Image alt="" src="/assets/logo2.png" width={40} height={40} />
             <div>
@@ -505,18 +496,13 @@ export default function NotificationSettings() {
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
+
           <div className="notification-settings__body__inner__buttons">
             <button>None</button>
             <button>In-app</button>
             <button>Email</button>
           </div>
-          
         </div>
-       
-       
-      
-       
       </div>
 
       <div className="notification-settings__footer">

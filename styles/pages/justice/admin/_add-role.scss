@@ -212,4 +212,20 @@
       // }
     }
   }
+
+  @media (max-width: 768px) {
+    &__content {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: 100%;
+
+      .add-role-form {
+        max-height: 860px;
+
+        .hr {
+          width: 348px;
+        }
+      }
+    }
+  }
 }

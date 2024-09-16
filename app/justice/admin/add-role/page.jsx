@@ -249,6 +249,7 @@ const AddRoleModal = ({ isOpen, onClose, onCreate, roleName, setRoleName }) => {
                 height="2"
                 viewBox="0 0 480 2"
                 fill="none"
+                className="hr"
               >
                 <path d="M0 1H480" stroke="#D2D2D2" />
               </svg>
@@ -353,6 +354,7 @@ const AddRoleModal = ({ isOpen, onClose, onCreate, roleName, setRoleName }) => {
                 height="2"
                 viewBox="0 0 480 2"
                 fill="none"
+                className="hr"
               >
                 <path d="M0 1H480" stroke="#D2D2D2" />
               </svg>
@@ -441,6 +443,7 @@ const AddRoleModal = ({ isOpen, onClose, onCreate, roleName, setRoleName }) => {
                 height="2"
                 viewBox="0 0 480 2"
                 fill="none"
+                className="hr"
               >
                 <path d="M0 1H480" stroke="#D2D2D2" />
               </svg>
@@ -533,6 +536,7 @@ const AddRoleModal = ({ isOpen, onClose, onCreate, roleName, setRoleName }) => {
                 height="2"
                 viewBox="0 0 480 2"
                 fill="none"
+                className="hr"
               >
                 <path d="M0 1H480" stroke="#D2D2D2" />
               </svg>
@@ -625,6 +629,7 @@ const AddRoleModal = ({ isOpen, onClose, onCreate, roleName, setRoleName }) => {
                 height="2"
                 viewBox="0 0 480 2"
                 fill="none"
+                className="hr"
               >
                 <path d="M0 1H480" stroke="#D2D2D2" />
               </svg>

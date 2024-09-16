@@ -194,7 +194,7 @@ export default function Logs() {
             <div>18:28:34 - 1 hour ago</div>
           </div>
           <div className="logs__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo.png" width={40} height={40} className="name-img" />
             <div>
               <div>Adewumi Oloye</div>
               <div>A.oloye@justice.gov.ng</div>
@@ -213,7 +213,7 @@ export default function Logs() {
             <div>18:28:34 - 1 hour ago</div>
           </div>
           <div className="logs__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo.png" width={40} height={40} className="name-img" />
             <div>
               <div>Adewumi Oloye</div>
               <div>A.oloye@justice.gov.ng</div>
@@ -234,7 +234,7 @@ export default function Logs() {
             <div>18:28:34 - 1 hour ago</div>
           </div>
           <div className="logs__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo.png" width={40} height={40} className="name-img" />
             <div>
               <div>Adewumi Oloye</div>
               <div>A.oloye@justice.gov.ng</div>
@@ -253,7 +253,7 @@ export default function Logs() {
             <div>18:28:34 - 1 hour ago</div>
           </div>
           <div className="logs__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo.png" width={40} height={40} className="name-img" />
             <div>
               <div>Adewumi Oloye</div>
               <div>A.oloye@justice.gov.ng</div>
@@ -274,7 +274,7 @@ export default function Logs() {
             <div>18:28:34 - 1 hour ago</div>
           </div>
           <div className="logs__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo.png" width={40} height={40} className="name-img" />
             <div>
               <div>Adewumi Oloye</div>
               <div>A.oloye@justice.gov.ng</div>
@@ -293,7 +293,7 @@ export default function Logs() {
             <div>18:28:34 - 1 hour ago</div>
           </div>
           <div className="logs__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo.png" width={40} height={40} className="name-img" />
             <div>
               <div>Adewumi Oloye</div>
               <div>A.oloye@justice.gov.ng</div>
@@ -314,7 +314,7 @@ export default function Logs() {
             <div>18:28:34 - 1 hour ago</div>
           </div>
           <div className="logs__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo.png" width={40} height={40} className="name-img" />
             <div>
               <div>Adewumi Oloye</div>
               <div>A.oloye@justice.gov.ng</div>
@@ -333,7 +333,7 @@ export default function Logs() {
             <div>18:28:34 - 1 hour ago</div>
           </div>
           <div className="logs__body__inner__name">
-            <Image alt="" src="/assets/logo.png" width={40} height={40} />
+            <Image alt="" src="/assets/logo.png" width={40} height={40} className="name-img" />
             <div>
               <div>Adewumi Oloye</div>
               <div>A.oloye@justice.gov.ng</div>

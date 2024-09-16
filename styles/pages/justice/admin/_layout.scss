@@ -1,13 +1,11 @@
 .admin {
-
   max-width: 1600px;
   width: 100%;
   margin: auto;
-  
 
   &__inner {
     // position: relative;
-    background-color: #FFF;
+    background-color: #fff;
 
     display: flex;
     align-items: start;
@@ -31,32 +29,32 @@
         gap: 8px;
         margin-bottom: 16px;
 
-        color: #99A2BB;
-@extend %title-10;
-font-weight: 400;
+        color: #99a2bb;
+        @extend %title-10;
+        font-weight: 400;
 
-& >:last-child {
-  font-weight: 500;
-  padding: 4px 8px;
-  background: #C4FFC7;
-  border-radius: 4px;
-  color: #03380D;
-  text-transform: capitalize;
-}
+        & > :last-child {
+          font-weight: 500;
+          padding: 4px 8px;
+          background: #c4ffc7;
+          border-radius: 4px;
+          color: #03380d;
+          text-transform: capitalize;
+        }
       }
 
       &__title {
         color: var(--Gray-900, #101828);
 
-@extend %title-30;
-font-weight: 500;
-margin-bottom: 24px;
+        @extend %title-30;
+        font-weight: 500;
+        margin-bottom: 24px;
       }
 
       &__tabs {
         display: flex;
         gap: 16px;
-        border-bottom: 1px solid #EAECF0;
+        border-bottom: 1px solid #eaecf0;
         width: 100%;
         max-width: 1064px;
         margin: 37px;
@@ -77,20 +75,40 @@ margin-bottom: 24px;
             align-items: center;
             justify-content: center;
             color: var(--Gray-700, #344054);
-font-weight: 500;
-width: 24px;
-height: 24px;
-border-radius: 50%;
-background: #F2F4F7;
+            font-weight: 500;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #f2f4f7;
           }
         }
 
         &__active {
-          color: var(--Green-50, #24A148) !important;
-          border-bottom: 2px solid #24A148;
+          color: var(--Green-50, #24a148) !important;
+          border-bottom: 2px solid #24a148;
         }
       }
     }
+  }
 
+  @media (max-width: 768px) {
+    &__inner {
+      &__main {
+        padding: 20px;
+
+        &__title {
+          font-size: 16px;
+        }
+
+        &__tabs {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 4px;
+          // margin: 18.5px 9.25px;
+          margin: 0px;
+        }
+      }
+      
+    }
   }
 }

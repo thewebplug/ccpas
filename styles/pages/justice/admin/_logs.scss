@@ -5,6 +5,7 @@
   background: var(--Color, #fff);
   box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
     0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+    margin-top: 10px;
 
   &__header {
     width: 100%;
@@ -91,26 +92,24 @@
   }
 
   &__parameters {
-display: flex;
-align-items: center;
-gap: 8px;
-margin: 24px 0;
-padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 24px 0;
+    padding: 0 32px;
 
-& > div {
-  @extend %title-12;
-  font-weight: 400;
-  color: #000;
-  background: #CCF8BD;
+    & > div {
+      @extend %title-12;
+      font-weight: 400;
+      color: #000;
+      background: #ccf8bd;
 
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 16px;
-  border-radius: 8px;
-
-}
-
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-radius: 8px;
+    }
   }
 
   &__heading {
@@ -161,15 +160,13 @@ padding: 0 32px;
         white-space: nowrap;
       }
 
-     
       &__time {
-        & >:first-child {
+        & > :first-child {
           @extend %title-14;
           font-weight: 500;
           color: #101828;
           margin-bottom: 4px;
         }
-       
       }
 
       &__name {
@@ -177,37 +174,36 @@ padding: 0 32px;
         align-items: center;
         gap: 12px;
 
-        & >:last-child {
-          & >:first-child {
+        & > :last-child {
+          & > :first-child {
             @extend %title-14;
             font-weight: 500;
             color: #101828;
             margin-bottom: 4px;
           }
         }
-
       }
 
       &__role {
         @extend %title-14;
         font-weight: 500;
-        color: #FFF;
-border: none;
-outline: none;
-width: 117px;
-height: 36px;
-border-radius: 20px;
-background: #3557CD;
+        color: #fff;
+        border: none;
+        outline: none;
+        width: 117px;
+        height: 36px;
+        border-radius: 20px;
+        background: #3557cd;
       }
       &__role-user {
-background: #F2F4F7;
-color: #344054;
+        background: #f2f4f7;
+        color: #344054;
       }
 
       &__desc {
         & > span {
           text-decoration: underline;
-          color: #009B07;
+          color: #009b07;
         }
       }
     }
@@ -277,7 +273,57 @@ color: #344054;
     }
   }
 
- 
+  @media (max-width: 768px) {
+    &__actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: auto;
+      padding: 10px 32px;
 
- 
+      &__button {
+        // display: none;
+        width: 100%;
+      }
+    }
+
+    &__parameters {
+      flex-wrap: wrap;
+    }
+
+    &__heading {
+      padding: 0 12px;
+    }
+
+    &__body {
+      &__inner {
+        &__time {
+          margin-right: 12px;
+          
+          & > :first-child {
+            font-size: 12px;
+            margin-bottom: 4px;
+          }
+        }
+
+        &__name {
+          margin-right: 12px;
+
+          .name-img {
+            width: 25px;
+            height: 25px;
+          }
+        }
+
+        &__role {
+          width: 87px;
+          height: 36px;
+          margin-right: 12px;
+        }
+
+        &__desc {
+          margin: 0 12px;
+        }
+      }
+    }
+  }
 }

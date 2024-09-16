@@ -458,7 +458,7 @@ export default function Departments() {
                 Head of Department
               </div>
               <div className="departments__details__body__dept-head__info__group">
-                <Image alt="" src="/assets/logo.png" width={48} height={48} />
+                <Image alt="" src="/assets/logo.png" width={48} height={48} className="info-pic" />
 
                 <div>
                   <div>Femi Adebanjo</div>

@@ -331,4 +331,27 @@
       }
     }
   }
+
+  @media (max-width: 768px) {
+    &__content {
+      .user-request__container {
+        .user-request__table {
+          &__heading {
+            padding: 10px 12px 8.5px 12px;
+
+            .approve-btn {
+              padding: 6px 12px;
+              font-size: 10px;
+            }
+
+            .deny-btn {
+              padding: 6px 12px;
+              font-size: 10px;
+            }
+          }
+        }
+      }
+    }
+
+  }
 }

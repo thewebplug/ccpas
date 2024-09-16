@@ -283,4 +283,44 @@
       }
     }
   }
+
+  @media (max-width: 768px) {
+    &__header {
+      padding: 0 12px;
+
+      &__middle {
+        font-size: 10px;
+  
+        .user {
+          padding: 10px;
+        }
+  
+        .roles {
+          padding: 10px;
+          gap: 6px;
+        }
+      }
+
+      &__button {
+        padding: 10px;
+
+        svg {
+          width: 18px;
+          height: 18px;
+          top: -10px;
+        }
+      }
+    }
+
+    &__actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: auto;
+      padding: 10px 32px;
+
+      &__filters {
+        display: none;
+      }
+    }
+  }
 }
