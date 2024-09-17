@@ -113,6 +113,10 @@
     }
   }
 
+  &__table {
+    overflow-x: auto;
+  }
+
   &__heading {
     width: 100%;
     height: 44px;
@@ -121,6 +125,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 0.7fr 0.7fr 1fr;
     padding: 0 24px;
+
+    @media (max-width: 565px) {
+      width: 800px;
+    }
+
 
     & > div {
       @extend %title-12;
@@ -137,6 +146,9 @@
   &__body {
     height: 400px;
     overflow-y: auto;
+    @media (max-width: 565px) {
+      width: 800px;
+    }
 
     &::-webkit-scrollbar {
       display: none;
@@ -333,6 +345,7 @@
 
     &__parameters {
       padding: 0 12px;
+      white-space: nowrap;
     }
 
     &__heading {

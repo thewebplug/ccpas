@@ -20,7 +20,7 @@ export default function Logs() {
         <div className="support__header__title">Log Activities</div>
         <button
           className="support__header__button"
-          onClick={() => setModalOpen2(true)}
+          // onClick={() => setModalOpen2(true)}
         >
           Export{" "}
           <svg
@@ -166,6 +166,7 @@ export default function Logs() {
         </div>
       </div>
 
+      <div className="support__table">
       <div className="support__heading">
         <div>
           Ticket ID{" "}
@@ -657,6 +658,7 @@ export default function Logs() {
           </div>
         </div>
         
+      </div>
       </div>
 
       <div className="support__footer">

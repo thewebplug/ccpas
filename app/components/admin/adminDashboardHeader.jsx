@@ -3,12 +3,13 @@
 import Image from "next/image";
 import Menu from "../menu";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function AdminHeader() {
   const dispatch = useDispatch();
   const [menuActive, setMenuActive] = useState(false);
   const [mobileMenuActive, setMobileMenuActive] = useState(false);
+  const mobileMenu = useSelector((state) => state.mobileMenu);
 
   const handleSidebarOpen = () => {
     if(mobileMenu) {
