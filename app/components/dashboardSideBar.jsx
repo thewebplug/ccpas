@@ -11,6 +11,7 @@ export default function Sidebar() {
   const dispatch = useDispatch();
   const [dropdownActive, setDropdownActive] = useState(false);
   const [analyticsDropdownActive, setAnalyticsDropdownActive] = useState(false);
+  const [documentationDropdownActive, setDocumentationDropdownActive] = useState(false);
 
   const handleLogout = () => {
     document.cookie =
@@ -492,23 +493,125 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-      <div
-        className={
-          pathname?.includes("documentation")
-            ? "adminDashboard-sidebar__item adminDashboard-sidebar__item-active"
-            : "adminDashboard-sidebar__item"
-        }
-        onClick={() => window.location.href = "/justice/dashboard/documentation"}
-      >
-        <div>
-        <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div className="adminDashboard-sidebar__item-container">
+        <div
+          className={
+            pathname?.includes("documentation")
+              ? "adminDashboard-sidebar__item-container__item adminDashboard-sidebar__item-container__item-active"
+              : "adminDashboard-sidebar__item-container__item"
+          }
+          onClick={() => setDocumentationDropdownActive(!documentationDropdownActive)}
+        >
+          <div>
+            <div>
+            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 16H20V12H0V16ZM2 13H4V15H2V13ZM0 0V4H20V0H0ZM4 3H2V1H4V3ZM0 10H20V6H0V10ZM2 7H4V9H2V7Z" fill="#8B9DB7"/>
 </svg>
-
+            </div>
+            <div className="adminDashboard-sidebar__item__title">
+            Documentation
+            </div>
+          </div>
+          {documentationDropdownActive ? (
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.34876 3.42336L10.3438 7.4184C10.5365 7.61107 10.5365 7.92345 10.3438 8.11611L9.87782 8.58206C9.68547 8.77441 9.37373 8.77478 9.18093 8.58288L5.9999 5.41675L2.81888 8.58288C2.62608 8.77478 2.31434 8.77441 2.12199 8.58206L1.65604 8.11611C1.46336 7.92343 1.46336 7.61105 1.65604 7.4184L5.65103 3.42336C5.84371 3.23071 6.15609 3.23071 6.34876 3.42336Z"
+                fill="#009B07"
+              />
+            </svg>
+          ) : (
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5 7.5L10 12.5L15 7.5"
+                stroke="#94A3B8"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          )}
         </div>
 
-        <div className="adminDashboard-sidebar__item__title">Documentation</div>
+        <div
+          className={
+            documentationDropdownActive
+              ? "adminDashboard-sidebar__item-container__sub-items"
+              : "adminDashboard-sidebar__item-container__sub-items-inactive"
+          }
+        >
+          <div
+            className={
+              pathname?.includes("documentation") &&
+              pathname.split("/")?.length < 5 &&
+              "adminDashboard-sidebar__item-container__sub-items__active"
+            }
+            onClick={() =>
+              (window.location.href = "/justice/dashboard/documentation")
+            }
+          >
+            <svg
+              width="13"
+              height="8"
+              viewBox="0 0 13 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask id="path-1-inside-1_58_45759" fill="white">
+                <path d="M0 0H13V8H8C3.58172 8 0 4.41828 0 0Z" />
+              </mask>
+              <path
+                d="M0 0H13H0ZM13 10H8C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6H13V10ZM8 10C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6V10ZM13 0V8V0Z"
+                fill="#EBEBEB"
+                mask="url(#path-1-inside-1_58_45759)"
+              />
+            </svg>
+
+            <div>Document repository</div>
+          </div>
+          <div
+            className={
+              pathname?.includes("/documentation/upload") &&
+              "adminDashboard-sidebar__item-container__sub-items__active"
+            }
+            onClick={() =>
+              (window.location.href =
+                "/justice/dashboard/documentation/upload")
+            }
+          >
+            <svg
+              width="13"
+              height="8"
+              viewBox="0 0 13 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask id="path-1-inside-1_58_45759" fill="white">
+                <path d="M0 0H13V8H8C3.58172 8 0 4.41828 0 0Z" />
+              </mask>
+              <path
+                d="M0 0H13H0ZM13 10H8C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6H13V10ZM8 10C2.47715 10 -2 5.52285 -2 0H2C2 3.31371 4.68629 6 8 6V10ZM13 0V8V0Z"
+                fill="#EBEBEB"
+                mask="url(#path-1-inside-1_58_45759)"
+              />
+            </svg>
+
+            <div>Bulk upload</div>
+          </div>
+        </div>
       </div>
+   
       <div
         className="adminDashboard-sidebar__item"
         // onClick={() => window.location.href = "/justice/dashboard/create-case"}

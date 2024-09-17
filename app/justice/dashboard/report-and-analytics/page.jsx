@@ -162,11 +162,11 @@ export default function CreateCase() {
             <option value="MLA Foreign Jurisdiction">
               MLA Foreign Jurisdiction
             </option>
-            <option value="MLA EFCC">MLA EFCC</option>
+            {/* <option value="MLA EFCC">MLA EFCC</option>
             <option value="EXTRADITION REQUEST">EXTRADITION REQUEST</option>
             <option value="CASES FROM EFCC TO COUNTER AGENCY">
               CASES FROM EFCC TO COUNTER AGENCY
-            </option>
+            </option> */}
           </select>
 
           <div className="reports__inner__filter__date">

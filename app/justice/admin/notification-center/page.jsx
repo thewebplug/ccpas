@@ -28,7 +28,10 @@ export default function NotificationCenter() {
         </div>
         <button
           className="notification-center__header__button"
-          onClick={() => setModalOpen2(true)}
+          onClick={() => {
+            setStage(1)
+              setOpen(true)
+            }}
         >
           Create New Notification{" "}
           <svg
@@ -257,10 +260,7 @@ export default function NotificationCenter() {
       <div className="notification-center__body">
         <div
           className="notification-center__body__inner"
-          onClick={() => {
-          setStage(1)
-            setOpen(true)
-          }}
+          
         >
           <div className="notification-center__body__inner__time">
             <div>JUN-21-2024</div>
@@ -296,10 +296,7 @@ export default function NotificationCenter() {
 
         <div
           className="notification-center__body__inner"
-          onClick={() => {
-          setStage(1)
-            setOpen(true)
-          }}
+          
         >
           <div className="notification-center__body__inner__time">
             <div>JUN-21-2024</div>
@@ -335,10 +332,7 @@ export default function NotificationCenter() {
 
         <div
           className="notification-center__body__inner"
-          onClick={() => {
-          setStage(1)
-            setOpen(true)
-          }}
+          
         >
           <div className="notification-center__body__inner__time">
             <div>JUN-21-2024</div>
@@ -492,7 +486,8 @@ export default function NotificationCenter() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="pointer"
-                onClick={() => setModalOpen3(false)}
+                onClick={() => setOpen(false)}
+
               >
                 <rect
                   x="0.5"
