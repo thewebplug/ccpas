@@ -156,7 +156,7 @@ console.log('mobileMenu', mobileMenu);
           </svg>
         </div>
 
-        <div className="dashboard-header__account__notifications">
+        <div className="dashboard-header__account__notifications" onClick={() => setOpen(true)}>
           <svg
             width="24"
             height="24"
@@ -182,6 +182,7 @@ console.log('mobileMenu', mobileMenu);
           style={{ borderRadius: "50%" }}
         />
       </div>
+      <Notifications open={open} setOpen={setOpen} />
     </div>
   );
 }
