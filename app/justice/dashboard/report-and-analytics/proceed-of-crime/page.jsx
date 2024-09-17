@@ -22,11 +22,11 @@ export default function CreateCase() {
     const myChart = new Chart(ctx, {
       type: "bar",
       data: {
-        labels: ["Stand alone", "Fraud Related", "Corruption Related", "Other"],
+        labels: ["Abuja", "Port-harcourt", "Lagos(Awolowo)", "Lagos(Okotie-eboh)", "Ibadan", "Ilorin", "Enugu", "Kano", "Benin", "Uyo"],
         datasets: [
           {
             label: "Sept 2024",
-            data: [750, 980, 1000, 1500, 890, 890],
+            data: [750, 980, 1000, 1500, 890, 890, 750, 980, 1000, 1500],
             borderWidth: 1,
             backgroundColor: [
               "#7086FD",
@@ -167,11 +167,6 @@ export default function CreateCase() {
             <option value="Other Types of Exhibit">
             Other Types of Exhibit
             </option>
-            <option value="Money laundering Investigation">Money laundering Investigation</option>
-            <option value="EXTRADITION REQUEST">EXTRADITION REQUEST</option>
-            <option value="CASES FROM EFCC TO COUNTER AGENCY">
-              CASES FROM EFCC TO COUNTER AGENCY
-            </option>
           </select>
           <div className="reports__inner__filter__date">
       <div className="reports__inner__filter__date__input">
@@ -248,1435 +243,379 @@ export default function CreateCase() {
           <div className="reports__inner__table reports__inner__investigation-table">
             <div className="reports__inner__table__main-header"></div>
             <div className="reports__inner__table__header">
-              <div className="reports__inner__table__xtra-small">S/no</div>
-              <div className="reports__inner__table__small">Cr No</div>
-              <div className="reports__inner__table__large">Cer No</div> {/* text transform uppercase */}
-              <div className="reports__inner__table__small">Date Receive</div>
-              <div className="reports__inner__table__small">Date ASSIGNED</div>
+              <div className="reports__inner__table__small">Command</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Investigating 
+              Section</div>
+              <div className="reports__inner__table__large reports__inner__table__center">TEAM LEADER</div> {/* text transform uppercase */}
+              <div className="reports__inner__table__large reports__inner__table__center">Investigating officer(S)</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Cer No</div>
+              <div className="reports__inner__table__small reports__inner__table__center">Cr No</div>
+              <div className="reports__inner__table__large reports__inner__table__center">COMPLAINANT</div>
+              <div className="reports__inner__table__large reports__inner__table__center">SUSPECT</div>
+              <div className="reports__inner__table__large">Offence</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Date Recovered</div>
             </div>
             <div className="reports__inner__table__body">
               <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-                <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
+              <div className="reports__inner__table__small">Abuja</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Financial Intelligence Unit</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div> {/* text transform uppercase */}
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">EFCC/ABJ/CTGI/012/2024</div>
+              <div className="reports__inner__table__small reports__inner__table__center">EFCC/012/2024</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large">Terrorism</div>
+              <div className="reports__inner__table__large reports__inner__table__bold reports__inner__table__center">JUN-21-2024</div>
+
               </div>
               <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-                <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
+              <div className="reports__inner__table__small">Abuja</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Financial Intelligence Unit</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div> {/* text transform uppercase */}
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">EFCC/ABJ/CTGI/012/2024</div>
+              <div className="reports__inner__table__small reports__inner__table__center">EFCC/012/2024</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large">Terrorism</div>
+              <div className="reports__inner__table__large reports__inner__table__bold reports__inner__table__center">JUN-21-2024</div>
+
               </div>
               <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-                <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
+              <div className="reports__inner__table__small">Abuja</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Financial Intelligence Unit</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div> {/* text transform uppercase */}
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">EFCC/ABJ/CTGI/012/2024</div>
+              <div className="reports__inner__table__small reports__inner__table__center">EFCC/012/2024</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large">Terrorism</div>
+              <div className="reports__inner__table__large reports__inner__table__bold reports__inner__table__center">JUN-21-2024</div>
+
               </div>
               <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-                <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
+              <div className="reports__inner__table__small">Abuja</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Financial Intelligence Unit</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div> {/* text transform uppercase */}
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">EFCC/ABJ/CTGI/012/2024</div>
+              <div className="reports__inner__table__small reports__inner__table__center">EFCC/012/2024</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large">Terrorism</div>
+              <div className="reports__inner__table__large reports__inner__table__bold reports__inner__table__center">JUN-21-2024</div>
+
               </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__small">Abuja</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Financial Intelligence Unit</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div> {/* text transform uppercase */}
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">EFCC/ABJ/CTGI/012/2024</div>
+              <div className="reports__inner__table__small reports__inner__table__center">EFCC/012/2024</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large">Terrorism</div>
+              <div className="reports__inner__table__large reports__inner__table__bold reports__inner__table__center">JUN-21-2024</div>
+
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__small">Abuja</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Financial Intelligence Unit</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div> {/* text transform uppercase */}
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">EFCC/ABJ/CTGI/012/2024</div>
+              <div className="reports__inner__table__small reports__inner__table__center">EFCC/012/2024</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large">Terrorism</div>
+              <div className="reports__inner__table__large reports__inner__table__bold reports__inner__table__center">JUN-21-2024</div>
+
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__small">Abuja</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Financial Intelligence Unit</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div> {/* text transform uppercase */}
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">EFCC/ABJ/CTGI/012/2024</div>
+              <div className="reports__inner__table__small reports__inner__table__center">EFCC/012/2024</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large">Terrorism</div>
+              <div className="reports__inner__table__large reports__inner__table__bold reports__inner__table__center">JUN-21-2024</div>
+
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__small">Abuja</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Financial Intelligence Unit</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div> {/* text transform uppercase */}
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">EFCC/ABJ/CTGI/012/2024</div>
+              <div className="reports__inner__table__small reports__inner__table__center">EFCC/012/2024</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large">Terrorism</div>
+              <div className="reports__inner__table__large reports__inner__table__bold reports__inner__table__center">JUN-21-2024</div>
+
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__small">Abuja</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Financial Intelligence Unit</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div> {/* text transform uppercase */}
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">EFCC/ABJ/CTGI/012/2024</div>
+              <div className="reports__inner__table__small reports__inner__table__center">EFCC/012/2024</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large">Terrorism</div>
+              <div className="reports__inner__table__large reports__inner__table__bold reports__inner__table__center">JUN-21-2024</div>
+
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__small">Abuja</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Financial Intelligence Unit</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div> {/* text transform uppercase */}
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">EFCC/ABJ/CTGI/012/2024</div>
+              <div className="reports__inner__table__small reports__inner__table__center">EFCC/012/2024</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large">Terrorism</div>
+              <div className="reports__inner__table__large reports__inner__table__bold reports__inner__table__center">JUN-21-2024</div>
+
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__small">Abuja</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Financial Intelligence Unit</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div> {/* text transform uppercase */}
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">EFCC/ABJ/CTGI/012/2024</div>
+              <div className="reports__inner__table__small reports__inner__table__center">EFCC/012/2024</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large">Terrorism</div>
+              <div className="reports__inner__table__large reports__inner__table__bold reports__inner__table__center">JUN-21-2024</div>
+
+              </div>
+            </div>
+            
+          </div>
+          <div className="reports__inner__table reports__inner__investigation-table">
+            <div className="reports__inner__table__main-header">DETAILS OF THE ITEM</div>
+            <div className="reports__inner__table__header">
+            <div className="reports__inner__table__xtra-large">Description of items</div>
+              <div className="reports__inner__table__large">NO/QTY/UNIT OF THE 
+              ITEM RECOVERED</div>
+              <div className="reports__inner__table__large">LOCATION OF ITEM</div>
+
+            </div>
+            <div className="reports__inner__table__body">
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__xtra-large">A Italian Chelsea Black shoe with a 
+              big stud soul</div>
+              <div className="reports__inner__table__large reports__inner__table__center">20</div>
+              <div className="reports__inner__table__large">LOCATION OF ITEM</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__xtra-large">A Italian Chelsea Black shoe with a 
+              big stud soul</div>
+              <div className="reports__inner__table__large reports__inner__table__center">20</div>
+              <div className="reports__inner__table__large">LOCATION OF ITEM</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__xtra-large">A Italian Chelsea Black shoe with a 
+              big stud soul</div>
+              <div className="reports__inner__table__large reports__inner__table__center">20</div>
+              <div className="reports__inner__table__large">LOCATION OF ITEM</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__xtra-large">A Italian Chelsea Black shoe with a 
+              big stud soul</div>
+              <div className="reports__inner__table__large reports__inner__table__center">20</div>
+              <div className="reports__inner__table__large">LOCATION OF ITEM</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__xtra-large">A Italian Chelsea Black shoe with a 
+              big stud soul</div>
+              <div className="reports__inner__table__large reports__inner__table__center">20</div>
+              <div className="reports__inner__table__large">LOCATION OF ITEM</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__xtra-large">A Italian Chelsea Black shoe with a 
+              big stud soul</div>
+              <div className="reports__inner__table__large reports__inner__table__center">20</div>
+              <div className="reports__inner__table__large">LOCATION OF ITEM</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__xtra-large">A Italian Chelsea Black shoe with a 
+              big stud soul</div>
+              <div className="reports__inner__table__large reports__inner__table__center">20</div>
+              <div className="reports__inner__table__large">LOCATION OF ITEM</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__xtra-large">A Italian Chelsea Black shoe with a 
+              big stud soul</div>
+              <div className="reports__inner__table__large reports__inner__table__center">20</div>
+              <div className="reports__inner__table__large">LOCATION OF ITEM</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__xtra-large">A Italian Chelsea Black shoe with a 
+              big stud soul</div>
+              <div className="reports__inner__table__large reports__inner__table__center">20</div>
+              <div className="reports__inner__table__large">LOCATION OF ITEM</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__xtra-large">A Italian Chelsea Black shoe with a 
+              big stud soul</div>
+              <div className="reports__inner__table__large reports__inner__table__center">20</div>
+              <div className="reports__inner__table__large">LOCATION OF ITEM</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__xtra-large">A Italian Chelsea Black shoe with a 
+              big stud soul</div>
+              <div className="reports__inner__table__large reports__inner__table__center">20</div>
+              <div className="reports__inner__table__large">LOCATION OF ITEM</div>
+              </div>
+            </div>
+
+            
+          </div>
+          <div className="reports__inner__table reports__inner__investigation-table">
+            <div className="reports__inner__table__main-header">RELEASED ITEM</div>
+            <div className="reports__inner__table__header">
+            <div className="reports__inner__table__large reports__inner__table__center">NO/QTY/UNIT OF THE
+              ITEM RECOVERED</div>
+              <div className="reports__inner__table__large reports__inner__table__center">Date RELEASED</div>
+
+            </div>
+            <div className="reports__inner__table__body">
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">2</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">JUN-21-2024</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">2</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">JUN-21-2024</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">2</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">JUN-21-2024</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">2</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">JUN-21-2024</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">2</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">JUN-21-2024</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">2</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">JUN-21-2024</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">2</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">JUN-21-2024</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">2</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">JUN-21-2024</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">2</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">JUN-21-2024</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">2</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">JUN-21-2024</div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">2</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">JUN-21-2024</div>
+              </div>
+             
+            </div>
+
+            
+          </div>
+          <div className="reports__inner__table reports__inner__investigation-table">
+            <div className="reports__inner__table__main-header"></div>
+            <div className="reports__inner__table__header">
+            <div className="reports__inner__table__large reports__inner__table__center">BENEFICIARY</div>
+              <div className="reports__inner__table__large reports__inner__table__center">NO/QTY/UNIT OF THE 
+              ITEM WITH EXHIBIT</div>
+              <div className="reports__inner__table__small">REMARK</div>
+
+            </div>
+            <div className="reports__inner__table__body">
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">20</div>
+              <div className="reports__inner__table__small"></div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">20</div>
+              <div className="reports__inner__table__small"></div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">20</div>
+              <div className="reports__inner__table__small"></div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">20</div>
+              <div className="reports__inner__table__small"></div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">20</div>
+              <div className="reports__inner__table__small"></div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">20</div>
+              <div className="reports__inner__table__small"></div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">20</div>
+              <div className="reports__inner__table__small"></div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">20</div>
+              <div className="reports__inner__table__small"></div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">20</div>
+              <div className="reports__inner__table__small"></div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">20</div>
+              <div className="reports__inner__table__small"></div>
+              </div>
+              <div className="reports__inner__table__body__inner">
+              <div className="reports__inner__table__large reports__inner__table__center">Adewumi Oloye</div>
+              <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">20</div>
+              <div className="reports__inner__table__small"></div>
+              </div>
+             
               
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-                <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-                <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-                <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-                <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-                <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-                <div className="reports__inner__table__small">JUN-21-2024</div>
-              </div>
-              
-            </div>
-            
-          </div>
-          <div className="reports__inner__table reports__inner__investigation-table">
-            <div className="reports__inner__table__main-header">
-              Complainant(s) Particulars
             </div>
 
-            <div className="reports__inner__table__header">
-              <div className="reports__inner__table__xtra-large">Name</div>
-              <div className="reports__inner__table__xtra-large">Address</div>
-              <div className="reports__inner__table__small">
-                State of Origin{" "}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_2328_66403)">
-                    <path
-                      d="M6.0587 5.9987C6.21543 5.55314 6.5248 5.17744 6.932 4.93812C7.3392 4.6988 7.81796 4.61132 8.28348 4.69117C8.749 4.77102 9.17124 5.01305 9.47542 5.37438C9.77959 5.73572 9.94607 6.19305 9.94536 6.66536C9.94536 7.9987 7.94536 8.66536 7.94536 8.66536M7.9987 11.332H8.00536M14.6654 7.9987C14.6654 11.6806 11.6806 14.6654 7.9987 14.6654C4.3168 14.6654 1.33203 11.6806 1.33203 7.9987C1.33203 4.3168 4.3168 1.33203 7.9987 1.33203C11.6806 1.33203 14.6654 4.3168 14.6654 7.9987Z"
-                      stroke="#98A2B3"
-                      stroke-width="1.33333"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_2328_66403">
-                      <rect width="16" height="16" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-              <div className="reports__inner__table__small">
-                LGA{" "}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_2328_66403)">
-                    <path
-                      d="M6.0587 5.9987C6.21543 5.55314 6.5248 5.17744 6.932 4.93812C7.3392 4.6988 7.81796 4.61132 8.28348 4.69117C8.749 4.77102 9.17124 5.01305 9.47542 5.37438C9.77959 5.73572 9.94607 6.19305 9.94536 6.66536C9.94536 7.9987 7.94536 8.66536 7.94536 8.66536M7.9987 11.332H8.00536M14.6654 7.9987C14.6654 11.6806 11.6806 14.6654 7.9987 14.6654C4.3168 14.6654 1.33203 11.6806 1.33203 7.9987C1.33203 4.3168 4.3168 1.33203 7.9987 1.33203C11.6806 1.33203 14.6654 4.3168 14.6654 7.9987Z"
-                      stroke="#98A2B3"
-                      stroke-width="1.33333"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_2328_66403">
-                      <rect width="16" height="16" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-              <div className="reports__inner__table__xtra-small">SEX</div>
-              <div className="reports__inner__table__xtra-small">Age</div>
-            </div>
-            <div className="reports__inner__table__body">
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-             
-            </div>
-            
-          </div>
-          <div className="reports__inner__table reports__inner__investigation-table">
-            <div className="reports__inner__table__main-header">
-            Suspect(s) Particulars
-            </div>
-
-            <div className="reports__inner__table__header">
-              <div className="reports__inner__table__xtra-large">Name</div>
-              <div className="reports__inner__table__xtra-large">Address</div>
-              <div className="reports__inner__table__small">
-                State of Origin{" "}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_2328_66403)">
-                    <path
-                      d="M6.0587 5.9987C6.21543 5.55314 6.5248 5.17744 6.932 4.93812C7.3392 4.6988 7.81796 4.61132 8.28348 4.69117C8.749 4.77102 9.17124 5.01305 9.47542 5.37438C9.77959 5.73572 9.94607 6.19305 9.94536 6.66536C9.94536 7.9987 7.94536 8.66536 7.94536 8.66536M7.9987 11.332H8.00536M14.6654 7.9987C14.6654 11.6806 11.6806 14.6654 7.9987 14.6654C4.3168 14.6654 1.33203 11.6806 1.33203 7.9987C1.33203 4.3168 4.3168 1.33203 7.9987 1.33203C11.6806 1.33203 14.6654 4.3168 14.6654 7.9987Z"
-                      stroke="#98A2B3"
-                      stroke-width="1.33333"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_2328_66403">
-                      <rect width="16" height="16" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-              <div className="reports__inner__table__small">
-                LGA{" "}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_2328_66403)">
-                    <path
-                      d="M6.0587 5.9987C6.21543 5.55314 6.5248 5.17744 6.932 4.93812C7.3392 4.6988 7.81796 4.61132 8.28348 4.69117C8.749 4.77102 9.17124 5.01305 9.47542 5.37438C9.77959 5.73572 9.94607 6.19305 9.94536 6.66536C9.94536 7.9987 7.94536 8.66536 7.94536 8.66536M7.9987 11.332H8.00536M14.6654 7.9987C14.6654 11.6806 11.6806 14.6654 7.9987 14.6654C4.3168 14.6654 1.33203 11.6806 1.33203 7.9987C1.33203 4.3168 4.3168 1.33203 7.9987 1.33203C11.6806 1.33203 14.6654 4.3168 14.6654 7.9987Z"
-                      stroke="#98A2B3"
-                      stroke-width="1.33333"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_2328_66403">
-                      <rect width="16" height="16" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-              <div className="reports__inner__table__xtra-small">SEX</div>
-              <div className="reports__inner__table__xtra-small">Age</div>
-            </div>
-            <div className="reports__inner__table__body">
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Adewumi Oloye Adamu</div>
-                <div className="reports__inner__table__xtra-large">No 12 Abikoye, Street Ikeja</div>
-                <div className="reports__inner__table__small">Zamfara State</div>
-                <div className="reports__inner__table__small">Ika North East</div>
-                <div className="reports__inner__table__xtra-small">M</div>
-                <div className="reports__inner__table__xtra-small">19</div>
-              </div>
-             
-            </div>
-            
-          </div>
-         
-          <div className="reports__inner__table reports__inner__investigation-table">
-            <div className="reports__inner__table__main-header"></div>
-            <div className="reports__inner__table__header">
-              <div className="reports__inner__table__large">
-                Offence{" "}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_2328_66403)">
-                    <path
-                      d="M6.0587 5.9987C6.21543 5.55314 6.5248 5.17744 6.932 4.93812C7.3392 4.6988 7.81796 4.61132 8.28348 4.69117C8.749 4.77102 9.17124 5.01305 9.47542 5.37438C9.77959 5.73572 9.94607 6.19305 9.94536 6.66536C9.94536 7.9987 7.94536 8.66536 7.94536 8.66536M7.9987 11.332H8.00536M14.6654 7.9987C14.6654 11.6806 11.6806 14.6654 7.9987 14.6654C4.3168 14.6654 1.33203 11.6806 1.33203 7.9987C1.33203 4.3168 4.3168 1.33203 7.9987 1.33203C11.6806 1.33203 14.6654 4.3168 14.6654 7.9987Z"
-                      stroke="#98A2B3"
-                      stroke-width="1.33333"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_2328_66403">
-                      <rect width="16" height="16" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-            </div>
-            <div className="reports__inner__table__body">
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large">Securities Fraud</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large">Securities Fraud</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large">Securities Fraud</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large">Cybercrime</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large">Cybercrime</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large">Cybercrime</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large">Terrorism</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large">Cybercrime</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large">Terrorism</div>
-              </div>
-            </div>
-            
-          </div>
-
-          <div className="reports__inner__table reports__inner__investigation-table">
-            <div className="reports__inner__table__main-header">
-              Amount Involved
-            </div>
-            <div className="reports__inner__table__header">
-              <div className="reports__inner__table__xtra-small">N</div>
-              <div className="reports__inner__table__xtra-small">$</div>
-              <div className="reports__inner__table__xtra-small">£</div>
-              <div className="reports__inner__table__xtra-small">€</div>
-              <div className="reports__inner__table__xtra-small">CFA</div>
-              <div className="reports__inner__table__xtra-small">Others</div>
-            </div>
-            <div className="reports__inner__table__body">
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-            </div>
-            
-          </div>
-          <div className="reports__inner__table reports__inner__investigation-table">
-            <div className="reports__inner__table__main-header">
-              Amount Recovered
-            </div>
-            <div className="reports__inner__table__header">
-              <div className="reports__inner__table__xtra-small">N</div>
-              <div className="reports__inner__table__xtra-small">$</div>
-              <div className="reports__inner__table__xtra-small">£</div>
-              <div className="reports__inner__table__xtra-small">€</div>
-              <div className="reports__inner__table__xtra-small">CFA</div>
-              <div className="reports__inner__table__xtra-small">Others</div>
-            </div>
-            <div className="reports__inner__table__body">
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-                <div className="reports__inner__table__xtra-small">
-                  {" "}
-                  <CheckboxToggle />
-                </div>
-
-                <div className="reports__inner__table__xtra-small">
-                  <CheckboxToggle />
-                </div>
-              </div>
-            </div>
-            
-          </div>
-
-          <div className="reports__inner__table reports__inner__investigation-table">
-            <div className="reports__inner__table__main-header"></div>
-            <div className="reports__inner__table__header">
-              <div className="reports__inner__table__xtra-large">
-                Status{" "}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_2328_66403)">
-                    <path
-                      d="M6.0587 5.9987C6.21543 5.55314 6.5248 5.17744 6.932 4.93812C7.3392 4.6988 7.81796 4.61132 8.28348 4.69117C8.749 4.77102 9.17124 5.01305 9.47542 5.37438C9.77959 5.73572 9.94607 6.19305 9.94536 6.66536C9.94536 7.9987 7.94536 8.66536 7.94536 8.66536M7.9987 11.332H8.00536M14.6654 7.9987C14.6654 11.6806 11.6806 14.6654 7.9987 14.6654C4.3168 14.6654 1.33203 11.6806 1.33203 7.9987C1.33203 4.3168 4.3168 1.33203 7.9987 1.33203C11.6806 1.33203 14.6654 4.3168 14.6654 7.9987Z"
-                      stroke="#98A2B3"
-                      stroke-width="1.33333"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_2328_66403">
-                      <rect width="16" height="16" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-            </div>
-            <div className="reports__inner__table__body">
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">
-                  <button className="reports__inner__table__body__inner__in-legal">
-                    In Legal
-                  </button>
-                </div>
-              </div>
-
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">
-                  <button className="reports__inner__table__body__inner__kiv">
-                    KIV
-                  </button>
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">
-                  <button className="reports__inner__table__body__inner__under-investigation">
-                    Under Investigation
-                  </button>
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">
-                  <button className="reports__inner__table__body__inner__rejected-for">
-                    Rejected For
-                  </button>
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">
-                  <button className="reports__inner__table__body__inner__transferred-to">
-                    Transferred to
-                  </button>
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">
-                  {""}
-                  <button className="reports__inner__table__body__inner__awaiting-legal-advice">
-                    Awaiting Legal Advice
-                  </button>
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">
-                  <button className="reports__inner__table__body__inner__closed">
-                    Closed
-                  </button>
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">
-                  <button className="reports__inner__table__body__inner__discontinued-without-merit">
-                    Discontinued Without Merit
-                  </button>
-                </div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">
-                  <button className="reports__inner__table__body__inner__in-legal">
-                    In Legal
-                  </button>
-                </div>
-              </div>
-             
-            </div>
-            
-          </div>
-          <div className="reports__inner__table reports__inner__investigation-table">
-            <div className="reports__inner__table__main-header"></div>
-
-            <div className="reports__inner__table__header">
-              <div className="reports__inner__table__xtra-large">
-                IO/TEAM{" "}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_2328_66403)">
-                    <path
-                      d="M6.0587 5.9987C6.21543 5.55314 6.5248 5.17744 6.932 4.93812C7.3392 4.6988 7.81796 4.61132 8.28348 4.69117C8.749 4.77102 9.17124 5.01305 9.47542 5.37438C9.77959 5.73572 9.94607 6.19305 9.94536 6.66536C9.94536 7.9987 7.94536 8.66536 7.94536 8.66536M7.9987 11.332H8.00536M14.6654 7.9987C14.6654 11.6806 11.6806 14.6654 7.9987 14.6654C4.3168 14.6654 1.33203 11.6806 1.33203 7.9987C1.33203 4.3168 4.3168 1.33203 7.9987 1.33203C11.6806 1.33203 14.6654 4.3168 14.6654 7.9987Z"
-                      stroke="#98A2B3"
-                      stroke-width="1.33333"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_2328_66403">
-                      <rect width="16" height="16" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-            </div>
-            <div className="reports__inner__table__body">
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Financial Intelligence Unit</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Financial Intelligence Unit</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Financial Intelligence Unit</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Financial Intelligence Unit</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Financial Intelligence Unit</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Financial Intelligence Unit</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Financial Intelligence Unit</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Financial Intelligence Unit</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">Financial Intelligence Unit</div>
-              </div>
-            </div>
-            
-          </div>
-          <div className="reports__inner__table reports__inner__investigation-table">
-            <div className="reports__inner__table__main-header"></div>
-
-            <div className="reports__inner__table__header">
-              <div className="reports__inner__table__xtra-large">
-                Date sent to Legal{" "}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_2328_66403)">
-                    <path
-                      d="M6.0587 5.9987C6.21543 5.55314 6.5248 5.17744 6.932 4.93812C7.3392 4.6988 7.81796 4.61132 8.28348 4.69117C8.749 4.77102 9.17124 5.01305 9.47542 5.37438C9.77959 5.73572 9.94607 6.19305 9.94536 6.66536C9.94536 7.9987 7.94536 8.66536 7.94536 8.66536M7.9987 11.332H8.00536M14.6654 7.9987C14.6654 11.6806 11.6806 14.6654 7.9987 14.6654C4.3168 14.6654 1.33203 11.6806 1.33203 7.9987C1.33203 4.3168 4.3168 1.33203 7.9987 1.33203C11.6806 1.33203 14.6654 4.3168 14.6654 7.9987Z"
-                      stroke="#98A2B3"
-                      stroke-width="1.33333"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_2328_66403">
-                      <rect width="16" height="16" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-            </div>
-            <div className="reports__inner__table__body">
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">23/11/2024(Legal Advice)</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">23/11/2024(Legal Advice)</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">23/11/2024(Legal Advice)</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">23/11/2024(Legal Advice)</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">23/11/2024(Legal Advice)</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">23/11/2024(Legal Advice)</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">23/11/2024(Legal Advice)</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">23/11/2024(Legal Advice)</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large">23/11/2024(Legal Advice)</div>
-              </div>
-            </div>
             
           </div>
         </div> : ""}
 
-       {currentType === "Analytics" && dropDown === "Money laundering Investigation" ? <div className="reports__inner__tables">
-          <div className="reports__inner__table reports__inner__investigation-table">
-            <div className="reports__inner__table__main-header"></div>
-            <div className="reports__inner__table__header">
-              <div className="reports__inner__table__xtra-large">PERIOD(mONTH/YEAR)</div>
-              <div className="reports__inner__table__small">Cr No</div>
-            </div>
-            <div className="reports__inner__table__body">
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large reports__inner__table__bold">MAY-20-2023 - JUN-21-2024 </div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large reports__inner__table__bold">MAY-20-2023 - JUN-21-2024 </div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large reports__inner__table__bold">MAY-20-2023 - JUN-21-2024 </div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large reports__inner__table__bold">MAY-20-2023 - JUN-21-2024 </div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large reports__inner__table__bold">MAY-20-2023 - JUN-21-2024 </div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large reports__inner__table__bold">MAY-20-2023 - JUN-21-2024 </div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large reports__inner__table__bold">MAY-20-2023 - JUN-21-2024 </div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large reports__inner__table__bold">MAY-20-2023 - JUN-21-2024 </div>
-                <div className="reports__inner__table__small">EFCC/012/2024</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-large reports__inner__table__center reports__inner__table__bold">TOTAL</div>
-                <div className="reports__inner__table__small"></div>
-              </div>
-            </div>
-
-            
-          </div>
-          <div className="reports__inner__table reports__inner__investigation-table">
-            <div className="reports__inner__table__main-header">
-              
-            </div>
-
-            <div className="reports__inner__table__header">
-              <div className="reports__inner__table__small">Stand alone</div>
-            </div>
-            <div className="reports__inner__table__body">
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center reports__inner__table__bold">141</div>
-              </div>
-            </div>
-            
-          </div>
-          <div className="reports__inner__table reports__inner__investigation-table">
-            <div className="reports__inner__table__main-header">
-            Third party
-            </div>
-
-            <div className="reports__inner__table__header">
-              <div className="reports__inner__table__small">Stand alone</div>
-              <div className="reports__inner__table__small">Fraud Related</div>
-              <div className="reports__inner__table__small">
-              Corruption Related
-               
-              </div>
-              <div className="reports__inner__table__small">
-              Other
-              </div>
-            </div>
-            <div className="reports__inner__table__body">
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-             
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center reports__inner__table__bold">141</div>
-                <div className="reports__inner__table__small reports__inner__table__center reports__inner__table__bold">141</div>
-                <div className="reports__inner__table__small reports__inner__table__center reports__inner__table__bold">141</div>
-                <div className="reports__inner__table__small reports__inner__table__center reports__inner__table__bold">141</div>
-              </div>
-            </div>
-
-            
-          </div>
-        
-          <div className="reports__inner__table reports__inner__investigation-table">
-            <div className="reports__inner__table__main-header">
-            Self ML
-            </div>
-
-            <div className="reports__inner__table__header">
-              <div className="reports__inner__table__small">Fraud Related</div>
-              <div className="reports__inner__table__small">
-              Corruption Related
-               
-              </div>
-              <div className="reports__inner__table__small">
-              Other
-              </div>
-            </div>
-            <div className="reports__inner__table__body">
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-                <div className="reports__inner__table__small reports__inner__table__center">10</div>
-              </div>
-             
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__small reports__inner__table__center reports__inner__table__bold">141</div>
-                <div className="reports__inner__table__small reports__inner__table__center reports__inner__table__bold">141</div>
-                <div className="reports__inner__table__small reports__inner__table__center reports__inner__table__bold">141</div>
-              </div>
-            </div>
-
-            
-          </div>
-        
-          <div className="reports__inner__table reports__inner__investigation-table">
-            <div className="reports__inner__table__main-header">
-            </div>
-
-            <div className="reports__inner__table__header">
-              <div className="reports__inner__table__large reports__inner__table__center">mONEY Laundering 
-Cases against 
-legal Person</div>
-              <div className="reports__inner__table__large reports__inner__table__center">
-              mONEY Laundering 
-with foreign 
-predicates
-               
-              </div>
-              
-            </div>
-            <div className="reports__inner__table__body">
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-              </div>
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-                <div className="reports__inner__table__large reports__inner__table__center">10</div>
-              </div>
-             
-              <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">141</div>
-                <div className="reports__inner__table__large reports__inner__table__center reports__inner__table__bold">141</div>
-              </div>
-            </div>
-            
-          </div>
-        
-
-        </div> : ""}
-          <div className="reports__inner__table__footer">
+    
+     
+          {currentType === "Analytics" && <div className="reports__inner__table__footer">
               <button>
                 <svg
                   width="20"
@@ -1713,7 +652,7 @@ predicates
                   />
                 </svg>
               </button>
-            </div>
+            </div>}
         
 
         {currentType === "Table" && <div className="reports__inner__chart">
