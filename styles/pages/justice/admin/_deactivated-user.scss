@@ -45,4 +45,11 @@
       }
     }
   }
+
+  @media (max-width: 768px) {
+    &__deactivated-notif {
+      width: 381px;
+      right: 10px;
+    }
+  }
 }  

@@ -101,11 +101,11 @@
         }
 
         &__tabs {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
+          // display: grid;
+          // grid-template-columns: 1fr 1fr 1fr;
           gap: 4px;
           // margin: 18.5px 9.25px;
-          margin: 0px;
+          margin: 0 0 20px 0;
         }
       }
       

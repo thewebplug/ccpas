@@ -10,7 +10,6 @@
   align-items: center;
   justify-content: center;
 
-
   &__overlay {
     position: absolute;
     top: 0;
@@ -22,8 +21,8 @@
 
   .modal-content {
     width: 620px;
-  // width: 520px;
-  // height: 705px;
+    // width: 520px;
+    // height: 705px;
     top: 10px;
     left: 48px;
     border-radius: 12px;
@@ -34,11 +33,10 @@
     background-color: #ffffff;
     background-color: 1px solid red;
 
-
     .header {
       display: flex;
       justify-content: center;
-      background-color: #E4FFE5;
+      background-color: #e4ffe5;
       padding: 46.5px 0px 36.5px 0px;
       border-radius: 12px;
       gap: 24px;
@@ -54,85 +52,104 @@
       }
     }
 
-      .title {
-        text-align: center;
-        margin: 17px 0;
-        color: #ED1651;
-        font-size: 32px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        text-transform: capitalize;
+    .title {
+      text-align: center;
+      margin: 17px 0;
+      color: #ed1651;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: capitalize;
+    }
+
+    .userInfo {
+      display: flex;
+      width: 524px;
+      // padding: 24px var(--16, 16px) 12px var(--16, 16px);
+      padding: 18px 12px 12px 12px;
+      flex-direction: column;
+      gap: 12px;
+      border: 1px solid #e8e8e8;
+      border-radius: 16px;
+      margin: 0 auto;
+
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
       }
 
-      .userInfo {
-
+      p {
         display: flex;
-        width: 524px;
-        // padding: 24px var(--16, 16px) 12px var(--16, 16px);
-        padding: 18px 12px 12px 12px;
         flex-direction: column;
-        gap: 12px;
-        border: 1px solid #E8E8E8;
-        border-radius: 16px;
-        margin: 0 auto;
+        font-size: 14px;
 
-        div {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 24px;
+        strong {
+          color: #000000;
+          font-weight: bold;
+          margin-top: 8px;
+          font-size: 16px;
         }
 
-        p {
-          display: flex;
-          flex-direction: column;
-          font-size: 14px;
-
-          strong {
-            color: #000000;
-            font-weight: bold;
-            margin-top: 8px;
-            font-size: 16px;
-          }
-
-          .med-p {
-            text-align: center;
-          }
-
-          .last-p {
-            text-align: end;
-          }
+        .med-p {
+          text-align: center;
         }
 
+        .last-p {
+          text-align: end;
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+      gap: 8px;
+
+      .cancelButton,
+      .deactivateButton {
+        padding: 16px 68px;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .cancelButton {
+        background: transparent;
+        border: 1px solid #ccc;
+      }
+
+      .deactivateButton {
+        background: #ffe9e9;
+        color: #ed1651;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 90%;
+      left: 0;
+
+      .userInfo {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
       }
 
       .actions {
-        display: flex;
-        justify-content: center;
         margin: 20px;
-        gap: 8px;
-
+        
         .cancelButton,
         .deactivateButton {
-          padding: 16px 68px;
-          border: none;
-          border-radius: 8px;
-          font-weight: bold;
-          font-size: 16px;
-          cursor: pointer;
+          padding: 16px 34px;
         }
-    
-        .cancelButton {
-          background: transparent;
-          border: 1px solid #ccc;
-        }
-    
-        .deactivateButton {
-          background: #FFE9E9;
-          color: #ED1651;
-        }
-    
       }
     }
+  }
 }

@@ -96,6 +96,8 @@
     gap: 8px;
     margin: 24px 0;
     padding: 0 32px;
+    overflow-x: auto;
+    max-width: 100%;
 
     & > div {
       @extend %title-12;
@@ -330,7 +332,7 @@
     }
 
     &__parameters {
-      flex-wrap: wrap;
+      padding: 0 12px;
     }
 
     &__heading {

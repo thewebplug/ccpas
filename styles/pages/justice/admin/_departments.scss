@@ -938,13 +938,22 @@
 
       &__inner {
         padding: 0 12px;
+        
+
+        & > div {
+          margin-right: 12px;
+        }
       }
     }
 
     &__new-dept {
       width: 100%;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr; 
+      
+      &__form {
+        padding: 12px 23px;
+      }
     }
 
     &__details {
