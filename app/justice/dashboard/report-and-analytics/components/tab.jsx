@@ -45,7 +45,7 @@ export default function ReportsTab() {
         onClick={() => window.location.href =
           "/justice/dashboard/report-and-analytics/proceed-of-crime"}
       >
-        Proceed of Crime <span>4</span>
+        Proceed of Crime
       </div>
       <div
         className={pathname?.includes("finance-and-accounts") && "reports__tabs__active"}

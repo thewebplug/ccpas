@@ -171,13 +171,19 @@ export default function CreateCase() {
           </select>
 
           <div className="reports__inner__filter__date">
+      <div className="reports__inner__filter__date__input">
+<div>From: </div>
       <input type="date" name="" id="" value={from}  ref={dateInputRef1}
               onChange={(e) => {
                 setFrom(e.target.value)
                 dateInputRef2.current.showPicker();
                 }} />
+      </div>
+      <div className="reports__inner__filter__date__input">
+      <div>To: </div>
       <input type="date" name="" id="" value={to}  ref={dateInputRef2}
               onChange={(e) => setTo(e.target.value)} />
+        </div>
     </div>
 
           <button>Apply</button>
