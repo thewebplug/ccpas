@@ -310,4 +310,30 @@
       // ----------- End bottom... ----------------  //
     }
   }
+
+  @media (max-width: 768px) {
+    &__content {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr; 
+
+      .preview-user__header {
+        padding: 4px;
+        margin: 0;
+
+        .user-text {
+          display: flex;
+          align-items: center;
+  
+          svg {
+            margin-right: 10px;
+          }
+  
+          h2 {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
 }
