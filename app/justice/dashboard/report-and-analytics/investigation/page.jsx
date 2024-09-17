@@ -263,21 +263,21 @@ export default function CreateCase() {
                 <div className="reports__inner__table__small">JUN-21-2024</div>
               </div>
               <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
+                <div className="reports__inner__table__xtra-small">2</div>
                 <div className="reports__inner__table__small">EFCC/012/2024</div>
                 <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
               </div>
               <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
+                <div className="reports__inner__table__xtra-small">3</div>
                 <div className="reports__inner__table__small">EFCC/012/2024</div>
                 <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
               </div>
               <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
+                <div className="reports__inner__table__xtra-small">4</div>
                 <div className="reports__inner__table__small">EFCC/012/2024</div>
                 <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
@@ -285,35 +285,35 @@ export default function CreateCase() {
               </div>
               
               <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
+                <div className="reports__inner__table__xtra-small">5</div>
                 <div className="reports__inner__table__small">EFCC/012/2024</div>
                 <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
               </div>
               <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
+                <div className="reports__inner__table__xtra-small">6</div>
                 <div className="reports__inner__table__small">EFCC/012/2024</div>
                 <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
               </div>
               <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
+                <div className="reports__inner__table__xtra-small">7</div>
                 <div className="reports__inner__table__small">EFCC/012/2024</div>
                 <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
               </div>
               <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
+                <div className="reports__inner__table__xtra-small">8</div>
                 <div className="reports__inner__table__small">EFCC/012/2024</div>
                 <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
               </div>
               <div className="reports__inner__table__body__inner">
-                <div className="reports__inner__table__xtra-small">1</div>
+                <div className="reports__inner__table__xtra-small">9</div>
                 <div className="reports__inner__table__small">EFCC/012/2024</div>
                 <div className="reports__inner__table__large">EFCC/ABJ/CTGI/012/2024</div>
                 <div className="reports__inner__table__small">JUN-21-2024</div>
