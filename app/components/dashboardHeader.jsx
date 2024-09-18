@@ -94,7 +94,7 @@ console.log('mobileMenu', mobileMenu);
             fill="black"
           />
         </svg>
-        <h2>FMoJ-Dept of Public Prosecution-Abuja HQ</h2>
+        <h2>Economic and Financial Crimes Commission Abuja HQ</h2>
       </form>
 
       <div className="dashboard-header__account">
