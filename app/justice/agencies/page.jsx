@@ -19,9 +19,10 @@ window.location.href = "/justice/login"
         height={110}
       />
 
-      <h1 className="justice-home__title">Federal Ministry Of Justice</h1>
+      <h1 className="justice-home__title">Centralised Criminal Public Prosecution Administrative System CCPPAS
+      </h1>
       <h2 className="justice-home__subtitle">
-        Welcome to Federal Ministry of Justice Crime Database
+        {/* Welcome to Federal Ministry of Justice Crime Database */}
       </h2>
       <div className="justice-home__agency-grid">
       <Image 

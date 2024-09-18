@@ -10,14 +10,14 @@ export default function Home(params) {
         Centralised Criminal Public Prosecution Administrative System CCPPAS
       </h1>
       <h2 className="justice-home__subtitle">
-        Administered by Federal Ministry of Justice Department of Public
-        Prosecution
+        {/* Administered by Federal Ministry of Justice Department of Public
+        Prosecution */}
       </h2>
       <h3 className="justice-home__subsubtitle">Login as</h3>
 
       <div className="justice-home__cards">
         <div className="justice-home__cards__card"
-        onClick={() =>  window.location.href = "/justice/agencies"}
+        onClick={() =>  window.location.href = "/justice/login"}
         >
           <svg
             width="33"
@@ -35,7 +35,28 @@ export default function Home(params) {
               fill="#FFA24C"
             />
           </svg>
-          <h4>Justice Public Prosecutor</h4>
+          <h4>Legal Personnel </h4>
+        </div>
+        <div className="justice-home__cards__card"
+        onClick={() =>  window.location.href = "/justice/login"}
+        >
+          <svg
+            width="33"
+            height="33"
+            viewBox="0 0 33 33"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="0.816406"
+              y="0.904297"
+              width="32"
+              height="32"
+              rx="16"
+              fill="#FFA24C"
+            />
+          </svg>
+          <h4>Law Enforcement Agent</h4>
         </div>
         <div className="justice-home__cards__card"
         onClick={() =>  window.location.href = "/justice/agencies"}
@@ -56,7 +77,7 @@ export default function Home(params) {
               fill="#FFA24C"
             />
           </svg>
-          <h4>Law Enforcement Agent</h4>
+          <h4>Other Authorized Personnel</h4>
         </div>
         {/* <div className="justice-home__cards__card"
         onClick={() =>  window.location.href = "/justice/request"}

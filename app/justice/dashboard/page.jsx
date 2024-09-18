@@ -419,6 +419,22 @@ export default function Dashboard() {
               697
             </h4>
           </div>
+          <div className="dashboard-home__card1__agency-stats__card dashboard-home__card1__agency-stats__card-max">
+            <div className="dashboard-home__card1__agency-stats__card__title-group">
+              <Image
+                alt=""
+                src="/assets/customs.png"
+                width={28}
+                height={28}
+                style={{ borderRadius: "50%" }}
+                className="agencies-img"
+              />
+              <h3>INTERNATIONAL AGENCY</h3>
+            </div>
+            <h4 className="dashboard-home__card1__agency-stats__card__subtitle">
+              697
+            </h4>
+          </div>
         </div>
       </div>
 

@@ -85,8 +85,7 @@ export default function Auth() {
             Centralised Criminal Public Prosecution Administrative System CCPPAS
           </div>
           <div className="auth__header__inner__subtitle">
-            Administered by Federal Ministry of Justice Department of Public
-            Prosecution
+            Administered by Agency
           </div>
         </div>
       </div>
@@ -95,7 +94,7 @@ export default function Auth() {
         <h2 className="auth__form__title">Request Access</h2>
         {/* <h4 className="auth__form__error">Incorrect information you have 1 more try left</h4> */}
         <label htmlFor="" className="auth__form__label">
-          FMoJ ID*
+          Agency ID*
         </label>
         <input
           type="text"

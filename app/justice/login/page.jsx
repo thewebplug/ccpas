@@ -40,7 +40,22 @@ export default function Auth() {
     // window.location.href = "/justice/dashboard";
 
     if(response?.status === 201) {
-      setModalOpen(true);
+      localStorage.setItem("token", response?.data?.token);
+      document.cookie = `auth_token=${response?.data?.token}; path=/; max-age=${60 * 60 * 24 * 7};`
+      dispatch({
+        type: "USER_LOGIN_SUCCESS",
+        payload: {
+          token: response?.data?.token,
+        },
+      });
+
+      if(!response?.data?.user?.passwordChange) {
+        setToken(response?.data?.token)
+        setId(response?.data?.user?.id)
+        setmodalOpenTwo(true);
+      }else{
+        window.location.href = "/justice/dashboard"
+      }
     }
     else if (response?.data?.statusCode === 401 || response?.data?.statusCode === 403) {
       window.location.href = "/justice/unauthorized"
@@ -185,28 +200,27 @@ setLoading(false)
           <div className="auth__header__inner__title">
             Centralised Criminal Public Prosecution Administrative System CCPPAS
           </div>
-          <div className="auth__header__inner__subtitle">
+          {/* <div className="auth__header__inner__subtitle">
             Administered by Federal Ministry of Justice Department of Public
             Prosecution
-          </div>
+          </div> */}
         </div>
       </div>
 
       <h1 className="auth__title">
-      Welcome to Federal Ministry of Justice 
-Department of Public Prosecution Portal 
+      Welcome to the Agency Public Prosecution Portal
       </h1>
 
       <form className="auth__form" onSubmit={handleLogin}>
-        <h2 className="auth__form__title">Login as</h2>
-        <h3 className="auth__form__subtitle">Public Prosecutor</h3>
+        <h2 className="auth__form__title">Login</h2>
+        {/* <h3 className="auth__form__subtitle">Legal personnel</h3> */}
         {/* <h4 className="auth__form__error">Incorrect information you have 1 more try left</h4> */}
-        <label htmlFor="" className="auth__form__label">FMoJ ID*</label>
+        <label htmlFor="" className="auth__form__label">Agency ID*</label>
         <input type="text" className="auth__form__input" placeholder="Enter your ID" required
         value={govId}
         onChange={(e) => setGovId(e.target.value)}
         />
-        <label htmlFor="" className="auth__form__label">Email*</label>
+        <label htmlFor="" className="auth__form__label">Agency Email*</label>
         <input type="email" className="auth__form__input" placeholder="Enter your ID" required
         value={officialEmail}
         onChange={(e) => setOfficialEmail(e.target.value)}

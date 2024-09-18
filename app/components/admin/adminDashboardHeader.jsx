@@ -61,14 +61,13 @@ export default function AdminHeader() {
         </div>
 
         <div className="dashboard-header__logo__img">
-          <Image alt="" src="/assets/efcc-logo.png" width={66.089} height={66.089} />
+          <Image alt="" src="/assets/logo.png" width={66.089} height={66.089} />
         </div>
         <div className="dashboard-header__logo__title-group">
-          <h1 className="dashboard-header__logo__title-group__title">EFCC</h1>
-          {/* <h2 className="dashboard-header__logo__title-group__subtitle">
-            Administered by Federal Ministry of Justice Department of Public
-            Prosecution
-          </h2> */}
+          <h1 className="dashboard-header__logo__title-group__title">CCPPAS</h1>
+          <h2 className="dashboard-header__logo__title-group__subtitle">
+            Administered by Agency
+          </h2>
         </div>
       </div>
 
@@ -87,7 +86,7 @@ export default function AdminHeader() {
             fill="black"
           />
         </svg>
-        <h2>Economic and Financial Crimes Commission-Abuja HQ</h2>
+        <h2>Agency HQ</h2>
       </form>
 
       <div className="dashboard-header__account">
