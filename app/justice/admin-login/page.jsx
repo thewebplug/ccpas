@@ -148,10 +148,10 @@ export default function Auth() {
         </div>
       </div>
 
-      <h1 className="auth__title">
+      {/* <h1 className="auth__title">
       Welcome to Federal Ministry of Justice 
 Department of Public Prosecution Portal 
-      </h1>
+      </h1> */}
 
       <form className="auth__form" onSubmit={handleLogin}>
         <h2 className="auth__form__title">Login as Admin</h2>
