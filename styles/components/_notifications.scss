@@ -43,6 +43,10 @@
           font-size: 12px;
           font-weight: 500;
           color: #9ea0aa;
+
+          & > option {
+            cursor: pointer;
+          }
         }
       }
 
@@ -57,7 +61,7 @@
     }
 
     &__card {
-padding: 0 8px 17px 8px;
+padding: 14px 8px 17px 8px;
 height: fit-content;
 border-bottom: 1px solid #E4E8EE;
  

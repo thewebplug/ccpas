@@ -1,60 +1,90 @@
+"use client";
+
+import CheckboxToggle from "@/app/justice/admin/add-role/CheckboxToggle";
 import Image from "next/image";
-import { getNotifications } from "../apis/users";
-import { useEffect } from "react";
 
-export default function Notifications({open, setOpen}) {
-    const handleClose = (e) => {
-        if(e.target.classList.contains("notifications")) {
-            setOpen(false)
-        }
-    }
 
-    const handleGetNotifications = async () => {
-      const response = await getNotifications();
-      console.log('notifications response', response);
-    }
+export default function FavouriteCase() {
 
-    useEffect(() => {
-      handleGetNotifications();
-    }, [])
   return (
-    open && <div className="notifications"
-    onClick={handleClose}
-    >
-      <div className="notifications__inner">
-        <div className="notifications__inner__header">
-          <div>
-            <div>Notifications</div>
-            <select name="" id="">
-              <option value="All" onClick={() => window.location.href="/justice/dashboard/notifications"}>All</option>
-            </select>
-          </div>
-          <div>
-            Mark all as read
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M14 8C14 4.6875 11.3125 2 8 2C4.6875 2 2 4.6875 2 8C2 11.3125 4.6875 14 8 14C11.3125 14 14 11.3125 14 8Z"
-                stroke="#1A1F36"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-              />
-              <path
-                d="M11 5.5L6.8 10.5L5 8.5"
-                stroke="#1A1F36"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
+    <div className="fav-cases">
+      <div className="fav-cases__header">
+        <div className="fav-cases__header__title">Notification</div>
+      </div>
+      <div className="fav-cases__actions">
+        <form action="" className="fav-cases__actions__input">
+          <svg
+            width="16"
+            height="17"
+            viewBox="0 0 16 17"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.6667 1.83594V4.5026M5.33333 1.83594V4.5026M2 7.16927H14M3.33333 3.16927H12.6667C13.403 3.16927 14 3.76622 14 4.5026V13.8359C14 14.5723 13.403 15.1693 12.6667 15.1693H3.33333C2.59695 15.1693 2 14.5723 2 13.8359V4.5026C2 3.76622 2.59695 3.16927 3.33333 3.16927Z"
+              stroke="#101828"
+              stroke-width="1.33333"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <input type="text" placeholder="MM/DD/YY-MM/DD/YY" />
+        </form>
+
+        {/* Case No */}
+        <form action="" className="fav-cases__actions__input">
+          <input type="text" placeholder="Case No" />
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M14 14L11.1 11.1M12.6667 7.33333C12.6667 10.2789 10.2789 12.6667 7.33333 12.6667C4.38781 12.6667 2 10.2789 2 7.33333C2 4.38781 4.38781 2 7.33333 2C10.2789 2 12.6667 4.38781 12.6667 7.33333Z"
+              stroke="#101828"
+              stroke-width="1.33333"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </form>
+
+        {/* Agency */}
+        <form action="" className="fav-cases__actions__input">
+          <select name="" id="">
+            <option value="">Agency</option>
+          </select>
+        </form>
+
+        {/* Status of Suspect */}
+        <form action="" className="fav-cases__actions__input">
+          <select name="" id="">
+            <option value="">Status of Suspect </option>
+          </select>
+        </form>
+        <div className="fav-cases__actions__filters">
+          <svg
+            width="24"
+            height="25"
+            viewBox="0 0 24 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20.1554 3.5H3.84473C3.09527 3.5 2.71709 4.40935 3.24813 4.94039L9.74999 11.4432V18.6875C9.74999 18.9628 9.88433 19.2208 10.1099 19.3787L12.9224 21.3468C13.4773 21.7352 14.25 21.3415 14.25 20.6555V11.4432L20.752 4.94039C21.282 4.41041 20.9064 3.5 20.1554 3.5Z"
+              fill="#033132"
+            />
+          </svg>
+          Filter
         </div>
-        <div className="notifications__inner__card" id="request-access">
+      </div>
+
+      {/* --------------- */}
+
+      <div className="fav-cases__body">
+      <div className="notifications__inner__card" id="request-access">
           <svg
             className="notifications__inner__card__unread"
             width="8"
@@ -364,6 +394,51 @@ export default function Notifications({open, setOpen}) {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* footer */}
+
+      <div className="fav-cases__footer">
+        <div className="fav-cases__footer__nav">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.8346 10.0013H4.16797M4.16797 10.0013L10.0013 15.8346M4.16797 10.0013L10.0013 4.16797"
+              stroke="#344054"
+              stroke-width="1.67"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <div>Previous</div>
+        </div>
+
+        {/* pagination */}
+
+        <div className="fav-cases__footer__nav">
+          <div>Next</div>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.16797 10.0013H15.8346M15.8346 10.0013L10.0013 4.16797M15.8346 10.0013L10.0013 15.8346"
+              stroke="#344054"
+              stroke-width="1.67"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
         </div>
       </div>
     </div>
