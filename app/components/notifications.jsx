@@ -25,8 +25,8 @@ export default function Notifications({open, setOpen}) {
         <div className="notifications__inner__header">
           <div>
             <div>Notifications</div>
-            <select name="" id="">
-              <option value="All" onClick={() => window.location.href="/justice/dashboard/notifications"}>All</option>
+            <select name="" id="" onClick={() => window.location.href="/justice/dashboard/notifications"}>
+              <option value="All">All</option>
             </select>
           </div>
           <div>
