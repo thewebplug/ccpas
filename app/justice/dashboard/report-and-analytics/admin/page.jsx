@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import ReportsTab from "./components/tab";
+import ReportsTab from "../components/tab";
 import Chart from "chart.js/auto";
 
 export default function CreateCase() {
