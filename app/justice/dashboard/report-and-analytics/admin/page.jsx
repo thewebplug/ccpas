@@ -104,9 +104,9 @@ export default function CreateCase() {
             fill="#99A2BB"
           />
         </svg>
-        <div
+         <div
           className="pointer"
-          onClick={() => (window.location.href = "/justice/admin")}
+          onClick={() => (window.location.href = "/justice/dashboard/report-and-analytics")}
         >
           Report & Analytics
         </div>

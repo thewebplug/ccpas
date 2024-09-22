@@ -16,7 +16,7 @@ export default function ReportsTab() {
             ? "reports__tabs__active"
             : ""
         }
-        onClick={() => window.location.href = "/justice/dashboard/report-and-analytics"}
+        onClick={() => window.location.href = "/justice/dashboard/report-and-analytics/admin"}
       >
         Executive Chairman Office
       </div>
