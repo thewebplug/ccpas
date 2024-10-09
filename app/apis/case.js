@@ -101,7 +101,7 @@ export const createCase = async (
       },
       config
     );
-    
+
     return res;
   } catch (error) {
     console.log("ERROR", error);
@@ -275,7 +275,7 @@ export const verifyExpunge = async (
   try {
     const res = await axios.post(
       `https://ccppas.centraconnect.ai/fmoj/expunge/verify-and-create/${caseNumber}?otp=${otp}`,
-      
+
       {
         otp,
         fileLink,
@@ -293,15 +293,11 @@ export const verifyExpunge = async (
   }
 };
 
-export const transferCase = async (
-  caseNumber,
-    fmojDept,
-    token
-) => {
+export const transferCase = async (caseNumber, fmojDept, token) => {
   console.log("otp object", {
     caseNumber,
     fmojDept,
-    token
+    token,
   });
 
   const config = {
@@ -312,10 +308,36 @@ export const transferCase = async (
   try {
     const res = await axios.patch(
       `https://ccppas.centraconnect.ai/fmoj/transfer/${caseNumber}/fmoj-dept`,
-      
+
       {
         fmojDept,
         token,
+      },
+      config
+    );
+
+    return res;
+  } catch (error) {
+    console.log("ERROR", error);
+    return error?.response;
+  }
+};
+
+export const deactivateCase = async (userId, token) => {
+  console.log("otp object", {
+    userId, token
+  });
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const res = await axios.post(
+      `https://ccppas.centraconnect.ai/fmoj/case/${userId}/deactivated`,
+      {
+        userId
       },
       config
     );

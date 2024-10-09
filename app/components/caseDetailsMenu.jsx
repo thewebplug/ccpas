@@ -5,11 +5,16 @@ import AddedFavourite from "./addedFavouriteSuccessMessage";
 import CaseFileModal from "../justice/dashboard/case-file/page";
 import ExpungeCaseModal from "./expungeCaseModal";
 import { useSelector } from "react-redux";
+import { deactivateCase } from "../apis/case";
+import CaseDeactivatedSuccess from "./deactivatedSuccessMessage";
 
 const Menu = ({ open, setOpen, classifyCaseFunction, caseNumber, caseId }) => {
-  // const [open, setOpen] = useState(true)
+  // const [open, setOpen] = useState(true);
+  console.log('eneyeme', caseId);
+  
   const auth = useSelector((state) => state.auth);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [deactivatedOpen, setDeactivatedOpen] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,6 +37,19 @@ const Menu = ({ open, setOpen, classifyCaseFunction, caseNumber, caseId }) => {
     setModalIsOpen(false);
     setSelectedItem(null);
   };
+
+  const handleDeactivateCase = async() => {
+    
+    const response = await deactivateCase(caseId, auth?.token);
+    console.log('response data', response);
+
+    if(response?.status === 201) {
+      setDeactivatedOpen(true)
+    }
+  }
+  const handlePrint = async() => {
+   window.print();
+  }
 
  
 
@@ -86,9 +104,12 @@ const Menu = ({ open, setOpen, classifyCaseFunction, caseNumber, caseId }) => {
             </svg>
             Make Favourites
           </div>
-          <AddedFavourite open={isModalOpen} setOpen={setIsModalOpen} />
+          <AddedFavourite open={isModalOpen} setOpen={setIsModalOpen} caseId={caseId} />
+          <CaseDeactivatedSuccess open={deactivatedOpen} setOpen={setDeactivatedOpen} />
 
-          <div className="menu-cover__menu__menu-item">
+          <div className="menu-cover__menu__menu-item"
+          onClick={handleDeactivateCase}
+          >
             <svg
               width="20"
               height="20"
@@ -248,7 +269,9 @@ const Menu = ({ open, setOpen, classifyCaseFunction, caseNumber, caseId }) => {
             </>
           )}
 
-          <div className="menu-cover__menu__menu-item">
+          <div className="menu-cover__menu__menu-item"
+          onClick={handlePrint}
+          >
             <svg
               width="20"
               height="20"

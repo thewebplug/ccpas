@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddedFavourite = ({ open, setOpen, caseId }) => {
+const CaseDeactivatedSuccess = ({ open, setOpen }) => {
 
   return (
     open &&
@@ -25,11 +25,11 @@ const AddedFavourite = ({ open, setOpen, caseId }) => {
         </svg>
 
         <div>
-          Case File <span>{caseId} Added to Favourite</span>
+          Case <span>PF00458 has been deactivated</span>
         </div>
       </div>
     </div>
   );
 };
 
-export default AddedFavourite;
+export default CaseDeactivatedSuccess;
