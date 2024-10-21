@@ -7,7 +7,7 @@ export const requestAccess = async (
   doe,
   nin,
   bvn,
-  govId,
+  govId
   // password
 ) => {
   try {
@@ -42,7 +42,7 @@ export const requestAccess = async (
 };
 
 export const login = async (officialEmail, govId, password) => {
-  console.log({officialEmail, govId, password});
+  console.log({ officialEmail, govId, password });
   try {
     const res = await axios.post(`https://sso.centraconnect.ai/auth/login`, {
       officialEmail,
@@ -58,11 +58,14 @@ export const login = async (officialEmail, govId, password) => {
 };
 export const adminLogin = async (officialEmail, govId, password) => {
   try {
-    const res = await axios.post(`https://sso.centraconnect.ai/auth/login-admin`, {
-      officialEmail,
-      govId,
-      password,
-    });
+    const res = await axios.post(
+      `https://sso.centraconnect.ai/auth/login-admin`,
+      {
+        officialEmail,
+        govId,
+        password,
+      }
+    );
 
     return res;
   } catch (error) {
@@ -72,10 +75,13 @@ export const adminLogin = async (officialEmail, govId, password) => {
 };
 export const verifyOtp = async (officialEmail, otp) => {
   try {
-    const res = await axios.post(`https://sso.centraconnect.ai/auth/verify-otp`, {
-      officialEmail,
-      otp,
-    });
+    const res = await axios.post(
+      `https://sso.centraconnect.ai/auth/verify-otp`,
+      {
+        officialEmail,
+        otp,
+      }
+    );
 
     return res;
   } catch (error) {
@@ -85,9 +91,12 @@ export const verifyOtp = async (officialEmail, otp) => {
 };
 export const requestOtp = async (officialEmail) => {
   try {
-    const res = await axios.post(`https://sso.centraconnect.ai/auth/resend-otp`, {
-      officialEmail,
-    });
+    const res = await axios.post(
+      `https://sso.centraconnect.ai/auth/resend-otp`,
+      {
+        officialEmail,
+      }
+    );
 
     return res;
   } catch (error) {
@@ -96,21 +105,28 @@ export const requestOtp = async (officialEmail) => {
   }
 };
 
-export const changPassword = async (currentPassword, newPassword, id, token) => {
-  console.log({currentPassword, newPassword, id, token});
+export const changPassword = async (
+  currentPassword,
+  newPassword,
+  id,
+  token
+) => {
+  console.log({ currentPassword, newPassword, id, token });
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
   try {
-    const res = await axios.patch(`https://sso.centraconnect.ai/auth/update-password`, {
-      id,
-      currentPassword,
-      newPassword,
-    },
-    config
-  );
+    const res = await axios.patch(
+      `https://sso.centraconnect.ai/auth/update-password`,
+      {
+        id,
+        currentPassword,
+        newPassword,
+      },
+      config
+    );
 
     return res;
   } catch (error) {
@@ -120,19 +136,21 @@ export const changPassword = async (currentPassword, newPassword, id, token) => 
 };
 
 export const getProfile = async (officialEmail, token) => {
-  console.log({officialEmail, token});
-  
+  console.log({ officialEmail, token });
+
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
   try {
-    const res = await axios.post(`https://sso.centraconnect.ai/auth/profile`, {
-      officialEmail
-    },
-    config
-  );
+    const res = await axios.post(
+      `https://sso.centraconnect.ai/auth/profile`,
+      {
+        officialEmail,
+      },
+      config
+    );
 
     return res;
   } catch (error) {
@@ -142,17 +160,18 @@ export const getProfile = async (officialEmail, token) => {
 };
 
 export const getRoles = async (token) => {
-  console.log({token});
-  
+  console.log({ token });
+
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
   try {
-    const res = await axios.get(`https://sso.centraconnect.ai/auth/roles`,
-    config
-  );
+    const res = await axios.get(
+      `https://sso.centraconnect.ai/auth/roles`,
+      config
+    );
 
     return res;
   } catch (error) {
@@ -162,19 +181,21 @@ export const getRoles = async (token) => {
 };
 
 export const createRole = async (name, token) => {
-  console.log({name, token});
-  
+  console.log({ name, token });
+
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
   try {
-    const res = await axios.post(`https://sso.centraconnect.ai/auth/roles`, {
-      name
-    },
-    config
-  );
+    const res = await axios.post(
+      `https://sso.centraconnect.ai/auth/roles`,
+      {
+        name,
+      },
+      config
+    );
 
     return res;
   } catch (error) {
