@@ -238,10 +238,11 @@ export default function Departments() {
       </div>
 
       <div className="departments__body">
-        {departments?.map((department) => (
+        {departments?.map((department, index) => (
           <div
             className="departments__body__inner"
             onClick={() => setModalOpen(true)}
+            key={index}
           >
             <div>
               <svg
@@ -1343,8 +1344,8 @@ export default function Departments() {
                 onChange={(e) => setSelectedDepartment(e.target.value)}
                 required
               >
-                {departments?.map((department) => (
-                  <option value={department?.id}>{department?.name}</option>
+                {departments?.map((department, index) => (
+                  <option value={department?.id} key={index}>{department?.name}</option>
                 ))}
               </select>
             </div>

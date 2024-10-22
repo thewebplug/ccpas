@@ -832,6 +832,85 @@ margin-bottom: 38px;
           }
         }
       }
+
+      &__pay {
+        padding: 40px 69px;
+        &__title{
+          @extend %title-32;
+          font-weight: 550;
+          color: #292D32;
+          margin-bottom: 38px;
+        }
+
+        &__add {
+          @extend %title-14;
+          font-weight: 400;
+          color: #667085;
+          margin-bottom: 32px;
+          & > svg {
+            margin-bottom: 8px;
+          }
+        }
+
+        &__subtitle {
+          @extend %title-20;
+          font-weight: 500;
+          color: #292D32;
+          margin-bottom: 38px;
+        }
+
+        &__card {
+          width: 100%;
+          height: 100px;
+          border-radius: 8px;
+          border: 1px solid #EAECF0;
+          background: #FFFFFF;
+          padding: 16px;
+          display: flex;
+          align-items: start;
+          gap: 12px;
+          margin-bottom: 12px;
+
+          &__title {
+            & >:first-child {
+              @extend %title-14;
+              font-weight: 500;
+              color: #344054;
+              margin-bottom: 2px;
+            }
+            & >:nth-child(even) {
+              @extend %title-14;
+              font-weight: 500;
+              color: #667085;
+              margin-bottom: 10px;
+            }
+            & >:last-child {
+              display: flex;
+              gap: 12px;
+              align-items: center;
+              @extend %title-14;
+              font-weight: 600;
+              
+
+              & >:first-child {
+                color: #667085;
+              }
+
+              & >:last-child {
+                color: #009B07;
+              }
+            }
+          }
+        }
+
+        & > button {
+        @extend %create-button;
+        max-width: 362px;
+        height: 40px;
+        margin: auto;
+        margin-top: 40px;
+      }
+      }
     }
 
     &__receipt {
